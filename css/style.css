@@ -1,0 +1,50 @@
+/*TODO make sure this image hover rule only applies to certain images*/
+
+.hover:hover{
+    /*background-color: #eeeeee;*/ 
+    border: 1px solid #000000;
+}
+.active{
+    border: 1px solid #eeeeee;
+    background: none !important;
+}
+/*top bar*/
+#topBar{ height: 5vh !important;  }
+#topBar img{ height: 5vh !important; }
+/*top nav bar*/
+.nav{
+	border: none;
+	background-color: #696973;
+}
+.nav li{
+	border: none;
+}
+li.active a{
+	background-color: red !important;
+}
+.nav a{                                       
+	color: #ffffff !important;
+	margin: 0 !important;
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+	font-size: 12;
+	border: none !important;
+	outline: none;
+}
+.nav a:hover{
+	background-color: red !important;
+}  	  
+/*color selection*/
+.colorRow{
+	margin: 0;
+	padding: 0;
+	font-size: 3px;
+}
+.colorColumn{
+	margin: 0;
+	padding: 0;
+}
+.colorItem{
+	width: 100%;
+	height: 2%;
+}                

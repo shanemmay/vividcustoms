@@ -1,0 +1,71 @@
+@font-face{
+    		font-family: 'spongebob';
+    		src: url('spongebob.ttf') format('truetype');
+    	}
+    	@font-face{
+    		font-family: 'tmnt';
+    		src: url('Turtles.otf');
+    	}
+    	@font-face{
+    		font-family: 'db';
+    		src: url('DragonBall.otf');
+    	}
+    	@font-face{
+    		font-family: 'dbz';
+    		src: url('DragonBall.ttf') format('truetype');
+    	}
+    	@font-face{
+    		font-family: 'bully';
+    		src: url('bully.ttf') format('truetype');
+    	}
+    	@font-face{
+    		font-family: 'PokemonHollow';
+    		src: url('PokemonHollow.ttf') format('truetype');
+    	}
+    	@font-face{
+    		font-family: 'PokemonSolid';
+    		src: url('PokemonSolid.ttf') format('truetype');
+    	}
+
+    	@font-face{
+    		font-family: 'jelly';
+    		src: url('jelly.tff');
+    	}
+    	@font-face{
+    		font-family: 'angry';
+    		src: url('angry.tff');
+    	}
+    	#tmnt{
+    		font-family: 'tmnt';
+    	}
+    	#spongebob{
+    		font-family: 'spongebob';
+    	}
+    	#angry{
+    		font-family: 'angry';
+    	}
+    	#bully{
+    		font-family: 'bully';
+    	}
+    	#PokemonHollow{
+    		font-family: 'PokemonHollow';
+    	}
+    	#PokemonSolid{
+    		font-family: 'PokemonSolid';
+    	}
+    	#jelly{
+    		font-family: 'jelly';
+    	}
+    	#db{
+    		font-family: 'db';
+    	}
+    	#dbz{
+    		font-family: 'dbz';
+    	}
+    	.fancy{
+    		font-family: 'Niconne', cursive;
+    		font-size: 50px;
+    	}
+    	#preview{
+    		
+    	}
