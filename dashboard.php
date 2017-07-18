@@ -27,15 +27,12 @@
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         if (isMobile) 
         {         
-          //alert('mobile');   
           window.location.replace("uimobile.php");       
         }
         else
         {         
-          //alert('windows');   
            window.location.replace("ui.php");       
         }          
-           
     }
   </script>
 </head>
@@ -44,35 +41,45 @@
 
  <div class="card text-center">
     <div class="card-header" align="right">
-     <?php 
-            if (!isset($_SESSION['Guest'])) {
-                echo 'Welcome: '.$login_session; 
-                echo  '<p><a href = "logout.php">Sign Out</a></p>';    
-            }  
-             else 
-            {
-              echo ("<center> Order number: ".$_SESSION['Guest']."</center>");         
-            }           
+     <div class="row">
+        <div class="col-sm-2">
+            <img src="https://vividcustoms.com/skin/frontend/tv_nautica_package/tv_nautica8/images/logo.png">
+        </div>
+        <div class="col-sm-8">
+            
+        </div>
+        <div class="col-sm-2">
+            <?php 
+          if (!$Guest) {
+              echo '<b> Welcome: '.$login_session.'</b><br>'; 
+              echo  '<b><a href = "logout.php">Sign Out</a></b>';    
+          }  
+          else if (isset($_SESSION['Guest'])) 
+          {
+              echo ("<left> Order number: ".$_SESSION['Guest']."</left>");             
+          }          
       ?>
+      </div>
+    </div> 
     </div>
     <div class="card-block">
     
     <ul class="nav nav-tabs justify-content-center" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#Desings" role="tab">Make Desings</a>
-      </li>
+        <a class="nav-link active" data-toggle="tab" href="#Info" role="tab">Change Personal Information</a>
+      </li>    
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#Orders" role="tab">Previous Orders</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#Info" role="tab">Change Personal Information</a>
-      </li>     
+        <a class="nav-link " data-toggle="tab" href="#" role="tab" onclick="window.location.href = 'https://vividcustoms.com/vivid_customs2/ui.php';"> Make Designs </a>
+      </li>
     </ul>
      <!-- <h4 class="card-title">Special title treatment</h4>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>-->
       <div class="tab-content" style=" ">
-        <div class="tab-pane active" id="Desings" role="tabpanel" style="">
+        <div class="tab-pane " id="Desings" role="tabpanel" style="">
           <center><div class="card" style="width: 50rem;">
             <div class="card-header">
               Make Desings
@@ -96,7 +103,7 @@
             </div></center>
 
         </div>
-        <div class="tab-pane" id="Orders" role="tabpanel" style=""> 
+        <div class="tab-pane " id="Orders" role="tabpanel" style=""> 
           <center><div class="card" style="width: 50rem;">
             <div class="card-header">
             <div class="alert alert-danger alert-dismissible fade show" role="alert" id="errormessage" style="display: none;">
@@ -118,7 +125,7 @@
              </div>
           </div></center> 
         </div>
-        <div class="tab-pane" id="Info" role="tabpanel" style="">
+        <div class="tab-pane active" id="Info" role="tabpanel" style="">
          <center><div class="card" style="width: 50rem;">
             <div class="card-header">
             <div class="alert alert-info alert-dismissible fade show" role="alert" id="infomessage" style="display: none;">
@@ -173,9 +180,29 @@
         </div>        
       </div>
 
-    </div>    
+    </div> 
+    <style type="text/css">
+      .card-footer{
+        position:bottom;
+        bottom:0;
+       /* width:100%;*/
+      }
+    </style>   
     <div class="card-footer text-muted">
-      2 days ago
+      <div class="container">
+            <p>&copy; 2017 Vivid Customs</p>
+            <ul class="list-inline">
+                <li>
+                    <a href="#">Privacy</a>
+                    |
+                    <a href="#">Terms</a> 
+                    |
+                    <a href="#">FAQ</a>
+                    |
+                    <a href="draw.html">Design</a>
+                </li>
+            </ul>
+        </div>
     </div>
   </div>
 

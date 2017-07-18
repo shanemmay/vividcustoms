@@ -56,8 +56,8 @@
     </h3> 
     <form  name="Checkout" action="save_order.php" method="POST" role="form" onchange="checkInput();" > 
         <div class="row">
-          	<div class="col-2"></div>
-          	<div class="col-8">
+          	<div class="col-3"></div>
+          	<div class="col-6">
 				<div class="panel panel-info class">
 				  <div class="panel-heading">Contact Information</div>
 				  <div class="panel-body" >
@@ -69,175 +69,7 @@
 				      <input id="email" type="email" class="form-control" name="email" value="<?php echo( htmlspecialchars( $email ) ); ?>">    
 				  </div>
 				</div>
-				<!--PRODUCT PICKER
-				<div class="panel panel-info class" style="height: 60vh;">
-				  <div class="panel-heading"><a data-toggle="collapse" href="#oderInfo">Order Information</a></div>
-				  <div id="oderInfo" class="panel-collapse " >
-				  <div class="panel-body">
-				        <div class="container-fliud row">
-				          <div class="col"> <button class="btn btn-outline-primary" data-toggle="collapse" href="#designs" style="color: #0892D0;"> Designs</button></div><div class="col-9"></div>
-				          <div class="col"> <button class="btn btn-outline-primary" data-toggle="collapse" href="#products" style="color: #0892D0;">Products </button></div>
-				        </div>
-				        <div class="row">
-							<div class="col-4">
-								<div id="designs" class="panel-collapse collapse" > 
-								    <div class="row">
-								      <div class="col"> <img src="img/clip_4.png" class="rounded" alt="..." style="width: 100%;" onclick="setDesign(this);"> </div>
-								      <div class="col"> <img src="img/clip_1.png" class="rounded" alt="..." style="width: 100%;" onclick="setDesign(this);"> </div>
-								      <div class="col"> <img src="img/clip_1.png" class="rounded" alt="..." style="width: 100%;" onclick="setDesign(this);"> </div>
-								      <div class="col"> <img src="img/clip_1.png" class="rounded" alt="..." style="width: 100%;" onclick="setDesign(this);"> </div>
-								    </div>
-								</div> 
-							</div>
-							<div class="col-4">
-								
-								<div id="shirt" style="padding-top: 5%; height: 30vh; width: 100%; display: block; margin: auto; margin-top: auto; background-image: url('img/shirt_heather_sapphire.jpg');  background-repeat: no-repeat; background-size: cover; background-position: center center;">
-								  <img id="design" src="img/clip_1.png" style="width: 20%; display: block; margin: auto; margin-top: 25%;">
-								</div>
-								
-								<div>
-									<h6>Product description populated here be either ajax or already loaded in when the page loads</h6>
-									<form >
-										<p style="text-align: center;">Enter sizes:</p>
-										<hr>
-										<div class="row">
-											<div class="col-4"><input id="sNum" type="number" name="s" placeholder="S" style="width: 100%;"></div>
-											<div class="col-4"><input id="mNum" type="number" name="m" placeholder="M" style="width: 100%;"></div>
-											<div class="col-4"><input id="lNum" type="number" name="l" placeholder="L" style="width: 100%;"></div>
-										</div>
-										<button type="button" class="btn btn-outline-success" onclick="addToCart();" style="display: block; margin: auto;">ADD TO CART</button>
-									</form>
-								</div>
-							</div>
-							<div class="col-4">
-							  	<style type="text/css">
-							  		#products{
-							  			margin-right: 0;
-							  			padding-right: 0;
-							  		}
-							    	.tab-pane{
-							    		height: 75%; overflow:auto;
-							    	}
-							    	.tab-content img{
-							    		width: 100%;
-							    	}
-							    </style>
-							    <div id="products" class="panel-collapse collapse" style="">
-							        
-							        <ul class="nav nav-tabs" role="tablist">
-							          <li class="nav-item">
-							            <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Round Neck</a>
-							          </li>
-							          <li class="nav-item">
-							            <a class="nav-link" data-toggle="tab" href="#profile" role="tab">V Neck</a>
-							          </li>
-							          <li class="nav-item">
-							            <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Polo</a>
-							          </li>
-							          <li class="nav-item">
-							            <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Sweat Shirt</a>
-							          </li>
-							        </ul>
-							        
-							        
-							        <div class="tab-content" style=" ">
-							          <div class="tab-pane active" id="home" role="tabpanel" style="">
-											Round Neck 
-											
-											<table>
-											  <tbody>
-											    <tr>
-											      <td><img src="img/classic_fit_adult_t-ash_grey_front.jpg" onclick="setProduct(this);"></td>
-											      <td><img src="img/classic_fit_adult_t-azalea_front.jpg" onclick="setProduct(this);"></td>
-											      <td><img src="img/classic_fit_adult_t-cardinal_red_front.jpg" onclick="setProduct(this);"></td>
-											    </tr>
-											    <tr>
-											      <td><img src="img/classic_fit_adult_t-charcoal_front.jpg" onclick="setProduct(this);"></td>
-											      <td><img src="img/classic_fit_adult_t-cornsilk_front.jpg" onclick="setProduct(this);"></td>
-											      <td><img src="img/classic_fit_adult_t-daisy_front.jpg" onclick="setProduct(this);"></td>
-											    </tr>
-											    <tr>
-											      <td><img src="img/classic_fit_adult_t-dark_chocolate_front.jpg" onclick="setProduct(this);"></td>
-											      <td><img src="img/classic_fit_adult_t-gold_front.jpg" onclick="setProduct(this);"></td>
-											      <td><img src="img/classic_fit_adult_t-heliconia_front.jpg" onclick="setProduct(this);"></td>
-											    </tr>
-											  </tbody>
-											</table>
-							          </div>
-							          <div class="tab-pane" id="profile" role="tabpanel" style=""> 
-							                V Neck 
-							                <table>
-							                  <tbody>
-							                    <tr>
-							                      <td><img src="img/classic_fit_adult_t-ash_grey_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-azalea_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-cardinal_red_front.jpg" onclick="setProduct(this);"></td>
-							                    </tr>
-							                    <tr>
-							                      <td><img src="img/classic_fit_adult_t-charcoal_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-cornsilk_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-daisy_front.jpg" onclick="setProduct(this);"></td>
-							                    </tr>
-							                    <tr>
-							                      <td><img src="img/classic_fit_adult_t-dark_chocolate_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-gold_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-heliconia_front.jpg" onclick="setProduct(this);"></td>
-							                    </tr>
-							                  </tbody>
-							                </table>                        
-							          </div>
-							          <div class="tab-pane" id="messages" role="tabpanel" style="">
-							                V Neck 
-							                <table>
-							                  <tbody>
-							                    <tr>
-							                      <td><img src="img/classic_fit_adult_t-ash_grey_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-azalea_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-cardinal_red_front.jpg" onclick="setProduct(this);"></td>
-							                    </tr>
-							                    <tr>
-							                      <td><img src="img/classic_fit_adult_t-charcoal_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-cornsilk_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-daisy_front.jpg" onclick="setProduct(this);"></td>
-							                    </tr>
-							                    <tr>
-							                      <td><img src="img/classic_fit_adult_t-dark_chocolate_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-gold_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-heliconia_front.jpg" onclick="setProduct(this);"></td>
-							                    </tr>
-							                  </tbody>
-							                </table>     
-							          </div>
-							          <div class="tab-pane" id="settings" role="tabpanel" style="">
-							                V Neck 
-							               <table>
-							                  <tbody>
-							                    <tr>
-							                      <td><img src="img/classic_fit_adult_t-ash_grey_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-azalea_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-cardinal_red_front.jpg" onclick="setProduct(this);"></td>
-							                    </tr>
-							                    <tr>
-							                      <td><img src="img/classic_fit_adult_t-charcoal_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-cornsilk_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-daisy_front.jpg" onclick="setProduct(this);"></td>
-							                    </tr>
-							                    <tr>
-							                      <td><img src="img/classic_fit_adult_t-dark_chocolate_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-gold_front.jpg" onclick="setProduct(this);"></td>
-							                      <td><img src="img/classic_fit_adult_t-heliconia_front.jpg" onclick="setProduct(this);"></td>
-							                    </tr>
-							                  </tbody>
-							                </table>     
-							          </div>
-							        </div>
-							    </div>
-
-							</div>
-				        </div>
-				  </div>
-				  </div>
-				</div>-->
+				
 				<div class="panel panel-info class" id="paymentInformation">
 					<div class="panel-heading">Payment Information</div>
 					<div class="panel-body">
@@ -302,46 +134,78 @@
 	              	<div class="row">
 	                  <div class="col-sm-5"></div>
 	                  <div class="col-sm-2">
-	                      <button id="submit" type="submit" class="btn btn-outline-success" >Save Order</button>
+	                  		
+							<!--creating inputs for cart-->
+							<?php
+								//here we are filling hidden inputs with the information for the cart.
+								//we are using $i to keep track of products and designs
+								$i = 1;  
+							    foreach ($_POST as $key => $value) {
+							    	if($key != "total" && $key != "ordernumber"){
+							    		$name = substr($key,0, -2);
+								        /*echo "<tr>";
+								        echo "<td>";
+								        echo $name."_".$i; //$key
+								        echo "</td>";
+								        echo "<td>";*/
+								        echo "<input name='".$name."_".$i."' type='hidden' value='".$value."'>";
+								        /*echo "</td>";
+								        echo "</tr>";*/
+								    }else{
+								    	/*echo "<tr>";
+								        echo "<td>";
+								        echo $key;
+								        echo "</td>";
+								        echo "<td>";*/
+								        echo "<input name='".$key."' type='hidden' value='".$value."'>";
+								        /*echo "</td>";
+								        echo "</tr>";*/
+								    }
+								    $i += (strpos($key, "left") !== false ? 1 : 0);
+							    }
+							?>
+							<!--the line below holds the total for the order so that it can be included in the price and saved-->
+							<input type="hidden" name="total" value="<?php echo $_POST['total']; ?>">
+							<input type="hidden" name="ordernumber" value="<?php echo $_POST['ordernumber']; ?>">
+							<button id="submit" type="submit" class="btn btn-outline-success" >Place Order</button>
 	                  </div>
 	                   <div class="col-sm-5"></div>
 	                  
 	               	</div>   
       			</div>
           	</div>
-          	<div class="col-2">
+          	<div class="col-3">
+          		<!--test printing results from ui-->
 				<table>
 				<?php 
+					//here we are filling hidden inputs with the information for the cart.
+					//we are using $i to keep track of products and designs
+					/*$i = 1;  
 				    foreach ($_POST as $key => $value) {
-				        echo "<tr>";
-				        echo "<td>";
-				        echo $key;
-				        echo "</td>";
-				        echo "<td>";
-				        echo $value;
-				        echo "</td>";
-				        echo "</tr>";
-				    }
+				    	if($key != "total" && $key != "ordernumber"){
+				    		$name = substr($key,0, -2);
+					        echo "<tr>";
+					        echo "<td>";
+					        echo $name."_".$i; //$key
+					        echo "</td>";
+					        echo "<td>";
+					        //echo "<input name='".$name."_".$i."' type='text' value='".$value."'>";
+					        echo "</td>";
+					        echo "</tr>";
+					    }else{
+					    	echo "<tr>";
+					        echo "<td>";
+					        echo $key;
+					        echo "</td>";
+					        echo "<td>";
+					        //echo "<input name='".$key."' type='text' value='".$value."'>";
+					        echo "</td>";
+					        echo "</tr>";
+					    }
+					    $i += (strpos($key, "left") !== false ? 1 : 0);
+				    }*/
 				?>
 				</table>
-          		<!--CART
-          		<style type="text/css">
-          			#cart-wrapper{
-          				position: fixed;
-          				top: 0;
-          				width: 10vw;
-          			}
-          			#total{
-          				display: block;
-          				margin: auto;
-          			}
-          		</style>
-          		<div class="container" id="cart-wrapper"><h1>Cart</h1>
-	          		<table class="table table-sm" id="cart">
-
-	          		</table>
-	          		<a href="#paymentInformation" style="text-decoration: none;"><button type="button" id="total" class="btn btn-outline-success" onclick="getTotal();"></button></a>
-          		</div>-->
           	</div>
         </div>
     </form>

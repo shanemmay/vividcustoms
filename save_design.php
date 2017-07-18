@@ -28,13 +28,13 @@
 	   mkdir($route,0777,true);
 	 }
 
-	 $ses_sql = mysqli_query($db,"Select Quantity From consecutive where Name = 'Order'");	   
+	 $ses_sql = mysqli_query($db,"Select Quantity From consecutive where Name = 'Design'");	   
 	 $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);		   
 	 $route = $route.'/'.$login_session.'_'.sprintf("%06d", $row['Quantity']);		   
 	 //if (!is_dir($route)) {
 	   mkdir($route,0777,true);
 	//}  
-	 $ses_sql = mysqli_query($db,"Update consecutive set Quantity = Quantity + 1 where Name = 'Order'");	
+	 $ses_sql = mysqli_query($db,"Update consecutive set Quantity = Quantity + 1 where Name = 'Design'");	
 
 
      for ($i=0; $i < count($data) -1 ; $i++) {     

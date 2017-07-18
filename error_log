@@ -50,3 +50,9 @@
 [06-Jul-2017 11:15:38 CST6CDT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/vividcustoms/public_html/vivid_customs2/login.php:28) in /home/vividcustoms/public_html/vivid_customs2/login.php on line 29
 [06-Jul-2017 11:17:35 CST6CDT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/vividcustoms/public_html/vivid_customs2/login.php:28) in /home/vividcustoms/public_html/vivid_customs2/login.php on line 29
 [06-Jul-2017 13:02:53 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 40
+[18-Jul-2017 10:54:37 CST6CDT] PHP Parse error:  syntax error, unexpected 'Quantity' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/ui3.php on line 805
+[18-Jul-2017 10:54:52 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/ui3.php on line 798
+[18-Jul-2017 10:55:57 CST6CDT] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 27
+[18-Jul-2017 10:59:09 CST6CDT] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 27
+[18-Jul-2017 11:05:01 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 36
+[18-Jul-2017 11:09:31 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 36

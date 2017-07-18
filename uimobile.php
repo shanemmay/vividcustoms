@@ -85,9 +85,7 @@ Smaller than standard 960 (devices and browsers)
 
 </style>  
 </head>
-<body>
-
- 
+<body> 
 <div class="d-flex flex-row justify-content-center" backgroundcolor="blue" >  
   <div class="p-2"><button type="button" class="btn btn-sm btn btn-secondary" data-toggle="modal" data-target="#Price">Get Price</button></div>  
   <!-- The modal Get Price -->
@@ -640,7 +638,6 @@ Smaller than standard 960 (devices and browsers)
             }            
         }
 
-
         //UPLOADING IMAGE
         function uploadImage(){
             var preview = document.getElementById('imgPreview');
@@ -661,8 +658,6 @@ Smaller than standard 960 (devices and browsers)
                 preview.src = "";
             }
         }
-
-
 
         function changeColor(newColor){
             //this is to record what was done for the purpose of saving designs
@@ -923,19 +918,14 @@ Smaller than standard 960 (devices and browsers)
             var desing =   document.getElementById("mydesings").value;           
             if (desing!=0) 
             {
-				var guest = desing.split("_", 1);
+				       var guest = desing.split("_", 1);
 
 	            var file = guest+ '/' + desing + '/' + desing;                            
 	            document.getElementById('frontSavePreview').src = file+ '_front.png';
 	            document.getElementById('rightSavePreview').src = file+ '_right.png';
 	            document.getElementById('backSavePreview').src = file+ '_back.png';
 	            document.getElementById('leftSavePreview').src = file+ '_left.png';
-            }
-            /*else
-            {
-            	 savedDesignsDiv.style.display = "none";
-            }*/
-            
+            }  
        }
 
 
@@ -950,7 +940,7 @@ Smaller than standard 960 (devices and browsers)
            var file = guest+ '/' + desing + '/' + desing + '.json';
            //alert('file:///'+ file);
 
-           var xhr = new XMLHttpRequest();
+          /* var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {             
               if (xhr.readyState == 4) 
               {               
@@ -976,8 +966,8 @@ Smaller than standard 960 (devices and browsers)
             };
             xhr.open('GET',file,true);
             xhr.setRequestHeader('Content-Type', 'text/plain');            
-            xhr.send();       
-           /*$.ajax({
+            xhr.send();   */    
+           $.ajax({
                type: "GET",
                dataType: "JSON",
                url: file,
@@ -1003,7 +993,7 @@ Smaller than standard 960 (devices and browsers)
                error:   function() {
                    alert("error");
                }
-           });       */       
+           });            
 
                  
        }
@@ -1082,8 +1072,64 @@ Smaller than standard 960 (devices and browsers)
                     xhr.send($general);       
                 }
             }
-        </script>
-    <!--END SAVE DESIGN SECTION-->
+
+
+            front.on('mouse:up', function(e) 
+            { 
+                //console.log(e.target);
+                if (e.target.type == 'image') {
+                   $('#Art').modal('show');                   
+                }  
+                else if (e.target.type == 'text' || e.target.type == 'group' ) {
+                   $('#modalLabel').modal('show');                  
+                }    
+                else{
+                   $('#Art').modal('show');
+                }           
+                  
+            });
+
+           /* right.on('mouse:up', function(e) 
+            {
+               //console.log(e.target);
+                if (e.target.type == 'image') {
+                    $('.nav-tabs a[href="#addArt"]').tab('show');                    
+                }  
+                else if (e.target.type == 'text' || e.target.type == 'group' ) {
+                    $('.nav-tabs a[href="#textSection"]').tab('show')                    
+                }    
+                else{
+                    $('.nav-tabs a[href="#addArt"]').tab('show');
+                }    
+            });
+
+            back.on('mouse:up', function(e) 
+            {
+                //console.log(e.target);
+                if (e.target.type == 'image') {
+                    $('.nav-tabs a[href="#addArt"]').tab('show');                    
+                }  
+                else if (e.target.type == 'text' || e.target.type == 'group' ) {
+                    $('.nav-tabs a[href="#textSection"]').tab('show')                    
+                }    
+                else{
+                    $('.nav-tabs a[href="#addArt"]').tab('show');
+                }     
+            });
+
+            left.on('mouse:up', function(e) 
+            {
+               //console.log(e.target);
+                if (e.target.type == 'image') {
+                    $('.nav-tabs a[href="#addArt"]').tab('show');                    
+                }  
+                else if (e.target.type == 'text' || e.target.type == 'group' ) {
+                    $('.nav-tabs a[href="#textSection"]').tab('show')                    
+                }    
+                else{
+                    $('.nav-tabs a[href="#addArt"]').tab('show');
+                }    
+            });*/
        
     </script>
 </body>
