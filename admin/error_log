@@ -1,0 +1,63 @@
+[24-Jul-2017 11:33:19 CST6CDT] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 173
+[24-Jul-2017 11:37:04 CST6CDT] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 173
+[24-Jul-2017 11:37:07 CST6CDT] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 173
+[24-Jul-2017 11:37:10 CST6CDT] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 173
+[24-Jul-2017 11:37:14 CST6CDT] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 173
+[24-Jul-2017 11:37:23 CST6CDT] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 173
+[24-Jul-2017 11:43:27 CST6CDT] PHP Warning:  mysql_query(): Access denied for user ''@'localhost' (using password: NO) in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 175
+[24-Jul-2017 11:43:27 CST6CDT] PHP Warning:  mysql_query(): A link to the server could not be established in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 175
+[24-Jul-2017 11:43:27 CST6CDT] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 177
+[24-Jul-2017 11:46:58 CST6CDT] PHP Warning:  mysql_query() expects parameter 2 to be resource, string given in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 175
+[24-Jul-2017 11:46:58 CST6CDT] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, null given in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 177
+[24-Jul-2017 11:47:24 CST6CDT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 175
+[24-Jul-2017 11:47:24 CST6CDT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 177
+[24-Jul-2017 11:50:26 CST6CDT] PHP Warning:  include(session.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 2
+[24-Jul-2017 11:50:26 CST6CDT] PHP Warning:  include(session.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 2
+[24-Jul-2017 11:50:26 CST6CDT] PHP Warning:  include(): Failed opening 'session.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 2
+[24-Jul-2017 11:50:26 CST6CDT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 178
+[24-Jul-2017 11:50:26 CST6CDT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 180
+[24-Jul-2017 13:22:48 CST6CDT] PHP Parse error:  syntax error, unexpected ''">' (T_ENCAPSED_AND_WHITESPACE) in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 199
+[24-Jul-2017 13:40:22 CST6CDT] PHP Parse error:  syntax error, unexpected 'onclick' (T_STRING), expecting ',' or ';' in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 248
+[24-Jul-2017 13:46:35 CST6CDT] PHP Parse error:  syntax error, unexpected '$value' (T_VARIABLE) in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 219
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:04:49 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 264
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 254
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 288
+[24-Jul-2017 15:13:55 CST6CDT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vividcustoms/public_html/vivid_customs2/admin/index.php on line 254
+[25-Jul-2017 11:10:57 CST6CDT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vividcustoms/public_html/vivid_customs2/admin/template.php on line 361
+[25-Jul-2017 11:10:57 CST6CDT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vividcustoms/public_html/vivid_customs2/admin/template.php on line 364
+[25-Jul-2017 11:10:57 CST6CDT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vividcustoms/public_html/vivid_customs2/admin/template.php on line 407
+[25-Jul-2017 11:10:57 CST6CDT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vividcustoms/public_html/vivid_customs2/admin/template.php on line 410
