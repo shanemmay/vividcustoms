@@ -11,7 +11,27 @@ include("config.php");
       $result = mysqli_query($db,$sql);
       
       $_SESSION['login_user'] = $_POST['username'];
-      header("location: ui.php");
+      //header("location: ui.php");
+      print_r("Result :" . $result);
   }
   
 ?>
+
+<table>
+<?php 
+
+
+    foreach ($_POST as $key => $value) {
+        echo "<tr>";
+        echo "<td>";
+        echo $key;
+        echo "</td>";
+        echo "<td>";
+        echo $value;
+        echo "</td>";
+        echo "</tr>";
+    }
+
+
+?>
+</table>

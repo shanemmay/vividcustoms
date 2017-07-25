@@ -2,12 +2,28 @@
     include 'session.php';
  
 ?>
+<!--GETTING ORDER NUMBER-->
+<?php 
+   $ses_sql = mysqli_ ($db,"Select Quantity From consecutive where Name = 'Order'");     
+   $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
+   $ordernumber = "";
+  if (!$Guest) {
+      $ordernumber = $login_session.sprintf("%06d", $row['Quantity']);                                     
+  }  
+  else if (isset($_SESSION['Guest'])) 
+  {
+       $ordernumber = $_SESSION['Guest'].sprintf("%06d", $row['Quantity']);                                           
+  }       
+  $ses_sql = mysqli_query($db,"Update consecutive set Quantity = Quantity + 1 where Name = 'Order'");
+  echo('<input id="ordernumber" type="hidden" name="ordernumber" value = '.$ordernumber.'>');
+?>
+
 <html>
 <head>
     <title>ui</title>
     <script src="fabric.min.js"></script>
     <script src="custom_controls.js"></script>
-    <!--FONT AWESOEM-->
+    <!--FONT AWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/42fa7d18a0.css">
     <script src="https://use.fontawesome.com/0bc1ca65b8.js"></script>
  
@@ -94,456 +110,346 @@
             font-size: 10px;
         }
     </style>
+    <script type="text/javascript">
+
+      window.onload = function() 
+      {
+         var url_string = window.location;
+          var url = new URL(url_string);
+          var emails = url.searchParams.get("email"); 
+          var shares = url.searchParams.get("share");
+          if (emails)
+          {
+            //alert(emails);
+            $('.nav-tabs a[href="#saveSection"]').tab('show'); 
+             var x = document.getElementById("mydesings");
+              var option = document.createElement("option");
+              option.text = emails;
+               x.add(option);
+          }
+          else if(shares)
+          {
+            $('.nav-tabs a[href="#saveSection"]').tab('show');
+            //alert(shares);
+          }
+          else
+          {
+            return;
+          }
+     
+      };
+    </script>
     <!--CSS-->
     <!--<link rel="stylesheet" type="text/css" href="css/main.css">
     to replace style tags on this page-->
     <link rel="stylesheet" type="text/css" href="css/style.css">    
 </head>
 <body>
-<button id="totalPriceBtn" class="btn btn-success btn-lg" style="display: none; position: fixed; top: 0; right: 0;"  data-toggle="modal" data-target="#productPicker" onclick="setDesign();" >price</button>
+<!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& MODALS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+  <!--PRODUCT PICKER-->
+  <style type="text/css">
+      #productPickerBtn{
+          margin-top: 10px;
+      }
+      #designsTable img{
+          width: 100%;
+      }
+      #productPreview{
+          width: 100%;
+          height: 50%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center center;
+      }
+      #designPreviewWrapper{
+          width: 60% !important;
+          height: 80% !important;
+          position: relative;
+          margin: auto;
+          top: 10% !important;
+      }
+      #designPreview{
+          width: 60% !important;
+          height: 80% !important;
+          position: relative;
+          margin: auto;
+          top: 10% !important;
+      }
+      #productsTable{
+          text-align: center;
+      }
+      #productsTable td{
+          width: 25%;
+      }
+      #productsTable img{
+          width: 100%;
+      }
+      #sizeForm input{
+          width: 7%;
+      }
+  </style>
+  <!-- Modal -->
+  <div class="modal fade" id="productPicker" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Products and Styles</h4>
+        </div>
+        <div class="modal-body">
+            <!--PRODUCT PREVIEW-->
+            <div class="row">
+              <div class="col-sm-6">
+
+                      <div id="productPreview" style=" background-image: url('img/classic_fit_adult_t-ash_grey_front.jpg');">
+                            <div style="width: 80%; height: 80%; position: relative ; margin: auto !important; top: 10% !important;" class="designPrevieWrapper">
+                                <img style="display: block;  margin: auto !important; " id="designPreview" src=""> 
+                            </div>
+                      </div>
+                      <p>T Shirt made of cotton.</p>
+               
+              </div>
+              <div class="col-sm-6">
+
+                  <table class="table" id="productsTable">
+                    <tr>
+                        <td><img src="img/classic_fit_adult_t-ash_grey_front.jpg" onclick="setProductPreview(this);"> V Neck </td>
+                        <td><img src="img/classic_fit_adult_t-azalea_front.jpg" onclick="setProductPreview(this);"> Polo</td>
+                        <td><img src="img/classic_fit_adult_t-cardinal_red_front.jpg" onclick="setProductPreview(this);"> Long Sleeve</td>
+                        <td><img src="img/classic_fit_adult_t-charcoal_front.jpg" onclick="setProductPreview(this);"> Short Sleeve</td>
+                    </tr>
+                  </table>
+                  
+                  <script type="text/javascript">
+                    
+                      /*var priceLabel = document.getElementById('pricePerUnit');
+                      var totalLabel = document.getElementById('totalPrice');
+                      priceLabel.innerHTML = pricePerUnit + " : ";
+                      totalLabel.innerHTML = totalPrice + " : ";*/
+                  </script>
+
+              </div>
+            </div>
+            <!--SIZE SELECTION-->
+            <form id="sizeForm">
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="yxs" type="number" name="yxs" placeholder="yxs"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="ys" type="number" name="ys" placeholder="ys"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="ym" type="number" name="ym" placeholder="ym"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="yl" type="number" name="yl" placeholder="yl"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="yxl" type="number" name="yxl" placeholder="yxl">    
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="s" type="number" name="s" placeholder="s"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="m" type="number" name="m" placeholder="m"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="l" type="number" name="l" placeholder="l"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="xl" type="number" name="xl" placeholder="xl"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="xxl" type="number" name="xxl" placeholder="xxl"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="xxxl" type="number" name="xxxl" placeholder="xxxl"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="xxxxl" type="number" name="xxxxl" placeholder="xxxxl"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="xxxxxl" type="number" name="xxxxxl" placeholder="xxxxxl"> 
+            </form>
+        </div>
+        <div class="modal-footer">
+          <!--showing price per design TODO LIVE UPDATE THIS PRICE-->
+          <div style="display: inline;">
+            <p style="display: inline;" id="itemPriceLabel">Design Price:<span id="itemPrice"></span></p>
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="addingToCart = true; uploadEx(); calcPrice();" style="display: inline;">Add &amp; Keep Designing!</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal" onclick="checkoutFromGetPrice();">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--PRODUCT MODAL (SWAP ITEM)-->
+  <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h1 class="display-4" id="exampleModalLabel">Choose a Product</h1>
+          <!--<h5 class="modal-title" id="exampleModalLabel">Choose Product</h5>-->
+        </div>
+        <div class="modal-body">
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th>T Shirts</th>
+                      <th>Polos</th>
+                      <th>Ultra T Shirts</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td onclick="setProduct(this);" ><img src="img/shirt_white.jpg" style="width: 64;"><br> <span class="product_name"> White Shirt </span></td>
+                      <td onclick="setProduct(this);"><img src="img/shirt_dark_heather.jpg" style="width: 64;"><br><span class="product_name">Black Shirt</span></td>
+                      <td onclick="setProduct(this);"><img src="img/shirt_dark_heather.jpg" style="width: 64;"><br><span class="product_name">Grey Shirt</span></td>
+                    </tr>
+                    <tr>
+                      <td onclick="setProduct(this);"><img src="img/shirt_heather_sapphire.jpg" style="width: 64;"><br><span class="product_name">Blue Shirt</span></td>
+                      <td onclick="setProduct(this);"><img src="img/shirt_irish_green.jpg" style="width: 64;"><br><span class="product_name">Green Shirt</span></td>
+                      <td onclick="setProduct(this);"><img src="img/shirt_purple.jpg" style="width: 64;"><br><span class="product_name">Purple Shirt</span></td>
+                    </tr>
+                    <tr>
+                      <td onclick="setProduct(this);"><img src="img/shirt_cherry_red.jpg" style="width: 64;"><br><span class="product_name">Maroon Shirt</span></td>
+                      <td onclick="setProduct(this);"><img src="img/shirt_cherry_red.jpg" style="width: 64;"><br><span class="product_name">Red Shirt</span></td>
+                      <td onclick="setProduct(this);"><img src="img/shirt_safety_orange.jpg" style="width: 64;"><br><span class="product_name">Orange Shirt</span></td>
+                    </tr>
+                  </tbody>
+              </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--SIGN UP-->
+  <!--modal to be shown when user tries to leave the page-->
+  <div id="signupModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content" style="text-align: center;">
+        <div class="modal-header">
+          <h4 class="modal-title">Signup!</h4>
+        </div>
+          <div class="modal-body">
+            <form action="signup.php" method="post" class="form-horizontal">
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="firstname">First Name:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="firstname" placeholder="Enter first name" name="firstName">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="lastname">Last Name:</label>
+                  <div class="col-sm-10">
+                    <input type="lastname" class="form-control" id="lastname" placeholder="Enter Last Name" name="lastName">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="username">Username:</label>
+                  <div class="col-sm-10">
+                    <input type="username" class="form-control" id="username" placeholder="Enter Username" name="username">
+                  </div>
+                </div> 
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="pwd">Password:</label>
+                  <div class="col-sm-10">          
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter Password" name="password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="email">Email:</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="phone">Phone:</label>
+                  <div class="col-sm-10">
+                    <input type="phone" class="form-control" id="phone" placeholder="Enter Phone" name="phone">
+                  </div>
+                </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-default" >Signup!</button>
+            </form>
+          </div>
+      </div>
+
+    </div>
+  </div>
+<!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& MODALS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+<!--TOP LEFT MENU-->
+<style type="text/css">
+  .column{
+    display: inline-block;
+  }
+</style>
+<div id="topRightMenu" style=" position: fixed; top: 0; right: 0;">
+  <h4  class="column">Total Price : $<span id="totalPriceLabel">0</span>&nbsp;</h4>
+  <button class="btn btn-info " data-target="#saveSection" onclick="uploadEx();" >
+    Save
+  </button>
+  <button class="btn btn-success" onclick="getPrice();" ><!--data-toggle="modal" data-target="#productPicker" -->
+    Get Price
+  </button>
+</div>
 <p id="testingCart">.</p>
+<!--message to let customer know their designs have been saved-->
+<div id="savedSuccessfullyMessage" class="alert alert-success" role="alert" style="display:none; text-align: center;">Your design was successfully saved!</div>
 <!--START NEW PAGE-->
 <div class="page-wrapper">
 <div class="container" style="width: 1360px !important; height: 900px !important;">
  <div class="card">
  <!--TOP BAR-->
     <div class="card-header" align="right">
-         <div class="row">
+        <div class="row">
             <div class="col-sm-2">
                 <img src="https://vividcustoms.com/skin/frontend/tv_nautica_package/tv_nautica8/images/logo.png">
             </div>
             <div class="col-sm-8">
                 <script>
-                        var designs = [];  //to save the latest designs
+                        //to save the latest designs
+                        var designs = [];  
                         //to hold the address of the most recent design save
                         var designArray = [];
                         var designArrayIndex = 0;
-                        var addingToCart = false;   //this keeps track of whether or not we should add the item to cart
+                        //this keeps track of whether or not we should add the item to cart
+                        var addingToCart = false;   
+                        //this is used to test if the user is checking out from 'add product' or not
+                        var automatedCheckout = false;
                         var itemProduct = "";
                         $(document).ready(function(){
                             $('[data-toggle="popover"]').popover(); 
                         });
-                    </script>   
+                </script>   
             </div>
             <div class="col-sm-2">
                 <?php 
-              if (!$Guest) {
-                  echo '<b> Welcome: '.$login_session.'</b><br>'; 
-                  echo  '<b><a href = "logout.php">Sign Out</a></b>';    
-              }  
-              else if (isset($_SESSION['Guest'])) 
-              {
-                  echo ("<left> Order number: ".$_SESSION['Guest']."</left>");             
-              }          
-          ?>
-          </div>
+                      if (!$Guest) {
+                          echo '<b> Welcome: '.$login_session.'</b><br>'; 
+                          echo  '<b><a href = "logout.php">Sign Out</a></b>';    
+                      }  
+                      else if (isset($_SESSION['Guest'])) 
+                      {
+                         // echo ("<left> Order number: ".$_SESSION['Guest']."</left>");             
+                      }
+                      else
+                      {
+                          echo "<button id='signup' class='btn btn-success btn-lg' data-toggle='modal' data-target='#signupModal'>Signup!</button>";
+                      }          
+                ?>
+            </div>
         </div> 
     </div>
- <div class="card-block">
-    <div class="row">
+ <div class="card-block" >
+    <div class="row" >
         <!--START SIDE BAR-->
         <div class="col-sm-1">   
-            <style type="text/css">
-            </style>
-            <ul class="nav nav-tabs nav-stacked" style="height: 90%;">
-                <li class="active" ><a  data-toggle="tab" href="#addArt">Add Art <span style="visibility: hidden;">equal</span></a></li> 
-                <li ><a  data-toggle="tab" href="#textSection">Text Design</a></li>
-                <li ><a  data-toggle="tab" href="#productSection">Change Product</a></li>
-                <li data-toggle="modal" data-target="#productPicker" onclick="setDesign(); calcPrice();" ><a  data-toggle="tab" href="#priceSection" ><span  >Get Price<span style="visibility: hidden;">spacing</span></span></a></li>
+            <ul class="nav nav-tabs nav-stacked" style="height: 90%; text-align: center; ">
+                <li class="active" style="border-bottom: 1px solid #ffffff;"><a  data-toggle="tab" href="#productSection"><img src="img/shirt_icon.png" style="width: 70%;"><br>Shirt</a></li> <!--Shirt<br><span style="visibility: hidden;">equal</span>-->
+                <li style="border-bottom: 1px solid #ffffff;"><a  data-toggle="tab" href="#addArt"><img src="img/art_icon.png" style="width: 70%;"><br>Add Art</a></li> <!--Add Art <span style="visibility: hidden;">equal</span>-->
+                <li style="border-bottom: 1px solid #ffffff;"><a  data-toggle="tab" href="#textSection"><img src="img/text_icon.png" style="width: 70%;"><br>Add Text</a></li> <!--Add Text <span style="visibility: hidden;">equal</span>-->                   
+                <li onclick="getPrice();"  style="border-bottom: 1px solid #ffffff;">
+                  <a  data-toggle="tab" href="#priceSection" ><img src="img/price_icon.png" style="width: 70%;"><br>Get Price</a>
+                </li> <!-- data-toggle="modal" data-target="#productPicker" -->
                 <!--<li ><a  data-toggle="tab" href="#shareSection" onclick="share();">Share</a></li>-->
-                <li ><a   data-toggle="tab" href="#saveSection" onclick="share();">Save &amp; Share</a></li>
+                <li style="border-bottom: 1px solid #ffffff;" ><a   data-toggle="tab" href="#saveSection" onclick="share();"><img src="img/share_icon.png" style="width: 70%;"><br>Save &amp; Share</a></li> <!-- Save &amp; Share -->
+                <li style="border-bottom: 1px solid #ffffff;" ><a data-toggle="tab" href="#textDesign">Text Design</a></li>
             </ul>
         </div>
         <!--END  SIDE BAR-->
         <!--START TAB CONTENT-->
         <div class="col-sm-4" style="height: 90%;">
             <div class="tab-content" >
-                <div id="addArt" class="tab-pane fade in active">
-                                    <div id="newArt">
-                    <h3>Add Art</h3>
-                    <p>Have your own image, logo or artwork?</p>
-                    <!--START UPLOADING IMAGE SECTION-->
-                    <input id="imgUpload" type="file" name="imgUpload" data-buttonText="upload" onchange="uploadImage();">
-                    <img class="hover" id="imgPreview" style="" src="" alt="" onclick="addImg(this); imgPreviewCanvas();"> 
-                    <canvas id="previewCanvas" style="display: none;"></canvas>
-                    <script type="text/javascript">
-                        function  imgPreviewCanvas(){
-                            var c=document.getElementById("previewCanvas");
-                            
-                            var ctx=c.getContext("2d");
-                           
-                            var img=document.getElementById("imgPreview");
-                            ctx.drawImage(img,10,10,128,128); 
-                            saveUpload();
-                        };
-                    </script>
+
+                <div id="productSection" class="tab-pane fade in active">
+                    <h2 style="text-align: center;">Swap Item</h2>
                     <hr>
-                    <!--START CLIP ART SECTION-->
-                    <strong><p>BROWSE THE FLIP SHOP GALLERY</p></strong>
-                    <img class="hover" src="img/clip_1.png" width="64" height="64" onclick="addImg(this);">
-                    <img class="hover" src="img/watchdogs.png" width="64" height="64" onclick="addImg(this);">
-                    <img class="hover" src="img/clip_4.png" width="64" height="64" onclick="addImg(this);">
-                    <img class="hover" src="img/trash_icon.png" width="64" height="64" onclick="addImg(this);">
-                    
-                    <!--CLIP ART CATEGORIES-->
-                    <div id="clipArtCategories">
-                        <!--menu for customers to go back if they wish-->
-                        <!--WILL USE THIS IF BREADCRUMBS DON'T WORK<div class="row"><div class="col-sm-1"></div><div class="col-sm-1"></div><div class="col-sm-10"></div></div>-->
-                        <ol class="breadcrumb" id="breadcrumb"><li class="active" id="categories">Categories</li><li id="subcategories" style="display: none;"></li><li id="clips"  style="display: none;"></li></ol>
-                        <style type="text/css">
-                            #clipArtTable{
-                                width: 100%;
-                            }
-                            #clipArtTable td{
-                                padding: 10px;
-                            }                            
-                        </style>
-                        <table id="clipArtTable" >
-                            <tr class="clipArtRow">
-                                <td class="clipArtCell">
-                                    <img art-image="" src="img/productview_58be2f3f61f33.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Animals</a>
-                                </td>
-                                <td class="clipArtCell">
-                                    <img art-image="" src="img/productview_58be2f3048a4e.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Food</a>                                    
-                                </td>
-                            </tr>
-                            <tr>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58be2f4c8f8a7.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Shapes</a>                                
-                                </td>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58be435564527.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Holidays</a>                                
-                                </td>
-                            </tr>
-                            <tr>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58bf0061cd6aa.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Music</a>                                
-                                </td>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58bf4ca4c04b7.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">People</a>                                
-                                </td>
-                            </tr>
-                            <tr>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58bf51402ff52.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Nature</a>                                
-                                </td>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58bf517bbb709.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Religion</a>                                
-                                </td>
-                            </tr>
-                            <tr>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58bf4bc579119.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Sports</a>                                
-                                </td>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58bf5745d1fbc.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Events</a>                                
-                                </td>
-                            </tr>
-                            <tr>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58befd670f704.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">School</a>
-                                
-                                </td>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58bf5ebfc01ab.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Transportation</a>
-                                
-                                </td>
-                            </tr>
-                            <tr>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58be2f3f61f34.png" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Military</a>                                
-                                </td>
-                                 <td class="clipArtCell">
-                                 <img art-image="" src="img/productview_58be2f3f61f35.jpg" width="50" height="50">
-                                    <a onclick="setCategory(this.innerHTML);">Emojis</a>                                
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <script type="text/javascript">
-                        var div = document.getElementById('clipArtCategories');
-                        var category = "";
-                            
- 
-                        var categories = document.getElementById('categories');
-                        
-                        var subcategories = document.getElementById('subcategories');
-                        var clips = document.getElementById('clips');
- 
-                        subcategories.onclick = function(){
-                            //hiding clips
-                            clips.style.display = "none";
-                            //making subcategories "active"
-                            categories.classList.remove("active");
-                            subcategories.classList.add("active");
-                        }
-                        categories.onclick = function(){
-                            //TODO hide whatever is currently showing
-                            //showing table
-                            var table = document.getElementById('clipArtTable');
-                            table.style.display = "block";
-                            table.setAttribute('width','100%');
-                            //getting ride of other crumbs in the breadcrumb list
-                            subcategories.style.display = "none";
-                            clips.style.display = "none";
-                            //making the categories tab have the 'active' class
-                            categories.classList.add("active");
-                        }
-                        function setCategory(element){
-                            //setting the category
-                            category = element;
-                            //hiding table
-                            var table = document.getElementById('clipArtTable');
-                            table.style.display = "none";
-                            //making the subcategories visible and 'active'
-                            subcategories.style.display = "inline"; 
-                                                        subcategories.innerHTML = element; 
-                            clips.style.display = "none";
-                            //making the subcategories tab have the 'active' class
-                            categories.classList.remove("active");
-                            subcategories.classList.add("active");
-                            
-                        }                    
-                        </script>
-                    <!--END CLIP ART SECTION-->
-                    </div>
-                     <!--START MODIFY ART SECTION-->
-                    <div id="editArt" style="display: none;">                    
-                      <h2>Add Art</h2>
-                      <p>Seccion Edit Art</p>
-                      <div class="panel-group">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">Size & Effect</div>
-                          <div class="panel-body">
-                             <!--resize clip art form-->
-                                 <form>                      
-                                  <div class="input-group">
-                                    <span class="input-group-addon">Width</span>
-                                    <input id="widthImage" type="number" class="form-control" name="widthImage"  maxlength="5" onkeypress="return resize(event);">
-                                    <span class="input-group-addon">Height</span>
-                                    <input id="heightImage" type="number" class="form-control" name="heightImage" onkeypress="return resize(event);">
-                                    <span class="input-group-addon">Rotate</span>
-                                    <input id="angleImage" type="number" class="form-control" name="angleImage" onkeypress="return rotate(event);">
-                                  </div>
-                                </form>  
-                          </div>
-                        </div>
-                        <div class="panel panel-default">
-                          <div class="panel-heading">Change Color</div>
-                              <div class="panel-body">
-                                  <!--COLOR SECTION-->  
-                                    <style type="text/css">
-                                        .row {
-                                          width: 100%;
-                                          margin: 0 auto;
-                                        }
-                                        .block {
-                                          width: 100px;
-                                          display: inline-block;
-                                        }
-                                    </style>       
-
-                                    <div class="row">
-                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ffff00');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ff2400');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800000');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#9bddff');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#4169e1');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#000080');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800080');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#006400');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#fffdd0');"></div>                                                   
-                                    </div>  
-                                    <div class="row">
-                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ffff00');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ff2400');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800000');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#9bddff');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#4169e1');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#000080');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800080');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#006400');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#fffdd0');"></div>
-                                     </div>  
-                                <!--END COLOR SECTION-->
-                            </div>                         
-                          </div>
-                    </div>   
-                </div>
-                                  
-                </div>
-                <!--END MODIFY ART SECTION-->  
-                <!--START TEXT DESIGN SECTION-->
-                <div id="textSection" class="tab-pane fade">
-
-                     <h3>ADD TEXT</h3>                      
-                      <div class="panel-group">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">Text Secction</div>
-                          <div class="panel-body">
-                            <textarea rows="3" class="form-control" id="text" type="text" onkeypress="return addText(event);" placeholder="Enter text"></textarea><!--was taken out of onchange setText();-->
-                          </div>
-                        </div>
-                        <div class="panel panel-default">
-                          <div class="panel-heading">Change Color</div>
-                          <div class="panel-body"> 
-                          <h5>Text Color:</h5>
-                            <!--COLOR SECTION-->  
-                                <style type="text/css">
-                                    .row {
-                                      width: 100%;
-                                      margin: 0 auto;
-                                    }
-                                    .block {
-                                      width: 100px;
-                                      display: inline-block;
-                                    }
-                                </style>       
-
-                                <div class="row">
-                                  <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','f');"></div>                                                   
-                                </div>  
-                                <div class="row">
-                                  <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','f');"></div>
-                                  <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','f');"></div>
-                                 </div>  
-                            <!--END COLOR SECTION-->
-
-                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Add Outline</button>
-                              <div id="demo" class="collapse">
-                                <h5>Text Stroke Color:</h5>
-                                    <!--COLOR SECTION-->  
-                                        <style type="text/css">
-                                            .row {
-                                              width: 100%;
-                                              margin: 0 auto;
-                                            }
-                                            .block {
-                                              width: 100px;
-                                              display: inline-block;
-                                            }
-                                        </style>       
-
-                                        <div class="row">
-                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','c');"></div>                                                   
-                                        </div>  
-                                        <div class="row">
-                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','c');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','c');"></div>
-                                         </div>  
-                                    <!--END COLOR SECTION-->
-                              </div>                             
-                          </div>
-                        </div>
-                    <!--START TEXT DESIGN SECTION-->
-                        <div class="panel panel-default">
-                          <div class="panel-heading">Styles</div>
-                          <div class="panel-body">
-                            <!--START FONTS MODAL-->
-                                <!-- Button trigger modal -->
-                                <input type="button" value="Fonts" class="btn btn-primary" data-toggle="modal" data-target="#fontModal">
-                                
-                                <!-- Modal -->
-                                <div class="modal fade" id="fontModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <h1 class="modal-title fancy" id="label">Fonts</h1>
-                                      </div>
-                                      <div class="modal-body">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <a href="#"><div class="col-sm-3"><h3 id="bully" onclick="setFont(this);">Bully Style</h3></div></a>
-                                                    <a href="#"><div class="col-sm-3"><h3 id="PokemonHollow" onclick="setFont(this);">Gotta Catch</h3></div></a>
-                                                    <a href="#"><div class="col-sm-3"><h3 id="PokemonSolid" onclick="setFont(this);">Them All!</h3></div></a>
-                                                    <a href="#"><div class="col-sm-3"><h3 id="jelly" onclick="setFont(this);">Jellyfi Text</h3></div></a>
-                                                </div>
-                                                <div class="row">
-                                                    <a href="#"><div class="col-sm-3"><h3 id="angry" onclick="setFont(this);">Angry Birds!</h3></div></a>
-                                                    <a href="#"><div class="col-sm-3"><h3 id="tmnt" onclick="setFont(this);">Turtle Power!</h3></div></a>
-                                                    <a href="#"><div class="col-sm-3"><h3 id="db" onclick="setFont(this);">Make a Wish</h3></div></a>
-                                                    <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But be careful</h3></div></a>
-                                                </div>
-                                                <div class="row">
-                                                    <a href="#"><div class="col-sm-3"><h3 id="spongebob" onclick="setFont(this);">Lives Under The Sea!</h3></div></a>
-                                                    <a href="#"><div class="col-sm-3"><h3 id="tmnt" onclick="setFont(this);">Turtle Power!</h3></div></a>
-                                                    <a href="#"><div class="col-sm-3"><h3 id="db" onclick="setFont(this);">Make a Wish</h3></div></a>
-                                                    <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But be careful</h3></div></a>
-                                                </div>
-                                            </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                            <!--END FONTS MODAL-->
-                            <input class="btn btn-primary" type="button" value="Normal" onclick="straight();">
-                            <input class="btn btn-primary" type="button" value="Circle" onclick="circle();">
-                            <input class="btn btn-primary" type="button" value="Bridge" onclick="reverseCurve();">
-                            <input class="btn btn-primary" type="button" value="Valley" onclick="curve();">
-                          </div>
-                        </div>
-                        <div class="panel panel-default">
-                          <div class="panel-heading">Size & Effect</div>
-                          <div class="panel-body">
-                             <div class="input-group">                           
-                                <span class="input-group-addon">Font Size</span>
-                                <input id="sizeText" type="number" class="form-control" name="sizeText"  min="1" max="2" onkeypress="return resize(event);">
-                                <span class="input-group-addon">Rotate</span>
-                                <input id="angleText" type="number" class="form-control" name="angleText" onkeypress="return rotate(event);">
-                            </div>
-                          </div>
-                        </div>                       
-                      </div>  
-                       </div>                   
-                <!--END TEXT DESIGN SECTION-->
-                <div id="productSection" class="tab-pane fade">
-                    <h3>SWAP ITEM</h3>
                     <!--<p>1. Switch to a different product</p>
                     <p>2. Choose a color</p>-->
                     <!--START PRODUCT DESCRIPTION-->
@@ -559,49 +465,7 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal">
                           Choose Product
                         </button>
-                        <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h1 class="display-4" id="exampleModalLabel">Choose a Product</h1>
-                                <!--<h5 class="modal-title" id="exampleModalLabel">Choose Product</h5>-->
-                              </div>
-                              <div class="modal-body">
-                                    <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th>T Shirts</th>
-                                            <th>Polos</th>
-                                            <th>Ultra T Shirts</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td onclick="setProduct(this);" ><img src="img/shirt_white.jpg" style="width: 64;"><br> <span class="product_name"> White Shirt </span></td>
-                                            <td onclick="setProduct(this);"><img src="img/shirt_dark_heather.jpg" style="width: 64;"><br><span class="product_name">Black Shirt</span></td>
-                                            <td onclick="setProduct(this);"><img src="img/shirt_dark_heather.jpg" style="width: 64;"><br><span class="product_name">Grey Shirt</span></td>
-                                          </tr>
-                                          <tr>
-                                            <td onclick="setProduct(this);"><img src="img/shirt_heather_sapphire.jpg" style="width: 64;"><br><span class="product_name">Blue Shirt</span></td>
-                                            <td onclick="setProduct(this);"><img src="img/shirt_irish_green.jpg" style="width: 64;"><br><span class="product_name">Green Shirt</span></td>
-                                            <td onclick="setProduct(this);"><img src="img/shirt_purple.jpg" style="width: 64;"><br><span class="product_name">Purple Shirt</span></td>
-                                          </tr>
-                                          <tr>
-                                            <td onclick="setProduct(this);"><img src="img/shirt_cherry_red.jpg" style="width: 64;"><br><span class="product_name">Maroon Shirt</span></td>
-                                            <td onclick="setProduct(this);"><img src="img/shirt_cherry_red.jpg" style="width: 64;"><br><span class="product_name">Red Shirt</span></td>
-                                            <td onclick="setProduct(this);"><img src="img/shirt_safety_orange.jpg" style="width: 64;"><br><span class="product_name">Orange Shirt</span></td>
-                                          </tr>
-                                        </tbody>
-                                    </table>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        
                     <!--END  CHOOSE PRODUCT MODAL-->
                     <!--COLOR SELECTION FOR PRODUCTS-->
                     <hr>
@@ -646,121 +510,436 @@
                             </div>                         
                           </div> 
                 </div>
+
+                <div id="addArt" class="tab-pane fade">
+                    <div id="newArt">
+                        <h3>Add Art</h3>
+                        <p>Have your own image, logo or artwork?</p>
+                        <!--START UPLOADING IMAGE SECTION-->
+                        <input id="imgUpload" type="file" name="imgUpload" data-buttonText="upload" onchange="uploadImage();">
+                        <img class="hover" id="imgPreview" style="" src="" alt="" onclick="addImg(this); imgPreviewCanvas();"> 
+                        <canvas id="previewCanvas" style="display: none;"></canvas>
+                        <script type="text/javascript">
+                            function  imgPreviewCanvas(){
+                                var c=document.getElementById("previewCanvas");
+                                
+                                var ctx=c.getContext("2d");
+                               
+                                var img=document.getElementById("imgPreview");
+                                ctx.drawImage(img,10,10,128,128); 
+                                saveUpload();
+                            };
+                        </script>
+                        <hr>
+                        <!--START CLIP ART SECTION-->
+                        <strong><p>BROWSE THE FLIP SHOP GALLERY</p></strong>
+                        <img class="hover" src="img/clip_1.png" onclick="addImg(this);" style="max-width: 64px; max-height: 64px;"> <!-- taken out idth="64" height="64" -->
+                        <img class="hover" src="img/watchdogs.png" onclick="addImg(this);" style="max-width: 64px; max-height: 64px;">
+                        <img class="hover" src="img/clip_4.png" onclick="addImg(this);" style="max-width: 64px; max-height: 64px;">
+                        <img class="hover" src="img/fuze.jpg"  onclick="addImg(this);" style="max-width: 64px; max-height: 64px;">
+                        
+                        <!--CLIP ART CATEGORIES-->
+                         <style type="text/css">
+                      .panel-success {
+                        min-height: 200;
+                        max-height: 500;
+                        overflow-y: scroll;
+                      }
+                    </style>
+                    <div id="clipArtCategories">
+                      <ol class="breadcrumb" id="breadcrumb"><li class="active" id="categories">Categories</li><li id="subcategories" style="display: none;"><li id="subsubcategories" style="display: none;"></li><li id="clips" style="display: none;"></ol>
+                    </div>
+                    <div id="ClipsArtImages" class="panel panel-success">                        
+                        <style type="text/css">
+                            #clipArtTable{
+                                width: 100%;
+                            }
+                            #clipArtTable td{
+                                padding: 10px;
+                            }  
+                        </style>    
+                        <table id="clipArtTable2" class="table table-fixed">
+                         </table> 
+                         <table id="clipArtTable" class="table table-fixed" style=" border-top: none !important;">                                                
+                        <?php                                  
+                            $fulldirectory = dirname(__FILE__).'/img/clip_art';
+                            $directory = 'img/clip_art';
+                            $categories  = scandir($fulldirectory);               
+                            print_r('<tbody>');
+                            for ($i=0; $i< count($categories) ; $i++) 
+                            { 
+                              if ($categories[$i] != '.' && $categories[$i] != '..') 
+                              {
+                                if ($i % 2 == 0)
+                                {                                          
+                                  print_r('    <tr>') ;                                                                                    
+                                }                
+                                print_r('    <td height="80px" width="195px" align="center" style="border-left:none;border-bottom:none;border-top:none">') ;
+                                print_r('        <img art-image="" src="'.$directory.'/'.$categories[$i].'/'.$categories[$i].'.png" width="50" height="50"><br>') ;
+                                print_r('        <a onclick="setCategory(this.innerHTML);">'.$categories[$i].'</a>');
+                                print_r('    </td>') ;   
+                                if ($i % 2 != 0)
+                                {
+                                  print_r('    </tr>') ;
+                                }
+                              }      
+                            }
+                            print_r('</tbody>');
+                        ?>
+                        <!--menu for customers to go back if they wish-->
+                        <!--WILL USE THIS IF BREADCRUMBS DON'T WORK<div class="row"><div class="col-sm-1"></div><div class="col-sm-1"></div><div class="col-sm-10"></div></div>--> 
+                        </table> 
+                                           
+                    </div>
+                    
+                    <script type="text/javascript">
+                        var div = document.getElementById('clipArtCategories');
+                        var category = "";
+                        var subcategory = "";
+                            
+ 
+                        var categories = document.getElementById('categories');
+                        
+                        var subcategories = document.getElementById('subcategories');
+                        var clips = document.getElementById('clips');
+
+                        var subsubcategories = document.getElementById('subsubcategories');
+                        
+ 
+                        subsubcategories.onclick = function(){
+                            //hiding clips
+                            clips.style.display = "none";
+                            //making subcategories "active"
+                            categories.classList.remove("active");
+                            subcategories.classList.add("active");
+                        }
+
+                        subcategories.onclick = function(){
+                            //TODO hide whatever is currently showing
+                            //showing table
+                            invisibleTables();
+                            showTable(category);
+                            //var table = document.getElementById('clipArtTable2');
+                            //table.style.display = "block";
+                            //table.setAttribute('width','100%');
+                            //getting ride of other crumbs in the breadcrumb list
+                            //subcategories.style.display = "none";
+                            subsubcategories.style.display = "none";
+                            clips.style.display = "none";
+                            //making the categories tab have the 'active' class
+                            categories.classList.remove("active");
+                            subsubcategories.classList.remove("active");
+                            subcategories.classList.add("active");
+                        }
+                        categories.onclick = function(){
+                            //TODO hide whatever is currently showing
+                            //showing table
+                            invisibleTables();
+                            var table = document.getElementById('clipArtTable');
+                            table.style.display = "block";
+                            table.setAttribute('width','100%');
+                            //getting ride of other crumbs in the breadcrumb list
+                            subcategories.style.display = "none";
+                            subsubcategories.style.display = "none";
+                            clips.style.display = "none";
+                            //making the categories tab have the 'active' class
+                            subcategories.classList.remove("active");
+                            subsubcategories.classList.remove("active");
+                            categories.classList.add("active");
+                        }
+                        function setCategory(element){
+                            //setting the category
+                            category = element;
+                            //hiding table
+                            invisibleTables();
+                            //var table = document.getElementById('clipArtTable');
+                            //table.style.display = "none";
+                            //showNewtable
+                            showTable(category,null);
+                            //making the subcategories visible and 'active'
+                            subcategories.style.display = "inline"; 
+                                                        subcategories.innerHTML = element; 
+                            clips.style.display = "none";
+                            //making the subcategories tab have the 'active' class
+                            categories.classList.remove("active");
+                            subsubcategories.classList.remove("active");
+                            subcategories.classList.add("active");                            
+                        }   
+
+                        function setSubCategory(element){
+                            //setting the category
+                            subcategory = element;
+                            //hiding table
+                            invisibleTables();
+                            //var table = document.getElementById('clipArtTable');
+                            //table.style.display = "none";
+                            //showNewtable
+                            showTable(category,subcategory);
+                            //showTable(element);
+                            //making the subcategories visible and 'active'
+                            subsubcategories.style.display = "inline"; 
+                                                        subsubcategories.innerHTML = element; 
+                            clips.style.display = "none";
+                            //making the subcategories tab have the 'active' class
+                            categories.classList.remove("active");
+                            subategories.classList.remove("active");
+                            subsubcategories.classList.add("active");
+                            
+                        } 
+
+                        function showTable(category,subcategory){    
+                           $.ajax({
+                                    type: "POST",
+                                    url: "categories.php",
+                                    data: {
+                                            category: category,
+                                            subcategory: subcategory
+                                           },
+                                    success: function(data)
+                                    {
+                                        //alert(data);
+                                        document.getElementById('clipArtTable2').innerHTML = data;
+                                        document.getElementById('clipArtTable2').style.display = "block";
+                                    }
+                                })                         
+                            }      
+
+                         function invisibleTables(){
+                            var tables = document.getElementsByClassName('table table-fixed');
+
+                            for (var i = 0; i < tables.length; i++) {
+                                tables[i].style.display = "none";
+                            }
+                        }             
+                        </script>
+                        <!--END CLIP ART SECTION-->
+                    </div>
+                     <!--START MODIFY ART SECTION-->
+                    <div id="editArt" style="display: none;">                    
+                        <h2>Add Art</h2>
+                        <p>Seccion Edit Art</p>
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                  <div class="panel-heading">Size & Effect</div>
+                                  <div class="panel-body">
+                                     <!--resize clip art form-->
+                                         <form>                      
+                                          <div class="input-group">
+                                            <span class="input-group-addon">Width</span>
+                                            <input id="widthImage" type="number" class="form-control" name="widthImage"  maxlength="5" onkeypress="return resize(event);" >
+                                            <span class="input-group-addon">Height</span>
+                                            <input id="heightImage" type="number" class="form-control" name="heightImage" onkeypress="return resize(event);" >
+                                            <span class="input-group-addon">Rotate</span>
+                                            <input id="angleImage" type="number" class="form-control" name="angleImage" onkeypress="return rotate(event);" >
+                                          </div>
+                                        </form>  
+                                  </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Change Color</div>
+                                    <div class="panel-body">
+                                      <!--COLOR SECTION-->  
+                                        <style type="text/css">
+                                            .row {
+                                              width: 100%;
+                                              margin: 0 auto;
+                                            }
+                                            .block {
+                                              width: 100px;
+                                              display: inline-block;
+                                            }
+                                        </style>       
+
+                                        <div class="row">
+                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ffff00');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ff2400');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800000');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#9bddff');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#4169e1');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#000080');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800080');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#006400');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#fffdd0');"></div>                                                   
+                                        </div>  
+                                        <div class="row">
+                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ffff00');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ff2400');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800000');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#9bddff');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#4169e1');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#000080');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800080');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#006400');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#fffdd0');"></div>
+                                         </div>  
+                                        <!--END COLOR SECTION-->
+                                    </div>                         
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+ 
+
+                <!--START TEXT DESIGN SECTION-->
+                <div id="textSection" class="tab-pane fade">
+
+                     <h3>ADD TEXT</h3>                      
+                      <div class="panel-group">
+                            <div class="panel panel-default">
+                              <div class="panel-heading">Text Secction</div>
+                              <div class="panel-body">
+                                    <textarea rows="3" class="form-control" id="text" type="text" onkeypress="return addText(event);" placeholder="Enter text"></textarea><!--was taken out of onchange setText();-->
+                              </div>
+                            </div>
+                            <div class="panel panel-default">
+                              <div class="panel-heading">Change Color</div>
+                              <div class="panel-body"> 
+                                  <h5>Text Color:</h5>
+                                    <!--COLOR SECTION-->  
+                                        <style type="text/css">
+                                            .row {
+                                              width: 100%;
+                                              margin: 0 auto;
+                                            }
+                                            .block {
+                                              width: 100px;
+                                              display: inline-block;
+                                            }
+                                        </style>       
+
+                                        <div class="row">
+                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','f');"></div>                                                   
+                                        </div>  
+                                        <div class="row">
+                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','f');"></div>
+                                         </div>  
+                                    <!--END COLOR SECTION-->
+
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Add Outline</button>
+                                        <div id="demo" class="collapse">
+                                            <h5>Text Stroke Color:</h5>
+                                                <!--COLOR SECTION-->  
+                                                    <style type="text/css">
+                                                        .row {
+                                                          width: 100%;
+                                                          margin: 0 auto;
+                                                        }
+                                                        .block {
+                                                          width: 100px;
+                                                          display: inline-block;
+                                                        }
+                                                    </style>       
+
+                                                    <div class="row">
+                                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','c');"></div>                                                   
+                                                    </div>  
+                                                    <div class="row">
+                                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','c');"></div>
+                                                     </div>  
+                                                <!--END COLOR SECTION-->
+                                        </div>                             
+                              </div>
+                            </div>
+                            <!--START TEXT DESIGN SECTION-->
+                            <div class="panel panel-default">
+                              <div class="panel-heading">Styles</div>
+                              <div class="panel-body">
+                                <!--START FONTS MODAL-->
+                                    <!-- Button trigger modal -->
+                                    <input type="button" value="Fonts" class="btn btn-primary textBtn" data-toggle="modal" data-target="#fontModal" disabled="true">
+                                    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="fontModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h1 class="modal-title fancy" id="label">Fonts</h1>
+                                          </div>
+                                          <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <a href="#"><div class="col-sm-3"><h3 id="bully" onclick="setFont(this);">Bully Style</h3></div></a>
+                                                        <a href="#"><div class="col-sm-3"><h3 id="PokemonHollow" onclick="setFont(this);">Gotta Catch</h3></div></a>
+                                                        <a href="#"><div class="col-sm-3"><h3 id="PokemonSolid" onclick="setFont(this);">Them All!</h3></div></a>
+                                                        <a href="#"><div class="col-sm-3"><h3 id="jelly" onclick="setFont(this);">Jellyfi Text</h3></div></a>
+                                                    </div>
+                                                    <div class="row">
+                                                        <a href="#"><div class="col-sm-3"><h3 id="angry" onclick="setFont(this);">Angry Birds!</h3></div></a>
+                                                        <a href="#"><div class="col-sm-3"><h3 id="tmnt" onclick="setFont(this);">Turtle Power!</h3></div></a>
+                                                        <a href="#"><div class="col-sm-3"><h3 id="db" onclick="setFont(this);">Make a Wish</h3></div></a>
+                                                        <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But be careful</h3></div></a>
+                                                    </div>
+                                                    <div class="row">
+                                                        <a href="#"><div class="col-sm-3"><h3 id="spongebob" onclick="setFont(this);">Lives Under The Sea!</h3></div></a>
+                                                        <a href="#"><div class="col-sm-3"><h3 id="tmnt" onclick="setFont(this);">Turtle Power!</h3></div></a>
+                                                        <a href="#"><div class="col-sm-3"><h3 id="db" onclick="setFont(this);">Make a Wish</h3></div></a>
+                                                        <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But be careful</h3></div></a>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                <!--END FONTS MODAL-->
+                                <input class="btn btn-primary textBtn" type="button" value="Normal" onclick="straight();" disabled="true">
+                                <input class="btn btn-primary textBtn" type="button" value="Circle" onclick="circle();" disabled="true">
+                                <input class="btn btn-primary textBtn" type="button" value="Bridge" onclick="bridge();" disabled="true">
+                                <input class="btn btn-primary textBtn" type="button" value="Valley" onclick="valley();" disabled="true">
+                              </div>
+                            </div>
+                            <div class="panel panel-default">
+                              <div class="panel-heading">Size & Effect</div>
+                              <div class="panel-body">
+                                    <div class="input-group">                           
+                                        <span class="input-group-addon">Font Size</span>
+                                        <input id="sizeText" type="number" class="form-control" name="sizeText"  min="1" max="2" onkeypress="return resize(event);" >
+                                        <span class="input-group-addon">Rotate</span>
+                                        <input id="angleText" type="number" class="form-control" name="angleText" onkeypress="return rotate(event);" >
+                                    </div>
+                              </div>
+                            </div>                       
+                      </div>  
+                </div>                   
+
+
                 <div id="priceSection" class="tab-pane fade"> 
                     <!--CHANGE QUANTITY-->
                     <!--COMMENTED OUT BECAUSE THIS IS NO LONGER HOW WE SET QUANTITY! TODO DELETE THIS<input class="form-control" id="quantity" type="number" placeholder="Enter quantity" onchange="setQuantity(this.value); showPrice();">-->
-                    <!--PRODUCT PICKER-->
-                    <style type="text/css">
-                        #productPickerBtn{
-                            margin-top: 10px;
-                        }
-                        #designsTable img{
-                            width: 100%;
-                        }
-                        #productPreview{
-                            width: 100%;
-                            height: 50%;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                            background-position: center center;
-                        }
-                        #designPreviewWrapper{
-                            width: 60% !important;
-                            height: 80% !important;
-                            position: relative;
-                            margin: auto;
-                            top: 10% !important;
-                        }
-                        #designPreview{
-                            width: 60% !important;
-                            height: 80% !important;
-                            position: relative;
-                            margin: auto;
-                            top: 10% !important;
-                        }
-                        #productsTable{
-                            text-align: center;
-                        }
-                        #productsTable td{
-                            width: 25%;
-                        }
-                        #productsTable img{
-                            width: 100%;
-                        }
-                        #sizeForm input{
-                            width: 7%;
-                        }
-                    </style>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="productPicker" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Add Products and Styles</h4>
-                        </div>
-                        <div class="modal-body">
-                            <!--PRODUCT PREVIEW-->
-                            <div class="row">
-                              <div class="col-sm-6">
-        
-                                      <div id="productPreview" style=" background-image: url('img/classic_fit_adult_t-ash_grey_front.jpg');">
-                                            <div style="width: 80%; height: 80%; position: relative ; margin: auto !important; top: 10% !important;" class="designPrevieWrapper">
-                                                <img style="display: block;  margin: auto !important; " id="designPreview" src=""> 
-                                            </div>
-                                      </div>
-                                      <p>T Shirt made of cotton.</p>
-                               
-                              </div>
-                              <div class="col-sm-6">
-               
-                                  <table class="table" id="productsTable">
-                                    <tr>
-                                        <td><img src="img/classic_fit_adult_t-ash_grey_front.jpg" onclick="setProductPreview(this);"> V Neck </td>
-                                        <td><img src="img/classic_fit_adult_t-azalea_front.jpg" onclick="setProductPreview(this);"> Polo</td>
-                                        <td><img src="img/classic_fit_adult_t-cardinal_red_front.jpg" onclick="setProductPreview(this);"> Long Sleeve</td>
-                                        <td><img src="img/classic_fit_adult_t-charcoal_front.jpg" onclick="setProductPreview(this);"> Short Sleeve</td>
-                                    </tr>
-                                  </table>
-                                  <!--showing price per design TODO DELETE THIS AND PUT IT IN HIDDEN INPUT FOR CHECKOUT-->
-                                  <p>Design Price:<p id="pricePerUnit"></p></p>
-                                  
-                                  <script type="text/javascript">
-                                    
-                                      /*var priceLabel = document.getElementById('pricePerUnit');
-                                      var totalLabel = document.getElementById('totalPrice');
-                                      priceLabel.innerHTML = pricePerUnit + " : ";
-                                      totalLabel.innerHTML = totalPrice + " : ";*/
-                                  </script>
-
-                              </div>
-                            </div>
-                            <!--SIZE SELECTION-->
-                            <form id="sizeForm">
-                                 <input min="0" id="yxs" type="number" name="yxs" placeholder="yxs"> 
-                                 <input min="0" id="ys" type="number" name="ys" placeholder="ys"> 
-                                 <input min="0" id="ym" type="number" name="ym" placeholder="ym"> 
-                                 <input min="0" id="yl" type="number" name="yl" placeholder="yl"> 
-                                 <input min="0" id="yxl" type="number" name="yxl" placeholder="yxl">    
-                                 <input min="0" id="s" type="number" name="s" placeholder="s"> 
-                                 <input min="0" id="m" type="number" name="m" placeholder="m"> 
-                                 <input min="0" id="l" type="number" name="l" placeholder="l"> 
-                                 <input min="0" id="xl" type="number" name="xl" placeholder="xl"> 
-                                 <input min="0" id="xxl" type="number" name="xxl" placeholder="xxl"> 
-                                 <input min="0" id="xxxl" type="number" name="xxxl" placeholder="xxxl"> 
-                                 <input min="0" id="xxxxl" type="number" name="xxxxl" placeholder="xxxxl"> 
-                                 <input min="0" id="xxxxxl" type="number" name="xxxxxl" placeholder="xxxxxl"> 
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="addingToCart = true; uploadEx(); calcPrice();">Get Price</button>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                    
- 
                     <!--CART SECTION--> 
                     <div >
                         <style type="text/css">
@@ -775,7 +954,7 @@
                             }
                         </style>
                         <h3>Cart</h3><!--TODO MAKE THIS BUTTON FOR CART MODAL-->
-                        <form action="checkout.php" method="post">
+                        <form id="checkout_form" action="checkout.php" method="post">
                             <table class="table" id="cart" style="width: 100% !important;">
                                 
                             </table>
@@ -800,7 +979,7 @@
                             
                             <button type="submit" id="checkoutBtn"  class="btn btn-success" style="display: none;">Check Out</button><!-- taken out of button  data-toggle="modal" data-target="#cartModal" onclick="getCheckoutCart();"-->
                         </form>
-                        <!--CART MODAL-->
+                        <!--CART MODAL todo delete this-->
                         <div id="cartModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
@@ -854,7 +1033,7 @@
                                 cell1.innerHTML = "<div style='font-size: 10px;'>product description</div>";
                                 cell2.innerHTML = "<div style='width:100px !important;'>" + sizeSummary + "</div>" + '<input min="0" type="hidden" name="yxs_'+rowNum+'" placeholder="yxs" value="'+item.yxs+'"><input min="0"   type="hidden" name="ys_'+rowNum+'" placeholder="ys" value="'+item.ys+'"><input min="0"   type="hidden" name="ym_'+rowNum+'" placeholder="ym" value="'+item.ym+'"><input min="0"   type="hidden" name="yl_'+rowNum+'" placeholder="yl" value="'+item.yl+'"><input min="0"   type="hidden" name="yxl_'+rowNum+'" placeholder="yxl" value="'+item.yxl+'"><input min="0"   type="hidden" name="s_'+rowNum+'" placeholder="s" value="'+item.s+'"><input min="0"   type="hidden" name="m_'+rowNum+'" placeholder="m" value="'+item.m+'"><input min="0"   type="hidden" name="l_'+rowNum+'" placeholder="l" value="'+item.l+'"><input min="0"   type="hidden" name="xl_'+rowNum+'" placeholder="xl" value="'+item.xl+'"><input min="0"   type="hidden" name="2xl_'+rowNum+'" placeholder="2xl" value="'+item.xxl+'"><input min="0"   type="hidden" name="3xl_'+rowNum+'" placeholder="3xl" value="'+item.xxxl+'"><input min="0"   type="hidden" name="4xl_'+rowNum+'" placeholder="4xl" value="'+item.xxxxl+'"><input min="0"   type="hidden" name="5xl_'+rowNum+'" placeholder="5xl" value="'+item.xxxxxl+'">' ;  
                                 sizeSummary = ""; //reseting size summary so that another product can be added
-                                cell3.innerHTML = "<h6 class='total"+rowNum+"'>$"+itemPrice+"</h6>";
+                                cell3.innerHTML = "<h6 class='total"+rowNum+"'>$"+itemPrice+"</h6>"+"<input type='hidden' name='itemTotal_"+rowNum+"'' value='"+itemPrice+"'>";
                                 cell4.innerHTML = "<button  type='button' class='btn btn-danger' onclick='removeFromCart(this);';>X</button>";
                                 cell5.innerHTML = '<input type="hidden" name="front_'+rowNum+'" value="'+designs[0]+'">'+'<input type="hidden" name="right_'+rowNum+'" value="'+designs[1]+'">'+'<input type="hidden" name="back_'+rowNum+'" value="'+designs[2]+'">'+'<input type="hidden" name="left_'+rowNum+'" value="'+designs[3]+'">';   //hidden product went here.
                                 cell6.innerHTML = "";   //hidden design went here
@@ -879,63 +1058,7 @@
                                 item = new Object();
                                 rowNum++;
                                 getCartTotal();
-                                
-                            }/* COMMENTED OUT BECAUSE THERE IS AN ERROR IN HERE
-                            function getCheckoutCart(){
-                                emptyTable();
- 
-                                for (var i = 0; i < designArray.length; i += 5) {
-                                    document.getElementById('testingCart').innerHTML += i + " | | " + designArray[i] + " |<br>| " + designArray[i+1] + " |<br>| " + designArray[i+2] + " |<br>| " + designArray[i+3] + " |<br>| " + designArray[i+4] + "|| <br>";
-                                }
- 
-                              
-                                var tempTotal = 0.0;
-                                var checkoutCart = document.getElementById('checkoutCart');
-                                for (var i = 0; i < cart.length ; i++) {
-                                    //document.getElementById('testingCart').innerHTML += i + " | | " + designArray[i] + " |\n<br>| " + designArray[i+1] + " |\n<br>| " + designArray[i+2] + " |\n<br>| " + designArray[i+3] + " |\n<br>| " + designArray[i+4] + "|\n<br>|";
-                                    //document.getElementById('testingCart').innerHTML += i + " start <br>";
-                                    var row = checkoutCart.insertRow(i);
-                                    var cell0 = row.insertCell(0);
-                                    var cell1 = row.insertCell(1);
-                                    var cell2 = row.insertCell(2);
-                                    var cell3 = row.insertCell(3);
-                                    var cell4 = row.insertCell(4);
-                                    var cell5 = row.insertCell(5);
-                                    var cell6 = row.insertCell(6);  //folderName
-                                    var cell7 = row.insertCell(7);  //front design
-                                    var cell8 = row.insertCell(8);  //right design
-                                    var cell9 = row.insertCell(9);  //back design
-                                    var cell10 = row.insertCell(10);    //left design
-                                    cell0.innerHTML = cart[i].cell0;
-                                    cell1.innerHTML = cart[i].cell1;
-                                    cell2.innerHTML = cart[i].cell2;
-                                    cell3.innerHTML = cart[i].cell3;
-                                    //cell4.innerHTML = cart[i].cell4;
-                                    cell5.innerHTML = cart[i].cell5;
-                                    cell6.innerHTML = cart[i].cell6;
-                                    cell7.innerHTML = cart[i].cell7;
-                                    cell8.innerHTML = cart[i].cell8;
-                                    cell9.innerHTML = cart[i].cell9;
-                                    cell10.innerHTML = cart[i].cell10;
-                                    cell0.style.height="110px";
-                                    tempTotal += cart[i].total;
-                                    //document.getElementById('testingCart').innerHTML += i +" <br>" +" <br>";
-                                    //document.getElementById('testingCart').innerHTML += "tempTotal : " + tempTotal + "|| cart[i].total : " + cart[i].total;
-                                }
- 
-                                document.getElementById('finalTotal').innerHTML = '$' + tempTotal;
-                                document.getElementById('finalTotal').style.display = "block";
-                            function removeFromCart(element){
-                                //remove from table
-                                var row = element.parentNode.parentNode;
-                                row.parentNode.removeChild(row);
-                                
-                                cart.splice(rowNum - 1,1);
-                                designArray.splice(rowNum - 1,5);
-                                
-                                rowNum--;
-                                getCartTotal();
-                            }*/
+                            }
                             function getItemPrice(){
                                 var yxs = document.getElementById('yxs').value; var ys = document.getElementById('ys').value; var ym = document.getElementById('ym').value;
                                 var yl = document.getElementById('yl').value; var yxl = document.getElementById('yxl').value; var s = document.getElementById('s').value;
@@ -964,21 +1087,20 @@
                                 }
                                 var cartTotal = document.getElementById('cartTotal');
                                 var checkoutBtn = document.getElementById('checkoutBtn');
-                                var totalPriceBtn = document.getElementById('totalPriceBtn');
+                                var totalPriceLabel = document.getElementById('totalPriceLabel');
                                 var finalTotal = document.getElementById('finalTotal');
                                 if(total != "Error" && total > 0){
                                     cartTotal.style.display = "block";
                                     checkoutBtn.style.display = "block";
                                     cartTotal.innerHTML = "Total: $" + total;
                                     document.getElementById('total').value = total; //setting hidden input for post
-                                    totalPriceBtn.style.display = "block";
-                                    totalPriceBtn.innerHTML = "$" + total;
+                                    totalPriceLabel.innerHTML = total.toFixed(2);
                                     //finalTotal.style.display = "block";
                                     //finalTotal.innerHTML = "$"  + total;
                                 }else{
                                     cartTotal.style.display = "none";
                                     document.getElementById('total').value = 0.0;   //setting hidden input for post
-                                    totalPriceBtn.style.display = "none";
+                                    totalPriceLabel.innerHTML = 0.00;
                                     checkoutBtn.style.display = "none";
                                     //finalTotal.style.display = "none";
                                 }
@@ -1019,14 +1141,13 @@
                                     t.deleteRow(0);
                                 }
                             }
-                            
                         </script>
                     </div>
                 </div>
- 
+
                 <div id="shareSection" class="tab-pane fade">
- 
                 </div>
+
                 <div id="saveSection" class="tab-pane fade">
                     <h3>Look at your previous designs!</h3> 
                     <?php                                  
@@ -1086,66 +1207,66 @@
                         </tbody>
                         </table>
                     </div>
-                <script type="text/javascript">
-                    //Hide the saved design previews until the user has saved a design and would like to see it again
-                    var savedDesignsDiv = document.getElementById('savedDesigns');
-                    savedDesignsDiv.style.display = "none";
- 
-                       function loadImages()
-                       {
-                            //shows previews of saved design when user wants to see a saved design
-                            savedDesignsDiv.style.display = "block";
- 
-                            var desing =   document.getElementById("mydesings").value;
-                            var guest = desing.split("_", 1);
- 
-                            var file = guest+ '/' + desing + '/' + desing;
-                            document.getElementById('frontSavePreview').src = file+ '_front.png';
-                            document.getElementById('rightSavePreview').src = file+ '_right.png';
-                            document.getElementById('backSavePreview').src = file+ '_back.png';
-                            document.getElementById('leftSavePreview').src = file+ '_left.png';
-                       }
- 
-                       function LoadDesings()
-                       {   
-                            //shows previews of saved design when user wants to see a saved design
-                            savedDesignsDiv.style.display = "block";
- 
-                           var desing =   document.getElementById("mydesings").value;
-                           var guest = desing.split("_", 1);
-                           var file = guest+ '/' + desing + '/' + desing + '.json';
- 
-                           $.ajax({
-                               type:    "GET",
-                               dataType: "JSON",
-                               url:     file ,
-                               success: function(text) {                                         
-                                    //document.getElementById('frontCanvasShirtDesing').style.backgroundImage = "url("+imgSrc+")"; 
-                                    front.loadFromDatalessJSON(text[0], front.renderAll.bind(front), function(o, object) {
-                                    fabric.log(o, object); 
-                                     });
- 
-                                    right.loadFromJSON(text[1], right.renderAll.bind(right), function(o, object) {
-                                    fabric.log(o, object); 
-                                     });
- 
-                                    back.loadFromJSON(text[2], back.renderAll.bind(back), function(o, object) {
-                                    fabric.log(o, object); 
-                                     });
- 
-                                    left.loadFromJSON(text[3], left.renderAll.bind(left), function(o, object) {
-                                    fabric.log(o, object);         
-                                   
-                                   });                                                                            
-                               },
-                               error:   function() {
-                                   alert("error");
-                               }
-                           });                             
-                           
-                       }
-                </script>
-                <!--SHARE SECTION-->
+                    <script type="text/javascript">
+                        //Hide the saved design previews until the user has saved a design and would like to see it again
+                        var savedDesignsDiv = document.getElementById('savedDesigns');
+                        savedDesignsDiv.style.display = "none";
+     
+                           function loadImages()
+                           {
+                                //shows previews of saved design when user wants to see a saved design
+                                savedDesignsDiv.style.display = "block";
+     
+                                var desing =   document.getElementById("mydesings").value;
+                                var guest = desing.split("_", 1);
+     
+                                var file = guest+ '/' + desing + '/' + desing;
+                                document.getElementById('frontSavePreview').src = file+ '_front.png';
+                                document.getElementById('rightSavePreview').src = file+ '_right.png';
+                                document.getElementById('backSavePreview').src = file+ '_back.png';
+                                document.getElementById('leftSavePreview').src = file+ '_left.png';
+                           }
+     
+                           function LoadDesings()
+                           {   
+                                //shows previews of saved design when user wants to see a saved design
+                                savedDesignsDiv.style.display = "block";
+     
+                               var desing =   document.getElementById("mydesings").value;
+                               var guest = desing.split("_", 1);
+                               var file = guest+ '/' + desing + '/' + desing + '.json';
+     
+                               $.ajax({
+                                   type:    "GET",
+                                   dataType: "JSON",
+                                   url:     file ,
+                                   success: function(text) {                                         
+                                        //document.getElementById('frontCanvasShirtDesing').style.backgroundImage = "url("+imgSrc+")"; 
+                                        front.loadFromDatalessJSON(text[0], front.renderAll.bind(front), function(o, object) {
+                                        fabric.log(o, object); 
+                                         });
+     
+                                        right.loadFromJSON(text[1], right.renderAll.bind(right), function(o, object) {
+                                        fabric.log(o, object); 
+                                         });
+     
+                                        back.loadFromJSON(text[2], back.renderAll.bind(back), function(o, object) {
+                                        fabric.log(o, object); 
+                                         });
+     
+                                        left.loadFromJSON(text[3], left.renderAll.bind(left), function(o, object) {
+                                        fabric.log(o, object);         
+                                       
+                                       });                                                                            
+                                   },
+                                   error:   function() {
+                                       alert("error");
+                                   }
+                               });                             
+                               
+                           }
+                    </script>
+                    <!--SHARE SECTION-->
                     <h3>Share</h3>
                     <p>Via Facebook, Twitter, Instagram, or Email!</p>
                     <i class="fa fa-facebook" aria-hidden="true" style="font-size: 5vh;"></i>
@@ -1154,7 +1275,7 @@
                     <i class="fa fa-envelope-o" aria-hidden="true" style="font-size: 5vh;"></i>
                     <form action="email.php" method="post">
                         <!--URLs for front, right, back, and left designs with products-->
-                                                <input type="hidden" id="frontShirtURL" name="frontShirtURL">
+                        <input type="hidden" id="frontShirtURL" name="frontShirtURL">
                         <input type="hidden" id="frontImageURL" name="frontImageURL">
                         <input type="hidden" id="rightShirtURL" name="rightShirtURL">
                         <input type="hidden" id="rightImageURL" name="rightImageURL">
@@ -1162,7 +1283,9 @@
                         <input type="hidden" id="backImageURL" name="backImageURL">
                         <input type="hidden" id="leftShirtURL" name="leftShirtURL">
                         <input type="hidden" id="leftImageURL" name="leftImageURL">
-                        <input type="email" name="email" placeholder="Enter email">
+                        <input type="hidden" id="designURL" name="designURL">
+                        <lable>From: &nbsp;</lable><input type="email" name="from_email" placeholder="Enter your email" required><br>
+                        <lable>To: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input type="email" name="email" placeholder="Enter email">
                         <!--<i class="fa fa-envelope-o" aria-hidden="true" style="font-size: 5vh;"><input type="submit" name="submit" class="btn btn-primary"></i>-->
                         <button type="submit" name="submit" class="btn btn-primary fa fa-envelope-o"></button>
                     </form>
@@ -1245,6 +1368,7 @@
                             document.getElementById('rightShirtURL').value = frontShirt;
                             document.getElementById('backShirtURL').value = frontShirt;
                             document.getElementById('leftShirtURL').value = frontShirt;
+                            document.getElementById('designURL').value =  fileAddress;
  
                             //showing the most recent saved design with the most recent product in preperation to be shared
                             shareDesignsDiv.style.display = "block";
@@ -1253,6 +1377,153 @@
                         }
                     </script>
                 </div>
+
+                <div id="textDesign">
+                  <script src="fabric.curvedText.js"></script>
+
+                  <canvas id="c" width="400" height="200"></canvas><br/>
+                  <input type="text" id="testtext" value="CurvedText" /><br>
+                  
+                  Reverse : <input type="checkbox" name="reverse" id="reverse" /><br>
+                  Radius : <input type="range" min="0" max="100" value="50" id="radius" /><br>
+                  Spacing : <input type="range" min="5" max="40" value="20" id="spacing" /><br>
+                  Color : <input type="color" value="#0000ff" id="fill" /><br>
+                  Effect : 
+                  <select name="effect" id="effect" >
+                    <option value="curved">Curved</option>
+                    <option value="arc">Arc</option>
+                    <option value="STRAIGHT">STRAIGHT</option>
+                    <option value="smallToLarge">smallToLarge</option>
+                    <option value="largeToSmallTop">largeToSmallToped</option>
+                    <option value="largeToSmallBottom">largeToSmallBottom</option>
+                    <option value="bulge">bulge</option>
+                  </select>
+                  
+                  <br>
+                  <br>
+                  
+                  <button id="convert">Convert Text/Curved</button>
+                  <button id="save">Save/Reload</button>
+                  
+                  <script>
+                    
+                    canvas = new fabric.Canvas('c');
+                    canvas.on('selection:cleared', onDeSelected);
+                    canvas.on('object:selected', onSelected);
+                    canvas.on('selection:created', onSelected);
+                    var CurvedText = new fabric.CurvedText('CurvedText',{
+                      //width: 100,
+                      //height: 50,
+                      left: 100,
+                      top: 100,
+                      textAlign: 'center',
+                      fill: '#0000FF',
+                      radius: 150,
+                      fontSize: 20,
+                      spacing: 20
+                      //fontFamily: 'Arial'
+                    });
+                    canvas.add(CurvedText).renderAll();
+                    canvas.setActiveObject(canvas.item(canvas.getObjects().length-1));
+
+                    $('#testtext').keyup(function(){
+                      var obj = canvas.getActiveObject();
+                      if(obj){
+                        obj.setText(this.value);
+                        canvas.renderAll();
+                      }
+                    });
+
+                    $('#reverse').click(function(){
+                      var obj = canvas.getActiveObject();
+                      if(obj){
+                        obj.set('reverse',$(this).is(':checked')); 
+                        canvas.renderAll();
+                      }
+                    });
+
+                    $('#radius, #spacing, #fill').change(function(){
+                      var obj = canvas.getActiveObject();
+                      if(obj){
+                        obj.set($(this).attr('id'),$(this).val()); 
+                      }
+                      canvas.renderAll();
+                    });
+
+                    $('#radius, #spacing, #effect').change(function(){
+                      var obj = canvas.getActiveObject();
+                      if(obj){
+                        obj.set($(this).attr('id'),$(this).val()); 
+                      }
+                      canvas.renderAll();
+                    });
+
+                    $('#fill').change(function(){
+                      var obj = canvas.getActiveObject();
+                      if(obj){
+                        obj.setFill($(this).val()); 
+                      }
+                      canvas.renderAll();
+                    });
+
+                    $('#save').click(function() {
+                      var design = JSON.stringify(canvas.toJSON());
+                      canvas.clear();
+                      canvas.renderAll();
+                      canvas.loadFromJSON(design, function() {
+                        console.log('loaded');      
+                        canvas.renderAll();
+                      });
+                    });
+                    
+                    $('#convert').click(function(){
+                      var props = {};
+                      var obj = canvas.getActiveObject();
+                      if(obj){
+                        if(/curvedText/.test(obj.type)) {
+                          default_text = obj.getText();
+                          props = obj.toObject();
+                          delete props['type'];
+                          var textSample = new fabric.Text(default_text, props);
+                        }else if(/text/.test(obj.type)) {
+                          default_text = obj.getText();
+                          props = obj.toObject();
+                          delete props['type'];
+                          props['textAlign'] = 'center';
+                          props['radius'] = 50;
+                          props['spacing'] = 20;
+                          var textSample = new fabric.CurvedText(default_text, props);
+                        }
+                        canvas.remove(obj);
+                        canvas.add(textSample).renderAll();
+                        canvas.setActiveObject(canvas.item(canvas.getObjects().length-1));
+                      }
+                    });
+                   
+                    function onSelected(){
+                      var obj = canvas.getActiveObject();
+                      $('#testtext').val(obj.getText());
+                      $('#reverse').prop('checked', obj.get('reverse'));
+                      $('#radius').val(obj.get('radius'));
+                      $('#spacing').val(obj.get('spacing'));
+                      $('#fill').val(obj.getFill());
+                      if(obj.getEffect) {
+                        $('#effect').val(obj.getEffect());
+                      }
+                    }
+
+                    function onDeSelected(){
+                      $('#testtext').val('');
+                      $('#reverse').prop('checked', false);
+                      $('#radius').val(50);
+                      $('#spacing').val(20);
+                      $('#fill').val('#0000FF');
+                      $('#effect').val('curved');
+                    }
+                    alert('js works');
+                  </script>
+                </div>
+
             </div>
         </div>
         <!--END  TAB CONTENT-->
@@ -1268,28 +1539,6 @@
                   <li id="backActive" data-target="#myCarousel" data-slide-to="2"></li>
                   <li id="leftActive" data-target="#myCarousel" data-slide-to="3"></li>
                 </ol>
-                <style type="text/css">
-                    /*@media (min-width:481px) and (max-width:767px) { }
-                    @media (max-width:480px) { }
-                    @media (max-width:767px) { }
-                    @media (max-width:1224px) { }
-                    @media (min-width:768px) and (max-width:1199px) {  }
-                    @media (min-width:1900px) {  }
-                    @media (min-width:1200px) {  }
-                    @media (min-width:768px) and (max-width:1199px) and (-webkit-min-device-pixel-ratio:1.5),(min--moz-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:3/2),(min-device-pixel-ratio:1.5) { }
-                    @media (min-width:768px) and (max-width:1199px) and (-webkit-min-device-pixel-ratio:1.5),(min--moz-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:3/2),(min-device-pixel-ratio:1.5) { }
-                    @media (max-width:480px) and (-webkit-min-device-pixel-ratio:1.5),(min--moz-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:3/2),(min-device-pixel-ratio:1.5) {  }
-                    @media (max-width:767px) and (-webkit-min-device-pixel-ratio:1.5),(min--moz-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:3/2),(min-device-pixel-ratio:1.5) {  }
-                    @media (max-width:727px) { }
-                    @media (min-width:1500px) {  }
-                    @media (min-width:768px) and (max-width:1199px) {  }
-                    @media (min-width:768px) and (max-width:1095px),(max-width:767px) { }
-                    @media (min-width:768px) and (max-width:1095px) { }
-                    @media (min-width:481px) and (max-width:767px) {  }
-                    @media only screen and (max-width:985px) { }
-                    @media (max-width:985px) {}
-                    @media (min-width:1900px) {}*/
-                </style>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                   <div class="item active" id="test">
@@ -1379,7 +1628,7 @@
         </div>
         
         <!--END  SHIRT SECTION-->
-        <!-- Modal -->
+        <!-- Progress Bar Modal -->
         <div id="mProgressBarModal" class="modal fade" role="dialog">
           <div class="modal-dialog">
             <!-- Modal content-->
@@ -1394,30 +1643,30 @@
           </div>
         </div>
         </div>
-         <style type="text/css">
+        <style type="text/css">
               .card-footer{
                 position:bottom;
                 bottom:0;
                 width:100%;
               }
-            </style>   
-            <div class="card-footer text-muted">
-              <div class="container">
-                   <center><p>&copy; 2017 Vivid Customs</p>
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">Privacy</a>
-                            |
-                            <a href="#">Terms</a> 
-                            |
-                            <a href="#">FAQ</a>
-                            |
-                            <a href="draw.html">Design</a>
-                        </li>
-                    </ul>
-                    </center>
-                </div>
-            </div>    
+        </style>   
+        <div class="card-footer text-muted">
+          <div class="container">
+               <center><p>&copy; 2017 Vivid Customs</p>
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">Privacy</a>
+                        |
+                        <a href="#">Terms</a> 
+                        |
+                        <a href="#">FAQ</a>
+                        |
+                        <a href="draw.html">Design</a>
+                    </li>
+                </ul>
+                </center>
+            </div>
+        </div>    
  </div>
 </div>
 <!--END  NEW PAGE-->
@@ -1450,34 +1699,42 @@
                 cursor: 'pointer'
             }
         }, function() {
-            canvas.renderAll();
+            //canvas.renderAll();
+            front.renderAll();
+            right.renderAll();
+            back.renderAll();
+            left.renderAll();
         } );
         
         fabric.Object.prototype.customiseCornerIcons({
             settings: {
-                borderColor: 'black',
-                cornerSize: 25,
-                cornerShape: 'rect',
-                cornerBackgroundColor: 'black',
-                cornerPadding: 10
+                borderColor: 'rgba(49,98,100,0.3)', //black
+                cornerSize: 20,
+                cornerShape: 'circle',
+                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
+                cornerPadding: 10,
             },
             tl: {
-                icon: 'icons/rotate.svg'
+                icon: 'img/x.png', //icons/rotate.svg
             },
             tr: {
-                icon: 'icons/resize.svg'
+                icon: 'img/rotate_2.png', //img/resize.svg
             },
             bl: {
-                icon: 'icons/remove.svg'
+                icon: 'img/resize_left.png',
             },
             br: {
-                icon: 'icons/up.svg'
-            }/*,
+               icon: 'img/resize_right.png',
+            },/*,
             mb: {
                 icon: 'icons/down.svg'
             }*/
         }, function() {
-            canvas.renderAll();
+            //canvas.renderAll();
+            front.renderAll();
+            right.renderAll();
+            back.renderAll();
+            left.renderAll();
         } );
  
     </script>
@@ -1526,6 +1783,12 @@
         var numObjectsRight = 0;
         var numObjectsBack = 0;
         var numObjectsLeft = 0;
+
+        var leftpos = 0;
+        var frontTop = front.height/2;
+        var leftTop = left.height/2;
+        var backTop = back.height/2;
+        var rightTop = right.height/2;
  
  
         //SETTING quantityOfProduct
@@ -1546,40 +1809,39 @@
                 pricePerUnit = costOfProduct + 17;
             } else if (quantityOfProduct < 11){
                 pricePerColor = numOfColors < 4 ? 14.00 : 15.00;
-                pricePerUnit = numOfColors * pricePerColor;
+                pricePerUnit = costOfProduct + numOfColors * pricePerColor;
             } else if (quantityOfProduct < 24){
                 pricePerColor = numOfColors < 2 ? 5.5 : numOfColors < 3 ? 9.75 : numOfColors <= 4 ? 13.00 : 15;
-                pricePerUnit = numOfColors * pricePerColor;
+                pricePerUnit = costOfProduct + numOfColors * pricePerColor;
             } else if (quantityOfProduct < 36){
                 pricePerColor = numOfColors < 2 ? 4.75 : numOfColors < 3 ? 7.65 : numOfColors < 4 ? 8.75 : numOfColors < 5 ? 10.25 : numOfColors < 6 ? 13.0 : 15.0;
-                pricePerUnit = numOfColors * pricePerColor;
+                pricePerUnit = costOfProduct + numOfColors * pricePerColor;
             } else if (quantityOfProduct < 48){
                 pricePerColor = numOfColors < 2 ? 4.0 : numOfColors < 3 ? 5.0 : numOfColors < 4 ? 7.0 : numOfColors < 5 ? 8.75 : numOfColors < 6 ? 9.0 : numOfColors < 7 ? 10.3 : numOfColors < 7 ? 11.30 : 12.3;
-                pricePerUnit = numOfColors * pricePerColor;
+                pricePerUnit = costOfProduct + numOfColors * pricePerColor;
             } else if (quantityOfProduct < 70){
                 pricePerColor = numOfColors < 2 ? 3.5 : numOfColors < 3 ? 4.0 : numOfColors < 4 ? 5.0 : numOfColors < 5 ? 5.65 : numOfColors < 6 ? 6.4 : numOfColors < 7 ? 7.2 : numOfColors < 7 ? 8.0 : 9.0;
-                pricePerUnit = numOfColors * pricePerColor;
+                pricePerUnit = costOfProduct + numOfColors * pricePerColor;
             } else if (quantityOfProduct < 150){
                 pricePerColor = numOfColors < 2 ? 2.85 : numOfColors < 3 ? 3.5 : numOfColors < 4 ? 4.0 : numOfColors < 5 ? 4.65 : numOfColors < 6 ? 5.00 : numOfColors < 7 ? 5.45 : numOfColors < 7 ? 5.95 : 6.95;
-                pricePerUnit = numOfColors * pricePerColor;
+                pricePerUnit = costOfProduct + numOfColors * pricePerColor;
             } else if (quantityOfProduct < 300){
                 pricePerColor = numOfColors < 2 ? 2.55 : numOfColors < 3 ? 3.0 : numOfColors < 4 ? 3.35 : numOfColors < 5 ? 3.75 : numOfColors < 6 ? 4.00 : numOfColors < 7 ? 4.5 : numOfColors < 7 ? 4.7 : 5.7;
-                pricePerUnit = numOfColors * pricePerColor;
+                pricePerUnit = costOfProduct + numOfColors * pricePerColor;
             } else if (quantityOfProduct < 500){
                 pricePerColor = numOfColors < 2 ? 2.5 : numOfColors < 3 ? 2.75 : numOfColors < 4 ? 3.0 : numOfColors < 5 ? 3.3 : numOfColors < 6 ? 3.5 : numOfColors < 7 ? 3.8 : numOfColors < 7 ? 4.1 : 4.90;
-                pricePerUnit = numOfColors * pricePerColor;
+                pricePerUnit = costOfProduct + numOfColors * pricePerColor;
             } else if (quantityOfProduct < 700){
                 pricePerColor = numOfColors < 2 ? 2.25 : numOfColors < 3 ? 2.50 : numOfColors < 4 ? 2.75 : numOfColors < 5 ? 3.0 : numOfColors < 6 ? 3.25 : numOfColors < 7 ? 3.5 : numOfColors < 7 ? 3.75 : 4.25;
-                pricePerUnit = numOfColors * pricePerColor;
+                pricePerUnit = costOfProduct + numOfColors * pricePerColor;
             } else {
                 pricePerColor = numOfColors < 2 ? 2.05 : numOfColors < 3 ? 2.25 : numOfColors < 4 ? 2.50 : numOfColors < 5 ? 2.85 : numOfColors < 6 ? 3.10 : numOfColors < 7 ? 3.40 : numOfColors < 7 ? 3.65 : 3.9;
-                pricePerUnit = numOfColors * pricePerColor;
+                pricePerUnit = costOfProduct + numOfColors * pricePerColor;
             }
             totalPrice = pricePerUnit * quantityOfProduct;
             //setting everything to 2 decimal places for dollar amout
             pricePerUnit = pricePerUnit.toFixed(2);
             totalPrice = totalPrice.toFixed(2);
-            document.getElementById('pricePerUnit').innerHTML = pricePerUnit;
             
         }
         //SHOWING PRICE
@@ -1669,17 +1931,23 @@
                     // overwrite the prototype object based
                     img.customiseCornerIcons({
                         settings: {
-                            borderColor: 'black',
+                            borderColor: 'rgba(49,98,100,0.3)', //black
                             cornerSize: 20,
                             cornerShape: 'circle',
-                            cornerBackgroundColor: 'black',
+                            cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                             cornerPadding: 10,
                         },
                         tl: {
-                            icon: 'img/remove.svg', //icons/rotate.svg
+                            icon: 'img/x.png', //icons/rotate.svg
                         },
                         tr: {
-                            icon: 'img/rotate.svg', //icons/resize.svg
+                            icon: 'img/rotate_2.png', //img/resize.svg
+                        },
+                        bl: {
+                            icon: 'img/resize_left.png',
+                        },
+                        br: {
+                            icon: 'img/resize_right.png',
                         },
             
                     }, function() {
@@ -1729,17 +1997,23 @@
                     // overwrite the prototype object based
                     img.customiseCornerIcons({
                         settings: {
-                            borderColor: 'black',
+                            borderColor: 'rgba(49,98,100,0.3)', //rgba(49,98,100,0.3)
                             cornerSize: 20,
                             cornerShape: 'circle',
-                            cornerBackgroundColor: 'black',
+                            cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                             cornerPadding: 10,
                         },
                         tl: {
-                            icon: 'img/remove.svg', //icons/rotate.svg
+                            icon: 'img/x.png', //icons/rotate.svg
                         },
                         tr: {
-                            icon: 'img/rotate.svg', //icons/resize.svg
+                            icon: 'img/rotate_2.png', //img/resize.svg
+                        },
+                        bl: {
+                            icon: 'img/resize_left.png',
+                        },
+                        br: {
+                            icon: 'img/resize_right.png',
                         },
                         
                     }, function() {
@@ -1822,7 +2096,6 @@
             
             //this is to record what was done for the purpose of saving designs
             colorChanged = true;
-            //TEST TEXT DESIGN COLOR CHANGE
 
             //this is to style the list so that you can see what you clicked on
             $(".list-group-item").removeClass("active");
@@ -1844,11 +2117,17 @@
 
             if (type =="c")
              {
+                //setting the stroke color
                 strokeColor = newColor;
                 object.setStroke(strokeColor);
              }
              else
              {
+                
+                //setting the stroke color to the fill color
+                strokeColor = newColor;
+                object.setStroke(strokeColor);
+                //changing the fill color of the text to the new color
                 colorText = newColor;            
                 object.setFill(colorText);
              }
@@ -1953,37 +2232,129 @@
              $('#fontModal').modal('hide');
         }
 
-        function addText(e) {
-            if (e.keyCode == 13) {
-                 text = document.getElementById('text').value;
-                 var tempText = "";
-                 if (text.length > 18)
-                 {
-                    
-                    for (var i = 0; i < text.length; i++) 
-                    {
-                        var mod = (i+1) % 18;
-                        if (mod == 0) 
-                        {
-                            tempText+=text[i] + "\n"; 
-                        }
-                        else
-                        {
-                             tempText+=text[i];
-                        }                        
-                    }
-                     text= tempText;
+        function wrapText(text, maxChars) {
+        var ret = [];
+        var words = text.split(/\b/);
 
-                 }                 
-                 straight();                
-                return false;
+        var currentLine = '';
+        var lastWhite = '';
+        words.forEach(function(d) {
+            var prev = currentLine;
+            currentLine += lastWhite + d;
+
+            var l = currentLine.length;
+
+            if (l > maxChars) {
+                ret.push(prev.trim());
+                currentLine = d;
+                lastWhite = '';
+            } else {
+                var m = currentLine.match(/(.*)(\s+)$/);
+                lastWhite = (m && m.length === 3 && m[2]) || '';
+                currentLine = (m && m.length === 3 && m[1]) || currentLine;
             }
+        });
+
+        if (currentLine) {
+            ret.push(currentLine.trim());
+        }
+
+        return ret.join("\n");
+    }
+// ens space for functions 
+        function addText(e) {
+            if (e.keyCode == 13) 
+            {
+
+              //the following is only for styling purposes                   
+                    $(".list-group-item").removeClass("active");
+                    $(this).addClass("active");
+                    //setting 'object' to the active object or the object the user has selected
+                    switch (canvasCounter){
+                        case 1:
+                             object = front.getActiveObject();
+                            break
+                        case 2:
+                             object = right.getActiveObject();
+                            break;
+                        case 3:
+                             object = back.getActiveObject();
+                            break;
+                        default:
+                             object = left.getActiveObject();
+                    }
+                    //taking the id of the input to discover what type of object is being resized
+                    var element = e.target.id;
+                    text = document.getElementById('text').value;
+                    document.getElementById('text').value = "";
+                    var tempText = text;
+                    text = wrapText(tempText, 18); 
+                    if (!object)
+                    {  
+                        //clearing the text area for new text to be entered
+                        colorText = "#000000";
+                        colorArt = "#000000";
+                        strokeColor = "#000000";
+                        font = 'Ariel';       
+                        straight();                
+                        return false;
+                    }
+                    else
+                    {
+                       //console.log(object);
+                       //console.log(object.type);
+                       switch (object.type){
+                        case 'text':                           
+                            object.setText(text);                         
+                            break                        
+                        case 'group':
+                               leftpos = object.left;
+                               frontTop = object.top;
+                               removeItem();                                
+                               if (object.id.includes("circle")) 
+                               {
+                                  circle();
+                               }
+                               else if((object.id.includes("valley")))
+                               {
+                                  valley();
+                               }
+                               else
+                               {
+                                  bridge();
+                               }                        
+                            break;
+                        default:
+                             console.log(element);
+                      }
+                
+                        switch (canvasCounter){
+                            case 1:
+                                front.renderAll(front);
+                                break
+                            case 2:
+                                right.renderAll(right);
+                                break;
+                            case 3:
+                                back.renderAll(back);
+                                break;
+                            default:
+                               left.renderAll(left);
+                        }
+                      return false;              
+                 
+
+                    }
+
+                   document.getElementById('text').value= "";
+            } 
+
         }       
        
         //adding text
         function straight(){
             textAdded = true;
-            removeItem();
+           
             var txt = new fabric.Text(text,{
                 fontFamily: font,
                 stroke: strokeColor,
@@ -1998,19 +2369,25 @@
             objId++;
             txt.customiseCornerIcons({
                 settings: {
-                    borderColor: 'black',
+                    borderColor: 'rgba(49,98,100,0.3)', //black
                     cornerSize: 20,
                     cornerShape: 'circle',
-                    cornerBackgroundColor: 'black',
+                    cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                     cornerPadding: 10,
                 },
                 tl: {
-                    icon: 'img/remove.svg', //icons/rotate.svg
+                    icon: 'img/x.png', //icons/rotate.svg
                 },
                 tr: {
-                    icon: 'img/rotate.svg', //icons/resize.svg
+                    icon: 'img/rotate_2.png', //img/resize.svg
                 },
-    
+                bl: {
+                icon: 'img/resize_left.png',
+                },
+                br: {
+                   icon: 'img/resize_right.png',
+                },
+
             }, function() {
                 front.renderAll();
                 right.renderAll();
@@ -2035,10 +2412,9 @@
         }
  
         //START CURVE CODE*******************************************************************************************************************************************************************
-            function curve(){
+            function valley(){
                 textAdded = true;
-                //remove selected item to be replaced
-                removeItem();
+                
                 //used to hold the text
                 var headingText = []; 
                 var startAngle = -60;
@@ -2065,21 +2441,27 @@
                 //DECIDING WHICH CANVAS TO ADD TOO
                 switch (canvasCounter){
                     case 1:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: front.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor, angle: -3});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: frontTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor, angle: -3});
+                        group2.set({  id:'valley' +  objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                                icon: 'img/rotate_2.png', //img/resize.svg
+                            },
+                            bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2091,21 +2473,27 @@
                         front.add(group2);
                         break
                     case 2:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: right.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: rightTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
+                        group2.set({  id:'valley' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                                icon: 'img/rotate_2.png', //img/resize.svg
+                            },
+                            bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2117,21 +2505,27 @@
                         right.add(group2);
                         break;
                     case 3:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: back.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: backTop, fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
+                        group2.set({  id:'valley' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                               icon: 'img/rotate_2.png', //img/resize.svg
+                            },
+                            bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2143,21 +2537,27 @@
                         back.add(group2);
                         break;
                     default:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: left.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: leftTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
+                        group2.set({  id:'valley' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                                icon: 'img/rotate_2.png', //img/resize.svg
+                            },
+                             bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2172,10 +2572,9 @@
             }
         //END CURVE CODE*******************************************************************************************************************************************************************
         //START REVERSE CURVE CODE*******************************************************************************************************************************************************************
-            function reverseCurve(){
+            function bridge(){
                 textAdded = true;
-                //remove selected item to be replaced
-                removeItem();
+               
                 //used to hold the text
                 var headingText = []; 
                 var startAngle = -58;
@@ -2205,21 +2604,27 @@
                 //DECIDING WHICH CANVAS TO ADD TOO
                 switch (canvasCounter){
                     case 1:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: front.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: frontTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
+                        group2.set({  id:'bridge' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                                icon: 'img/rotate_2.png', //img/resize.svg
+                            },
+                             bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2231,21 +2636,27 @@
                         front.add(group2);
                         break
                     case 2:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: right.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: rightTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
+                        group2.set({  id:'bridge' +  objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
-                                                                cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerShape: 'circle',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                                icon: 'img/rotate_2.png', //img/resize.svg
+                            },
+                             bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2257,21 +2668,27 @@
                         right.add(group2);
                         break;
                     case 3:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: back.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: backTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
+                        group2.set({  id:'bridge' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                                icon: 'img/rotate_2.png',
+                            },
+                             bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2283,21 +2700,27 @@
                         back.add(group2);
                         break;
                     default:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: left.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: leftTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
+                        group2.set({  id:'bridge' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                                icon: 'img/rotate_2.png',
+                            },
+                             bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2315,8 +2738,7 @@
                 textAdded = true;
                 //to keep first word and last word from touching
                 text = text + " ";
-                //remove selected item to be replaced
-                removeItem();
+             
                 //used to hold the text
                 var headingText = []; 
                 var startAngle = -58;
@@ -2343,21 +2765,27 @@
                 //DECIDING WHICH CANVAS TO ADD TOO
                 switch (canvasCounter){
                     case 1:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: front.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: frontTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
+                        group2.set({  id:'circle' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                                icon: 'img/rotate_2.png', //img/resize.svg
+                            },
+                             bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2369,21 +2797,27 @@
                         front.add(group2);
                         break
                     case 2:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: right.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: rightTop, fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
+                        group2.set({  id:'circle' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                                icon: 'img/rotate_2.png', //img/resize.svg
+                            },
+                             bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2395,21 +2829,27 @@
                         right.add(group2);
                         break;
                     case 3:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: back.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: backTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
+                        group2.set({  id:'circle' +    objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                                icon: 'img/rotate_2.png', //img/resize.svg
+                            },
+                             bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2421,21 +2861,27 @@
                         back.add(group2);
                         break;
                     default:
-                        var group2 = new fabric.Group(headingText, { left: 0, top: left.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
-                        group2.set({  id: objId, hasRotatingPoint: false}); objId++;
+                        var group2 = new fabric.Group(headingText, { left: leftpos, top: leftTop, fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
+                        group2.set({  id:'circle' +    objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'black',
+                                borderColor: 'rgba(49,98,100,0.3)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'black',
+                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                                 cornerPadding: 10,
                             },
                             tl: {
-                                icon: 'img/remove.svg', //icons/rotate.svg
+                                icon: 'img/x.png', //icons/rotate.svg
                             },
                             tr: {
-                                icon: 'img/rotate.svg', //icons/resize.svg
+                                icon: 'img/rotate_2.png', //img/resize.svg
+                            },
+                             bl: {
+                                icon: 'img/resize_left.png',
+                            },
+                            br: {
+                                icon: 'img/resize_right.png',
                             },
                 
                         }, function() {
@@ -2546,14 +2992,20 @@
                         //alert(fileAddress);
                         x.add(option);
                         getImage(fileAddress);
-                     
+                        //testing to see if item is being added to card
                         if(addingToCart){
                             addingToCart = false;
-                      
                             getImage(fileAddress);
-                           
                             addToCart();
-                        }      
+                            //testing to see if customer wants checkout from 'add product' modal
+                            if(automatedCheckout){
+                                calcPrice();
+                                getCartTotal();
+                                document.getElementById('checkout_form').submit();
+                            }
+                        }
+                        //letting customer know that their design was sucessfully saved
+                        savedSuccessfullyMessage();       
                     };
                     xhr.send($general);
                     //$('#mProgressBarModal').modal('hide');
@@ -2563,12 +3015,17 @@
  
             function resize(e)
             {
+                //stops user from entering anything except integers and 'enter'
+                if(e.which != 13 && (e.which < 48 || e.which > 57) ){ return false;}
+                
                 var object;
+                //13 is the ascii code for enter, so that this function would be triggered when the user presses enter.
                 if (e.keyCode == 13)
-                {                    
+                { 
+                    //the following is only for styling purposes                   
                     $(".list-group-item").removeClass("active");
                     $(this).addClass("active");
-                    //DECIDING WHICH CANVAS TO GET OBJECT FROM
+                    //setting 'object' to the active object or the object the user has selected
                     switch (canvasCounter){
                         case 1:
                              object = front.getActiveObject();
@@ -2582,11 +3039,11 @@
                         default:
                              object = left.getActiveObject();
                     }
-
-                     var element = e.target.id;
-
+                    //taking the id of the input to discover what type of object is being resized
+                    var element = e.target.id;
                     switch (element){
                         case 'sizeText':
+                            //multiplying the number entered (inches) to resize the object in pixels
                             var sizeText = Number(document.getElementById('sizeText').value);
                             if (object.type == 'text')
                             {
@@ -2598,17 +3055,17 @@
                             }
                             break                        
                         case 'widthImage':
-                            var widthImage = Number(document.getElementById('widthImage').value);
+                            var widthImage = Number(document.getElementById('widthImage').value * 70);
                             object.setWidth(widthImage);                             
                             break;
                          case 'heightImage':
-                             var heightImage = Number(document.getElementById('heightImage').value);
+                             var heightImage = Number(document.getElementById('heightImage').value * 70);
                              object.setHeight(heightImage);
                             break;
                         default:
                              console.log(element);
                     } 
-
+                    //rerendering the canvas to show the updated stats
                     switch (canvasCounter){
                         case 1:
                             front.renderAll(front);
@@ -2642,6 +3099,9 @@
  
             function rotate(e)
             {
+                //stops user from entering anything except integers and 'enter'
+                if(e.which != 13 && (e.which < 48 || e.which > 57) ){ return false;}
+
                 var object;
                 if (e.keyCode == 13)
                 {                    
@@ -2704,27 +3164,68 @@
                 var newArt = document.getElementById("newArt");
                 if (typeof(e.target) == "undefined")
                  { 
-                     newArt.style.display = 'block';
-                     editArt.style.display = 'none';                    
+                    newArt.style.display = 'block';
+                    editArt.style.display = 'none';  
+                    document.getElementById('text').value = ""; 
+                    document.getElementById('sizeText').value = "";    
+                    document.getElementById('angleText').value = "";                     
                  }
-                 
-                else if (e.target.type == 'image') {
-                    $('.nav-tabs a[href="#addArt"]').tab('show');  
-                     document.getElementById("widthImage").value = modifiedObject.getWidth();
-                    document.getElementById("heightImage").value = modifiedObject.getHeight();
-                    document.getElementById("angleImage").value = modifiedObject.getAngle();
-                    editArt.style.display = 'block';                  
-                    newArt.style.display = 'none';  
-                             
+
+                else if (e.target.type == 'image') 
+                {
+                  $('.nav-tabs a[href="#addArt"]').tab('show');  
+                  document.getElementById("widthImage").value = Math.round(modifiedObject.getWidth()/35);
+                  document.getElementById("heightImage").value = Math.round(modifiedObject.getHeight()/35);
+                  document.getElementById("angleImage").value = Math.round(modifiedObject.getAngle());
+                  editArt.style.display = 'block';                  
+                  newArt.style.display = 'none';                               
                 }  
                 else if(e.target.type == 'text' || e.target.type == 'group' ) 
                 {
                     $('.nav-tabs a[href="#textSection"]').tab('show');     
-                     document.getElementById("sizeText").value = modifiedObject.getFontSize(); 
-                     document.getElementById("angleText").value = modifiedObject.getAngle();
-                               
-                }         
-                  
+                     
+                     document.getElementById("angleText").value = Math.round(modifiedObject.getAngle());
+                     if (e.target.type == 'text') 
+                     {
+                       document.getElementById("sizeText").value = Math.round(modifiedObject.getFontSize()); 
+                       document.getElementById('text').value = modifiedObject.text;
+                     }
+                     else
+                     {                           
+                        var objectList = modifiedObject.getObjects();
+                        var value = "";  
+
+                        if (modifiedObject.id.includes("bridge")) 
+                        { 
+                           for (var i=0; i < objectList.length; i++) 
+                           {
+                             value += objectList[i].text; 
+                           }
+                        }
+                        else
+                        {
+                            console.log(objectList); 
+                          for (var i = objectList.length-1 ; i > 0; i--) 
+                          {
+                             value += objectList[i].text; 
+                          }
+                        }
+                        document.getElementById('text').value = value;
+                     }
+                     //enabling text btns
+                     var textBtns = document.getElementsByClassName("textBtn");
+                     for (var i = 0; i < textBtns.length; i++) {
+                         textBtns[i].disabled = false;
+                     }
+                }
+                //disabling textbtns again if text is not selected
+                if(e.target.type != 'text' && e.target.type != 'group' )
+                {
+                    var textBtns = document.getElementsByClassName("textBtn");
+                     for (var i = 0; i < textBtns.length; i++) {
+                         textBtns[i].disabled = true;
+                     }
+                }   
             });
 
             right.on('mouse:up', function(e) 
@@ -2732,28 +3233,68 @@
                 var modifiedObject = e.target;
                 var editArt = document.getElementById("editArt");                        
                 var newArt = document.getElementById("newArt");
-               if (typeof(e.target) == "undefined")
-                 {              
-                     newArt.style.display = 'block';
-                     editArt.style.display = 'none';                    
+                if (typeof(e.target) == "undefined")
+                 { 
+                    newArt.style.display = 'block';
+                    editArt.style.display = 'none';  
+                    document.getElementById('text').value = "";                  
                  }
-                 
-                else if (e.target.type == 'image') {
-                    $('.nav-tabs a[href="#addArt"]').tab('show');  
-                     document.getElementById("widthImage").value = modifiedObject.getWidth();
-                    document.getElementById("heightImage").value = modifiedObject.getHeight();
-                    document.getElementById("angleImage").value = modifiedObject.getAngle();
-                    editArt.style.display = 'block';                  
-                    newArt.style.display = 'none';  
-                             
+
+                else if (e.target.type == 'image') 
+                {
+                  $('.nav-tabs a[href="#addArt"]').tab('show');  
+                  document.getElementById("widthImage").value = Math.round(modifiedObject.getWidth()/35);
+                  document.getElementById("heightImage").value = Math.round(modifiedObject.getHeight()/35);
+                  document.getElementById("angleImage").value = Math.round(modifiedObject.getAngle());
+                  editArt.style.display = 'block';                  
+                  newArt.style.display = 'none';                               
                 }  
                 else if(e.target.type == 'text' || e.target.type == 'group' ) 
                 {
                     $('.nav-tabs a[href="#textSection"]').tab('show');     
-                     document.getElementById("sizeText").value = modifiedObject.getFontSize(); 
-                     document.getElementById("angleText").value = modifiedObject.getAngle();
-                               
-                }  
+                     
+                     document.getElementById("angleText").value = Math.round(modifiedObject.getAngle());
+                     if (e.target.type == 'text') 
+                     {
+                       document.getElementById("sizeText").value = Math.round(modifiedObject.getFontSize()); 
+                       document.getElementById('text').value = modifiedObject.text;
+                     }
+                     else
+                     {                           
+                        var objectList = modifiedObject.getObjects();
+                        var value = "";  
+
+                        if (modifiedObject.id.includes("bridge")) 
+                        { 
+                           for (var i=0; i < objectList.length; i++) 
+                           {
+                             value += objectList[i].text; 
+                           }
+                        }
+                        else
+                        {
+                            console.log(objectList); 
+                          for (var i = objectList.length-1 ; i > 0; i--) 
+                          {
+                             value += objectList[i].text; 
+                          }
+                        }
+                        document.getElementById('text').value = value;
+                     }
+                     //enabling text btns
+                     var textBtns = document.getElementsByClassName("textBtn");
+                     for (var i = 0; i < textBtns.length; i++) {
+                         textBtns[i].disabled = false;
+                     }
+                }
+                //disabling textbtns again if text is not selected
+                if(e.target.type != 'text' && e.target.type != 'group' )
+                {
+                    var textBtns = document.getElementsByClassName("textBtn");
+                     for (var i = 0; i < textBtns.length; i++) {
+                         textBtns[i].disabled = true;
+                     }
+                }   
             });
 
             back.on('mouse:up', function(e) 
@@ -2762,60 +3303,390 @@
                 var editArt = document.getElementById("editArt");                        
                 var newArt = document.getElementById("newArt");
                 if (typeof(e.target) == "undefined")
-                 {  
-                     newArt.style.display = 'block';
-                     editArt.style.display = 'none';                    
+                 { 
+                    newArt.style.display = 'block';
+                    editArt.style.display = 'none';  
+                    document.getElementById('text').value = "";                  
                  }
-                 
-                else if (e.target.type == 'image') {
-                    $('.nav-tabs a[href="#addArt"]').tab('show');  
-                     document.getElementById("widthImage").value = modifiedObject.getWidth();
-                    document.getElementById("heightImage").value = modifiedObject.getHeight();
-                    document.getElementById("angleImage").value = modifiedObject.getAngle();
-                    editArt.style.display = 'block';                  
-                    newArt.style.display = 'none';  
-                             
+
+                else if (e.target.type == 'image') 
+                {
+                  $('.nav-tabs a[href="#addArt"]').tab('show');  
+                  document.getElementById("widthImage").value = Math.round(modifiedObject.getWidth()/35);
+                  document.getElementById("heightImage").value = Math.round(modifiedObject.getHeight()/35);
+                  document.getElementById("angleImage").value = Math.round(modifiedObject.getAngle());
+                  editArt.style.display = 'block';                  
+                  newArt.style.display = 'none';                               
                 }  
                 else if(e.target.type == 'text' || e.target.type == 'group' ) 
                 {
                     $('.nav-tabs a[href="#textSection"]').tab('show');     
-                     document.getElementById("sizeText").value = modifiedObject.getFontSize(); 
-                     document.getElementById("angleText").value = modifiedObject.getAngle();
-                               
+                     
+                     document.getElementById("angleText").value = Math.round(modifiedObject.getAngle());
+                     if (e.target.type == 'text') 
+                     {
+                       document.getElementById("sizeText").value = Math.round(modifiedObject.getFontSize()); 
+                       document.getElementById('text').value = modifiedObject.text;
+                     }
+                     else
+                     {                           
+                        var objectList = modifiedObject.getObjects();
+                        var value = "";  
+
+                        if (modifiedObject.id.includes("bridge")) 
+                        { 
+                           for (var i=0; i < objectList.length; i++) 
+                           {
+                             value += objectList[i].text; 
+                           }
+                        }
+                        else
+                        {
+                            console.log(objectList); 
+                          for (var i = objectList.length-1 ; i > 0; i--) 
+                          {
+                             value += objectList[i].text; 
+                          }
+                        }
+                        document.getElementById('text').value = value;
+                     }
+                     //enabling text btns
+                     var textBtns = document.getElementsByClassName("textBtn");
+                     for (var i = 0; i < textBtns.length; i++) {
+                         textBtns[i].disabled = false;
+                     }
                 }
+                //disabling textbtns again if text is not selected
+                if(e.target.type != 'text' && e.target.type != 'group' )
+                {
+                    var textBtns = document.getElementsByClassName("textBtn");
+                     for (var i = 0; i < textBtns.length; i++) {
+                         textBtns[i].disabled = true;
+                     }
+                }   
             });
 
             left.on('mouse:up', function(e) 
             {
-                var modifiedObject = e.target;
+               var modifiedObject = e.target;
                 var editArt = document.getElementById("editArt");                        
                 var newArt = document.getElementById("newArt");
-              if (typeof(e.target) == "undefined")
-                 {                 
-                     var newArt = document.getElementById("newArt");
-                     var editArt = document.getElementById("editArt");
-                     newArt.style.display = 'block';
-                     editArt.style.display = 'none';                    
+                if (typeof(e.target) == "undefined")
+                 { 
+                    newArt.style.display = 'block';
+                    editArt.style.display = 'none';  
+                    document.getElementById('text').value = "";                  
                  }
-                 
-                else if (e.target.type == 'image') {
-                    $('.nav-tabs a[href="#addArt"]').tab('show');  
-                     document.getElementById("widthImage").value = modifiedObject.getWidth();
-                    document.getElementById("heightImage").value = modifiedObject.getHeight();
-                    document.getElementById("angleImage").value = modifiedObject.getAngle();
-                    editArt.style.display = 'block';                  
-                    newArt.style.display = 'none';  
-                             
+
+                else if (e.target.type == 'image') 
+                {
+                  $('.nav-tabs a[href="#addArt"]').tab('show');  
+                  document.getElementById("widthImage").value = Math.round(modifiedObject.getWidth()/35);
+                  document.getElementById("heightImage").value = Math.round(modifiedObject.getHeight()/35);
+                  document.getElementById("angleImage").value = Math.round(modifiedObject.getAngle());
+                  editArt.style.display = 'block';                  
+                  newArt.style.display = 'none';                               
                 }  
                 else if(e.target.type == 'text' || e.target.type == 'group' ) 
                 {
                     $('.nav-tabs a[href="#textSection"]').tab('show');     
-                     document.getElementById("sizeText").value = modifiedObject.getFontSize(); 
-                     document.getElementById("angleText").value = modifiedObject.getAngle();
-                               
+                     
+                     document.getElementById("angleText").value = Math.round(modifiedObject.getAngle());
+                     if (e.target.type == 'text') 
+                     {
+                       document.getElementById("sizeText").value = Math.round(modifiedObject.getFontSize()); 
+                       document.getElementById('text').value = modifiedObject.text;
+                     }
+                     else
+                     {                           
+                        var objectList = modifiedObject.getObjects();
+                        var value = "";  
+
+                        if (modifiedObject.id.includes("bridge")) 
+                        { 
+                           for (var i=0; i < objectList.length; i++) 
+                           {
+                             value += objectList[i].text; 
+                           }
+                        }
+                        else
+                        {
+                            console.log(objectList); 
+                          for (var i = objectList.length-1 ; i > 0; i--) 
+                          {
+                             value += objectList[i].text; 
+                          }
+                        }
+                        document.getElementById('text').value = value;
+                     }
+                     //enabling text btns
+                     var textBtns = document.getElementsByClassName("textBtn");
+                     for (var i = 0; i < textBtns.length; i++) {
+                         textBtns[i].disabled = false;
+                     }
                 }
+                //disabling textbtns again if text is not selected
+                if(e.target.type != 'text' && e.target.type != 'group' )
+                {
+                    var textBtns = document.getElementsByClassName("textBtn");
+                     for (var i = 0; i < textBtns.length; i++) {
+                         textBtns[i].disabled = true;
+                     }
+                }   
             });
-          
+            //function used to keep objects in the canvas
+            front.on("object:modified", function(e){    
+                //gethering necessary information
+                var obj = front.getActiveObject();
+                var maxX = front.width;
+                var maxY = front.height;
+                var width = obj.getWidth();
+                var height = obj.getHeight();
+                var x = obj.left;
+                var y = obj.top;
+                 // if object is too big then resize
+                if( obj.getWidth() > front.width){
+                    if(e.target.type == 'text' || e.target.type == 'group' ) 
+                    {
+                        e.target.setFontSize(e.target.getFontSize()/2);
+                    }
+                    //obj.setWidth(maxX *2);
+                    console.log("too wide! width : " + obj.getWidth());
+                    e.target.set({ width: maxX, scaleX: 1 });
+                } 
+                if(obj.getHeight() > front.height){
+                    if(e.target.type == 'text' || e.target.type == 'group' ) 
+                    {
+                        e.target.setFontSize(e.target.getFontSize()/2);
+                    }
+                   //obj.setHeight(maxY); 
+                   console.log("too tall! height : " + obj.getHeight());
+                   e.target.set({ height: maxY, scaleY: 1 });
+                } 
+                //the following is to help keep images within size range when their angle != 0
+                if(e.target.getAngle() != 0 || e.target.getAngle() != 180){
+                    if( obj.getWidth() > front.height){
+                        if(e.target.type == 'text' || e.target.type == 'group' ) 
+                        {
+                            e.target.setFontSize(e.target.getFontSize()/2);
+                        }
+                        //obj.setWidth(maxX *2);
+                        console.log("too wide! width : " + obj.getWidth());
+                        e.target.set({ width: maxY, scaleX: 1 });
+                    } 
+                    if(obj.getHeight() > front.width){
+                        if(e.target.type == 'text' || e.target.type == 'group' ) 
+                        {
+                            e.target.setFontSize(e.target.getFontSize()/2);
+                        }
+                       //obj.setHeight(maxY); 
+                       console.log("too tall! height : " + obj.getHeight());
+                       e.target.set({ height: maxX, scaleY: 1 });
+                    } 
+                }      
+                obj.setCoords();
+                // making sure top-left  corner stays in canvas
+                if(obj.getBoundingRect().top < 0 || obj.getBoundingRect().left < 0){
+                    obj.top = Math.max(obj.top, obj.top-obj.getBoundingRect().top);
+                    obj.left = Math.max(obj.left, obj.left-obj.getBoundingRect().left);
+                }
+                //making sure bot-right corner stays in canvas
+                if(obj.getBoundingRect().top+height  > front.height || obj.getBoundingRect().left+width  > front.width){
+                    obj.top = Math.min(obj.top, front.height-obj.getBoundingRect().height+obj.top-obj.getBoundingRect().top);
+                    obj.left = Math.min(obj.left, front.width-obj.getBoundingRect().width+obj.left-obj.getBoundingRect().left);
+                }
+                obj.setCoords();
+                front.renderAll();
+            });
+            right.on("object:modified", function(e){    
+                //gethering necessary information
+                var obj = right.getActiveObject();
+                var maxX = right.width;
+                var maxY = right.height;
+                var width = obj.getWidth();
+                var height = obj.getHeight();
+                var x = obj.left;
+                var y = obj.top;
+                 // if object is too big then resize
+                if( obj.getWidth() > right.width){
+                    if(e.target.type == 'text' || e.target.type == 'group' ) 
+                    {
+                        e.target.setFontSize(e.target.getFontSize()/2);
+                    }
+                    //obj.setWidth(maxX *2);
+                    console.log("too wide! width : " + obj.getWidth());
+                    e.target.set({ width: maxX, scaleX: 1 });
+                } 
+                if(obj.getHeight() > right.height){
+                    if(e.target.type == 'text' || e.target.type == 'group' ) 
+                    {
+                        e.target.setFontSize(e.target.getFontSize()/2);
+                    }
+                   //obj.setHeight(maxY); 
+                   console.log("too tall! height : " + obj.getHeight());
+                   e.target.set({ height: maxY, scaleY: 1 });
+                } 
+                //the following is to help keep images within size range when their angle != 0
+                if(e.target.getAngle() != 0 || e.target.getAngle() != 180){
+                    if( obj.getWidth() > right.height){
+                        if(e.target.type == 'text' || e.target.type == 'group' ) 
+                        {
+                            e.target.setFontSize(e.target.getFontSize()/2);
+                        }
+                        //obj.setWidth(maxX *2);
+                        console.log("too wide! width : " + obj.getWidth());
+                        e.target.set({ width: maxY, scaleX: 1 });
+                    } 
+                    if(obj.getHeight() > right.width){
+                        if(e.target.type == 'text' || e.target.type == 'group' ) 
+                        {
+                            e.target.setFontSize(e.target.getFontSize()/2);
+                        }
+                       //obj.setHeight(maxY); 
+                       console.log("too tall! height : " + obj.getHeight());
+                       e.target.set({ height: maxX, scaleY: 1 });
+                    } 
+                }      
+                obj.setCoords();
+                // making sure top-left  corner stays in canvas
+                if(obj.getBoundingRect().top < 0 || obj.getBoundingRect().left < 0){
+                    obj.top = Math.max(obj.top, obj.top-obj.getBoundingRect().top);
+                    obj.left = Math.max(obj.left, obj.left-obj.getBoundingRect().left);
+                }
+                //making sure bot-right corner stays in canvas
+                if(obj.getBoundingRect().top+height  > right.height || obj.getBoundingRect().left+width  > right.width){
+                    obj.top = Math.min(obj.top, right.height-obj.getBoundingRect().height+obj.top-obj.getBoundingRect().top);
+                    obj.left = Math.min(obj.left, right.width-obj.getBoundingRect().width+obj.left-obj.getBoundingRect().left);
+                }
+                obj.setCoords();
+                right.renderAll();
+            });
+            back.on("object:modified", function(e){    
+                //gethering necessary information
+                var obj = back.getActiveObject();
+                var maxX = back.width;
+                var maxY = back.height;
+                var width = obj.getWidth();
+                var height = obj.getHeight();
+                var x = obj.left;
+                var y = obj.top;
+                 // if object is too big then resize
+                if( obj.getWidth() > back.width){
+                    if(e.target.type == 'text' || e.target.type == 'group' ) 
+                    {
+                        e.target.setFontSize(e.target.getFontSize()/2);
+                    }
+                    //obj.setWidth(maxX *2);
+                    console.log("too wide! width : " + obj.getWidth());
+                    e.target.set({ width: maxX, scaleX: 1 });
+                } 
+                if(obj.getHeight() > back.height){
+                    if(e.target.type == 'text' || e.target.type == 'group' ) 
+                    {
+                        e.target.setFontSize(e.target.getFontSize()/2);
+                    }
+                   //obj.setHeight(maxY); 
+                   console.log("too tall! height : " + obj.getHeight());
+                   e.target.set({ height: maxY, scaleY: 1 });
+                } 
+                //the following is to help keep images within size range when their angle != 0
+                if(e.target.getAngle() != 0 || e.target.getAngle() != 180){
+                    if( obj.getWidth() > back.height){
+                        if(e.target.type == 'text' || e.target.type == 'group' ) 
+                        {
+                            e.target.setFontSize(e.target.getFontSize()/2);
+                        }
+                        //obj.setWidth(maxX *2);
+                        console.log("too wide! width : " + obj.getWidth());
+                        e.target.set({ width: maxY, scaleX: 1 });
+                    } 
+                    if(obj.getHeight() > back.width){
+                        if(e.target.type == 'text' || e.target.type == 'group' ) 
+                        {
+                            e.target.setFontSize(e.target.getFontSize()/2);
+                        }
+                       //obj.setHeight(maxY); 
+                       console.log("too tall! height : " + obj.getHeight());
+                       e.target.set({ height: maxX, scaleY: 1 });
+                    } 
+                }      
+                obj.setCoords();
+                // making sure top-left  corner stays in canvas
+                if(obj.getBoundingRect().top < 0 || obj.getBoundingRect().left < 0){
+                    obj.top = Math.max(obj.top, obj.top-obj.getBoundingRect().top);
+                    obj.left = Math.max(obj.left, obj.left-obj.getBoundingRect().left);
+                }
+                //making sure bot-right corner stays in canvas
+                if(obj.getBoundingRect().top+height  > back.height || obj.getBoundingRect().left+width  > back.width){
+                    obj.top = Math.min(obj.top, back.height-obj.getBoundingRect().height+obj.top-obj.getBoundingRect().top);
+                    obj.left = Math.min(obj.left, back.width-obj.getBoundingRect().width+obj.left-obj.getBoundingRect().left);
+                }
+                obj.setCoords();
+                back.renderAll();
+            });
+            left.on("object:modified", function(e){    
+                //gethering necessary information
+                var obj = left.getActiveObject();
+                var maxX = left.width;
+                var maxY = left.height;
+                var width = obj.getWidth();
+                var height = obj.getHeight();
+                var x = obj.left;
+                var y = obj.top;
+                 // if object is too big then resize
+                if( obj.getWidth() > left.width){
+                    if(e.target.type == 'text' || e.target.type == 'group' ) 
+                    {
+                        e.target.setFontSize(e.target.getFontSize()/2);
+                    }
+                    //obj.setWidth(maxX *2);
+                    console.log("too wide! width : " + obj.getWidth());
+                    e.target.set({ width: maxX, scaleX: 1 });
+                } 
+                if(obj.getHeight() > left.height){
+                    if(e.target.type == 'text' || e.target.type == 'group' ) 
+                    {
+                        e.target.setFontSize(e.target.getFontSize()/2);
+                    }
+                   //obj.setHeight(maxY); 
+                   console.log("too tall! height : " + obj.getHeight());
+                   e.target.set({ height: maxY, scaleY: 1 });
+                } 
+                //the following is to help keep images within size range when their angle != 0
+                if(e.target.getAngle() != 0 || e.target.getAngle() != 180){
+                    if( obj.getWidth() > left.height){
+                        if(e.target.type == 'text' || e.target.type == 'group' ) 
+                        {
+                            e.target.setFontSize(e.target.getFontSize()/2);
+                        }
+                        //obj.setWidth(maxX *2);
+                        console.log("too wide! width : " + obj.getWidth());
+                        e.target.set({ width: maxY, scaleX: 1 });
+                    } 
+                    if(obj.getHeight() > left.width){
+                        if(e.target.type == 'text' || e.target.type == 'group' ) 
+                        {
+                            e.target.setFontSize(e.target.getFontSize()/2);
+                        }
+                       //obj.setHeight(maxY); 
+                       console.log("too tall! height : " + obj.getHeight());
+                       e.target.set({ height: maxX, scaleY: 1 });
+                    } 
+                }      
+                obj.setCoords();
+                // making sure top-left  corner stays in canvas
+                if(obj.getBoundingRect().top < 0 || obj.getBoundingRect().left < 0){
+                    obj.top = Math.max(obj.top, obj.top-obj.getBoundingRect().top);
+                    obj.left = Math.max(obj.left, obj.left-obj.getBoundingRect().left);
+                }
+                //making sure bot-right corner stays in canvas
+                if(obj.getBoundingRect().top+height  > left.height || obj.getBoundingRect().left+width  > left.width){
+                    obj.top = Math.min(obj.top, left.height-obj.getBoundingRect().height+obj.top-obj.getBoundingRect().top);
+                    obj.left = Math.min(obj.left, left.width-obj.getBoundingRect().width+obj.left-obj.getBoundingRect().left);
+                }
+                obj.setCoords();
+                left.renderAll();
+            });
     </script> 
     <!--END SAVE DESIGN SECTION-->
     <script type="text/javascript">
@@ -2830,9 +3701,100 @@
         function setProductPreview(element){
             productPreview.style.backgroundImage = "url('"+element.src+"')";
         }
+        //updating price in 'Add Products and Styles' modal
+        //hidding label for current live price
+        document.getElementById("itemPriceLabel").style.visibility  = "hidden";
+        function setItemPrice(element)
+        {
+          //creating array of all sizes 
+          var sizes = document.getElementsByClassName("quantity");
+          //creating variable to hold the quantity
+          var quantity = 0;
+          //creating a variable to hold the total cost
+          var itemTotal = 0.0;
+          var s = "";
+          for (var i = 0; i < sizes.length; i++) {
+            quantity += Number(sizes[i].value);
+            s += Number(sizes[i].value) + " ";
+          }
+          console.log('s : ' + s);
+          if(quantity <= 0)
+          {
+            document.getElementById("itemPriceLabel").style.visibility  = "hidden";
+            document.getElementById('itemPrice').innerHTML = "";
+          }
+          else if( quantity == 1)
+          {
+
+            itemTotal = pricePerUnit;
+            console.log("item total : " + itemTotal );
+            document.getElementById("itemPriceLabel").style.visibility  = "visible";
+            document.getElementById('itemPrice').innerHTML = "$" + itemTotal;
+          }
+          else
+          {
+            document.getElementById("itemPriceLabel").style.visibility  = "visible";
+            itemTotal = (quantity) * pricePerUnit;
+            document.getElementById('itemPrice').innerHTML = "$" + itemTotal;
+          }
+        }
+        //function preformed when the user wants to checkout from the 'add product' modal
+        function checkoutFromGetPrice(){
+          addingToCart = true;
+          automatedCheckout = true;
+          uploadEx();
+        }
+        //show 'get price modal'
+        function getPrice(){
+          setDesign(); calcPrice(); 
+          $('#productPicker').modal('show');
+        }
+        //function notifying customer when their designs have been saved
+        function savedSuccessfullyMessage(){
+          var message = document.getElementById('savedSuccessfullyMessage');
+          message.style.display="block";
+          setTimeout(function(){ message.style.display="none"; }, 3000);
+        }
+    </script>
+
+
+
+
+<!--modal to be shown when user tries to leave the page-->
+<div id="leaveModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h4 class="modal-title">Please don't leave me!</h4>
+      </div>
+      <div class="modal-body">
+        <p>We can work this out...</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">...stay</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <script type="text/javascript">
+      //asking customer if they are sure they want to leave before they can leave
+      // Enable navigation prompt
+      window.onbeforeunload = function() {
+       
+          $("#leaveModal").modal();
+ 
+          return false;
+      };
     </script>
     <?php
     //super important code goes here!
     ?>
+
+ 
 </body>
 </html>

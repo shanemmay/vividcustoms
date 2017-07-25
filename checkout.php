@@ -190,6 +190,7 @@
 					        echo "</td>";
 					        echo "<td>";
 					        //echo "<input name='".$name."_".$i."' type='text' value='".$value."'>";
+					        echo $value;
 					        echo "</td>";
 					        echo "</tr>";
 					    }else{
@@ -199,6 +200,7 @@
 					        echo "</td>";
 					        echo "<td>";
 					        //echo "<input name='".$key."' type='text' value='".$value."'>";
+					        echo $value;
 					        echo "</td>";
 					        echo "</tr>";
 					    }

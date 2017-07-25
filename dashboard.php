@@ -188,7 +188,7 @@
        /* width:100%;*/
       }
     </style>   
-    <div class="card-footer text-muted">
+    <div class="card-footer text-muted" style="position: fixed; bottom: 0; width: 100%;">
       <div class="container">
             <p>&copy; 2017 Vivid Customs</p>
             <ul class="list-inline">

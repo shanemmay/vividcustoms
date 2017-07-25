@@ -8,6 +8,7 @@
 	$backShirtURL = $_POST['backShirtURL'];
 	$leftImageURL = $_POST['leftImageURL'];
 	$leftShirtURL = $_POST['leftShirtURL'];
+	$designURL = $_POST['designURL'];
 
 
 
@@ -52,6 +53,7 @@ $message = "<!DOCTYPE html>
 		</tr>
 	</tbody>
 </table>
+<b>To edit this design please: <a href='https://vividcustoms.com/vivid_customs2/ui.php?email=".$designURL."'> click here</a></b>	
 <h3>Our representative is available to assist you!</h3>
 <p>Monday - Friday | 9:00 AM - 5:00 PM Central Standard Time</p>
 <table border='0' align='center'>
@@ -90,25 +92,3 @@ mail($to, 	$subject, 	$message, $headers);
 //header("Location: index.php"); 
 ?>
 
-<script type="text/javascript">
- 	window.location.href = "http://vividcustoms.com/vivid_customs2";
-</script>
-
- <table>
-<?php 
-
-
-    foreach ($_POST as $key => $value) {
-        echo "<tr>";
-        echo "<td>";
-        echo $key;
-        echo "</td>";
-        echo "<td>";
-        echo $value;
-        echo "</td>";
-        echo "</tr>";
-    }
-
-
-?>
-</table>

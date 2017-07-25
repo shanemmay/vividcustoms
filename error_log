@@ -56,3 +56,412 @@
 [18-Jul-2017 10:59:09 CST6CDT] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 27
 [18-Jul-2017 11:05:01 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 36
 [18-Jul-2017 11:09:31 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 36
+[18-Jul-2017 16:08:12 CST6CDT] PHP Parse error:  syntax error, unexpected ';', expecting function (T_FUNCTION) in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 13
+[18-Jul-2017 16:16:42 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 68
+[18-Jul-2017 16:18:43 CST6CDT] PHP Warning:  scandir(/img/clip_art): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 195
+[18-Jul-2017 16:18:43 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 195
+[18-Jul-2017 16:18:43 CST6CDT] PHP Warning:  scandir(/img/clip_art): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 196
+[18-Jul-2017 16:18:43 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 196
+[18-Jul-2017 16:35:15 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 78
+[18-Jul-2017 16:36:13 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 45
+[18-Jul-2017 16:36:26 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 78
+[18-Jul-2017 16:37:15 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 78
+[18-Jul-2017 16:37:55 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 78
+[18-Jul-2017 16:43:21 CST6CDT] PHP Parse error:  syntax error, unexpected ')' in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 53
+[18-Jul-2017 16:43:40 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 84
+[18-Jul-2017 16:49:06 CST6CDT] PHP Catchable fatal error:  Object of class Item could not be converted to string in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 71
+[18-Jul-2017 16:49:48 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 91
+[18-Jul-2017 16:50:20 CST6CDT] PHP Catchable fatal error:  Object of class Item could not be converted to string in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 71
+[18-Jul-2017 16:53:58 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 94
+[18-Jul-2017 16:55:33 CST6CDT] PHP Parse error:  syntax error, unexpected '<' in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 207
+[19-Jul-2017 09:39:39 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 102
+[19-Jul-2017 09:53:40 CST6CDT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/vividcustoms/public_html/vivid_customs2/test.php:38) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 39
+[19-Jul-2017 09:59:29 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 111
+[19-Jul-2017 10:05:36 CST6CDT] PHP Parse error:  syntax error, unexpected '$categories' (T_VARIABLE) in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 220
+[19-Jul-2017 10:09:03 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 116
+[19-Jul-2017 10:10:48 CST6CDT] PHP Warning:  mysqli_query(): Empty query in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 116
+[19-Jul-2017 10:17:34 CST6CDT] PHP Parse error:  syntax error, unexpected '$directory' (T_VARIABLE) in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 236
+[19-Jul-2017 10:18:31 CST6CDT] PHP Parse error:  syntax error, unexpected 'subcategories' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 235
+[19-Jul-2017 11:00:21 CST6CDT] PHP Parse error:  syntax error, unexpected 'for' (T_FOR) in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 209
+[19-Jul-2017 11:00:34 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 231
+[19-Jul-2017 11:02:42 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 261
+[19-Jul-2017 11:02:45 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 261
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:01 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:16:56 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:18:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:19:21 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:20:52 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:21:10 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/1): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 11:22:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 241
+[19-Jul-2017 12:13:40 CST6CDT] PHP Fatal error:  Call to undefined function categoriesContents() in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 223
+[19-Jul-2017 12:31:22 CST6CDT] PHP Parse error:  syntax error, unexpected '.' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 11
+[19-Jul-2017 12:33:13 CST6CDT] PHP Parse error:  syntax error, unexpected '.' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 11
+[19-Jul-2017 12:33:57 CST6CDT] PHP Parse error:  syntax error, unexpected '.' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 11
+[19-Jul-2017 12:34:23 CST6CDT] PHP Parse error:  syntax error, unexpected end of file in /home/vividcustoms/public_html/vivid_customs2/test.php on line 31
+[19-Jul-2017 12:53:56 CST6CDT] PHP Parse error:  syntax error, unexpected 'print_r' (T_STRING), expecting '(' in /home/vividcustoms/public_html/vivid_customs2/ui2.php on line 220
+[19-Jul-2017 13:00:33 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Bats): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 13
+[19-Jul-2017 13:00:33 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 13
+[19-Jul-2017 14:18:52 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Animals/Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 41
+[19-Jul-2017 14:18:52 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 41
+[19-Jul-2017 14:31:13 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Animals/Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 44
+[19-Jul-2017 14:31:13 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 44
+[19-Jul-2017 15:33:15 CST6CDT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 27
+[19-Jul-2017 15:34:27 CST6CDT] PHP Parse error:  syntax error, unexpected '=' in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 22
+[19-Jul-2017 15:34:43 CST6CDT] PHP Parse error:  syntax error, unexpected '=' in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 38
+[19-Jul-2017 16:05:51 CST6CDT] PHP Parse error:  syntax error, unexpected '*' in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 31
+[20-Jul-2017 10:57:20 CST6CDT] PHP Parse error:  syntax error, unexpected '<' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 7
+[20-Jul-2017 10:58:01 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 27
+[20-Jul-2017 10:58:27 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 27
+[20-Jul-2017 11:03:54 CST6CDT] PHP Warning:  opendir(/img/clip_art/): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 27
+[20-Jul-2017 11:04:13 CST6CDT] PHP Warning:  opendir(/img/clip_art): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 27
+[20-Jul-2017 11:05:57 CST6CDT] PHP Parse error:  syntax error, unexpected end of file in /home/vividcustoms/public_html/vivid_customs2/test.php on line 80
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Military in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Military in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Transportation in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Transportation in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Holidays in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Holidays in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Shapes in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Shapes in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Events in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Events in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for test in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for test in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Animals in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Animals in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Religion in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Religion in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Sports in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Sports in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Food in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Food in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Music in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Music in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for School in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for School in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Emojis in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Emojis in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for Nature in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for Nature in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filesize(): stat failed for People in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:11:21 CST6CDT] PHP Warning:  filemtime(): stat failed for People in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:11:40 CST6CDT] PHP Warning:  opendir(/img/clip_art/): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 25
+[20-Jul-2017 11:11:40 CST6CDT] PHP Warning:  readdir() expects parameter 1 to be resource, boolean given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 26
+[20-Jul-2017 11:11:40 CST6CDT] PHP Warning:  closedir() expects parameter 1 to be resource, boolean given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[20-Jul-2017 11:12:00 CST6CDT] PHP Warning:  opendir(/img/clip_art): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 25
+[20-Jul-2017 11:12:00 CST6CDT] PHP Warning:  readdir() expects parameter 1 to be resource, boolean given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 26
+[20-Jul-2017 11:12:00 CST6CDT] PHP Warning:  closedir() expects parameter 1 to be resource, boolean given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Military in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Military in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Transportation in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Transportation in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Holidays in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Holidays in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Shapes in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Shapes in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Events in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Events in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for test in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for test in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Animals in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Animals in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Religion in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Religion in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Sports in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Sports in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Food in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Food in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Music in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Music in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for School in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for School in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Emojis in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Emojis in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for Nature in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for Nature in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filesize(): stat failed for People in /home/vividcustoms/public_html/vivid_customs2/test.php on line 67
+[20-Jul-2017 11:12:25 CST6CDT] PHP Warning:  filemtime(): stat failed for People in /home/vividcustoms/public_html/vivid_customs2/test.php on line 68
+[20-Jul-2017 11:32:56 CST6CDT] PHP Parse error:  syntax error, unexpected ''</tabl' (T_ENCAPSED_AND_WHITESPACE) in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 67
+[20-Jul-2017 12:54:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[20-Jul-2017 12:54:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[20-Jul-2017 12:54:50 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[20-Jul-2017 12:54:50 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[20-Jul-2017 12:55:10 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[20-Jul-2017 12:55:10 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[20-Jul-2017 13:05:18 CST6CDT] PHP Parse error:  syntax error, unexpected '==' (T_IS_EQUAL) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[20-Jul-2017 13:07:54 CST6CDT] PHP Parse error:  syntax error, unexpected '==' (T_IS_EQUAL) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[20-Jul-2017 13:08:07 CST6CDT] PHP Parse error:  syntax error, unexpected '==' (T_IS_EQUAL) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[20-Jul-2017 13:08:55 CST6CDT] PHP Parse error:  syntax error, unexpected '==' (T_IS_EQUAL) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 37
+[20-Jul-2017 13:24:01 CST6CDT] PHP Parse error:  syntax error, unexpected end of file in /home/vividcustoms/public_html/vivid_customs2/test.php on line 82
+[20-Jul-2017 14:14:53 CST6CDT] PHP Parse error:  syntax error, unexpected end of file in /home/vividcustoms/public_html/vivid_customs2/test.php on line 94
+[20-Jul-2017 14:15:43 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 86
+[20-Jul-2017 14:46:36 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 15
+[20-Jul-2017 14:46:55 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 15
+[20-Jul-2017 14:54:56 CST6CDT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 68
+[20-Jul-2017 15:05:22 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 60
+[20-Jul-2017 15:23:21 CST6CDT] PHP Warning:  array_diff_uassoc(): at least 3 parameters are required, 2 given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 37
+[20-Jul-2017 15:24:43 CST6CDT] PHP Warning:  array_diff_uassoc() expects parameter 3 to be a valid callback, function 'key_compare_func' not found or invalid function name in /home/vividcustoms/public_html/vivid_customs2/test.php on line 37
+[20-Jul-2017 15:25:22 CST6CDT] PHP Warning:  array_diff_uassoc() expects parameter 3 to be a valid callback, function 'key_compare_func' not found or invalid function name in /home/vividcustoms/public_html/vivid_customs2/test.php on line 37
+[21-Jul-2017 11:21:13 CST6CDT] PHP Parse error:  syntax error, unexpected 'n' (T_STRING), expecting ',' or ';' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 49
+[21-Jul-2017 14:56:09 CST6CDT] PHP Fatal error:  Class 'Stripe\Stripe' not found in /home/vividcustoms/public_html/vivid_customs2/test.php on line 7
+[21-Jul-2017 15:08:15 CST6CDT] PHP Parse error:  syntax error, unexpected ''.$designURL.'' (T_CONSTANT_ENCAPSED_STRING) in /home/vividcustoms/public_html/vivid_customs2/email.php on line 45
+[24-Jul-2017 12:04:31 CST6CDT] PHP Fatal error:  Class 'Stripe\Stripe' not found in /home/vividcustoms/public_html/vivid_customs2/test.php on line 7
+[24-Jul-2017 12:05:03 CST6CDT] PHP Fatal error:  Class 'Stripe\Stripe' not found in /home/vividcustoms/public_html/vivid_customs2/test.php on line 7
+[24-Jul-2017 12:05:07 CST6CDT] PHP Fatal error:  Class 'Stripe\Stripe' not found in /home/vividcustoms/public_html/vivid_customs2/test.php on line 7
+[24-Jul-2017 12:11:51 CST6CDT] PHP Fatal error:  Class 'Stripe\Stripe' not found in /home/vividcustoms/public_html/vivid_customs2/test.php on line 7
+[24-Jul-2017 12:11:54 CST6CDT] PHP Fatal error:  Class 'Stripe\Stripe' not found in /home/vividcustoms/public_html/vivid_customs2/test.php on line 7
+[24-Jul-2017 12:12:44 CST6CDT] PHP Fatal error:  Class 'Stripe\Stripe' not found in /home/vividcustoms/public_html/vivid_customs2/test.php on line 7
+[24-Jul-2017 12:12:47 CST6CDT] PHP Fatal error:  Class 'Stripe\Stripe' not found in /home/vividcustoms/public_html/vivid_customs2/test.php on line 7
+[24-Jul-2017 13:06:02 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:02 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:02 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:02 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:06 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:06 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:06 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:06 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:07 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:07 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:07 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:07 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:07 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:07 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:07 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:07 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:09 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:09 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:09 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:09 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:10 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:10 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:10 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:10 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:10 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:10 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:10 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:10 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:11 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:12 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:12 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:12 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:12 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:12 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:12 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:12 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:12 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:13 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:13 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:13 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:13 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:06:13 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:13 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:06:13 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:06:13 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:13:03 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Animals&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:03 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:03 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:13:03 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:13:04 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Animals&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:04 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:04 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:13:04 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:13:05 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Animals&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:05 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:05 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:13:05 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:13:06 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Animals&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:06 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:06 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:13:06 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:13:08 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Animals&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:08 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:08 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:13:08 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:13:12 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Animals&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:12 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:12 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:13:12 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:13:26 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Animals&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:26 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:26 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:13:26 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:13:28 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Animals&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:28 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:13:28 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:13:28 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:14:30 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:14:30 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:14:30 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:14:30 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:15:27 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:15:27 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:15:27 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:15:27 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:15:35 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:15:35 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:15:35 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:15:35 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:15:40 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:15:40 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:15:40 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:15:40 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:16:02 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:16:02 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:16:02 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:16:02 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:16:05 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:16:05 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:16:05 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:16:05 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:16:12 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:16:12 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:16:12 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:16:12 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 13:16:30 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:16:30 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 13:16:30 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 13:16:30 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 14:09:20 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:09:20 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:09:20 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 14:09:20 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 14:10:19 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:10:19 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:10:19 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 14:10:19 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 14:11:06 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:11:06 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:11:06 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 14:11:06 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 14:11:20 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:11:20 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:11:20 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 14:11:20 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 14:22:00 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:22:00 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:22:00 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 14:22:00 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 14:22:40 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/&lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Animals.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Animals): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:22:40 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 16
+[24-Jul-2017 14:22:40 CST6CDT] PHP Warning:  array_diff(): Argument #1 is not an array in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 19
+[24-Jul-2017 14:22:40 CST6CDT] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 21
+[24-Jul-2017 15:11:34 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Animals/        &lt;img art-image=&quot;&quot; src=&quot;img/clip_art/Animals/Bears/Bears.png&quot; width=&quot;50&quot; height=&quot;50&quot;&gt;&lt;br&gt;Bears): failed to open dir: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 103
+[24-Jul-2017 15:11:34 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 103
+[25-Jul-2017 11:21:52 CST6CDT] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/vividcustoms/public_html/vivid_customs2/test.php:346) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
+[25-Jul-2017 11:24:33 CST6CDT] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/vividcustoms/public_html/vivid_customs2/test2.php:28) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
