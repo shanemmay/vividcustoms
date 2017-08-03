@@ -4,7 +4,7 @@
 ?>
 <!--GETTING ORDER NUMBER-->
 <?php 
-   $ses_sql = mysqli_ ($db,"Select Quantity From consecutive where Name = 'Order'");     
+   $ses_sql = mysqli_query($db,"Select Quantity From consecutive where Name = 'Order'");     
    $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
    $ordernumber = "";
   if (!$Guest) {
@@ -23,6 +23,7 @@
     <title>ui</title>
     <script src="fabric.min.js"></script>
     <script src="custom_controls.js"></script>
+    <script src="fabric.curvedText.js"></script>
     <!--FONT AWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/42fa7d18a0.css">
     <script src="https://use.fontawesome.com/0bc1ca65b8.js"></script>
@@ -786,14 +787,35 @@
                      <h3>ADD TEXT</h3>                      
                       <div class="panel-group">
                             <div class="panel panel-default">
-                              <div class="panel-heading">Text Secction</div>
+                              <div class="panel-heading">Text Section</div>
                               <div class="panel-body">
-                                    <textarea rows="3" class="form-control" id="text" type="text" onkeypress="return addText(event);" placeholder="Enter text"></textarea><!--was taken out of onchange setText();-->
+                                    <!--<textarea rows="3" class="form-control"  type="text" onkeypress="return addText(event);" placeholder="Enter text"></textarea>--><!--id="text" was taken out for testing || onchange setText(); was taken out -->
+                                    <!--NEW TEXT DESIGN-->
+                                    <textarea rows="3"  class="form-control" type="text" id="text" placeholder="Enter Text"/></textarea> <br><!--testtext was the old id, make sure to change the javascript!-->
+                                    <button onclick="addTextToDesign();">Add Text to Design!</button><br><br>
+                                    <button id="convert">Convert Text/Curved</button>
+                                    Reverse : <input type="checkbox" name="reverse" id="reverse" /><br>
+                                    Radius : <input type="range" min="0" max="110" value="50" id="radius" /><br>
+                                    Spacing : <input type="range" min="0" max="44" value="20" id="spacing" /><br>
+                                    <!--Color : <input type="color" value="#0000ff" id="fill" /><br>
+                                    Effect : 
+                                    <select name="effect" id="effect" >
+                                      <option value="curved">Curved</option>
+                                      <option value="arc">Arc</option>
+                                      <option value="STRAIGHT">STRAIGHT</option>
+                                      <option value="smallToLarge">smallToLarge</option>
+                                      <option value="largeToSmallTop">largeToSmallToped</option>
+                                      <option value="largeToSmallBottom">largeToSmallBottom</option>
+                                      <option value="bulge">bulge</option>
+                                    </select>-->
+                                    
+                                    <!--<button id="save">Save/Reload</button>-->
+
                               </div>
                             </div>
                             <div class="panel panel-default">
-                              <div class="panel-heading">Change Color</div>
-                              <div class="panel-body"> 
+                              <div class="panel-heading" data-toggle="collapse" data-target="#color_panel">Change Color</div>
+                              <div id="color_panel" class="collapse panel-body"> 
                                   <h5>Text Color:</h5>
                                     <!--COLOR SECTION-->  
                                         <style type="text/css">
@@ -874,9 +896,28 @@
                             </div>
                             <!--START TEXT DESIGN SECTION-->
                             <div class="panel panel-default">
-                              <div class="panel-heading">Styles</div>
-                              <div class="panel-body">
-                                <!--START FONTS MODAL-->
+                              <div class="panel-heading" data-toggle="collapse" data-target="#fonts_panel">Fonts</div>
+                              <div id="fonts_panel" class="collapse panel-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <a href="#"><div class="col-sm-3"><h3 id="bully" onclick="setFont(this);">Bully Style</h3></div></a>
+                                        <a href="#"><div class="col-sm-3"><h3 id="PokemonHollow" onclick="setFont(this);">Gotta Catch</h3></div></a>
+                                        <a href="#"><div class="col-sm-3"><h3 id="PokemonSolid" onclick="setFont(this);">Them All!</h3></div></a>
+                                        <a href="#"><div class="col-sm-3"><h3 id="jelly" onclick="setFont(this);">Jellyfi Text</h3></div></a>
+                                    </div>
+                                    <div class="row">
+                                        <a href="#"><div class="col-sm-3"><h3 id="angry" onclick="setFont(this);">Angry Birds!</h3></div></a>
+                                        <a href="#"><div class="col-sm-3"><h3 id="tmnt" onclick="setFont(this);">Turtle Power!</h3></div></a>
+                                        <a href="#"><div class="col-sm-3"><h3 id="db" onclick="setFont(this);">Make a Wish</h3></div></a>
+                                        <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But take care</h3></div></a>
+                                    </div>
+                                    <div class="row">
+                                        <a href="#"><div class="col-sm-3"><h3 id="spongebob" onclick="setFont(this);">Lives Under The Sea!</h3></div></a>
+                                        <a href="#"><div class="col-sm-3"><h3 id="tmnt" onclick="setFont(this);">Turtle Power!</h3></div></a>
+                                        <a href="#"><div class="col-sm-3"><h3 id="db" onclick="setFont(this);">Make a Wish</h3></div></a>
+                                        <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But take care</h3></div></a>
+                                    </div>
+                                </div>
                                     <!-- Button trigger modal -->
                                     <input type="button" value="Fonts" class="btn btn-primary textBtn" data-toggle="modal" data-target="#fontModal" disabled="true">
                                     
@@ -891,6 +932,7 @@
                                                 <h1 class="modal-title fancy" id="label">Fonts</h1>
                                           </div>
                                           <div class="modal-body">
+                                                <!--COMMENTED OUT FOR TESTING
                                                 <div class="container-fluid">
                                                     <div class="row">
                                                         <a href="#"><div class="col-sm-3"><h3 id="bully" onclick="setFont(this);">Bully Style</h3></div></a>
@@ -902,15 +944,15 @@
                                                         <a href="#"><div class="col-sm-3"><h3 id="angry" onclick="setFont(this);">Angry Birds!</h3></div></a>
                                                         <a href="#"><div class="col-sm-3"><h3 id="tmnt" onclick="setFont(this);">Turtle Power!</h3></div></a>
                                                         <a href="#"><div class="col-sm-3"><h3 id="db" onclick="setFont(this);">Make a Wish</h3></div></a>
-                                                        <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But be careful</h3></div></a>
+                                                        <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But take care</h3></div></a>
                                                     </div>
                                                     <div class="row">
                                                         <a href="#"><div class="col-sm-3"><h3 id="spongebob" onclick="setFont(this);">Lives Under The Sea!</h3></div></a>
                                                         <a href="#"><div class="col-sm-3"><h3 id="tmnt" onclick="setFont(this);">Turtle Power!</h3></div></a>
                                                         <a href="#"><div class="col-sm-3"><h3 id="db" onclick="setFont(this);">Make a Wish</h3></div></a>
-                                                        <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But be careful</h3></div></a>
+                                                        <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But take care</h3></div></a>
                                                     </div>
-                                                </div>
+                                                </div>-->
                                           </div>
                                         </div>
                                       </div>
@@ -923,8 +965,8 @@
                               </div>
                             </div>
                             <div class="panel panel-default">
-                              <div class="panel-heading">Size & Effect</div>
-                              <div class="panel-body">
+                              <div class="panel-heading" data-toggle="collapse" data-target="#size_effect">Size &amp; Effect</div>
+                              <div id="size_effect" class="collapse panel-body">
                                     <div class="input-group">                           
                                         <span class="input-group-addon">Font Size</span>
                                         <input id="sizeText" type="number" class="form-control" name="sizeText"  min="1" max="2" onkeypress="return resize(event);" >
@@ -1379,11 +1421,11 @@
                 </div>
 
                 <div id="textDesign">
-                  <script src="fabric.curvedText.js"></script>
+                 
 
+                 <!-- COMMENTED OUT FOR TESTING ABOVE 
                   <canvas id="c" width="400" height="200"></canvas><br/>
                   <input type="text" id="testtext" value="CurvedText" /><br>
-                  
                   Reverse : <input type="checkbox" name="reverse" id="reverse" /><br>
                   Radius : <input type="range" min="0" max="100" value="50" id="radius" /><br>
                   Spacing : <input type="range" min="5" max="40" value="20" id="spacing" /><br>
@@ -1398,10 +1440,8 @@
                     <option value="largeToSmallBottom">largeToSmallBottom</option>
                     <option value="bulge">bulge</option>
                   </select>
-                  
                   <br>
                   <br>
-                  
                   <button id="convert">Convert Text/Curved</button>
                   <button id="save">Save/Reload</button>
                   
@@ -1419,13 +1459,12 @@
                       textAlign: 'center',
                       fill: '#0000FF',
                       radius: 150,
-                      fontSize: 20,
-                      spacing: 20
-                      //fontFamily: 'Arial'
+                      fontSize: 25,
+                      spacing: 20,
+                      fontFamily: 'spongebob'
                     });
                     canvas.add(CurvedText).renderAll();
                     canvas.setActiveObject(canvas.item(canvas.getObjects().length-1));
-
                     $('#testtext').keyup(function(){
                       var obj = canvas.getActiveObject();
                       if(obj){
@@ -1433,7 +1472,6 @@
                         canvas.renderAll();
                       }
                     });
-
                     $('#reverse').click(function(){
                       var obj = canvas.getActiveObject();
                       if(obj){
@@ -1441,31 +1479,29 @@
                         canvas.renderAll();
                       }
                     });
-
-                    $('#radius, #spacing, #fill').change(function(){
+                    $('#radius, #spacing').change(function(){ // , #fill was taken out of the selector
                       var obj = canvas.getActiveObject();
                       if(obj){
                         obj.set($(this).attr('id'),$(this).val()); 
                       }
                       canvas.renderAll();
                     });
-
-                    $('#radius, #spacing, #effect').change(function(){
+                    $('#radius, #spacing').change(function(){// , #effect was taken out of the selector
                       var obj = canvas.getActiveObject();
                       if(obj){
                         obj.set($(this).attr('id'),$(this).val()); 
                       }
                       canvas.renderAll();
                     });
-
+                    /*This is commented out because #fill is commented out
                     $('#fill').change(function(){
                       var obj = canvas.getActiveObject();
                       if(obj){
                         obj.setFill($(this).val()); 
                       }
                       canvas.renderAll();
-                    });
-
+                    });*/
+                    /*Commented because #save was commented out
                     $('#save').click(function() {
                       var design = JSON.stringify(canvas.toJSON());
                       canvas.clear();
@@ -1474,8 +1510,7 @@
                         console.log('loaded');      
                         canvas.renderAll();
                       });
-                    });
-                    
+                    });*/
                     $('#convert').click(function(){
                       var props = {};
                       var obj = canvas.getActiveObject();
@@ -1499,29 +1534,27 @@
                         canvas.setActiveObject(canvas.item(canvas.getObjects().length-1));
                       }
                     });
-                   
                     function onSelected(){
                       var obj = canvas.getActiveObject();
                       $('#testtext').val(obj.getText());
                       $('#reverse').prop('checked', obj.get('reverse'));
                       $('#radius').val(obj.get('radius'));
                       $('#spacing').val(obj.get('spacing'));
-                      $('#fill').val(obj.getFill());
+                      //$('#fill').val(obj.getFill());
+                      /*Commented out because #effect was commented out
                       if(obj.getEffect) {
                         $('#effect').val(obj.getEffect());
-                      }
+                      }*/
                     }
-
                     function onDeSelected(){
                       $('#testtext').val('');
                       $('#reverse').prop('checked', false);
                       $('#radius').val(50);
                       $('#spacing').val(20);
-                      $('#fill').val('#0000FF');
-                      $('#effect').val('curved');
+                      //$('#fill').val('#0000FF');
+                      //$('#effect').val('curved');
                     }
-                    alert('js works');
-                  </script>
+                  </script>-->
                 </div>
 
             </div>
@@ -1713,6 +1746,7 @@
                 cornerShape: 'circle',
                 cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                 cornerPadding: 10,
+                hasRotatingPoint: false
             },
             tl: {
                 icon: 'img/x.png', //icons/rotate.svg
@@ -2374,6 +2408,7 @@
                     cornerShape: 'circle',
                     cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
                     cornerPadding: 10,
+                    hasRotatingPoint: false
                 },
                 tl: {
                     icon: 'img/x.png', //icons/rotate.svg
@@ -3791,6 +3826,242 @@
           return false;
       };
     </script>
+
+    <!--TEXT DESIGN JAVASCRIPT-->
+    <script>
+                    
+                    //canvas = new fabric.Canvas('c');
+                    front.on('selection:cleared', onDeSelected);
+                    front.on('object:selected', onSelected);
+                    front.on('selection:created', onSelected);
+
+                    //front.add(CurvedText).renderAll();
+                    //front.setActiveObject(front.item(front.getObjects().length-1));
+                    $('#text').change(function(){
+                      var obj = front.getActiveObject();
+                      if(obj){
+                        obj.setText(this.value);
+                        front.renderAll();
+                        return;
+                      }
+                      colorText = "#000000";
+                      colorArt = "#000000";
+                      strokeColor = "#000000";
+                      font = 'Ariel'; 
+
+                      text = document.getElementById('text').value;
+                      document.getElementById('text').value = "";
+                      alert("nothing : " + document.getElementById('text').value );
+                      var txt = new fabric.Text(text,{
+                          fontFamily: font,
+                          stroke: strokeColor,
+                          left:50,
+                          top:50,
+                          hasRotatingPoint: false
+                          //effect: 'curved'//'STRAIGHT'
+                        });
+                      txt.setColor(colorText); //this will set the color not just the stroke
+                      
+                      txt.set({
+                                  id: objId,
+                                  hasRotatingPoint: false                       
+                              });
+                      objId++;
+                      txt.customiseCornerIcons({
+                          settings: {
+                              borderColor: 'rgba(100,100,100,100)', //black
+                              cornerSize: 20,
+                              cornerShape: 'circle',
+                              cornerBackgroundColor: 'rgba(100,100,100,100)', //black
+                              cornerPadding: 5,
+                          },
+                          tl: {
+                              icon: 'img/x.png', //icons/rotate.svg
+                          },
+                          tr: {
+                              icon: 'img/rotate_2.png', //img/resize.svg
+                          },
+                          bl: {
+                          icon: 'img/resize_left.png',
+                          },
+                          br: {
+                             icon: 'img/resize_right.png',
+                          },
+                      }, function() {
+                          front.renderAll();
+                          right.renderAll();
+                          back.renderAll();
+                          left.renderAll();
+                      });
+                      //DECIDING WHICH CANVAS TO ADD TOO
+                      switch (canvasCounter){
+                          case 1:
+                              front.add(txt).setActiveObject(txt);
+                              break
+                          case 2:
+                              right.add(txt).setActiveObject(txt);
+                              break;
+                          case 3:
+                              back.add(txt).setActiveObject(txt);
+                              break;
+                          default:
+                              left.add(txt).setActiveObject(txt);
+                      }
+                    });
+                    $('#reverse').click(function(){
+                      var obj = front.getActiveObject();
+                      if(obj){
+                        obj.set('reverse',$(this).is(':checked')); 
+                        front.renderAll();
+                      }
+                    });
+                    $('#radius, #spacing').change(function(){ // , #fill was taken out of the selector
+                      console.log("radius of spacing change triggered");
+                      var obj = front.getActiveObject();
+                      if(obj){
+                        console.log("this :" + this);
+                        console.log("this.attr : " + $(this).attr('id') );
+                        console.log("this.val : " + $(this).val() );
+                        
+                        obj.set($(this).attr('id'),$(this).val()); 
+                      }
+                      front.renderAll();
+                    });
+                    
+                    /*This is commented out because #fill is commented out
+                    $('#fill').change(function(){
+                      var obj = front.getActiveObject();
+                      if(obj){
+                        obj.setFill($(this).val()); 
+                      }
+                      front.renderAll();
+                    });*/
+                    /*Commented because #save was commented out
+                    $('#save').click(function() {
+                      var design = JSON.stringify(front.toJSON());
+                      front.clear();
+                      front.renderAll();
+                      front.loadFromJSON(design, function() {
+                        console.log('loaded');      
+                        front.renderAll();
+                      });
+                    });*/
+                    $('#convert').click(function(){
+                      var props = {};
+                      var obj = front.getActiveObject();
+                      if(obj){
+                        if(/curvedText/.test(obj.type)) {
+                          default_text = obj.getText();
+                          props = obj.toObject();
+                          delete props['type'];
+                          var textSample = new fabric.Text(default_text, props);
+                        }else if(/text/.test(obj.type)) {
+                          default_text = obj.getText();
+                          props = obj.toObject();
+                          delete props['type'];
+                          props['textAlign'] = 'center';
+                          props['radius'] = 50;
+                          props['spacing'] = 20;
+                          var textSample = new fabric.CurvedText(default_text, props);
+                        }
+                        front.remove(obj);
+                        front.add(textSample).renderAll();
+                        front.setActiveObject(front.item(front.getObjects().length-1));
+                      }
+                    });
+                    function onSelected(){
+                      console.log("onSelected triggered");
+                      var obj = front.getActiveObject();
+                      $('#text').val(obj.getText());
+                      $('#reverse').prop('checked', obj.get('reverse'));
+                      $('#radius').val(obj.get('radius'));
+                      $('#spacing').val(obj.get('spacing'));
+                      //$('#fill').val(obj.getFill());
+                      /*Commented out because #effect was commented out
+                      if(obj.getEffect) {
+                        $('#effect').val(obj.getEffect());
+                      }*/
+                    }
+                    function onDeSelected(){
+                      console.log("onDeSelected triggered");
+                      $('#text').val('');
+                      $('#reverse').prop('checked', false);
+                      $('#radius').val(50);
+                      $('#spacing').val(20);
+                      //$('#fill').val('#0000FF');
+                      //$('#effect').val('curved');
+                    }
+                    //function to add text
+                    function addTextToDesign(){
+                      var obj = front.getActiveObject();
+                      if(obj){
+                        obj.setText(this.value);
+                        front.renderAll();
+                        return;
+                      }
+                      colorText = "#000000";
+                      colorArt = "#000000";
+                      strokeColor = "#000000";
+                      font = 'Ariel'; 
+
+                      text = document.getElementById('text').value;
+                      document.getElementById('text').value = ""; console.log('#text should be clear!');
+                      var txt = new fabric.Text(text,{
+                          fontFamily: font,
+                          stroke: strokeColor,
+                          left:50,
+                          top:50
+                          //effect: 'curved'//'STRAIGHT'
+                        });
+                      txt.setColor(colorText); //this will set the color not just the stroke
+                      
+                      txt.set({
+                                  id: objId,
+                                  hasRotatingPoint: false                       
+                              });
+                      objId++;
+                      txt.customiseCornerIcons({
+                          settings: {
+                              borderColor: 'rgba(100,100,100,100)', //black
+                              cornerSize: 20,
+                              cornerShape: 'circle',
+                              cornerBackgroundColor: 'rgba(100,100,100,100)', //black
+                              cornerPadding: 5,
+                          },
+                          tl: {
+                              icon: 'img/x.png', //icons/rotate.svg
+                          },
+                          tr: {
+                              icon: 'img/rotate_2.png', //img/resize.svg
+                          },
+                          bl: {
+                          icon: 'img/resize_left.png',
+                          },
+                          br: {
+                             icon: 'img/resize_right.png',
+                          },
+                      }, function() {
+                          front.renderAll();
+                          right.renderAll();
+                          back.renderAll();
+                          left.renderAll();
+                      });
+                      //DECIDING WHICH CANVAS TO ADD TOO
+                      switch (canvasCounter){
+                          case 1:
+                              front.add(txt).setActiveObject(txt);
+                              break
+                          case 2:
+                              right.add(txt).setActiveObject(txt);
+                              break;
+                          case 3:
+                              back.add(txt).setActiveObject(txt);
+                              break;
+                          default:
+                              left.add(txt).setActiveObject(txt);
+                      }
+                    }
+                  </script>
     <?php
     //super important code goes here!
     ?>
