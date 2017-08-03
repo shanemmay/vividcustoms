@@ -1,3 +1,4 @@
+
 <?php
     include 'session.php';
 ?>
@@ -2608,6 +2609,7 @@
                         top: -1*(r)*Math.sin((Math.PI/180)*rotation)   //CHANGE TAKE OUT -1
                     });
                     letter.setColor(colorText);
+
                     headingText.push(letter);
                     ltr++;
                 }
@@ -3275,7 +3277,9 @@
                      }
                 }
                 //disabling textbtns again if text is not selected
-                if(e.target.type == 'undefined' || e.target.type != 'text' && e.target.type != 'group' )
+
+                if(e.target.tpye == 'undefined' || e.target.type != 'text' && e.target.type != 'group' )
+
                 {
                     var textBtns = document.getElementsByClassName("textBtn");
                      for (var i = 0; i < textBtns.length; i++) {
@@ -3780,11 +3784,13 @@
             s += Number(sizes[i].value) + " ";
           }
           console.log('s : ' + s);
+
           //setting quantity to calc price
           setQuantity(quantity);
 
           //calculating price for acurate results
           calcPrice();
+
 
           if(quantity < 1)
           {
@@ -3813,6 +3819,7 @@
           {
             document.getElementById("itemPriceLabel").style.visibility  = "visible";
             itemTotal = (quantity) * pricePerUnit;
+
             console.log('MARKER 2 : itemTotal : ' + itemTotal);
             document.getElementById('itemPrice').innerHTML = "$" + pricePerUnit;
             document.getElementById("numOfShirtsLabel").style.visibility  = "visible";
@@ -3820,6 +3827,7 @@
             document.getElementById("itemTotal").style.visibility  = "visible";
             document.getElementById('itemTotal').innerHTML = "$" + itemTotal;
             document.getElementById("itemTotalLabel").style.visibility  = "visible";
+
           }
           //showing shipping information when
           getShippingInformation();
@@ -3907,6 +3915,7 @@
         	back.deactivateAll().renderAll();
         	left.deactivateAll().renderAll();
         }
+
         //function to show and dismiss popovers in the product picker plus sizes
         var _2xl = document.getElementById('xxl');
          var _3xl = document.getElementById('xxxl');
@@ -4049,7 +4058,12 @@
           console.log('innerhtml : ' + document.getElementById('deliveryDate').innerHTML);
           
          }
-        
+
+ 
+
+
+
+
     </script>
     <?php
     //super important code goes here!
