@@ -1,4 +1,3 @@
-
 <?php
     include 'session.php';
 ?>
@@ -553,13 +552,13 @@
                         
                         <!--CLIP ART CATEGORIES-->
                          <style type="text/css">
-  		                      .panel-success {
-      					              min-height: 200;
-      					              max-height: 500;
-      					              overflow-y: scroll;
-      					            }
-                    	   </style>
-	                    
+                              .panel-success {
+                                      min-height: 200;
+                                      max-height: 500;
+                                      overflow-y: scroll;
+                                    }
+                           </style>
+                        
                         <!--END CLIP ART SECTION-->
                     </div>
                      <!--START MODIFY ART SECTION-->
@@ -814,7 +813,35 @@
                               <div class="panel-heading">Text Section</div>
                               <div class="panel-body">
                                     <textarea rows="3" class="form-control" id="text" type="text" onkeypress="return addText(event);" placeholder="Enter text"></textarea><!--was taken out of onchange setText();-->
-                              		<button id="addText_btn" class="btn btn-info" onclick="return addText(event);" style="margin-top: 10px;">Add Text</button>
+                                    <button id="addText_btn" class="btn btn-info" onclick="return addText(event);" style="margin-top: 10px;">Add Text</button>
+<!--START OF CURVEDTEXT-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.0.0-beta.1/fabric.js"></script>-->
+    <!--<script src="http://code.jquery.com/jquery-git.js"></script>-->
+    <script src="fabric.curvedText.js"></script>
+
+    <!--<canvas id="c" width="400" height="200" style="border: 1px solid #4169e1;"></canvas><br/>-->
+    <!--<input type="text" id="text" value="CurvedText" /><br>-->
+    
+    Reverse : <input type="checkbox" name="reverse" id="reverse" /><br>
+    Radius : <input type="range" min="0" max="100" value="50" id="radius" /><br>
+    Spacing : <input type="range" min="5" max="40" value="20" id="spacing" /><br>
+    <!--Color : <input type="color" value="#0000ff" id="fill" /><br>-->
+    <!--Effect : 
+    <select name="effect" id="effect" >
+      <option value="curved">Curved</option>
+      <option value="arc">Arc</option>
+      <option value="STRAIGHT">STRAIGHT</option>
+      <option value="smallToLarge">smallToLarge</option>
+      <option value="largeToSmallTop">largeToSmallToped</option>
+      <option value="largeToSmallBottom">largeToSmallBottom</option>
+      <option value="bulge">bulge</option>
+    </select>-->
+    
+    <button id="convert">Convert Text/Curved</button>
+    <!--<button id="save">Save/Reload</button>-->
+    
+<!--END OF CURVEDTEXT-->
+
                               </div>
                             </div>
                             <div class="panel panel-default">
@@ -1025,7 +1052,7 @@
                                     </div>
                                     <span>Order Total:<span id="finalTotal" style="display: block;"></span></span>
                                     <div class="modal-footer">
-                                    	<?php echo('<input id="ordernumber" type="hidden" name="ordernumber" value = '.$ordernumber.'>'); ?>
+                                        <?php echo('<input id="ordernumber" type="hidden" name="ordernumber" value = '.$ordernumber.'>'); ?>
                                         <button type="button" id="checkoutBtn2" class="btn btn-success" onclick="canCheckout_cart();">Check Out</button>
                                         </form> 
                                     </div>
@@ -1089,12 +1116,12 @@
                                 getCartTotal();
                             }
                             function removeFromCart(btn){
-                            	var row = btn.parentNode.parentNode;
-  								row.parentNode.removeChild(row);
-  								var num = Number(btn.id);
-  								cart.splice(num);
-  								getCartTotal();
-  								rowNum--;
+                                var row = btn.parentNode.parentNode;
+                                row.parentNode.removeChild(row);
+                                var num = Number(btn.id);
+                                cart.splice(num);
+                                getCartTotal();
+                                rowNum--;
                             }
                             function getItemPrice(){
                                 var yxs = document.getElementById('yxs').value; var ys = document.getElementById('ys').value; var ym = document.getElementById('ym').value;
@@ -1372,29 +1399,29 @@
                             </div>
                             <br> 
                              <!--SHARE DESIGN PREVIEWS-->
-		                    <div id="shareDesigns" class="row">
-		                        <div class="col-sm-3">
-		                            <div id="frontSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-		                                <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewFront" src="">
-		                            </div>
-		                        </div>
-		                        <div class="col-sm-3">
-		                            <div id="rightSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-		                                <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewRight" src="">
-		                            </div>
-		                        </div>
-		                        <div class="col-sm-3">
-		                            <div id="backSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-		                                <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewBack" src="">
-		                            </div>
-		                        </div>
-		                        <div class="col-sm-3">
-		                            <div id="leftSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-		                                <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewLeft" src="">
-		                            </div>
-		                        </div>
-		                    </div> 
-		                    <br>
+                            <div id="shareDesigns" class="row">
+                                <div class="col-sm-3">
+                                    <div id="frontSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
+                                        <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewFront" src="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div id="rightSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
+                                        <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewRight" src="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div id="backSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
+                                        <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewBack" src="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div id="leftSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
+                                        <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewLeft" src="">
+                                    </div>
+                                </div>
+                            </div> 
+                            <br>
                               <button type="button" name="submit" class="btn btn-primary fa fa-envelope-o pull-right" onclick="sendemail();"></button>
                           </form>
                     </div>
@@ -1661,10 +1688,10 @@
             //mt: false
         } );
         fabric.Canvas.prototype.customiseControls({
-        	mt: {
-        		action: 'moveUp',
-        		cursor: 'pointer'
-        	},
+            mt: {
+                action: 'moveUp',
+                cursor: 'pointer'
+            },
             tl: {
                 action: 'remove',
                 cursor: 'pointer'
@@ -1695,9 +1722,10 @@
                 cornerShape: 'circle',
                 cornerBackgroundColor: 'rgba(100,100,100,100)', //rrgba(100,100,100,100)
                 cornerPadding: 5,
+                hasRotatingPoint: false
             },
             mt:{
-            	icon: 'img/up.png',
+                icon: 'img/up.png',
             },
             tl: {
                 icon: 'img/x.png', //icons/rotate.svg
@@ -2360,7 +2388,7 @@
         function straight(){
             textAdded = true;
 
-           	text = document.getElementById('text').value;
+            text = document.getElementById('text').value;
             document.getElementById('text').value = "";
             colorText = "#000000";
             colorArt = "#000000";
@@ -2609,7 +2637,6 @@
                         top: -1*(r)*Math.sin((Math.PI/180)*rotation)   //CHANGE TAKE OUT -1
                     });
                     letter.setColor(colorText);
-
                     headingText.push(letter);
                     ltr++;
                 }
@@ -3277,9 +3304,7 @@
                      }
                 }
                 //disabling textbtns again if text is not selected
-
-                if(e.target.tpye == 'undefined' || e.target.type != 'text' && e.target.type != 'group' )
-
+                if(e.target.type == 'undefined' || e.target.type != 'text' && e.target.type != 'group' )
                 {
                     var textBtns = document.getElementsByClassName("textBtn");
                      for (var i = 0; i < textBtns.length; i++) {
@@ -3760,7 +3785,7 @@
             designPreview.src = front.toDataURL();
             var designPreviews = document.getElementsByClassName('designPreview');
             for (var i = 0; i < designPreviews.length; i++) {
-            	designPreviews[i].src = front.toDataURL();
+                designPreviews[i].src = front.toDataURL();
             }
         }
         //this changes the image of the product the customer views
@@ -3784,13 +3809,11 @@
             s += Number(sizes[i].value) + " ";
           }
           console.log('s : ' + s);
-
           //setting quantity to calc price
           setQuantity(quantity);
 
           //calculating price for acurate results
           calcPrice();
-
 
           if(quantity < 1)
           {
@@ -3819,7 +3842,6 @@
           {
             document.getElementById("itemPriceLabel").style.visibility  = "visible";
             itemTotal = (quantity) * pricePerUnit;
-
             console.log('MARKER 2 : itemTotal : ' + itemTotal);
             document.getElementById('itemPrice').innerHTML = "$" + pricePerUnit;
             document.getElementById("numOfShirtsLabel").style.visibility  = "visible";
@@ -3827,7 +3849,6 @@
             document.getElementById("itemTotal").style.visibility  = "visible";
             document.getElementById('itemTotal').innerHTML = "$" + itemTotal;
             document.getElementById("itemTotalLabel").style.visibility  = "visible";
-
           }
           //showing shipping information when
           getShippingInformation();
@@ -3910,12 +3931,11 @@
         }
         //function to deselect all objects in all canvases. This just prevents a lot of errors in general.
         function deselectAllCanvases(){
-        	front.deactivateAll().renderAll();
-        	right.deactivateAll().renderAll();
-        	back.deactivateAll().renderAll();
-        	left.deactivateAll().renderAll();
+            front.deactivateAll().renderAll();
+            right.deactivateAll().renderAll();
+            back.deactivateAll().renderAll();
+            left.deactivateAll().renderAll();
         }
-
         //function to show and dismiss popovers in the product picker plus sizes
         var _2xl = document.getElementById('xxl');
          var _3xl = document.getElementById('xxxl');
@@ -4058,13 +4078,133 @@
           console.log('innerhtml : ' + document.getElementById('deliveryDate').innerHTML);
           
          }
+          /*
+          JAVASCRIPT FOR CURVEDTEXT
+          */        
+          
+            front.on('selection:cleared', onDeSelected);
+            front.on('object:selected', onSelected);
+            front.on('selection:created', onSelected);
+            /*COMMENTED OUT BECAUSE NOT IN USE var CurvedText = new fabric.CurvedText('Shane May',{
+                //width: 100,
+                //height: 50,
+                left: 100,
+                top: 100,
+                textAlign: 'center',
+                fill: '#0000FF',
+                radius: 150,
+                fontSize: 20,
+                spacing: 20
+                //fontFamily: 'Arial'
+            });
+            //TODO PUT SWITCH STATEMENT HERE TO DECIDE WHICH front TO ADD TOO
+            front.add(CurvedText).renderAll();
+            front.setActiveObject(front.item(front.getObjects().length-1));*/
 
- 
+            $('#text').keyup(function(){
+              console.log("4108 text keyup functin triggered");
+                var obj = front.getActiveObject();
+                if(obj){
+                    obj.setText(this.value);
+                    front.renderAll();
+                }
+            });
 
+            $('#reverse').click(function(){
+              console.log("4117 reverse click function triggered");
+                var obj = front.getActiveObject();
+                if(obj){
+                    obj.set('reverse',$(this).is(':checked')); 
+                    front.renderAll();
+                }
+            });
 
+            $('#radius, #spacing').change(function(){//, #fill was taken out
+              console.log("4126 radius spacing fill change function triggered");
+                var obj = front.getActiveObject();
+                if(obj){
+                    obj.set($(this).attr('id'),$(this).val()); 
+                }
+                front.renderAll();
+            });
 
+            $('#radius, #spacing').change(function(){//, #effect was taken out
+              console.log("4135 radius spacing effect change function triggered");
+                var obj = front.getActiveObject();
+                if(obj){
+                    obj.set($(this).attr('id'),$(this).val()); 
+                }
+                front.renderAll();
+            });
 
+            /*COMMENTED OUT BECUASE NOT IN USE$('#fill').change(function(){
+                var obj = front.getActiveObject();
+                if(obj){
+                    obj.setFill($(this).val()); 
+                }
+                front.renderAll();
+            });*/
+
+            /*COMMENTEDD OUT BECAUSE NOT IN USE $('#save').click(function() {
+                var design = JSON.stringify(front.toJSON());
+                front.clear();
+                front.renderAll();
+                front.loadFromJSON(design, function() {
+                    console.log('loaded');      
+                    front.renderAll();
+                });
+            });*/
+            
+            $('#convert').click(function(){
+              console.log("4162 convert click function triggered");
+                var props = {};
+                var obj = front.getActiveObject();
+                if(obj){
+                    if(/curvedText/.test(obj.type)) {
+                        default_text = obj.getText();
+                        props = obj.toObject();
+                        delete props['type'];
+                        var textSample = new fabric.Text(default_text, props);
+                    }else if(/text/.test(obj.type)) {
+                        default_text = obj.getText();
+                        props = obj.toObject();
+                        delete props['type'];
+                        props['textAlign'] = 'center';
+                        props['radius'] = 50;
+                        props['spacing'] = 20;
+                        var textSample = new fabric.CurvedText(default_text, props);
+                    }
+                    front.remove(obj);
+                    front.add(textSample).renderAll();
+                    front.setActiveObject(front.item(front.getObjects().length-1));
+                }
+            });
+            //});
+                
+            function onSelected(){
+              console.log("4188 onSelected function triggered");
+                var obj = front.getActiveObject();
+                $('#text').val(obj.getText());
+                $('#reverse').prop('checked', obj.get('reverse'));
+                $('#radius').val(obj.get('radius'));
+                $('#spacing').val(obj.get('spacing'));
+                //$('#fill').val(obj.getFill());
+                /*if(obj.getEffect) {
+                    $('#effect').val(obj.getEffect());
+                }*/
+            }
+
+            function onDeSelected(){
+              console.log("4201 onDeSelected function triggered");
+                $('#text').val('');
+                $('#reverse').prop('checked', false);
+                $('#radius').val(50);
+                $('#spacing').val(20);
+                //$('#fill').val('#0000FF');
+                //$('#effect').val('curved');
+            }
     </script>
+
     <?php
     //super important code goes here!
     ?>
