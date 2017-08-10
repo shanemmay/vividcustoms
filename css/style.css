@@ -20,7 +20,7 @@
 	border: none;
 }
 li.active a{
-	background-color: red !important;
+	background-color: #399fd9 !important;
 }
 .nav a{                                       
 	color: #ffffff !important;
@@ -32,7 +32,7 @@ li.active a{
 	outline: none;
 }
 .nav a:hover{
-	background-color: red !important;
+	background-color: #399fd9 !important;
 }  	  
 /*color selection*/
 .colorRow{
