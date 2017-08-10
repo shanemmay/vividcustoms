@@ -42,17 +42,8 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>    
-    <h3> 
-        <?php 
-            if (!$Guest) {
-                echo 'Welcome: '.$login_session; 
-                echo  '<h3><a href = "logout.php">Sign Out</a></h3>';    
-            }  
-             else if (isset($_SESSION['Guest'])) 
-            {
-              echo ("<center> Order number: ".$_SESSION['Guest']."</center>");         
-            }           
-        ?>
+    <h3>
+        	<?php echo ("<center> Order number: ".$_POST['ordernumber']."</center>");    ?>
     </h3> 
     <form  name="Checkout" action="save_order.php" method="POST" role="form" onchange="checkInput();" > 
         <div class="row">
@@ -256,10 +247,11 @@
       	var design = document.getElementById('design');
       	design.src = element.src;
       }
+      /*COMMENTED OUT BECAUSE THIS CODE IS USED NO WHERE
       function setProduct(element){
       	var shirt = document.getElementById('shirt');
       	shirt.style.backgroundImage = "url('"+element.src+"')";
-      }
+      }*/
 
       var rowNum = 0;	//this is used to keep track of the current row number since rows will be added and deleted according to the customer's will
       var prices = [];
@@ -306,5 +298,6 @@
       //TODO if any part of the shipping address is left blank, use the billing address
       //alert('js works');
     </script>
+
 </body>
 </html>

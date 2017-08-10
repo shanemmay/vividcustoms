@@ -10,19 +10,22 @@
 	$leftShirtURL = $_POST['leftShirtURL'];
 	$designURL = $_POST['designURL'];
 
+	$from = $_POST['from_email'];
+	$personal_message = $_POST['message'];
 
+//this was taken out of line 28: I just created this design. Take a look!
 
-$to = $_POST['email'];
+$to = $_POST['to_email'];
 $subject = 'Share Design Alpha Test';
-$from = "info@vividcustoms.com";
+$from = $from;
 $message = "<!DOCTYPE html>
 <html>
 <head>
 	<title>Design</title>
 </head>
-<body style='text-align: center; color: #0000ff;''>
+<body style='text-align: center; color: #0000ff;'>
 <h1>Check out this new design made with Vivid Customs!</h1>
-<p>\"I just created this design. Take a look!\"</p>
+<p>\"".$personal_message."\"</p>
 <table border='0' align='center'>
 	<tbody>
 		<tr>
@@ -39,18 +42,7 @@ $message = "<!DOCTYPE html>
 			<img src='".$leftImageURL."' style='padding-top:40px; padding-left:30px; padding-right:30px; width: 240px; height: 320px; position: relative; margin: auto; '>
 			</div></td>
 		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
+
 	</tbody>
 </table>
 <b>To edit this design please: <a href='https://vividcustoms.com/vivid_customs2/ui.php?email=".$designURL."'> click here</a></b>	
@@ -83,7 +75,7 @@ $message = "<!DOCTYPE html>
 </body>
 </html>";
 
-$headers = "From: johnsmith@vividcustoms.com\r\n";
+$headers = "From: ".$from." \r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n"; 
 
