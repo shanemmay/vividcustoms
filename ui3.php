@@ -1,6 +1,5 @@
 <?php
     include 'session.php';
- 
 ?>
 <!--GETTING ORDER NUMBER-->
 <?php 
@@ -10,7 +9,7 @@
   if (!$Guest) {
       $ordernumber = $login_session.sprintf("%06d", $row['Quantity']);                                     
   }  
-  else if (isset($_SESSION['Guest'])) 
+  else ///if (isset($_SESSION['Guest'])) 
   {
        $ordernumber = $_SESSION['Guest'].sprintf("%06d", $row['Quantity']);                                           
   }       
@@ -23,8 +22,11 @@
     <title>ui</title>
     <script src="fabric.min.js"></script>
     <script src="custom_controls.js"></script>
-    <script src="fabric.curvedText.js"></script>
-    <!--FONT AWESOME -->
+    <script src="aligning_guidelines.js"></script>
+    <script src="centering_guidelines.js"></script>
+    <!--jsPDF-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
+    <!--FONT AWESOEM-->
     <link rel="stylesheet" href="https://use.fontawesome.com/42fa7d18a0.css">
     <script src="https://use.fontawesome.com/0bc1ca65b8.js"></script>
  
@@ -72,7 +74,7 @@
             border: none;
         }
         li.active a{
-            background-color: red !important;
+            background-color: #31B0D5 !important; 
         }
         .nav a{                                       
             color: #ffffff !important;
@@ -84,7 +86,7 @@
             outline: none;
         }
         .nav a:hover{
-            background-color: red !important;
+            background-color: #31B0D5 !important;
         }     
         /*color selection*/
         .colorRow{
@@ -123,15 +125,11 @@
           {
             //alert(emails);
             $('.nav-tabs a[href="#saveSection"]').tab('show'); 
-             var x = document.getElementById("mydesings");
-              var option = document.createElement("option");
-              option.text = emails;
-               x.add(option);
+             LoadDesings(emails); 
           }
           else if(shares)
           {
             $('.nav-tabs a[href="#saveSection"]').tab('show');
-            //alert(shares);
           }
           else
           {
@@ -145,7 +143,7 @@
     to replace style tags on this page-->
     <link rel="stylesheet" type="text/css" href="css/style.css">    
 </head>
-<body>
+<body onunload="return false; checksave()">
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& MODALS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
   <!--PRODUCT PICKER-->
   <style type="text/css">
@@ -179,8 +177,12 @@
       #productsTable{
           text-align: center;
       }
+      #productsTable tr{
+        border-top: none;
+      }
       #productsTable td{
           width: 25%;
+          border-top: none;
       }
       #productsTable img{
           width: 100%;
@@ -195,7 +197,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add Products and Styles</h4>
+          <h4 class="modal-title" style="text-align: center;">Add Products and Styles</h4>
         </div>
         <div class="modal-body">
             <!--PRODUCT PREVIEW-->
@@ -210,50 +212,48 @@
                       <p>T Shirt made of cotton.</p>
                
               </div>
-              <div class="col-sm-6">
-
+              <div class="col-sm-6" style="border-left: 1px solid #d3d3d3;">
+ 
                   <table class="table" id="productsTable">
+                    <tr><td colspan="4" >Add Products</td></tr>
                     <tr>
-                        <td><img src="img/classic_fit_adult_t-ash_grey_front.jpg" onclick="setProductPreview(this);"> V Neck </td>
-                        <td><img src="img/classic_fit_adult_t-azalea_front.jpg" onclick="setProductPreview(this);"> Polo</td>
-                        <td><img src="img/classic_fit_adult_t-cardinal_red_front.jpg" onclick="setProductPreview(this);"> Long Sleeve</td>
-                        <td><img src="img/classic_fit_adult_t-charcoal_front.jpg" onclick="setProductPreview(this);"> Short Sleeve</td>
+                        <td>  <div style="background-image: url('img/classic_fit_adult_t-azalea_front.jpg'); width: 100%; height: 50%; background-repeat: no-repeat; background-size: cover; background-position: center center;"><img style="display: block; margin: auto !important;  position: relative; margin: auto; top: 10% !important; " class="designPreview" src=""> </div> V Neck </td> <!--<img src="img/classic_fit_adult_t-ash_grey_front.jpg" onclick="setProductPreview(this);">-->
+                        <td>  <div style="background-image: url('img/classic_fit_adult_t-azalea_front.jpg'); width: 100%; height: 50%; background-repeat: no-repeat; background-size: cover; background-position: center center;"><img style="display: block; margin: auto !important;  position: relative; margin: auto; top: 10% !important;" class="designPreview" src=""> </div> Polo</td> <!--<img src="img/classic_fit_adult_t-azalea_front.jpg" onclick="setProductPreview(this);"> -->
+                        <td>  <div style="background-image: url('img/classic_fit_adult_t-cardinal_red_front.jpg'); width: 100%; height: 50%; background-repeat: no-repeat; background-size: cover; background-position: center center;"><img style="display: block; margin: auto !important;  position: relative; margin: auto; top: 10% !important;" class="designPreview" src=""> </div> Long Sleeve</td> <!--<img src="img/classic_fit_adult_t-cardinal_red_front.jpg" onclick="setProductPreview(this);"> -->
+                        <td>  <div style="background-image: url('img/classic_fit_adult_t-charcoal_front.jpg'); width: 100%; height: 50%; background-repeat: no-repeat; background-size: cover; background-position: center center;"><img style="display: block; margin: auto !important; position: relative; margin: auto; top: 10% !important;" class="designPreview" src=""> </div> Short Sleeve</td> <!--<img src="img/classic_fit_adult_t-charcoal_front.jpg" onclick="setProductPreview(this);"> -->
                     </tr>
                   </table>
-                  
-                  <script type="text/javascript">
-                    
-                      /*var priceLabel = document.getElementById('pricePerUnit');
-                      var totalLabel = document.getElementById('totalPrice');
-                      priceLabel.innerHTML = pricePerUnit + " : ";
-                      totalLabel.innerHTML = totalPrice + " : ";*/
-                  </script>
-
+ 
+                  <hr>
+                  <h3 id="itemPriceLabel">Price per shirt:<span id="itemPrice" style="color: #5cb85c;"></span> <small id="numOfShirtsLabel" style="position: relative; bottom: 0.2em;"> @ (4 shirts)</small></h3>
+                  <h4 id="itemTotalLabel" style="visibility: hidden;">Total: <span id="itemTotal" style="color: #5cb85c;" ></span></h4>
+                  <div id="shippingSection" style="visibility: hidden;">
+                    <h3>Guaranteed by <span id="deliveryDate" style="color: #5bc0de;">||</span> with FREE 2-week delivery!</h3>
+                  </div>
               </div>
             </div>
             <!--SIZE SELECTION-->
-            <form id="sizeForm">
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="yxs" type="number" name="yxs" placeholder="yxs"> 
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="ys" type="number" name="ys" placeholder="ys"> 
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="ym" type="number" name="ym" placeholder="ym"> 
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="yl" type="number" name="yl" placeholder="yl"> 
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="yxl" type="number" name="yxl" placeholder="yxl">    
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="s" type="number" name="s" placeholder="s"> 
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="m" type="number" name="m" placeholder="m"> 
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="l" type="number" name="l" placeholder="l"> 
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="xl" type="number" name="xl" placeholder="xl"> 
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="xxl" type="number" name="xxl" placeholder="xxl"> 
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="xxxl" type="number" name="xxxl" placeholder="xxxl"> 
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="xxxxl" type="number" name="xxxxl" placeholder="xxxxl"> 
-                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" id="xxxxxl" type="number" name="xxxxxl" placeholder="xxxxxl"> 
+            <form id="sizeForm" style="">
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="yxs" type="number" name="yxs" placeholder="YXS"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="ys" type="number" name="ys" placeholder="YS"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="ym" type="number" name="ym" placeholder="YM"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="yl" type="number" name="yl" placeholder="YL"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="yxl" type="number" name="yxl" placeholder="YXL">    
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="s" type="number" name="s" placeholder="S"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="m" type="number" name="m" placeholder="M"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="l" type="number" name="l" placeholder="L"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="xl" type="number" name="xl" placeholder="XL"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="xxl" type="number" name="xxl" placeholder="2XL" data-toggle="popover" data-placement="top" data-content="+$2.00"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="xxxl" type="number" name="xxxl" placeholder="3XL" data-toggle="popover" data-placement="top" data-content="+$2.00"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="xxxxl" type="number" name="xxxxl" placeholder="4XL" data-toggle="popover" data-placement="top" data-content="+$2.00"> 
+                 <input min="0" class="quantity" onkeydown="setItemPrice(this)" onkeyup="setItemPrice(this)" id="xxxxxl" type="number" name="xxxxxl" placeholder="5XL" data-toggle="popover" data-placement="top" data-content="+$2.00"> 
             </form>
         </div>
         <div class="modal-footer">
           <!--showing price per design TODO LIVE UPDATE THIS PRICE-->
           <div style="display: inline;">
-            <p style="display: inline;" id="itemPriceLabel">Design Price:<span id="itemPrice"></span></p>
-            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="addingToCart = true; uploadEx(); calcPrice();" style="display: inline;">Add &amp; Keep Designing!</button>
-            <button type="button" class="btn btn-success" data-dismiss="modal" onclick="checkoutFromGetPrice();">Checkout</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="addingToCart = true; uploadEx(); calcPrice();" style="display: inline;">Add &amp; Keep Designing!</button><!--taken out of style -->
+            <button type="button" class="btn btn-success" data-dismiss="modal" onclick="checkoutFromGetPrice();" style="display: inline;   ">Checkout</button>
           </div>
         </div>
       </div>
@@ -338,7 +338,7 @@
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="pwd">Password:</label>
                   <div class="col-sm-10">          
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter Password" name="password">
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password">
                   </div>
                 </div>
                 <div class="form-group">
@@ -356,7 +356,7 @@
 
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-default" >Signup!</button>
+            <button type="button" class="btn btn-default" onclick="signup();" data-dismiss="modal">Signup!</button><!--changed type="submit" to type="button"-->
             </form>
           </div>
       </div>
@@ -375,11 +375,23 @@
   <button class="btn btn-info " data-target="#saveSection" onclick="uploadEx();" >
     Save
   </button>
-  <button class="btn btn-success" onclick="getPrice();" ><!--data-toggle="modal" data-target="#productPicker" -->
+  <button class="btn btn-success" onclick=" isThereDesign(true);" ><!--data-toggle="modal" data-target="#productPicker" -->
     Get Price
   </button>
 </div>
 <p id="testingCart">.</p>
+<!--message to let customer know their email sent successfully-->
+<div class="alert alert-success" id="emailmessage" style="display:none; text-align: center;">
+  <strong><center>The email was sent successfully.</center></strong> 
+</div>
+<!--message letting the customer know their was an error sending their email-->
+<div class="alert alert-danger" id="emailerrormessage" style="display:none; text-align: center;">
+  <strong><center>Error sending the email.</center></strong> 
+</div>
+<!--message letting the customer know they need to make a design to checkout-->
+<div class="alert alert-danger" role="alert" id="noDesignError" style="display:none; text-align: center;">
+  <strong>Oh snap!</strong> You forgot to make a design.
+</div>
 <!--message to let customer know their designs have been saved-->
 <div id="savedSuccessfullyMessage" class="alert alert-success" role="alert" style="display:none; text-align: center;">Your design was successfully saved!</div>
 <!--START NEW PAGE-->
@@ -413,11 +425,11 @@
                 <?php 
                       if (!$Guest) {
                           echo '<b> Welcome: '.$login_session.'</b><br>'; 
-                          echo  '<b><a href = "logout.php">Sign Out</a></b>';    
+                          echo  '<b><a href = "logout.php"><button class="btn btn-info">Sign Out</button></a></b>';    
                       }  
                       else if (isset($_SESSION['Guest'])) 
                       {
-                         // echo ("<left> Order number: ".$_SESSION['Guest']."</left>");             
+                         echo "<button id='signup' class='btn btn-success btn-lg' data-toggle='modal' data-target='#signupModal'>Signup!</button>";             
                       }
                       else
                       {
@@ -433,9 +445,9 @@
         <div class="col-sm-1">   
             <ul class="nav nav-tabs nav-stacked" style="height: 90%; text-align: center; ">
                 <li class="active" style="border-bottom: 1px solid #ffffff;"><a  data-toggle="tab" href="#productSection"><img src="img/shirt_icon.png" style="width: 70%;"><br>Shirt</a></li> <!--Shirt<br><span style="visibility: hidden;">equal</span>-->
-                <li style="border-bottom: 1px solid #ffffff;"><a  data-toggle="tab" href="#addArt"><img src="img/art_icon.png" style="width: 70%;"><br>Add Art</a></li> <!--Add Art <span style="visibility: hidden;">equal</span>-->
-                <li style="border-bottom: 1px solid #ffffff;"><a  data-toggle="tab" href="#textSection"><img src="img/text_icon.png" style="width: 70%;"><br>Add Text</a></li> <!--Add Text <span style="visibility: hidden;">equal</span>-->                   
-                <li onclick="getPrice();"  style="border-bottom: 1px solid #ffffff;">
+                <li style="border-bottom: 1px solid #ffffff;" onclick="deselectAllCanvases(); document.getElementById('editArt').style.display = 'none';  document.getElementById('newArt').style.display = 'block';"><a  data-toggle="tab" href="#addArt"><img src="img/art_icon.png" style="width: 70%;"><br>Add Art</a></li> <!--Add Art <span style="visibility: hidden;">equal</span>-->
+                <li onclick="deselectAllCanvases();" style="border-bottom: 1px solid #ffffff;"><a  data-toggle="tab" href="#textSection"><img src="img/text_icon.png" style="width: 70%;"><br>Add Text</a></li> <!--Add Text <span style="visibility: hidden;">equal</span>-->                   
+                <li onclick=" isThereDesign(true);"  style="border-bottom: 1px solid #ffffff;">
                   <a  data-toggle="tab" href="#priceSection" ><img src="img/price_icon.png" style="width: 70%;"><br>Get Price</a>
                 </li> <!-- data-toggle="modal" data-target="#productPicker" -->
                 <!--<li ><a  data-toggle="tab" href="#shareSection" onclick="share();">Share</a></li>-->
@@ -541,195 +553,31 @@
                         
                         <!--CLIP ART CATEGORIES-->
                          <style type="text/css">
-                      .panel-success {
-                        min-height: 200;
-                        max-height: 500;
-                        overflow-y: scroll;
-                      }
-                    </style>
-                    <div id="clipArtCategories">
-                      <ol class="breadcrumb" id="breadcrumb"><li class="active" id="categories">Categories</li><li id="subcategories" style="display: none;"><li id="subsubcategories" style="display: none;"></li><li id="clips" style="display: none;"></ol>
-                    </div>
-                    <div id="ClipsArtImages" class="panel panel-success">                        
-                        <style type="text/css">
-                            #clipArtTable{
-                                width: 100%;
+                            .panel-success {
+                              min-height: 200;
+                              max-height: 500;
+                              overflow-y: scroll;
                             }
-                            #clipArtTable td{
-                                padding: 10px;
-                            }  
-                        </style>    
-                        <table id="clipArtTable2" class="table table-fixed">
-                         </table> 
-                         <table id="clipArtTable" class="table table-fixed" style=" border-top: none !important;">                                                
-                        <?php                                  
-                            $fulldirectory = dirname(__FILE__).'/img/clip_art';
-                            $directory = 'img/clip_art';
-                            $categories  = scandir($fulldirectory);               
-                            print_r('<tbody>');
-                            for ($i=0; $i< count($categories) ; $i++) 
-                            { 
-                              if ($categories[$i] != '.' && $categories[$i] != '..') 
-                              {
-                                if ($i % 2 == 0)
-                                {                                          
-                                  print_r('    <tr>') ;                                                                                    
-                                }                
-                                print_r('    <td height="80px" width="195px" align="center" style="border-left:none;border-bottom:none;border-top:none">') ;
-                                print_r('        <img art-image="" src="'.$directory.'/'.$categories[$i].'/'.$categories[$i].'.png" width="50" height="50"><br>') ;
-                                print_r('        <a onclick="setCategory(this.innerHTML);">'.$categories[$i].'</a>');
-                                print_r('    </td>') ;   
-                                if ($i % 2 != 0)
-                                {
-                                  print_r('    </tr>') ;
-                                }
-                              }      
-                            }
-                            print_r('</tbody>');
-                        ?>
-                        <!--menu for customers to go back if they wish-->
-                        <!--WILL USE THIS IF BREADCRUMBS DON'T WORK<div class="row"><div class="col-sm-1"></div><div class="col-sm-1"></div><div class="col-sm-10"></div></div>--> 
-                        </table> 
-                                           
-                    </div>
-                    
-                    <script type="text/javascript">
-                        var div = document.getElementById('clipArtCategories');
-                        var category = "";
-                        var subcategory = "";
-                            
- 
-                        var categories = document.getElementById('categories');
-                        
-                        var subcategories = document.getElementById('subcategories');
-                        var clips = document.getElementById('clips');
-
-                        var subsubcategories = document.getElementById('subsubcategories');
-                        
- 
-                        subsubcategories.onclick = function(){
-                            //hiding clips
-                            clips.style.display = "none";
-                            //making subcategories "active"
-                            categories.classList.remove("active");
-                            subcategories.classList.add("active");
-                        }
-
-                        subcategories.onclick = function(){
-                            //TODO hide whatever is currently showing
-                            //showing table
-                            invisibleTables();
-                            showTable(category);
-                            //var table = document.getElementById('clipArtTable2');
-                            //table.style.display = "block";
-                            //table.setAttribute('width','100%');
-                            //getting ride of other crumbs in the breadcrumb list
-                            //subcategories.style.display = "none";
-                            subsubcategories.style.display = "none";
-                            clips.style.display = "none";
-                            //making the categories tab have the 'active' class
-                            categories.classList.remove("active");
-                            subsubcategories.classList.remove("active");
-                            subcategories.classList.add("active");
-                        }
-                        categories.onclick = function(){
-                            //TODO hide whatever is currently showing
-                            //showing table
-                            invisibleTables();
-                            var table = document.getElementById('clipArtTable');
-                            table.style.display = "block";
-                            table.setAttribute('width','100%');
-                            //getting ride of other crumbs in the breadcrumb list
-                            subcategories.style.display = "none";
-                            subsubcategories.style.display = "none";
-                            clips.style.display = "none";
-                            //making the categories tab have the 'active' class
-                            subcategories.classList.remove("active");
-                            subsubcategories.classList.remove("active");
-                            categories.classList.add("active");
-                        }
-                        function setCategory(element){
-                            //setting the category
-                            category = element;
-                            //hiding table
-                            invisibleTables();
-                            //var table = document.getElementById('clipArtTable');
-                            //table.style.display = "none";
-                            //showNewtable
-                            showTable(category,null);
-                            //making the subcategories visible and 'active'
-                            subcategories.style.display = "inline"; 
-                                                        subcategories.innerHTML = element; 
-                            clips.style.display = "none";
-                            //making the subcategories tab have the 'active' class
-                            categories.classList.remove("active");
-                            subsubcategories.classList.remove("active");
-                            subcategories.classList.add("active");                            
-                        }   
-
-                        function setSubCategory(element){
-                            //setting the category
-                            subcategory = element;
-                            //hiding table
-                            invisibleTables();
-                            //var table = document.getElementById('clipArtTable');
-                            //table.style.display = "none";
-                            //showNewtable
-                            showTable(category,subcategory);
-                            //showTable(element);
-                            //making the subcategories visible and 'active'
-                            subsubcategories.style.display = "inline"; 
-                                                        subsubcategories.innerHTML = element; 
-                            clips.style.display = "none";
-                            //making the subcategories tab have the 'active' class
-                            categories.classList.remove("active");
-                            subategories.classList.remove("active");
-                            subsubcategories.classList.add("active");
-                            
-                        } 
-
-                        function showTable(category,subcategory){    
-                           $.ajax({
-                                    type: "POST",
-                                    url: "categories.php",
-                                    data: {
-                                            category: category,
-                                            subcategory: subcategory
-                                           },
-                                    success: function(data)
-                                    {
-                                        //alert(data);
-                                        document.getElementById('clipArtTable2').innerHTML = data;
-                                        document.getElementById('clipArtTable2').style.display = "block";
-                                    }
-                                })                         
-                            }      
-
-                         function invisibleTables(){
-                            var tables = document.getElementsByClassName('table table-fixed');
-
-                            for (var i = 0; i < tables.length; i++) {
-                                tables[i].style.display = "none";
-                            }
-                        }             
-                        </script>
-                        <!--END CLIP ART SECTION-->
+                        </style>
+                    <!--END CLIP ART SECTION-->
                     </div>
                      <!--START MODIFY ART SECTION-->
-                    <div id="editArt" style="display: none;">                    
+                    <div id="editArt" style="display: none;">
                         <h2>Add Art</h2>
-                        <p>Seccion Edit Art</p>
+                        <p> Edit Art Section</p>
                         <div class="panel-group">
                             <div class="panel panel-default">
-                                  <div class="panel-heading">Size & Effect</div>
+                                  <div class="panel-heading">Size &amp; Effect</div>
                                   <div class="panel-body">
                                      <!--resize clip art form-->
                                          <form>                      
                                           <div class="input-group">
                                             <span class="input-group-addon">Width</span>
                                             <input id="widthImage" type="number" class="form-control" name="widthImage"  maxlength="5" onkeypress="return resize(event);" >
+                                            <span class="input-group-addon">in.</span>
                                             <span class="input-group-addon">Height</span>
                                             <input id="heightImage" type="number" class="form-control" name="heightImage" onkeypress="return resize(event);" >
+                                            <span class="input-group-addon">in.</span>
                                             <span class="input-group-addon">Rotate</span>
                                             <input id="angleImage" type="number" class="form-control" name="angleImage" onkeypress="return rotate(event);" >
                                           </div>
@@ -776,9 +624,184 @@
                                         <!--END COLOR SECTION-->
                                     </div>                         
                             </div>
-                        </div>   
+                        </div>
+
                     </div>
-                </div>
+
+                    <div id="clipartCategory">
+                  <div id="clipArtMenu">
+                    <div id="clipArtCategories">
+                      <ol class="breadcrumb" id="breadcrumb"><li class="active" id="categories">Categories</li><li id="subcategories" style="display: none;"></li><li id="subsubcategories" style="display: none;"></li><li id="clips" style="display: none;"></li></ol>
+                    </div>
+                    <div id="ClipsArtImages" class="panel panel-success">                        
+                        <style type="text/css">
+                            #clipArtTable{
+                                width: 100%;
+                            }
+                            #clipArtTable td{
+                                padding: 10px;
+                            }  
+                        </style>    
+                        <table id="clipArtTable2" class="table table-fixed">
+                        </table> 
+                        <table id="clipArtTable" class="table table-fixed" style=" border-top: none !important; height: 50px !important;">                                                
+                          <?php                                  
+                              $fulldirectory = dirname(__FILE__).'/img/clip_art';
+                              $directory = 'img/clip_art';
+                              $categories  = scandir($fulldirectory);               
+                              print_r('<tbody style="height: 50px !important;">');
+                              for ($i=0; $i< count($categories) ; $i++) 
+                              { 
+                                if ($categories[$i] != '.' && $categories[$i] != '..') 
+                                {
+                                  if ($i % 2 == 0)
+                                  {                                          
+                                    print_r('    <tr>') ;                                                                                    
+                                  }                
+                                  $valuetmp =  "'".$categories[$i]."'";
+                                            print_r('    <td height="80" width="195"  align="center" style="border-left:none;border-bottom:none;border-top:none">') ; // height="80px" width="195px"
+                                            //print_r('        <img art-image="" src="'.$directory.'/'.$categories[$i].'/'.$categories[$i].'.png" width="50" height="50"><br>') ;
+                                            print_r('        <a href="javascript:void(0);" onclick="setCategory('.$valuetmp.');" style="font-size:16px;"><img art-image="" src="'.$directory.'/'.$categories[$i].'/'.$categories[$i].'.png" width="50" height="50"><br>'.$categories[$i].'</a>');
+                                  print_r('    </td>') ;   
+                                  if ($i % 2 != 0)
+                                  {
+                                    print_r('    </tr>') ;
+                                  }
+                                }      
+                              }
+                                        print_r('<tbody style="height: 50px !important;">');
+                          ?>
+                          <!--menu for customers to go back if they wish-->
+                          <!--WILL USE THIS IF BREADCRUMBS DON'T WORK<div class="row"><div class="col-sm-1"></div><div class="col-sm-1"></div><div class="col-sm-10"></div></div>--> 
+                        </table> 
+                                           
+                    </div>
+                  </div>
+
+                    <script type="text/javascript">
+                          var div = document.getElementById('clipArtCategories');
+                          var category = "";
+                          var subcategory = "";
+                              
+   
+                          var categories = document.getElementById('categories');
+                          
+                          var subcategories = document.getElementById('subcategories');
+                          var clips = document.getElementById('clips');
+
+                          var subsubcategories = document.getElementById('subsubcategories');
+                          
+   
+                          subsubcategories.onclick = function(){
+                              //hiding clips
+                              clips.style.display = "none";
+                              //making subcategories "active"
+                              categories.classList.remove("active");
+                              subcategories.classList.add("active");
+                          }
+
+                          subcategories.onclick = function(){
+                              //TODO hide whatever is currently showing
+                              //showing table
+                              invisibleTables();
+                              showTable(category);
+                              //var table = document.getElementById('clipArtTable2');
+                              //table.style.display = "block";
+                              //table.setAttribute('width','100%');
+                              //getting ride of other crumbs in the breadcrumb list
+                              //subcategories.style.display = "none";
+                              subsubcategories.style.display = "none";
+                              clips.style.display = "none";
+                              //making the categories tab have the 'active' class
+                              categories.classList.remove("active");
+                              subsubcategories.classList.remove("active");
+                              subcategories.classList.add("active");
+                          }
+                          categories.onclick = function(){
+                              //TODO hide whatever is currently showing
+                              //showing table
+                              invisibleTables();
+                              var table = document.getElementById('clipArtTable');
+                              table.style.display = "block";
+                              table.setAttribute('width','100%');
+                              //getting ride of other crumbs in the breadcrumb list
+                              subcategories.style.display = "none";
+                              subsubcategories.style.display = "none";
+                              clips.style.display = "none";
+                              //making the categories tab have the 'active' class
+                              subcategories.classList.remove("active");
+                              subsubcategories.classList.remove("active");
+                              categories.classList.add("active");
+                          }
+                          function setCategory(element){
+                              //setting the category
+                              category = element;
+                              //hiding table
+                              invisibleTables();
+                              //var table = document.getElementById('clipArtTable');
+                              //table.style.display = "none";
+                              //showNewtable
+                              showTable(category,null);
+                              //making the subcategories visible and 'active'
+                              subcategories.style.display = "inline"; 
+                                                          subcategories.innerHTML = element; 
+                              clips.style.display = "none";
+                              //making the subcategories tab have the 'active' class
+                              categories.classList.remove("active");
+                              subsubcategories.classList.remove("active");
+                              subcategories.classList.add("active");                            
+                          }   
+
+                            function setSubCategory(element){
+                                //setting the category
+                                subcategory = element;
+                                //hiding table
+                                invisibleTables();
+                                //var table = document.getElementById('clipArtTable');
+                                //table.style.display = "none";
+                                //showNewtable
+                                showTable(category,subcategory);
+                                //showTable(element);
+                                //making the subcategories visible and 'active'
+                                subsubcategories.style.display = "inline"; 
+                                                            subsubcategories.innerHTML = element; 
+                                clips.style.display = "none";
+                                //making the subcategories tab have the 'active' class
+                                categories.classList.remove("active");
+                                subcategories.classList.remove("active");
+                                subsubcategories.classList.add("active");
+                                
+                            } 
+
+                          function showTable(category,subcategory){    
+                             $.ajax({
+                                      type: "POST",
+                                      url: "categories.php",
+                                      data: {
+                                              category: category,
+                                              subcategory: subcategory
+                                             },
+                                      success: function(data)
+                                      {
+                                          //alert(data);
+                                          document.getElementById('clipArtTable2').innerHTML = data;
+                                          document.getElementById('clipArtTable2').style.display = "block";
+                                      }
+                                  })                         
+                              }      
+
+                           function invisibleTables(){
+                              var tables = document.getElementsByClassName('table table-fixed');
+
+                              for (var i = 0; i < tables.length; i++) {
+                                  tables[i].style.display = "none";
+                              }
+                          }             
+                    </script>
+
+                    </div>
+                </div>  
+                </div>            
  
 
                 <!--START TEXT DESIGN SECTION-->
@@ -996,7 +1019,7 @@
                             }
                         </style>
                         <h3>Cart</h3><!--TODO MAKE THIS BUTTON FOR CART MODAL-->
-                        <form id="checkout_form" action="checkout.php" method="post">
+                        <form id="checkout_form"  method="post" action="checkout.php"><!--taken out action="checkout.php"-->
                             <table class="table" id="cart" style="width: 100% !important;">
                                 
                             </table>
@@ -1004,8 +1027,13 @@
                             <button id="productPickerBtn" type="button" class="btn btn-info" data-toggle="modal" data-target="#productPicker" >Add Products</button> <!-- taken out of the button onclick="setDesign();" -->
                             <h3 id="cartTotal"></h3>
                             <input id="total" type="hidden" name="total">
+                                                        <?php echo('<input id="ordernumber" type="hidden" name="ordernumber" value = '.$ordernumber.'>'); ?>
+                            <!-- Trigger the modal with a button -->
+                            <button id="productPickerBtn" type="button" class="btn btn-info" data-toggle="modal" data-target="#productPicker" >Add Products</button> <!-- taken out of the button onclick="setDesign();" -->
+                            <h3 id="cartTotal"></h3>
+                            <input id="total" type="hidden" name="total">
                             <?php 
-                                 $ses_sql = mysqli_query($db,"Select Quantity From consecutive where Name = 'Order'");     
+                                 /*$ses_sql = mysqli_query($db,"Select Quantity From consecutive where Name = 'Order'");     
                                  $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
                                  $ordernumber = "";
                                 if (!$Guest) {
@@ -1016,18 +1044,17 @@
                                      $ordernumber = $_SESSION['Guest'].sprintf("%06d", $row['Quantity']);                                           
                                 }       
                                 $ses_sql = mysqli_query($db,"Update consecutive set Quantity = Quantity + 1 where Name = 'Order'");
-                                echo('<input id="ordernumber" type="hidden" name="ordernumber" value = '.$ordernumber.'>');
+                                echo('<input id="ordernumber" type="hidden" name="ordernumber" value = '.$ordernumber.'>');*/
                              ?>
                             
-                            <button type="submit" id="checkoutBtn"  class="btn btn-success" style="display: none;">Check Out</button><!-- taken out of button  data-toggle="modal" data-target="#cartModal" onclick="getCheckoutCart();"-->
+                            <button type="button" id="checkoutBtn"  class="btn btn-success" style="display: none;" onclick="canCheckout_form();">Check Out</button><!-- taken out of button  data-toggle="modal" data-target="#cartModal" onclick="getCheckoutCart();"-->
                         </form>
                         <!--CART MODAL todo delete this-->
                         <div id="cartModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-body">
-                                        <form action="checkout.php" method="post">
-                                            <table id="checkoutCart" class="table">
+                                        <form action="checkout.php"  method="post" id="cart_checkout_form"><!--taken out action="checkout.php"-->                                            <table id="checkoutCart" class="table">
                                                 <tbody>
                                                     <tr>
                                                         <td></td>
@@ -1038,7 +1065,8 @@
                                     </div>
                                     <span>Order Total:<span id="finalTotal" style="display: block;"></span></span>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-success">Check Out</button>
+                                        <?php echo('<input id="ordernumber" type="hidden" name="ordernumber" value = '.$ordernumber.'>'); ?>
+                                        <button type="button" id="checkoutBtn2" class="btn btn-success" onclick="canCheckout_cart();">Check Out</button>
                                         </form> 
                                     </div>
                                 </div>
@@ -1076,7 +1104,7 @@
                                 cell2.innerHTML = "<div style='width:100px !important;'>" + sizeSummary + "</div>" + '<input min="0" type="hidden" name="yxs_'+rowNum+'" placeholder="yxs" value="'+item.yxs+'"><input min="0"   type="hidden" name="ys_'+rowNum+'" placeholder="ys" value="'+item.ys+'"><input min="0"   type="hidden" name="ym_'+rowNum+'" placeholder="ym" value="'+item.ym+'"><input min="0"   type="hidden" name="yl_'+rowNum+'" placeholder="yl" value="'+item.yl+'"><input min="0"   type="hidden" name="yxl_'+rowNum+'" placeholder="yxl" value="'+item.yxl+'"><input min="0"   type="hidden" name="s_'+rowNum+'" placeholder="s" value="'+item.s+'"><input min="0"   type="hidden" name="m_'+rowNum+'" placeholder="m" value="'+item.m+'"><input min="0"   type="hidden" name="l_'+rowNum+'" placeholder="l" value="'+item.l+'"><input min="0"   type="hidden" name="xl_'+rowNum+'" placeholder="xl" value="'+item.xl+'"><input min="0"   type="hidden" name="2xl_'+rowNum+'" placeholder="2xl" value="'+item.xxl+'"><input min="0"   type="hidden" name="3xl_'+rowNum+'" placeholder="3xl" value="'+item.xxxl+'"><input min="0"   type="hidden" name="4xl_'+rowNum+'" placeholder="4xl" value="'+item.xxxxl+'"><input min="0"   type="hidden" name="5xl_'+rowNum+'" placeholder="5xl" value="'+item.xxxxxl+'">' ;  
                                 sizeSummary = ""; //reseting size summary so that another product can be added
                                 cell3.innerHTML = "<h6 class='total"+rowNum+"'>$"+itemPrice+"</h6>"+"<input type='hidden' name='itemTotal_"+rowNum+"'' value='"+itemPrice+"'>";
-                                cell4.innerHTML = "<button  type='button' class='btn btn-danger' onclick='removeFromCart(this);';>X</button>";
+                                cell4.innerHTML = "<button  type='button' class='btn btn-danger' id="+rowNum+" onclick='removeFromCart(this);';>X</button>";
                                 cell5.innerHTML = '<input type="hidden" name="front_'+rowNum+'" value="'+designs[0]+'">'+'<input type="hidden" name="right_'+rowNum+'" value="'+designs[1]+'">'+'<input type="hidden" name="back_'+rowNum+'" value="'+designs[2]+'">'+'<input type="hidden" name="left_'+rowNum+'" value="'+designs[3]+'">';   //hidden product went here.
                                 cell6.innerHTML = "";   //hidden design went here
                                 item.product = product;
@@ -1100,6 +1128,14 @@
                                 item = new Object();
                                 rowNum++;
                                 getCartTotal();
+                            }
+                            function removeFromCart(btn){
+                                var row = btn.parentNode.parentNode;
+                                row.parentNode.removeChild(row);
+                                var num = Number(btn.id);
+                                cart.splice(num);
+                                getCartTotal();
+                                rowNum--;
                             }
                             function getItemPrice(){
                                 var yxs = document.getElementById('yxs').value; var ys = document.getElementById('ys').value; var ym = document.getElementById('ym').value;
@@ -1191,10 +1227,12 @@
                 </div>
 
                 <div id="saveSection" class="tab-pane fade">
-                    <h3>Look at your previous designs!</h3> 
+                    <div class="panel panel-default">
+                    <div class="panel-heading">Look at your previous designs!</div>
+                    <div class="panel-body">
+                           <select class="form-control" id="mydesings"  onChange="loadImages();"> 
                     <?php                                  
-                        echo('<select id="mydesings" name="mydesings" onChange="loadImages();">');                      
-                        echo ('<option value="Select the desing">Select the desing</option>');     
+                        echo ('<option title="Select the design">Select the design</option>');     
                         if (isset($_SESSION['login_user']))       
                         {       
                                 $folder = $_SESSION['login_user'];      
@@ -1207,12 +1245,15 @@
          
                                 for ($i=2; $i<count($scanned_directory) ; $i++)         
                                 {               
-                                 echo ('<option value="'.$scanned_directory[$i].'">'.$scanned_directory[$i].'</option>');       
+                                       echo ('<option title="'.$scanned_directory[$i].'">'.$scanned_directory[$i].'</option>');       
                                 }                       
                         }                                               
-                        echo ('</select>');                         
+                                 
                     ?>
-                   <br>
+                        </select> 
+                         <br>
+                    </div>
+                  </div
                     <!--SAVED DESIGN-->
                     <style type="text/css">
                         #savedDesigns img{
@@ -1225,24 +1266,24 @@
                         <tr>
                         <td>
                              <div id="frontSavedDesing"  style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-                               <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="frontSavePreview" src="" onclick="LoadDesings()">
+                               <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="frontSavePreview" src="" onclick="LoadDesings(null)">
                              </div> 
                         </td>
                         <td>
                              <div id="rightSavedDesing" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-                               <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="rightSavePreview" src=""  onclick="LoadDesings()">
+                               <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="rightSavePreview" src=""  onclick="LoadDesings(null)">
                              </div>
                         </td>
                         </tr>
                         <tr>
                         <td>
                              <div id="backSavedDesing" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-                               <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="backSavePreview" src=""  onclick="LoadDesings()">
+                               <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="backSavePreview" src=""  onclick="LoadDesings(null)">
                              </div> 
                         </td>
                         <td>
                              <div id="leftSavedDesing" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-                               <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="leftSavePreview" src=""  onclick="LoadDesings()">
+                               <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="leftSavePreview" src=""  onclick="LoadDesings(null)">
                              </div>
                         </td>
                         </tr>
@@ -1257,80 +1298,114 @@
                            function loadImages()
                            {
                                 //shows previews of saved design when user wants to see a saved design
-                                savedDesignsDiv.style.display = "block";
-     
-                                var desing =   document.getElementById("mydesings").value;
-                                var guest = desing.split("_", 1);
-     
-                                var file = guest+ '/' + desing + '/' + desing;
-                                document.getElementById('frontSavePreview').src = file+ '_front.png';
-                                document.getElementById('rightSavePreview').src = file+ '_right.png';
-                                document.getElementById('backSavePreview').src = file+ '_back.png';
-                                document.getElementById('leftSavePreview').src = file+ '_left.png';
+                                
+                                var design =   document.getElementById("mydesings").value;
+
+                                if (design != 'Select the design') 
+                                {
+                                  savedDesignsDiv.style.display = "block";
+                                  var guest = design.split("_", 1);       
+                                  var file = guest+ '/' + design + '/' + design;
+
+                                  document.getElementById('frontSavePreview').src = file+ '_front.png';
+                                  document.getElementById('rightSavePreview').src = file+ '_right.png';
+                                  document.getElementById('backSavePreview').src = file+ '_back.png';
+                                  document.getElementById('leftSavePreview').src = file+ '_left.png';
+                                }
+                                else
+                                {
+                                    savedDesignsDiv.style.display = "none";
+                                }     
                            }
      
-                           function LoadDesings()
+                           function LoadDesings(value)
                            {   
                                 //shows previews of saved design when user wants to see a saved design
-                                savedDesignsDiv.style.display = "block";
-     
-                               var desing =   document.getElementById("mydesings").value;
-                               var guest = desing.split("_", 1);
-                               var file = guest+ '/' + desing + '/' + desing + '.json';
-     
-                               $.ajax({
-                                   type:    "GET",
-                                   dataType: "JSON",
-                                   url:     file ,
-                                   success: function(text) {                                         
-                                        //document.getElementById('frontCanvasShirtDesing').style.backgroundImage = "url("+imgSrc+")"; 
-                                        front.loadFromDatalessJSON(text[0], front.renderAll.bind(front), function(o, object) {
-                                        fabric.log(o, object); 
-                                         });
-     
-                                        right.loadFromJSON(text[1], right.renderAll.bind(right), function(o, object) {
-                                        fabric.log(o, object); 
-                                         });
-     
-                                        back.loadFromJSON(text[2], back.renderAll.bind(back), function(o, object) {
-                                        fabric.log(o, object); 
-                                         });
-     
-                                        left.loadFromJSON(text[3], left.renderAll.bind(left), function(o, object) {
-                                        fabric.log(o, object);         
-                                       
-                                       });                                                                            
-                                   },
-                                   error:   function() {
-                                       alert("error");
-                                   }
-                               });                             
-                               
-                           }
+                                
+                                if (value == null)
+                                {
+                                  var desing =   document.getElementById("mydesings").value;
+                                  savedDesignsDiv.style.display = "block";
+                                }
+                                else
+                                {
+                                  savedDesignsDiv.style.display = "none";
+                                  var desing =  value;
+                                }
+                                 
+                                var guest = desing.split("_", 1);
+                                var file = guest+ '/' + desing + '/' + desing + '.json';
+       
+                                $.ajax({
+                                     type:    "GET",
+                                     dataType: "JSON",
+                                     url:     file ,
+                                     success: function(text) {                                         
+                                          //document.getElementById('frontCanvasShirtDesing').style.backgroundImage = "url("+imgSrc+")"; 
+                                          front.loadFromDatalessJSON(text[0], front.renderAll.bind(front), function(o, object) {
+                                          fabric.log(o, object); 
+                                           });
+       
+                                          right.loadFromJSON(text[1], right.renderAll.bind(right), function(o, object) {
+                                          fabric.log(o, object); 
+                                           });
+       
+                                          back.loadFromJSON(text[2], back.renderAll.bind(back), function(o, object) {
+                                          fabric.log(o, object); 
+                                           });
+       
+                                          left.loadFromJSON(text[3], left.renderAll.bind(left), function(o, object) {
+                                          fabric.log(o, object);         
+                                         
+                                         });                                                                            
+                                     },
+                                     error:   function() {
+                                         alert("error");
+                                     }
+                                 });                             
+             
+                          }
                     </script>
                     <!--SHARE SECTION-->
-                    <h3>Share</h3>
-                    <p>Via Facebook, Twitter, Instagram, or Email!</p>
-                    <i class="fa fa-facebook" aria-hidden="true" style="font-size: 5vh;"></i>
-                    <i class="fa fa-twitter" aria-hidden="true" style="font-size: 5vh;"></i>
-                    <i class="fa fa-instagram" aria-hidden="true" style="font-size: 5vh;"></i>
-                    <i class="fa fa-envelope-o" aria-hidden="true" style="font-size: 5vh;"></i>
-                    <form action="email.php" method="post">
-                        <!--URLs for front, right, back, and left designs with products-->
-                        <input type="hidden" id="frontShirtURL" name="frontShirtURL">
-                        <input type="hidden" id="frontImageURL" name="frontImageURL">
-                        <input type="hidden" id="rightShirtURL" name="rightShirtURL">
-                        <input type="hidden" id="rightImageURL" name="rightImageURL">
-                        <input type="hidden" id="backShirtURL" name="backShirtURL">
-                        <input type="hidden" id="backImageURL" name="backImageURL">
-                        <input type="hidden" id="leftShirtURL" name="leftShirtURL">
-                        <input type="hidden" id="leftImageURL" name="leftImageURL">
-                        <input type="hidden" id="designURL" name="designURL">
-                        <lable>From: &nbsp;</lable><input type="email" name="from_email" placeholder="Enter your email" required><br>
-                        <lable>To: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input type="email" name="email" placeholder="Enter email">
-                        <!--<i class="fa fa-envelope-o" aria-hidden="true" style="font-size: 5vh;"><input type="submit" name="submit" class="btn btn-primary"></i>-->
-                        <button type="submit" name="submit" class="btn btn-primary fa fa-envelope-o"></button>
-                    </form>
+                    <div class="panel panel-default">
+                    <div class="panel-heading">Share</div>
+                    <div class="panel-body">
+                          <form class="form-horizontal" >
+                            <p>Via Facebook, Twitter, Instagram, or Email!</p>
+                            <i class="fa fa-facebook" aria-hidden="true" style="font-size: 5vh;"></i>
+                            <i class="fa fa-twitter" aria-hidden="true" style="font-size: 5vh;"></i>
+                            <i class="fa fa-instagram" aria-hidden="true" style="font-size: 5vh;"></i>
+                            <i class="fa fa-envelope-o" aria-hidden="true" style="font-size: 5vh;"></i>
+                          </form>
+                          
+                          <form class="form-horizontal" id="emailform">
+
+                             <!--URLs for front, right, back, and left designs with products-->
+                              <input type="hidden" id="frontShirtURL" name="frontShirtURL">
+                              <input type="hidden" id="frontImageURL" name="frontImageURL">
+                              <input type="hidden" id="rightShirtURL" name="rightShirtURL">
+                              <input type="hidden" id="rightImageURL" name="rightImageURL">
+                              <input type="hidden" id="backShirtURL" name="backShirtURL">
+                              <input type="hidden" id="backImageURL" name="backImageURL">
+                              <input type="hidden" id="leftShirtURL" name="leftShirtURL">
+                              <input type="hidden" id="leftImageURL" name="leftImageURL">
+                              <input type="hidden" id="designURL" name="designURL">
+
+                            <div class="input-group" >
+                              <span class="input-group-addon">From:</span>
+                              <input id="from_email" type="text" class="form-control" name="from_email" placeholder="Enter your email">
+                            </div>     
+                            <br>                      
+                            <div class="input-group" >
+                              <span class="input-group-addon">To:</span>
+                              <input id="to_email" type="text" class="form-control" name="to_email" placeholder="Enter email">
+                            </div> 
+                            <br>
+                            <div class="input-group" >
+                              <span class="input-group-addon">Message:</span>
+                              <textarea id="message" type="text" class="form-control" name="message" placeholder="Enter message"></textarea>
+                            </div>
+                            <br> 
                     <!--SHARE DESIGN PREVIEWS-->
                     <div id="shareDesigns" class="row">
                         <div class="col-sm-3">
@@ -1354,6 +1429,47 @@
                             </div>
                         </div>
                     </div>
+                    <br>
+                              <button type="button" name="submit" class="btn btn-primary fa fa-envelope-o pull-right" onclick="sendemail();"></button>
+                          </form>
+                    </div>
+                  </div>                       
+                      
+                    <script type="text/javascript">
+                      function sendemail()
+                           {
+                              $.ajax({
+                                    type: "POST",
+                                    url: "email.php",
+                                    data: {
+                                            frontShirtURL: document.getElementById("frontShirtURL").value,
+                                            frontImageURL: document.getElementById("frontImageURL").value,
+                                            rightShirtURL: document.getElementById("rightShirtURL").value,
+                                            rightImageURL: document.getElementById("rightImageURL").value,
+                                            backShirtURL: document.getElementById("backShirtURL").value,
+                                            backImageURL: document.getElementById("backImageURL").value,
+                                            leftShirtURL: document.getElementById("leftShirtURL").value,
+                                            leftImageURL: document.getElementById("leftImageURL").value,
+                                            designURL: document.getElementById("designURL").value,
+                                            to_email: document.getElementById("to_email").value,
+                                            from_email: document.getElementById("from_email").value,
+                                            message: document.getElementById("message").value
+                                            },
+                                    success: function(data)
+                                    {
+                                         var message = document.getElementById("emailmessage");                                         
+                                          message.style.display="block";
+                                          setTimeout(function(){ message.style.display="none"; }, 3000);                                        
+                                    },
+                                    error: function (error)
+                                    {
+                                        var message = document.getElementById('emailerrormessage');
+                                            message.style.display="block";
+                                        setTimeout(function(){ message.style.display="none"; }, 3000);
+                                    }
+                                })     
+                           }
+                    </script>
                     <script type="text/javascript">
                         //used to make share designs preview visible at the right time
                         var shareDesignsDiv = document.getElementById('shareDesigns');
@@ -1583,7 +1699,7 @@
                                 .canvasShirt{
                                     width: 100%;
                                     height: 100%;
-                                    background-image: url('img/shirt.png');
+                                    background-image: url('img/white_shirt.png');
                                     background-repeat: no-repeat;
                                     background-size: cover;
                                     background-position: center center;
@@ -1711,10 +1827,14 @@
         fabric.Object.prototype.setControlsVisibility( {
             ml: false,
             mr: false,
-            mb: false,
-            mt: false
+            mb: false//,
+            //mt: false
         } );
         fabric.Canvas.prototype.customiseControls({
+           mt: {
+            action: 'moveUp',
+            cursor: 'pointer'
+          },
             tl: {
                 action: 'remove',
                 cursor: 'pointer'
@@ -1741,12 +1861,15 @@
         
         fabric.Object.prototype.customiseCornerIcons({
             settings: {
-                borderColor: 'rgba(49,98,100,0.3)', //black
+                borderColor: 'rgba(100,100,100,100)', //rrgba(100,100,100,100)
                 cornerSize: 20,
                 cornerShape: 'circle',
-                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                cornerPadding: 10,
-                hasRotatingPoint: false
+                cornerBackgroundColor: 'rgba(100,100,100,100)', //rrgba(100,100,100,100)
+                cornerPadding: 5,
+                                hasRotatingPoint: false
+            },
+            mt:{
+              icon: 'img/up.png',
             },
             tl: {
                 icon: 'img/x.png', //icons/rotate.svg
@@ -1809,6 +1932,7 @@
         var clipArtAdded = false;
         var imageUploaded = false;
         var colorChanged = false;
+        var rezided = false;
         var quantityOfProduct = 1;
         var costOfProduct = 1.0;
         var pricePerUnit = 0.0;
@@ -1823,7 +1947,15 @@
         var leftTop = left.height/2;
         var backTop = back.height/2;
         var rightTop = right.height/2;
- 
+        
+        initCenteringGuidelines(front);
+        initAligningGuidelines(front);
+        initCenteringGuidelines(right);
+        initAligningGuidelines(right);
+        initCenteringGuidelines(back);
+        initAligningGuidelines(back);
+        initCenteringGuidelines(left);
+        initAligningGuidelines(left);
  
         //SETTING quantityOfProduct
         function setQuantity(value){
@@ -1837,6 +1969,7 @@
             if (textAdded)    numOfColors += 2;
             if (clipArtAdded) numOfColors++;
             if (imageUploaded) numOfColors += 5;
+            textAdded = clipArtAdded = imageUploaded = false;
             //TODO determining number of colors based on each object
             
             if (quantityOfProduct < 5){
@@ -1954,22 +2087,25 @@
             fabric.Image.fromURL(imgSrc, function(img){
                     img.set({
                         id: objId,
-                        left: 100,
-                        top: 100,
-                        scaleX: 0.5,
-                        scaleY: 0.5,
+                        left: img.width/4,
+                        top: img.height/4,
+                        scaleX: 0.3,
+                        scaleY: 0.3,
+                        width: img.width/2,
+                        height: img.height/2,
                         originX: 'center',
                         originY: 'center',
-                        hasRotatingPoint: false,                        
+                        hasRotatingPoint: false,                         
                     });
                     // overwrite the prototype object based
                     img.customiseCornerIcons({
                         settings: {
-                            borderColor: 'rgba(49,98,100,0.3)', //black
+                            borderColor: 'rgba(100,100,100,100)', //black
                             cornerSize: 20,
                             cornerShape: 'circle',
-                            cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                            cornerPadding: 10,
+                            cornerBackgroundColor: 'rgba(100,100,100,100)', //black
+                            cornerPadding: 5,
+                                hasRotatingPoint: false
                         },
                         tl: {
                             icon: 'img/x.png', //icons/rotate.svg
@@ -1993,16 +2129,16 @@
                     //DECIDING WHICH CANVAS TO ADD TOO
                     switch (canvasCounter){
                         case 1:
-                            front.add(img);
+                            front.add(img).setActiveObject(img);
                             break
                         case 2:
-                            right.add(img);
+                            right.add(img).setActiveObject(img);
                             break;
                         case 3:
-                            back.add(img);
+                            back.add(img).setActiveObject(img);
                             break;
                         default:
-                            left.add(img);
+                            left.add(img).setActiveObject(img);
                     }
                     //canvas.add(img);
                     //this is where animation would go          
@@ -2031,11 +2167,12 @@
                     // overwrite the prototype object based
                     img.customiseCornerIcons({
                         settings: {
-                            borderColor: 'rgba(49,98,100,0.3)', //rgba(49,98,100,0.3)
+                            borderColor: 'rgba(100,100,100,100)', //rrgba(100,100,100,100)
                             cornerSize: 20,
                             cornerShape: 'circle',
-                            cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                            cornerPadding: 10,
+                            cornerBackgroundColor: 'rgba(100,100,100,100)', //black
+                            cornerPadding: 5,
+                                hasRotatingPoint: false
                         },
                         tl: {
                             icon: 'img/x.png', //icons/rotate.svg
@@ -2061,19 +2198,19 @@
                     //DECIDING WHICH CANVAS TO ADD TOO
                     switch (canvasCounter){
                         case 1:
-                            front.add(img);
+                            front.add(img).setActiveObject(img);
                             //front.setActiveObject(img);
                             break
                         case 2:
-                            right.add(img);
+                            right.add(img).setActiveObject(img);
                             //right.setActiveObject(img);
                             break;
                         case 3:
-                            back.add(img);
+                            back.add(img).setActiveObject(img);
                             //back.setActiveObject(img);
                             break;
                         default:
-                            left.add(img);
+                            left.add(img).setActiveObject(img);
                             //left.setActiveObject(img);
                     }
                     //this is where animation would go          
@@ -2297,7 +2434,8 @@
     }
 // ens space for functions 
         function addText(e) {
-            if (e.keyCode == 13) 
+            textAdded = true;
+            if (e.keyCode == 13 || e.type == "click") 
             {
 
               //the following is only for styling purposes                   
@@ -2388,7 +2526,12 @@
         //adding text
         function straight(){
             textAdded = true;
-           
+           text = document.getElementById('text').value;
+          document.getElementById('text').value = "";
+          colorText = "#000000";
+          colorArt = "#000000";
+          strokeColor = "#000000";
+          font = 'Ariel'; 
             var txt = new fabric.Text(text,{
                 fontFamily: font,
                 stroke: strokeColor,
@@ -2403,11 +2546,12 @@
             objId++;
             txt.customiseCornerIcons({
                 settings: {
-                    borderColor: 'rgba(49,98,100,0.3)', //black
+                    borderColor: 'rgba(100,100,100,100)', //black
                     cornerSize: 20,
                     cornerShape: 'circle',
-                    cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                    cornerPadding: 10,
+                    cornerBackgroundColor: 'rgba(100,100,100,100)', //black
+                    cornerPadding: 5,
+                                hasRotatingPoint: false
                     hasRotatingPoint: false
                 },
                 tl: {
@@ -2433,16 +2577,16 @@
             //DECIDING WHICH CANVAS TO ADD TOO
             switch (canvasCounter){
                 case 1:
-                    front.add(txt);
+                    front.add(txt).setActiveObject(txt);
                     break
                 case 2:
-                    right.add(txt);
+                    right.add(txt).setActiveObject(txt);
                     break;
                 case 3:
-                    back.add(txt);
+                    back.add(txt).setActiveObject(txt);
                     break;
                 default:
-                    left.add(txt);
+                    left.add(txt).setActiveObject(txt);
             }
         }
  
@@ -2480,11 +2624,14 @@
                         group2.set({  id:'valley' +  objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                borderColor: 'rgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
+                                hasRotatingPoint: false
+
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2505,18 +2652,20 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        front.add(group2);
+                        front.add(group2).setActiveObject(group2);
                         break
                     case 2:
                         var group2 = new fabric.Group(headingText, { left: leftpos, top: rightTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
                         group2.set({  id:'valley' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                borderColor: 'rgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
+                                hasRotatingPoint: false
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2537,18 +2686,20 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        right.add(group2);
+                        right.add(group2).setActiveObject(group2);
                         break;
                     case 3:
                         var group2 = new fabric.Group(headingText, { left: leftpos, top: backTop, fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
                         group2.set({  id:'valley' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                borderColor: 'rgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
+                                hasRotatingPoint: false
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2569,18 +2720,20 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        back.add(group2);
+                        back.add(group2).setActiveObject(group2);
                         break;
                     default:
                         var group2 = new fabric.Group(headingText, { left: leftpos, top: leftTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
                         group2.set({  id:'valley' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                borderColor: 'rgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
+                                hasRotatingPoint: false
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2601,7 +2754,7 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        left.add(group2);
+                        left.add(group2).setActiveObject(group2);
                 }
                 
             }
@@ -2643,11 +2796,13 @@
                         group2.set({  id:'bridge' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                borderColor: 'rgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
+                                hasRotatingPoint: false
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2668,18 +2823,19 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        front.add(group2);
+                        front.add(group2).setActiveObject(group2);
                         break
                     case 2:
                         var group2 = new fabric.Group(headingText, { left: leftpos, top: rightTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
                         group2.set({  id:'bridge' +  objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                 borderColor: 'rrgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rrgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2700,18 +2856,19 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        right.add(group2);
+                        right.add(group2).setActiveObject(group2);
                         break;
                     case 3:
                         var group2 = new fabric.Group(headingText, { left: leftpos, top: backTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
                         group2.set({  id:'bridge' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                 borderColor: 'rrgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rrgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2732,18 +2889,19 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        back.add(group2);
+                        back.add(group2).setActiveObject(group2);
                         break;
                     default:
                         var group2 = new fabric.Group(headingText, { left: leftpos, top: leftTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
                         group2.set({  id:'bridge' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                 borderColor: 'rrgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rrgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2764,7 +2922,7 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        left.add(group2);
+                        left.add(group2).setActiveObject(group2);
                 }
             }
         //END  REVERSE CURVE CODE*******************************************************************************************************************************************************************
@@ -2804,11 +2962,12 @@
                         group2.set({  id:'circle' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                 borderColor: 'rrgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rrgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2829,18 +2988,19 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        front.add(group2);
+                        front.add(group2).setActiveObject(group2);
                         break
                     case 2:
                         var group2 = new fabric.Group(headingText, { left: leftpos, top: rightTop, fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
                         group2.set({  id:'circle' +   objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                 borderColor: 'rrgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rrgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2861,18 +3021,19 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        right.add(group2);
+                        right.add(group2).setActiveObject(group2);
                         break;
                     case 3:
                         var group2 = new fabric.Group(headingText, { left: leftpos, top: backTop , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
                         group2.set({  id:'circle' +    objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                 borderColor: 'rrgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rrgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2893,18 +3054,19 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        back.add(group2);
+                        back.add(group2).setActiveObject(group2);
                         break;
                     default:
                         var group2 = new fabric.Group(headingText, { left: leftpos, top: leftTop, fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
                         group2.set({  id:'circle' +    objId, hasRotatingPoint: false}); objId++;
                         group2.customiseCornerIcons({
                             settings: {
-                                borderColor: 'rgba(49,98,100,0.3)', //black
+                                 borderColor: 'rrgba(100,100,100,100)', //black
                                 cornerSize: 20,
                                 cornerShape: 'circle',
-                                cornerBackgroundColor: 'rgba(49,98,100,0.3)', //black
-                                cornerPadding: 10,
+                                cornerBackgroundColor: 'rrgba(100,100,100,100)', //black
+                                cornerPadding: 5,
+                                hasRotatingPoint: false
                             },
                             tl: {
                                 icon: 'img/x.png', //icons/rotate.svg
@@ -2925,7 +3087,7 @@
                             back.renderAll();
                             left.renderAll();
                         });
-                        left.add(group2);
+                        left.add(group2).setActiveObject(group2);
                 }
                 //var group2 = new fabric.Group(headingText, { left: 0, top: canvas.height/2 , fontFamily: font,  strokeWidth: 1, strokeStyle:"#fff",stroke: strokeColor});
             }
@@ -2965,8 +3127,8 @@
  
              function uploadEx() 
              {                  
- 
-                if (textAdded || clipArtAdded || imageUploaded  || colorChanged || addingToCart) 
+                 savePDFs();
+                if (textAdded || clipArtAdded || imageUploaded  || colorChanged || addingToCart || rezided) 
                 {                   
                     $('#mProgressBarModal').modal('show');         
                     //progress(10);
@@ -3047,9 +3209,38 @@
  
                 }
             }
- 
+            function savePDFs(){
+              //front
+              var img = new Image();
+              img.src = front.toDataURL();
+              var doc_front = new jsPDF();
+              doc_front.addImage(img ,"PNG",20,40,100,100);
+              doc_front.setFontSize(22);
+              doc_front.text(20, 20, 'front');
+              doc_front.save('front.pdf');
+              //right
+              img = new Image();
+              img.src = right.toDataURL();
+              var doc_right = new jsPDF();
+              doc_right.addImage(img ,"PNG",20,40,100,100);
+              doc_right.setFontSize(22);
+              doc_right.save('right.pdf');
+              //back
+              img = new Image();
+              img.src = back.toDataURL();
+              var doc_back = new jsPDF();
+              doc_back.addImage(img ,"PNG",20,40,100,100);
+              doc_back.save('back.pdf');
+              //left
+              img = new Image();
+              img.src = left.toDataURL();
+              var doc_left = new jsPDF();
+              doc_left.addImage(img ,"PNG",20,40,100,100);
+              doc_left.save('left.pdf');
+            }
             function resize(e)
             {
+                rezided = true;
                 //stops user from entering anything except integers and 'enter'
                 if(e.which != 13 && (e.which < 48 || e.which > 57) ){ return false;}
                 
@@ -3190,7 +3381,14 @@
                 }
                
             }
- 
+            //creating a function to change the size of the clip art menu when 'editArt' div is active.
+            function changeClipArtMenuSize(){
+                  console.log('changeClipArtMenuSize started');
+                  var clipArtMenu = document.getElementById('clipArtMenu');
+                  
+                  document.getElementById('ClipsArtImages').style.height = '355px';
+                  console.log('changeClipArtMenuSize finished. height : ' + document.getElementById('ClipsArtImages').style.height);
+            }
  
              front.on('mouse:up', function(e) 
             { 
@@ -3212,7 +3410,8 @@
                   document.getElementById("widthImage").value = Math.round(modifiedObject.getWidth()/35);
                   document.getElementById("heightImage").value = Math.round(modifiedObject.getHeight()/35);
                   document.getElementById("angleImage").value = Math.round(modifiedObject.getAngle());
-                  editArt.style.display = 'block';                  
+                  editArt.style.display = 'block';       
+                  changeClipArtMenuSize();            
                   newArt.style.display = 'none';                               
                 }  
                 else if(e.target.type == 'text' || e.target.type == 'group' ) 
@@ -3254,7 +3453,7 @@
                      }
                 }
                 //disabling textbtns again if text is not selected
-                if(e.target.type != 'text' && e.target.type != 'group' )
+                if(e.target.type == 'undefined' || e.target.type != 'text' && e.target.type != 'group' )
                 {
                     var textBtns = document.getElementsByClassName("textBtn");
                      for (var i = 0; i < textBtns.length; i++) {
@@ -3486,8 +3685,8 @@
                         e.target.setFontSize(e.target.getFontSize()/2);
                     }
                     //obj.setWidth(maxX *2);
-                    console.log("too wide! width : " + obj.getWidth());
-                    e.target.set({ width: maxX, scaleX: 1 });
+                    //console.log("too wide! width : " + obj.getWidth());
+                    //e.target.set({ width: maxX, scaleX: 1 });
                 } 
                 if(obj.getHeight() > front.height){
                     if(e.target.type == 'text' || e.target.type == 'group' ) 
@@ -3495,8 +3694,9 @@
                         e.target.setFontSize(e.target.getFontSize()/2);
                     }
                    //obj.setHeight(maxY); 
-                   console.log("too tall! height : " + obj.getHeight());
-                   e.target.set({ height: maxY, scaleY: 1 });
+                   console.log("3509 height : " + e.target.getHeight() + " width : " + e.target.getWidth());
+                   e.target.set({ height: e.target.getHeight()/4, width: e.target.getWidth()/4});
+                   console.log("3511 height : " + e.target.getHeight() + " width : " + e.target.getWidth());
                 } 
                 //the following is to help keep images within size range when their angle != 0
                 if(e.target.getAngle() != 0 || e.target.getAngle() != 180){
@@ -3507,7 +3707,7 @@
                         }
                         //obj.setWidth(maxX *2);
                         console.log("too wide! width : " + obj.getWidth());
-                        e.target.set({ width: maxY, scaleX: 1 });
+                   e.target.set({ height: e.target.getHeight()/4, width: e.target.getWidth()/4});
                     } 
                     if(obj.getHeight() > front.width){
                         if(e.target.type == 'text' || e.target.type == 'group' ) 
@@ -3516,7 +3716,7 @@
                         }
                        //obj.setHeight(maxY); 
                        console.log("too tall! height : " + obj.getHeight());
-                       e.target.set({ height: maxX, scaleY: 1 });
+                   e.target.set({ height: e.target.getHeight()/4, width: e.target.getWidth()/4});
                     } 
                 }      
                 obj.setCoords();
@@ -3731,8 +3931,11 @@
         function setDesign(){
             front.deactivateAll().renderAll();
             designPreview.src = front.toDataURL();
+             var designPreviews = document.getElementsByClassName('designPreview');
+            for (var i = 0; i < designPreviews.length; i++) {
+              designPreviews[i].src = front.toDataURL();
+            }
         }
-        //setDesign();
         function setProductPreview(element){
             productPreview.style.backgroundImage = "url('"+element.src+"')";
         }
@@ -3753,24 +3956,47 @@
             s += Number(sizes[i].value) + " ";
           }
           console.log('s : ' + s);
-          if(quantity <= 0)
+          //setting quantity to calc price
+          setQuantity(quantity);
+
+          //calculating price for acurate results
+          calcPrice();
+          if(quantity < 1)
           {
             document.getElementById("itemPriceLabel").style.visibility  = "hidden";
             document.getElementById('itemPrice').innerHTML = "";
+            document.getElementById("numOfShirtsLabel").style.visibility  = "hidden";
+            document.getElementById('numOfShirtsLabel').innerHTML = "";
+            document.getElementById("itemTotal").style.visibility  = "hidden";
+            document.getElementById('itemTotal').innerHTML = "";
+            document.getElementById("itemTotalLabel").style.visibility  = "hidden";
           }
           else if( quantity == 1)
           {
-
             itemTotal = pricePerUnit;
-            console.log("item total : " + itemTotal );
+            console.log("MARKER 1 : item total : " + itemTotal );
             document.getElementById("itemPriceLabel").style.visibility  = "visible";
-            document.getElementById('itemPrice').innerHTML = "$" + itemTotal;
+            document.getElementById('itemPrice').innerHTML = "$" + pricePerUnit;
+            document.getElementById("numOfShirtsLabel").style.visibility  = "visible";
+            document.getElementById('numOfShirtsLabel').innerHTML = " <strong>QTY:</strong> "+quantityOfProduct+" shirt";
+            document.getElementById("itemTotal").style.visibility  = "visible";
+            document.getElementById('itemTotal').innerHTML = "$" + itemTotal;
+            document.getElementById("itemTotalLabel").style.visibility  = "visible";
           }
           else
           {
             document.getElementById("itemPriceLabel").style.visibility  = "visible";
             itemTotal = (quantity) * pricePerUnit;
-            document.getElementById('itemPrice').innerHTML = "$" + itemTotal;
+            console.log('MARKER 2 : itemTotal : ' + itemTotal);
+            document.getElementById('itemPrice').innerHTML = "$" + pricePerUnit;
+            document.getElementById("numOfShirtsLabel").style.visibility  = "visible";
+            document.getElementById('numOfShirtsLabel').innerHTML = " <strong>qty:</strong> "+quantityOfProduct+" shirts";
+            document.getElementById("itemTotal").style.visibility  = "visible";
+            document.getElementById('itemTotal').innerHTML = "$" + itemTotal;
+            document.getElementById("itemTotalLabel").style.visibility  = "visible";
+          }
+          //showing shipping information when
+          getShippingInformation();
           }
         }
         //function preformed when the user wants to checkout from the 'add product' modal
@@ -3790,42 +4016,216 @@
           message.style.display="block";
           setTimeout(function(){ message.style.display="none"; }, 3000);
         }
-    </script>
+        //function to make sure a design is made before allowing the customer to checkout. If there is no design, the customer cannot proceed to checkout
+        function isThereDesign(showModal){
+          var num = front.getObjects().length + right.getObjects().length + back.getObjects().length + left.getObjects().length;
+          if(num > 0){
+            if(showModal) {getPrice();}
+            return true;
+          }else{
+            //alert letting the user know that no design was detected goes here
+            var message = document.getElementById('noDesignError');
+            message.style.display="block";
+            setTimeout(function(){ message.style.display="none"; }, 3000);
+            return false;
+          }
+        }
+        //function determining if the customer can check out or not from add product modal
+        function canCheckout_form(){
+          var form = document.getElementById("checkout_form");
+          var canCheckout = isThereDesign(false);
+          if(canCheckout){
+            form.submit();
+          }
+        }
+        //function determining if the customer can check out or not from cart
+        function canCheckout_cart(){
+          var form = document.getElementById("cart_checkout_form");
+          var canCheckout = isThereDesign(false);
+          if(canCheckout){
+            form.submit();
+          }
+        }
+        //function to Sign user up without leaving the page and their current design
+        function signup(){
+          var username = document.getElementById('username').value;
+          $.ajax({
+            type: "post",
+            url: "signup.php",
+            data: { 
+              firstName : document.getElementById('firstname').value,
+              lastName : document.getElementById('lastname').value,
+              username : document.getElementById('username').value,
+              password : document.getElementById('password').value,
+              email : document.getElementById('email').value,
+              phone : document.getElementById('phone').value,
+            },
+            success: function(result) {
+              //change sign up button here
+              var btn = document.getElementById("signup");
+              btn.classList.remove('btn-success');
+              btn.classList.add('btn-info');
+              btn.innerHTML = "Logout";
+              btn.onclick = function() { window.location.href='logout.php'};
+              btn.setAttribute("data-target", "#");
+            },
+            error: function(result){
+              alert("An error occured");
+            }
+          });
+        }
+        //function to deselect all objects in all canvases. This just prevents a lot of errors in general.
+        function deselectAllCanvases(){
+          front.deactivateAll().renderAll();
+          right.deactivateAll().renderAll();
+          back.deactivateAll().renderAll();
+          left.deactivateAll().renderAll();
+        }
+        //function to show and dismiss popovers in the product picker plus sizes
+        var _2xl = document.getElementById('xxl');
+         var _3xl = document.getElementById('xxxl');
+         var _4xl = document.getElementById('xxxxl');
+         var _5xl = document.getElementById('xxxxxl');
+         _2xl.onfocus = function(){
+          console.log('5xl onfocus');
+          $(this).popover('show');
+         }
+         _2xl.onblur = function(){
+          console.log('5xl onblur');
+          $(this).popover('hide');
+         }
+         _3xl.onfocus = function(){
+          console.log('5xl onfocus');
+          $(this).popover('show');
+         }
+         _3xl.onblur = function(){
+          console.log('5xl onblur');
+          $(this).popover('hide');
+         }
+         _4xl.onfocus = function(){
+          console.log('5xl onfocus');
+          $(this).popover('show');
+         }
+         _4xl.onblur = function(){
+          console.log('5xl onblur');
+          $(this).popover('hide');
+         }
+         _5xl.onfocus = function(){
+          console.log('5xl onfocus');
+          $(this).popover('show');
+         }
+         _5xl.onblur = function(){
+          console.log('5xl onblur');
+          $(this).popover('hide');
+         }
+         //function: show shipping information to customer.
+         function getShippingInformation(){
+            /*
+            REQUIREMENTS:
+            Guarantee 2 week delivery
+            Make sure delivery date isn't on weekend or holiday
+            */
+            var div = document.getElementById('shippingSection').style.visibility = "visible";
+            var deliveryDate = new Date();
+            //MAKE SURE THIS LINE IS WRITE SINCE I'M TESTING WITH IT
+            deliveryDate.setDate(deliveryDate.getDate() + 14);
+            //make sure delivery date isn't on weekend
+            if(deliveryDate.getDay() == 6){
+              deliveryDate.setDate(deliveryDate.getDate() + 2);
+            }
+            else if (deliveryDate.getDate() == 0 ){
+              deliveryDate.setDate(deliveryDate.getDate() + 1); 
+            }
+            //making sure deliveryDate isn't on a federal holiday
+            var newYears = new Date(2017,0,1);
+           var independenceDay = new Date(2017,6,4);
+           var VETRANS_DAY = new Date(2017, 10, 11);
+           var christmas = new Date(2017, 11, 25);
+           //this is a current date to reference
+           var c = new Date();
+           //finding mlk day
+           var mlk = new Date(c.getFullYear(), 0, 1);
+          var day = mlk.getDay();
+          var target = 1;
+          var diff = target - day;
+          day = diff + 14 + 1;
+          mlk.setDate(day);
+          //finding Washington's birthday
+          var washington = new Date(c.getFullYear(),1,1);
+          day = washington.getDay();
+          target = 1;
+          diff = target - day;
+          day = diff + 21 + 1;
+          washington.setDate(day);
+          //finding Memorial Day
+          var memorial = new Date(c.getFullYear(),5,0);
+          day = memorial.getDay();   
+          target = 1;
+          if(day > target){
+            diff = target - day;
+            day = 31 + diff;
+            memorial.setDate(day);
+          }else if(day < target){
+            memorial.setDate(memorial.getDate() - 6);
+          }
+          //finding Labor Day
+          var labor = new Date(c.getFullYear(), 8 , 1);
+          day = labor.getDay();
+          target = 1;
+          if ( day >  target ){
+            diff = day - target; 
+            day = 7 - diff;
+            labor.setDate(day + 1); //adding 1 because day is zero based and the date isn't
+          }else if( day < target ){
+            day++;
+            labor.setDate(day);
+          }
+          //finding Columbus Day
+          var columbus = new Date(c.getFullYear(),9,1);
+          day = columbus.getDay();
+          target = 1;
+          if(day > target){
+            diff = day - target;
+            day = 7 - diff;
+            day = day + 7;
+          }else if( day < target ){
+            day = day + 1 + 7;
+          }else{
+            day += 7;
+          }
+          columbus.setDate(day+1);
+          //finding thanksgiving
+          var thanksgiving = new Date(c.getFullYear(), 10 , 1);
+          day = thanksgiving.getDay();
+          target = 4;         
+          diff = target - day;
+          day = diff + 21 + 1;
+          thanksgiving.setDate(day);
 
-
-
-
-<!--modal to be shown when user tries to leave the page-->
-<div id="leaveModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
+          //making sure the delivery date isn't a holiday
+          if(newYears.getMonth() == deliveryDate.getMonth() && newYears.getDate() == deliveryDate.getDate() ||
+            independenceDay.getMonth() == deliveryDate.getMonth() && independenceDay.getDate() == deliveryDate.getDate() ||
+            VETRANS_DAY.getMonth() == deliveryDate.getMonth() && VETRANS_DAY.getDate() == deliveryDate.getDate() ||
+            christmas.getMonth() == deliveryDate.getMonth() && christams.getDate() == deliveryDate.getDate() ||
+            mlk.getMonth() == deliveryDate.getMonth() && mlk.getDate() == deliveryDate.getDate() ||
+            washington.getMonth() == deliveryDate.getMonth() && washington.getDate() == deliveryDate.getDate() ||
+            memorial.getMonth() == deliveryDate.getMonth() && memorial.getDate() == deliveryDate.getDate() ||
+            labor.getMonth() == deliveryDate.getMonth() && labor.getDate() == deliveryDate.getDate() ||
+            columbus.getMonth() == deliveryDate.getMonth() && columbus.getDate() == deliveryDate.getDate() ||
+            thanksgiving.getMonth() == deliveryDate.getMonth() && thanksgiving.getDate() == deliveryDate.getDate() ){
+            deliveryDate.setDate(deliveryDate.getDate()+1);
+          }
+          //arrays for date formatting
+          var day = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+          var month = ['Janurary','Feburary','March','April','May','June','July','August','September','October','November','December'];
+          document.getElementById('deliveryDate').innerHTML = day[deliveryDate.getDay()] + ", " + month[deliveryDate.getMonth()] + " " + deliveryDate.getDate();
+          console.log('function finished');
+          console.log('innerhtml : ' + document.getElementById('deliveryDate').innerHTML);
+          
+         }
         
-        <h4 class="modal-title">Please don't leave me!</h4>
-      </div>
-      <div class="modal-body">
-        <p>We can work this out...</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">...stay</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-    <script type="text/javascript">
-      //asking customer if they are sure they want to leave before they can leave
-      // Enable navigation prompt
-      window.onbeforeunload = function() {
-       
-          $("#leaveModal").modal();
- 
-          return false;
-      };
     </script>
+
 
     <!--TEXT DESIGN JAVASCRIPT-->
     <script>
@@ -3874,6 +4274,7 @@
                               cornerShape: 'circle',
                               cornerBackgroundColor: 'rgba(100,100,100,100)', //black
                               cornerPadding: 5,
+                                hasRotatingPoint: false
                           },
                           tl: {
                               icon: 'img/x.png', //icons/rotate.svg
@@ -4027,6 +4428,7 @@
                               cornerShape: 'circle',
                               cornerBackgroundColor: 'rgba(100,100,100,100)', //black
                               cornerPadding: 5,
+                                hasRotatingPoint: false
                           },
                           tl: {
                               icon: 'img/x.png', //icons/rotate.svg

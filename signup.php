@@ -11,16 +11,15 @@ include("config.php");
       $result = mysqli_query($db,$sql);
       
       $_SESSION['login_user'] = $_POST['username'];
-      //header("location: ui.php");
-      print_r("Result :" . $result);
+      header("location: ui.php");
+      //print_r("Result :" . $result);
   }
   
 ?>
 
-<table>
 <?php 
-
-
+/*
+    echo "<table>";
     foreach ($_POST as $key => $value) {
         echo "<tr>";
         echo "<td>";
@@ -31,7 +30,6 @@ include("config.php");
         echo "</td>";
         echo "</tr>";
     }
-
-
+    echo "</table>";
+*/
 ?>
-</table>

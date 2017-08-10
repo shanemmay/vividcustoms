@@ -465,3 +465,987 @@
 [24-Jul-2017 15:11:34 CST6CDT] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 103
 [25-Jul-2017 11:21:52 CST6CDT] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/vividcustoms/public_html/vivid_customs2/test.php:346) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
 [25-Jul-2017 11:24:33 CST6CDT] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/vividcustoms/public_html/vivid_customs2/test2.php:28) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
+[25-Jul-2017 11:52:54 CST6CDT] PHP Warning:  include(Orders.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test2.php on line 2
+[25-Jul-2017 11:52:54 CST6CDT] PHP Warning:  include(Orders.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test2.php on line 2
+[25-Jul-2017 11:52:54 CST6CDT] PHP Warning:  include(): Failed opening 'Orders.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/vividcustoms/public_html/vivid_customs2/test2.php on line 2
+[26-Jul-2017 10:39:50 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 154
+[26-Jul-2017 13:16:14 CST6CDT] PHP Fatal error:  Call to undefined function mysqli_() in /home/vividcustoms/public_html/vivid_customs2/ui3.php on line 7
+[26-Jul-2017 14:24:41 CST6CDT] PHP Fatal error:  Call to undefined function mysqli_() in /home/vividcustoms/public_html/vivid_customs2/ui3.php on line 7
+[26-Jul-2017 14:27:12 CST6CDT] PHP Fatal error:  Call to undefined function mysqli_() in /home/vividcustoms/public_html/vivid_customs2/ui3.php on line 5
+[26-Jul-2017 14:34:15 CST6CDT] PHP Fatal error:  Call to undefined function mysqli_() in /home/vividcustoms/public_html/vivid_customs2/ui3.php on line 7
+[26-Jul-2017 14:35:06 CST6CDT] PHP Fatal error:  Call to undefined function mysqli_() in /home/vividcustoms/public_html/vivid_customs2/ui3.php on line 4
+[27-Jul-2017 13:09:02 CST6CDT] PHP Fatal error:  Call to undefined function mysqli_() in /home/vividcustoms/public_html/vivid_customs2/ui3.php on line 7
+[27-Jul-2017 16:21:06 CST6CDT] PHP Warning:  scandir(/home/vividcustoms/public_html/vivid_customs2/img/clip_art/Shapes/crown02.png): failed to open dir: Not a directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 109
+[27-Jul-2017 16:21:06 CST6CDT] PHP Warning:  scandir(): (errno 20): Not a directory in /home/vividcustoms/public_html/vivid_customs2/categories.php on line 109
+[28-Jul-2017 09:00:44 CST6CDT] PHP Fatal error:  Cannot redeclare setImageResolution() (previously declared in /home/vividcustoms/public_html/vivid_customs2/test.php:4) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[28-Jul-2017 09:14:06 CST6CDT] PHP Fatal error:  Uncaught exception 'ImagickException' with message 'Constructor shouldn't be called with a boolean as the filename' in /home/vividcustoms/public_html/vivid_customs2/test.php:6
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/test.php(6): Imagick->__construct(false)
+#1 /home/vividcustoms/public_html/vivid_customs2/test.php(38): setImageResolution('img300DPI.png', NULL, NULL)
+#2 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/test.php on line 6
+[28-Jul-2017 11:18:12 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/vividcustoms/public_html/vivid_customs2/checkout.php on line 45
+[28-Jul-2017 11:49:42 CST6CDT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/vividcustoms/public_html/vivid_customs2/save_order.php:7) in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 217
+[28-Jul-2017 11:50:41 CST6CDT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/vividcustoms/public_html/vivid_customs2/save_order.php:7) in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 217
+[28-Jul-2017 11:52:24 CST6CDT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/vividcustoms/public_html/vivid_customs2/save_order.php:7) in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 210
+[28-Jul-2017 11:53:49 CST6CDT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/vividcustoms/public_html/vivid_customs2/save_order.php:7) in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 210
+[28-Jul-2017 11:59:50 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 215
+[28-Jul-2017 12:00:50 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 215
+[28-Jul-2017 12:01:32 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 215
+[28-Jul-2017 12:01:59 CST6CDT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vividcustoms/public_html/vivid_customs2/save_order.php on line 221
+[28-Jul-2017 14:43:55 CST6CDT] PHP Fatal error:  Call to a member function setImageProperty() on null in /home/vividcustoms/public_html/vivid_customs2/test.php on line 18
+[28-Jul-2017 15:27:32 CST6CDT] PHP Fatal error:  Uncaught exception 'ImagickException' with message 'unable to open image 'img.jpg': No such file or directory @ error/blob.c/OpenBlob/3093' in /home/vividcustoms/public_html/vivid_customs2/test.php:15
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/test.php(15): Imagick->__construct('img.jpg')
+#1 /home/vividcustoms/public_html/vivid_customs2/test.php(24): setImageResolution('Crowns.png')
+#2 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/test.php on line 15
+[28-Jul-2017 15:31:34 CST6CDT] PHP Fatal error:  Call to a member function setImageUnits() on null in /home/vividcustoms/public_html/vivid_customs2/test.php on line 16
+[28-Jul-2017 16:07:41 CST6CDT] PHP Fatal error:  Maximum execution time of 900 seconds exceeded in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 104
+[31-Jul-2017 09:20:16 CST6CDT] PHP Fatal error:  Call to a member function setImageProperty() on null in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 108
+[31-Jul-2017 10:07:26 CST6CDT] PHP Fatal error:  Uncaught exception 'ImagickException' with message 'improper image header `img-500.png' @ error/png.c/ReadPNGImage/4133' in /home/vividcustoms/public_html/vivid_customs2/test3.php:15
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/test3.php(15): Imagick->__construct('img-500.png')
+#1 /home/vividcustoms/public_html/vivid_customs2/test3.php(10): setImageResolution('img-500.png')
+#2 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/test3.php on line 15
+[31-Jul-2017 10:09:00 CST6CDT] PHP Fatal error:  Uncaught exception 'ImagickException' with message 'improper image header `img-500.png' @ error/png.c/ReadPNGImage/4133' in /home/vividcustoms/public_html/vivid_customs2/test3.php:16
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/test3.php(16): Imagick->__construct('img-500.png')
+#1 /home/vividcustoms/public_html/vivid_customs2/test3.php(11): setImageResolution('img-500.png')
+#2 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/test3.php on line 16
+[31-Jul-2017 11:56:25 CST6CDT] PHP Warning:  Imagick::writeimage() expects at most 1 parameter, 2 given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 32
+[31-Jul-2017 11:56:28 CST6CDT] PHP Warning:  Imagick::writeimage() expects at most 1 parameter, 2 given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 32
+[31-Jul-2017 12:06:45 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:06:45 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:06:45 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:07:32 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:07:32 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:07:32 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:08:20 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:08:20 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:08:20 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:09:42 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:09:42 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:09:42 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:11:31 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:11:31 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:11:31 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:12:56 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:12:56 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:12:56 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:14:53 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:14:53 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:14:53 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:18:04 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:18:04 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:18:04 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:19:27 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:19:27 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:19:27 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:21:33 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:21:33 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:21:33 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:25:23 CST6CDT] PHP Fatal error:  Uncaught exception 'ImagickException' with message 'improper image header `img-500.png' @ error/png.c/ReadPNGImage/4133' in /home/vividcustoms/public_html/vivid_customs2/test.php:17
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/test.php(17): Imagick->__construct('img-500.png')
+#1 /home/vividcustoms/public_html/vivid_customs2/test.php(12): setImageResolution('img-500.png')
+#2 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/test.php on line 17
+[31-Jul-2017 12:25:37 CST6CDT] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/vividcustoms/public_html/vivid_customs2/test.php on line 13
+[31-Jul-2017 12:27:34 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:27:34 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:27:34 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:28:25 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:28:25 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:29:01 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:29:01 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:29:01 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:33:25 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:33:25 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:33:25 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:33:37 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:33:37 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:33:37 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:44:20 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:44:20 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:44:20 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 12:47:21 CST6CDT] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/vividcustoms/public_html/vivid_customs2/ui.php:2) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
+[31-Jul-2017 12:47:24 CST6CDT] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/vividcustoms/public_html/vivid_customs2/ui.php:2) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
+[31-Jul-2017 12:51:12 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 12:51:12 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 12:51:12 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 14:01:41 CST6CDT] PHP Fatal error:  Class 'FPDF' not found in /home/vividcustoms/public_html/vivid_customs2/test.php on line 3
+[31-Jul-2017 14:04:07 CST6CDT] PHP Warning:  require(fpdf.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 2
+[31-Jul-2017 14:04:07 CST6CDT] PHP Warning:  require(fpdf.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 2
+[31-Jul-2017 14:04:07 CST6CDT] PHP Fatal error:  require(): Failed opening required 'fpdf.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/vividcustoms/public_html/vivid_customs2/test.php on line 2
+[31-Jul-2017 14:05:36 CST6CDT] PHP Warning:  require(fpdf.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 5
+[31-Jul-2017 14:05:36 CST6CDT] PHP Warning:  require(fpdf.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 5
+[31-Jul-2017 14:05:36 CST6CDT] PHP Fatal error:  require(): Failed opening required 'fpdf.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/vividcustoms/public_html/vivid_customs2/test.php on line 5
+[31-Jul-2017 14:08:56 CST6CDT] PHP Warning:  include(helvetica.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/fpdf.php on line 1143
+[31-Jul-2017 14:08:56 CST6CDT] PHP Warning:  include(helvetica.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/fpdf.php on line 1143
+[31-Jul-2017 14:08:56 CST6CDT] PHP Warning:  include(): Failed opening 'helvetica.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/vividcustoms/public_html/vivid_customs2/fpdf.php on line 1143
+[31-Jul-2017 14:08:56 CST6CDT] PHP Fatal error:  Uncaught exception 'Exception' with message 'FPDF error: Could not include font definition file' in /home/vividcustoms/public_html/vivid_customs2/fpdf.php:271
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/fpdf.php(1145): FPDF->Error('Could not inclu...')
+#1 /home/vividcustoms/public_html/vivid_customs2/fpdf.php(459): FPDF->_loadfont('helvetica.php')
+#2 /home/vividcustoms/public_html/vivid_customs2/fpdf.php(507): FPDF->AddFont('helvetica', '')
+#3 /home/vividcustoms/public_html/vivid_customs2/test.php(7): FPDF->SetFont('Arial', '', 10)
+#4 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/fpdf.php on line 271
+[31-Jul-2017 14:10:47 CST6CDT] PHP Warning:  require(../fpdf.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 3
+[31-Jul-2017 14:10:47 CST6CDT] PHP Warning:  require(../fpdf.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 3
+[31-Jul-2017 14:10:47 CST6CDT] PHP Fatal error:  require(): Failed opening required '../fpdf.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/vividcustoms/public_html/vivid_customs2/test.php on line 3
+[31-Jul-2017 14:18:13 CST6CDT] PHP Fatal error:  Uncaught exception 'Exception' with message 'FPDF error: Some data has already been output, can't send PDF file (output started at /home/vividcustoms/public_html/vivid_customs2/test.php:50)' in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php:271
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home/vividcustoms/public_html/vivid_customs2/test.php(54): FPDF->Output()
+#3 /home/vividcustoms/public_html/vivid_customs2/test.php(14): savePDF('img-500.png')
+#4 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php on line 271
+[31-Jul-2017 14:18:32 CST6CDT] PHP Fatal error:  Uncaught exception 'Exception' with message 'FPDF error: Some data has already been output, can't send PDF file (output started at /home/vividcustoms/public_html/vivid_customs2/test.php:45)' in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php:271
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home/vividcustoms/public_html/vivid_customs2/test.php(55): FPDF->Output()
+#3 /home/vividcustoms/public_html/vivid_customs2/test.php(14): savePDF('img-500.png')
+#4 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php on line 271
+[31-Jul-2017 14:19:01 CST6CDT] PHP Fatal error:  Uncaught exception 'Exception' with message 'FPDF error: Some data has already been output, can't send PDF file (output started at /home/vividcustoms/public_html/vivid_customs2/test.php:45)' in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php:271
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home/vividcustoms/public_html/vivid_customs2/test.php(55): FPDF->Output()
+#3 /home/vividcustoms/public_html/vivid_customs2/test.php(14): savePDF('img-500.png')
+#4 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php on line 271
+[31-Jul-2017 14:21:02 CST6CDT] PHP Fatal error:  Uncaught exception 'Exception' with message 'FPDF error: Some data has already been output, can't send PDF file (output started at /home/vividcustoms/public_html/vivid_customs2/test.php:45)' in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php:271
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home/vividcustoms/public_html/vivid_customs2/test.php(55): FPDF->Output()
+#3 /home/vividcustoms/public_html/vivid_customs2/test.php(14): savePDF('img500.png')
+#4 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php on line 271
+[31-Jul-2017 14:21:22 CST6CDT] PHP Fatal error:  Uncaught exception 'Exception' with message 'FPDF error: Some data has already been output, can't send PDF file (output started at /home/vividcustoms/public_html/vivid_customs2/test.php:45)' in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php:271
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home/vividcustoms/public_html/vivid_customs2/test.php(55): FPDF->Output()
+#3 /home/vividcustoms/public_html/vivid_customs2/test.php(14): savePDF('img500.png')
+#4 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php on line 271
+[31-Jul-2017 14:23:08 CST6CDT] PHP Fatal error:  Uncaught exception 'Exception' with message 'FPDF error: Some data has already been output, can't send PDF file (output started at /home/vividcustoms/public_html/vivid_customs2/test.php:45)' in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php:271
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home/vividcustoms/public_html/vivid_customs2/test.php(55): FPDF->Output()
+#3 /home/vividcustoms/public_html/vivid_customs2/test.php(14): savePDF('img500.png')
+#4 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php on line 271
+[31-Jul-2017 14:23:24 CST6CDT] PHP Fatal error:  Uncaught exception 'Exception' with message 'FPDF error: Some data has already been output, can't send PDF file (output started at /home/vividcustoms/public_html/vivid_customs2/test.php:45)' in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php:271
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home/vividcustoms/public_html/vivid_customs2/test.php(55): FPDF->Output()
+#3 /home/vividcustoms/public_html/vivid_customs2/test.php(14): savePDF('img500.png')
+#4 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php on line 271
+[31-Jul-2017 14:26:35 CST6CDT] PHP Warning:  fopen(&quot;img500.png&quot;): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php on line 1259
+[31-Jul-2017 14:26:35 CST6CDT] PHP Fatal error:  Uncaught exception 'Exception' with message 'FPDF error: Can't open image file: "img500.png"' in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php:271
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(1261): FPDF->Error('Can't open imag...')
+#1 /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php(885): FPDF->_parsepng('"img500.png"')
+#2 /home/vividcustoms/public_html/vivid_customs2/test.php(53): FPDF->Image('"img500.png"', NULL, NULL, 0, 0, 'png')
+#3 /home/vividcustoms/public_html/vivid_customs2/test.php(14): savePDF('img500.png')
+#4 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/fpdf/fpdf.php on line 271
+[31-Jul-2017 14:38:47 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 14:38:47 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 14:38:47 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 14:40:01 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 14:40:01 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 14:40:01 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 15:33:07 CST6CDT] PHP Warning:  session_start(): open(/public_html/tmp/sess_13966b895bf3495737d30645b6241e1f, O_RDWR) failed: No such file or directory (2) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
+[31-Jul-2017 15:33:07 CST6CDT] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/vividcustoms/public_html/vivid_customs2/session.php:3) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
+[31-Jul-2017 15:33:07 CST6CDT] PHP Warning:  Unknown: open(/public_html/tmp/sess_13966b895bf3495737d30645b6241e1f, O_RDWR) failed: No such file or directory (2) in Unknown on line 0
+[31-Jul-2017 15:33:07 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/public_html/tmp) in Unknown on line 0
+[31-Jul-2017 15:33:23 CST6CDT] PHP Warning:  session_start(): open(/public_html/tmp/sess_13966b895bf3495737d30645b6241e1f, O_RDWR) failed: No such file or directory (2) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
+[31-Jul-2017 15:33:23 CST6CDT] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/vividcustoms/public_html/vivid_customs2/session.php:3) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
+[31-Jul-2017 15:33:23 CST6CDT] PHP Warning:  Unknown: open(/public_html/tmp/sess_13966b895bf3495737d30645b6241e1f, O_RDWR) failed: No such file or directory (2) in Unknown on line 0
+[31-Jul-2017 15:33:23 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/public_html/tmp) in Unknown on line 0
+[31-Jul-2017 15:33:41 CST6CDT] PHP Warning:  session_start(): open(/public_html/tmp/sess_13966b895bf3495737d30645b6241e1f, O_RDWR) failed: No such file or directory (2) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
+[31-Jul-2017 15:33:41 CST6CDT] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/vividcustoms/public_html/vivid_customs2/session.php:3) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
+[31-Jul-2017 15:33:41 CST6CDT] PHP Warning:  Unknown: open(/public_html/tmp/sess_13966b895bf3495737d30645b6241e1f, O_RDWR) failed: No such file or directory (2) in Unknown on line 0
+[31-Jul-2017 15:33:41 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/public_html/tmp) in Unknown on line 0
+[31-Jul-2017 15:34:39 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 15:34:39 CST6CDT] PHP Warning:  session_start(): open(/public_html/tmp/sess_13966b895bf3495737d30645b6241e1f, O_RDWR) failed: No such file or directory (2) in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 3
+[31-Jul-2017 15:34:39 CST6CDT] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/vividcustoms/public_html/vivid_customs2/save_design.php:3) in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 3
+[31-Jul-2017 15:34:39 CST6CDT] PHP Warning:  Unknown: open(/public_html/tmp/sess_13966b895bf3495737d30645b6241e1f, O_RDWR) failed: No such file or directory (2) in Unknown on line 0
+[31-Jul-2017 15:34:39 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/public_html/tmp) in Unknown on line 0
+[31-Jul-2017 15:37:25 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 15:37:36 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 15:37:36 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 15:49:06 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 15:49:25 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 15:49:25 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 15:52:47 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 15:53:11 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 15:53:11 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 15:58:29 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 15:58:57 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 15:58:57 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 16:05:29 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 16:05:47 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 16:05:47 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 16:41:50 CST6CDT] PHP Warning:  mysqli_connect(): (HY000/2002): Connection refused in /home/vividcustoms/public_html/vivid_customs2/config.php on line 6
+[31-Jul-2017 16:41:50 CST6CDT] PHP Warning:  mysqli_connect(): (HY000/2002): No such file or directory in /home/vividcustoms/public_html/vivid_customs2/config.php on line 9
+[31-Jul-2017 16:42:46 CST6CDT] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/vividcustoms/public_html/vivid_customs2/config.php:6) in /home/vividcustoms/public_html/vivid_customs2/session.php on line 3
+[31-Jul-2017 16:42:46 CST6CDT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/vividcustoms/public_html/vivid_customs2/ui.php on line 8
+[31-Jul-2017 16:42:46 CST6CDT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vividcustoms/public_html/vivid_customs2/ui.php on line 9
+[31-Jul-2017 16:42:46 CST6CDT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/vividcustoms/public_html/vivid_customs2/ui.php on line 18
+[31-Jul-2017 17:06:13 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 17:06:13 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 17:06:13 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 17:06:43 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 17:06:43 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 17:06:43 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-Jul-2017 19:09:23 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[31-Jul-2017 19:09:23 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[31-Jul-2017 19:09:23 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[01-Aug-2017 10:02:58 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[01-Aug-2017 10:02:58 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[01-Aug-2017 10:02:58 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[01-Aug-2017 10:36:47 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[01-Aug-2017 10:36:47 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[01-Aug-2017 10:36:47 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[01-Aug-2017 10:38:37 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[01-Aug-2017 10:38:37 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[01-Aug-2017 10:38:37 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[01-Aug-2017 10:45:38 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[01-Aug-2017 10:45:38 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[01-Aug-2017 10:45:38 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[01-Aug-2017 15:42:09 CST6CDT] PHP Fatal error:  Call to undefined function mysqli_() in /home/vividcustoms/public_html/vivid_customs2/ui3.php on line 7
+[02-Aug-2017 09:23:45 CST6CDT] PHP Parse error:  syntax error, unexpected 'exec' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 25
+[02-Aug-2017 10:05:57 CST6CDT] PHP Parse error:  syntax error, unexpected 'print_r' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 44
+[02-Aug-2017 10:36:56 CST6CDT] PHP Parse error:  syntax error, unexpected 'print_r' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 46
+[02-Aug-2017 11:52:42 CST6CDT] PHP Parse error:  syntax error, unexpected 'print_r' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 51
+[02-Aug-2017 12:38:06 CST6CDT] PHP Parse error:  syntax error, unexpected 'print_r' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 52
+[02-Aug-2017 13:12:19 CST6CDT] PHP Warning:  Imagick::adaptivesharpenimage() expects parameter 3 to be long, string given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 45
+[02-Aug-2017 14:17:29 CST6CDT] PHP Fatal error:  Maximum execution time of 900 seconds exceeded in /home/vividcustoms/public_html/vivid_customs2/test.php on line 45
+[02-Aug-2017 14:35:58 CST6CDT] PHP Fatal error:  Call to a member function setOption() on null in /home/vividcustoms/public_html/vivid_customs2/test.php on line 47
+[02-Aug-2017 16:21:05 CST6CDT] PHP Parse error:  syntax error, unexpected '$imagick' (T_VARIABLE) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 53
+[02-Aug-2017 16:21:20 CST6CDT] PHP Fatal error:  Call to a member function writeImage() on null in /home/vividcustoms/public_html/vivid_customs2/test.php on line 53
+[02-Aug-2017 16:55:12 CST6CDT] PHP Parse error:  syntax error, unexpected 'Gaussian' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 38
+[03-Aug-2017 11:55:26 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[03-Aug-2017 11:55:26 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[03-Aug-2017 11:56:12 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[03-Aug-2017 11:56:12 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[03-Aug-2017 11:56:12 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[03-Aug-2017 12:12:48 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[03-Aug-2017 12:12:48 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[03-Aug-2017 12:12:48 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[03-Aug-2017 12:46:03 CST6CDT] PHP Warning:  Unknown: POST data can't be buffered; all data discarded in Unknown on line 0
+[03-Aug-2017 12:46:03 CST6CDT] PHP Warning:  Unknown: write failed: No space left on device (28) in Unknown on line 0
+[03-Aug-2017 12:46:03 CST6CDT] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[04-Aug-2017 16:38:22 CST6CDT] PHP Warning:  include(font.html): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui.php on line 950
+[04-Aug-2017 16:38:22 CST6CDT] PHP Warning:  include(font.html): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/ui.php on line 950
+[04-Aug-2017 16:38:22 CST6CDT] PHP Warning:  include(): Failed opening 'font.html' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/vividcustoms/public_html/vivid_customs2/ui.php on line 950
+[07-Aug-2017 10:19:19 CST6CDT] PHP Parse error:  syntax error, unexpected '}', expecting ')' in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 53
+[07-Aug-2017 10:22:13 CST6CDT] PHP Parse error:  syntax error, unexpected 'contains' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 45
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:57 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:00:59 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 25
+[07-Aug-2017 11:07:37 CST6CDT] PHP Fatal error:  Call to undefined function push() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 33
+[07-Aug-2017 11:09:51 CST6CDT] PHP Fatal error:  Function name must be a string in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 4
+[07-Aug-2017 11:10:56 CST6CDT] PHP Fatal error:  Function name must be a string in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 4
+[07-Aug-2017 11:13:36 CST6CDT] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 30
+[07-Aug-2017 11:14:18 CST6CDT] PHP Fatal error:  Function name must be a string in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 4
+[07-Aug-2017 11:16:52 CST6CDT] PHP Fatal error:  Function name must be a string in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 4
+[07-Aug-2017 11:17:07 CST6CDT] PHP Fatal error:  Function name must be a string in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 4
+[07-Aug-2017 11:17:21 CST6CDT] PHP Fatal error:  Function name must be a string in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 4
+[07-Aug-2017 11:20:29 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:20:29 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:20:29 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:20:29 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:22:57 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:22:57 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:22:57 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:22:57 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:25:27 CST6CDT] PHP Warning:  array_push() expects at least 2 parameters, 1 given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:25:27 CST6CDT] PHP Warning:  array_push() expects at least 2 parameters, 1 given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:25:27 CST6CDT] PHP Warning:  array_push() expects at least 2 parameters, 1 given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:25:27 CST6CDT] PHP Warning:  array_push() expects at least 2 parameters, 1 given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:25:57 CST6CDT] PHP Fatal error:  Only variables can be passed by reference in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:26:54 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:26:54 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:26:54 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:26:54 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 11:28:56 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 35
+[07-Aug-2017 11:28:56 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 35
+[07-Aug-2017 11:28:56 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 35
+[07-Aug-2017 11:28:56 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 35
+[07-Aug-2017 11:32:40 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 35
+[07-Aug-2017 11:32:40 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 35
+[07-Aug-2017 11:32:40 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 35
+[07-Aug-2017 11:32:40 CST6CDT] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 35
+[07-Aug-2017 11:41:50 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:42:08 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:43:19 CST6CDT] PHP Warning:  array_column() expects parameter 1 to be array, null given in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:53:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:54:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:55:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 41
+[07-Aug-2017 11:58:05 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 8
+[07-Aug-2017 12:04:53 CST6CDT] PHP Parse error:  syntax error, unexpected '$dir' (T_VARIABLE) in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 46
+[07-Aug-2017 12:15:39 CST6CDT] PHP Parse error:  syntax error, unexpected 'print_r' (T_STRING), expecting ')' in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 15
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:16:44 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:17:30 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 39
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:21:55 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 34
+[07-Aug-2017 12:26:23 CST6CDT] PHP Parse error:  syntax error, unexpected ')' in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 48
+[07-Aug-2017 12:40:19 CST6CDT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 46
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:00:52 CST6CDT] PHP Warning:  strpos(): Empty needle in /home/vividcustoms/public_html/vivid_customs2/scan.php on line 28
+[07-Aug-2017 14:59:07 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 75
+[07-Aug-2017 15:43:58 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:43:59 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:44:48 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:46:01 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:46:02 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:46:34 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:46:35 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:46:36 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:47:36 CST6CDT] PHP Fatal error:  Using $this when not in object context in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:47:38 CST6CDT] PHP Fatal error:  Using $this when not in object context in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:47:39 CST6CDT] PHP Fatal error:  Using $this when not in object context in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:48:58 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 61
+[07-Aug-2017 15:49:41 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 61
+[07-Aug-2017 15:49:42 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 61
+[07-Aug-2017 15:49:43 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 61
+[07-Aug-2017 15:49:43 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 61
+[07-Aug-2017 15:49:43 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 61
+[07-Aug-2017 15:49:44 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 61
+[07-Aug-2017 15:49:44 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 61
+[07-Aug-2017 15:49:45 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 61
+[07-Aug-2017 15:50:31 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 62
+[07-Aug-2017 15:51:45 CST6CDT] PHP Parse error:  syntax error, unexpected '";"' (T_CONSTANT_ENCAPSED_STRING) in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 78
+[07-Aug-2017 15:53:54 CST6CDT] PHP Fatal error:  Call to a member function createElement() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 15:54:45 CST6CDT] PHP Fatal error:  Using $this when not in object context in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 77
+[07-Aug-2017 15:54:56 CST6CDT] PHP Fatal error:  Call to a member function appendChild() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 77
+[07-Aug-2017 15:57:33 CST6CDT] PHP Fatal error:  Call to a member function saveXML() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 107
+[07-Aug-2017 15:58:53 CST6CDT] PHP Warning:  Creating default object from empty value in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 61
+[07-Aug-2017 15:58:53 CST6CDT] PHP Fatal error:  Call to undefined method stdClass::createElement() in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 76
+[07-Aug-2017 16:01:21 CST6CDT] PHP Fatal error:  Call to a member function saveXML() on null in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 103
+[07-Aug-2017 16:16:12 CST6CDT] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Invalid Character Error' in /home/vividcustoms/public_html/vivid_customs2/generatexml.php:10
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/generatexml.php(10): DOMDocument->createElement('.')
+#1 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 10
+[07-Aug-2017 16:17:43 CST6CDT] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Invalid Character Error' in /home/vividcustoms/public_html/vivid_customs2/generatexml.php:10
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/generatexml.php(10): DOMDocument->createElement('.')
+#1 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 10
+[07-Aug-2017 16:18:50 CST6CDT] PHP Warning:  scandir(): Directory name cannot be empty in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:18:50 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:19:12 CST6CDT] PHP Warning:  scandir(): Directory name cannot be empty in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:19:12 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:19:13 CST6CDT] PHP Warning:  scandir(): Directory name cannot be empty in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:19:13 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:20:09 CST6CDT] PHP Warning:  scandir(): Directory name cannot be empty in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:20:09 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:20:10 CST6CDT] PHP Warning:  scandir(): Directory name cannot be empty in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:20:10 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:20:11 CST6CDT] PHP Warning:  scandir(): Directory name cannot be empty in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:20:11 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:20:11 CST6CDT] PHP Warning:  scandir(): Directory name cannot be empty in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:20:11 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 8
+[07-Aug-2017 16:26:02 CST6CDT] PHP Fatal error:  Call to undefined method DOMDocument::startElement() in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 16
+[07-Aug-2017 16:40:27 CST6CDT] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Invalid Character Error' in /home/vividcustoms/public_html/vivid_customs2/generatexml.php:9
+Stack trace:
+#0 /home/vividcustoms/public_html/vivid_customs2/generatexml.php(9): DOMDocument->createElement('1')
+#1 {main}
+  thrown in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 9
+[07-Aug-2017 16:41:54 CST6CDT] PHP Catchable fatal error:  Object of class DOMElement could not be converted to string in /home/vividcustoms/public_html/vivid_customs2/generatexml.php on line 9
+[07-Aug-2017 17:08:06 CST6CDT] PHP Parse error:  syntax error, unexpected '*' in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 101
+[07-Aug-2017 17:08:26 CST6CDT] PHP Parse error:  syntax error, unexpected '*' in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 101
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'objects ' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'objects ' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'objects ' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'objects ' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'objects ' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'objects ' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'objects ' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'objects ' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:29:59 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:19 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:30:21 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:31:53 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:31:53 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:31:53 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:31:53 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:31:53 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:31:53 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:31:53 CST6CDT] PHP Warning:  Illegal string offset 'objects' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:31:53 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:32:51 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 10:35:00 CST6CDT] PHP Warning:  Illegal offset type in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:35:00 CST6CDT] PHP Warning:  Illegal string offset '' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:35:00 CST6CDT] PHP Warning:  Illegal offset type in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:35:00 CST6CDT] PHP Warning:  Illegal string offset '' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:35:00 CST6CDT] PHP Warning:  Illegal offset type in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:35:00 CST6CDT] PHP Warning:  Illegal string offset '' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:35:00 CST6CDT] PHP Warning:  Illegal offset type in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:35:00 CST6CDT] PHP Warning:  Illegal string offset '' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:37:26 CST6CDT] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:37:38 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:37:38 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:37:38 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:37:38 CST6CDT] PHP Warning:  Illegal string offset 'type' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:38:45 CST6CDT] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 32
+[08-Aug-2017 10:41:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:41:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:41:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:41:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:41:41 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:41:41 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:41:41 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:41:41 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 40
+[08-Aug-2017 10:44:19 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:44:19 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:44:19 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:44:19 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:45:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:45:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:45:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:45:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:45:46 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:45:46 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:45:46 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:45:46 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:46:05 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:46:05 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:46:05 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:46:05 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 33
+[08-Aug-2017 10:47:44 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 10:47:44 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 10:47:44 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 10:47:44 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 10:47:46 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 10:47:46 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 10:47:46 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 10:47:46 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 10:47:47 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 10:47:47 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 10:47:47 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 10:47:47 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 34
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  array_keys() expects parameter 1 to be array, string given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 31
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  array_keys() expects parameter 1 to be array, string given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 31
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  array_keys() expects parameter 1 to be array, string given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 31
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  array_keys() expects parameter 1 to be array, string given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 31
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  array_keys() expects parameter 1 to be array, string given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 31
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  array_keys() expects parameter 1 to be array, string given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 31
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  array_keys() expects parameter 1 to be array, string given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 31
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  array_keys() expects parameter 1 to be array, string given in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:03:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 31
+[08-Aug-2017 11:05:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:17 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:05:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 30
+[08-Aug-2017 11:22:22 CST6CDT] PHP Warning:  file_get_contents(Guest000094/Guest000094_000478/Guest000093_000478.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 20
+[08-Aug-2017 11:22:22 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 24
+[08-Aug-2017 11:22:40 CST6CDT] PHP Warning:  file_get_contents(Guest000094/Guest000094_000478/Guest04_000478.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 20
+[08-Aug-2017 11:22:40 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 24
+[08-Aug-2017 11:23:17 CST6CDT] PHP Fatal error:  Cannot redeclare readJSon() (previously declared in /home/vividcustoms/public_html/vivid_customs2/test.php:18) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 102
+[08-Aug-2017 11:23:43 CST6CDT] PHP Fatal error:  Cannot redeclare readJSon() (previously declared in /home/vividcustoms/public_html/vivid_customs2/test.php:18) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 98
+[08-Aug-2017 11:47:00 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 100
+[08-Aug-2017 11:47:00 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 100
+[08-Aug-2017 11:47:34 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 100
+[08-Aug-2017 11:47:34 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 100
+[08-Aug-2017 11:47:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 100
+[08-Aug-2017 11:47:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 100
+[08-Aug-2017 11:48:51 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 100
+[08-Aug-2017 11:48:51 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 100
+[08-Aug-2017 11:55:17 CST6CDT] PHP Warning:  getimagesize(): Filename cannot be empty in /home/vividcustoms/public_html/vivid_customs2/test.php on line 98
+[08-Aug-2017 11:55:17 CST6CDT] PHP Warning:  getimagesize(): Filename cannot be empty in /home/vividcustoms/public_html/vivid_customs2/test.php on line 98
+[08-Aug-2017 11:55:48 CST6CDT] PHP Warning:  getimagesize(): Filename cannot be empty in /home/vividcustoms/public_html/vivid_customs2/test.php on line 98
+[08-Aug-2017 11:55:48 CST6CDT] PHP Warning:  getimagesize(): Filename cannot be empty in /home/vividcustoms/public_html/vivid_customs2/test.php on line 98
+[08-Aug-2017 11:55:50 CST6CDT] PHP Warning:  getimagesize(): Filename cannot be empty in /home/vividcustoms/public_html/vivid_customs2/test.php on line 98
+[08-Aug-2017 11:55:50 CST6CDT] PHP Warning:  getimagesize(): Filename cannot be empty in /home/vividcustoms/public_html/vivid_customs2/test.php on line 98
+[08-Aug-2017 12:09:43 CST6CDT] PHP Parse error:  syntax error, unexpected ',' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 100
+[08-Aug-2017 13:04:22 CST6CDT] PHP Parse error:  syntax error, unexpected '$filter' (T_VARIABLE) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 121
+[08-Aug-2017 13:10:06 CST6CDT] PHP Parse error:  syntax error, unexpected '.' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 121
+[08-Aug-2017 14:58:08 CST6CDT] PHP Parse error:  syntax error, unexpected 'fill' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 103
+[08-Aug-2017 15:31:50 CST6CDT] PHP Parse error:  syntax error, unexpected 'this' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 103
+[08-Aug-2017 15:32:02 CST6CDT] PHP Parse error:  syntax error, unexpected 'text' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 103
+[08-Aug-2017 17:09:53 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 91
+[08-Aug-2017 17:11:10 CST6CDT] PHP Parse error:  syntax error, unexpected end of file in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 281
+[08-Aug-2017 17:13:35 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000095/Guest000095_000490/Guest000095_000490_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[08-Aug-2017 17:13:35 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[08-Aug-2017 17:13:35 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000095/Guest000095_000490/Guest000095_000490_right.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[08-Aug-2017 17:13:35 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[08-Aug-2017 17:13:35 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000095/Guest000095_000490/Guest000095_000490_back.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[08-Aug-2017 17:13:35 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[08-Aug-2017 17:13:35 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000095/Guest000095_000490/Guest000095_000490_left.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[08-Aug-2017 17:13:35 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:15:06 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000491/Guest000096_000491_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:15:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:15:06 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000491/Guest000096_000491_right.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:15:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:15:06 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000491/Guest000096_000491_back.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:15:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:15:06 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000491/Guest000096_000491_left.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:15:06 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:16:39 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000492/Guest000096_000492_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:16:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:16:39 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000492/Guest000096_000492_right.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:16:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:16:39 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000492/Guest000096_000492_back.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:16:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:16:39 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000492/Guest000096_000492_left.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:16:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:21:59 CST6CDT] PHP Parse error:  syntax error, unexpected end of file in /home/vividcustoms/public_html/vivid_customs2/test.php on line 318
+[09-Aug-2017 09:35:05 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000493/Guest000096_000493_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:35:05 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:35:05 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000493/Guest000096_000493_right.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:35:05 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:35:05 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000493/Guest000096_000493_back.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:35:05 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:35:05 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000493/Guest000096_000493_left.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:35:05 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:35:45 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000494/Guest000096_000494_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:35:45 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:35:45 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000494/Guest000096_000494_right.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:35:45 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:35:45 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000494/Guest000096_000494_back.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:35:45 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:35:45 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000494/Guest000096_000494_left.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:35:45 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 09:38:38 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000495/Guest000096_000495_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:38:38 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:38:38 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000495/Guest000096_000495_right.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:38:38 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:38:38 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000495/Guest000096_000495_back.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:38:38 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:38:38 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000495/Guest000096_000495_left.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:38:38 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:39:03 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000496/Guest000096_000496_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:39:03 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:39:03 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000496/Guest000096_000496_right.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:39:03 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:39:03 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000496/Guest000096_000496_back.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:39:03 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:39:03 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000496/Guest000096_000496_left.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:39:03 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:43:50 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000497/Guest000096_000497_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:43:50 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:43:50 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000497/Guest000096_000497_right.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:43:50 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:43:50 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000497/Guest000096_000497_back.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:43:50 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:43:50 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000497/Guest000096_000497_left.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:43:50 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:52:35 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000498/Guest000096_000498_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:52:35 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:52:35 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000498/Guest000096_000498_right.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:52:35 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:52:35 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000498/Guest000096_000498_back.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:52:35 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:52:35 CST6CDT] PHP Warning:  file_get_contents(/home/vividcustoms/public_html/vivid_customs2/Guest000096/Guest000096_000498/Guest000096_000498_left.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 112
+[09-Aug-2017 09:52:35 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 09:58:00 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 09:58:00 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 09:58:00 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 09:58:00 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:00:10 CST6CDT] PHP Warning:  file_get_contents(): Filename cannot be empty in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 10:00:10 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:00:10 CST6CDT] PHP Warning:  file_get_contents(): Filename cannot be empty in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 10:00:10 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:00:10 CST6CDT] PHP Warning:  file_get_contents(): Filename cannot be empty in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 10:00:10 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:00:10 CST6CDT] PHP Warning:  file_get_contents(): Filename cannot be empty in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 115
+[09-Aug-2017 10:00:10 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:01:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:01:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:01:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:01:24 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:03:38 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:03:38 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:03:38 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:03:38 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:04:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 10:04:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 10:04:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 10:04:21 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 119
+[09-Aug-2017 10:08:33 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:08:33 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:08:33 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:08:33 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:09:39 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 118
+[09-Aug-2017 10:20:14 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 188
+[09-Aug-2017 10:35:02 CST6CDT] PHP Parse error:  syntax error, unexpected '$canvas' (T_VARIABLE) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 191
+[09-Aug-2017 10:37:03 CST6CDT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 183
+[09-Aug-2017 10:37:25 CST6CDT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 183
+[09-Aug-2017 10:37:26 CST6CDT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 183
+[09-Aug-2017 11:27:46 CST6CDT] PHP Parse error:  syntax error, unexpected '":"' (T_CONSTANT_ENCAPSED_STRING) in /home/vividcustoms/public_html/vivid_customs2/test.php on line 176
+[09-Aug-2017 11:27:58 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/vividcustoms/public_html/vivid_customs2/test.php on line 176
+[09-Aug-2017 11:33:12 CST6CDT] PHP Warning:  Illegal string offset 'src' in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 157
+[09-Aug-2017 11:33:12 CST6CDT] PHP Warning:  Illegal string offset 'src' in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 157
+[09-Aug-2017 11:33:12 CST6CDT] PHP Warning:  Illegal string offset 'src' in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 157
+[09-Aug-2017 11:33:12 CST6CDT] PHP Warning:  Illegal string offset 'src' in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 157
+[09-Aug-2017 11:54:26 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 144
+[09-Aug-2017 11:54:49 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 144
+[09-Aug-2017 12:07:50 CST6CDT] PHP Warning:  file_get_contents(Guest000097/Guest000097_000525/Guest000097_000525_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 50
+[09-Aug-2017 12:07:50 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 57
+[09-Aug-2017 12:10:43 CST6CDT] PHP Warning:  file_get_contents(Guest000097/Guest000097_000529/Guest000097_000529_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 50
+[09-Aug-2017 12:10:43 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 57
+[09-Aug-2017 13:04:31 CST6CDT] PHP Warning:  imagesx() expects parameter 1 to be resource, string given in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 135
+[09-Aug-2017 13:04:31 CST6CDT] PHP Warning:  imagesy() expects parameter 1 to be resource, string given in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 136
+[09-Aug-2017 13:04:31 CST6CDT] PHP Warning:  imagesx() expects parameter 1 to be resource, string given in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 135
+[09-Aug-2017 13:04:31 CST6CDT] PHP Warning:  imagesy() expects parameter 1 to be resource, string given in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 136
+[09-Aug-2017 15:01:22 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 155
+[10-Aug-2017 08:55:44 CST6CDT] PHP Warning:  file_get_contents(Guest000099/Guest000099_000600/Guest000099_000600_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 50
+[10-Aug-2017 08:55:44 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 57

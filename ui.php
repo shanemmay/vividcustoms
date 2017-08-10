@@ -1,4 +1,3 @@
-
 <?php
     include 'session.php';
 ?>
@@ -23,7 +22,7 @@
     <title>ui</title>
     <script src="fabric.min.js"></script>
     <script src="custom_controls.js"></script>
-     <script src="aligning_guidelines.js"></script>
+    <script src="aligning_guidelines.js"></script>
     <script src="centering_guidelines.js"></script>
     <!--jsPDF-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
@@ -113,6 +112,99 @@
             display: inline-block;
             font-size: 10px;
         }
+        /*this is to style the sliders (input type=range)*/
+        body {
+            padding: 30px;
+        }
+        input[type=range] {
+            /*removes default webkit styles*/
+            -webkit-appearance: none;
+            
+            /*fix for FF unable to apply focus style bug */
+            border: 1px solid #ffffff00;
+            
+            /*required for proper track sizing in FF*/
+            width: 300px;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 300px;
+            height: 5px;
+            background: #ddd;
+            border: none;
+            border-radius: 3px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #399fd9;
+            margin-top: -4px;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #ddd;
+        }
+
+        input[type=range]::-moz-range-track {
+            width: 300px;
+            height: 5px;
+            background: #ddd;
+            border: none;
+            border-radius: 3px;
+        }
+        input[type=range]::-moz-range-thumb {
+            border: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #399fd9;
+        }
+
+        /*hide the outline behind the border*/
+        input[type=range]:-moz-focusring{
+            outline: 1px solid white;
+            outline-offset: -1px;
+        }
+
+        input[type=range]::-ms-track {
+            width: 300px;
+            height: 5px;
+            
+            /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+            background: transparent;
+            
+            /*leave room for the larger thumb to overflow with a transparent border */
+            border-color: transparent;
+            border-width: 6px 0;
+
+            /*remove default tick marks*/
+            color: transparent;
+        }
+        input[type=range]::-ms-fill-lower {
+            background: #777;
+            border-radius: 10px;
+        }
+        input[type=range]::-ms-fill-upper {
+            background: #ddd;
+            border-radius: 10px;
+        }
+        input[type=range]::-ms-thumb {
+            border: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: goldenrod;
+        }
+        input[type=range]:focus::-ms-fill-lower {
+            background: #888;
+        }
+        input[type=range]:focus::-ms-fill-upper {
+            background: #ccc;
+        }
     </style>
     <script type="text/javascript">
       window.onload = function() 
@@ -138,7 +230,7 @@
       };
 
 
-</script>
+    </script>
     <!--CSS-->
     <!--<link rel="stylesheet" type="text/css" href="css/main.css">
     to replace style tags on this page-->
@@ -191,6 +283,9 @@
       }
       #sizeForm input{
           width: 7%;
+      }
+      .tab_title{
+        text-align: center;
       }
   </style>
   <!-- Modal -->
@@ -371,16 +466,7 @@
     display: inline-block;
   }
 </style>
-<div id="topRightMenu" style=" position: fixed; top: 0; right: 0;">
-  <h4  class="column">Total Price : $<span id="totalPriceLabel">0</span>&nbsp;</h4>
-  <button class="btn btn-info " data-target="#saveSection" onclick="uploadEx();" >
-    Save
-  </button>
-  <button class="btn btn-success" onclick=" isThereDesign(true);" ><!--data-toggle="modal" data-target="#productPicker" -->
-    Get Price
-  </button>
-</div>
-<p id="testingCart">.</p>
+
 <!--message to let customer know their email sent successfully-->
 <div class="alert alert-success" id="emailmessage" style="display:none; text-align: center;">
   <strong><center>The email was sent successfully.</center></strong> 
@@ -405,7 +491,7 @@
             <div class="col-sm-2">
                 <img src="https://vividcustoms.com/skin/frontend/tv_nautica_package/tv_nautica8/images/logo.png">
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-6">
                 <script>
                         //to save the latest designs
                         var designs = [];  
@@ -422,19 +508,26 @@
                         });
                 </script>   
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-4" style="position: relative; top: 50%; margin-bottom: 0; padding-bottom: 0;">
+                <h4  class="column">Total Price : $<span id="totalPriceLabel">0</span>&nbsp;</h4>
+                <!--<button class="btn btn-info " data-target="#saveSection" onclick="uploadEx();" >
+                  Save
+                </button>-->
+                <button id="getPriceBtn" class="btn btn-success" onclick=" isThereDesign(true); " ><!--data-toggle="modal" data-target="#productPicker" -->
+                  Get Price
+                </button>
                 <?php 
                       if (!$Guest) {
-                          echo '<b> Welcome: '.$login_session.'</b><br>'; 
+                          //echo '<b> Welcome: '.$login_session.'</b><br>'; 
                           echo  '<b><a href = "logout.php"><button class="btn btn-info">Sign Out</button></a></b>';    
                       }  
                       else if (isset($_SESSION['Guest'])) 
                       {
-                         echo "<button id='signup' class='btn btn-success btn-lg' data-toggle='modal' data-target='#signupModal'>Signup!</button>";             
+                         echo "<button id='signup' class='btn btn-success' data-toggle='modal' data-target='#signupModal'>Signup!</button>";             
                       }
                       else
                       {
-                          echo "<button id='signup' class='btn btn-success btn-lg' data-toggle='modal' data-target='#signupModal'>Signup!</button>";
+                          echo "<button id='signup' class='btn btn-success' data-toggle='modal' data-target='#signupModal'>Signup!</button>";
                       }          
                 ?>
             </div>
@@ -445,7 +538,7 @@
         <!--START SIDE BAR-->
         <div class="col-sm-1">   
             <ul class="nav nav-tabs nav-stacked" style="height: 90%; text-align: center; ">
-                <li class="active" style="border-bottom: 1px solid #ffffff;"><a  data-toggle="tab" href="#productSection"><img src="img/shirt_icon.png" style="width: 70%;"><br>Shirt</a></li> <!--Shirt<br><span style="visibility: hidden;">equal</span>-->
+                <li class="active" style="border-bottom: 1px solid #ffffff;"><a  data-toggle="tab" href="#productSection"><img src="img/shirt_icon.png" style="width: 70%;"><br>Shirts</a></li> <!--Shirt<br><span style="visibility: hidden;">equal</span>-->
                 <li style="border-bottom: 1px solid #ffffff;" onclick="deselectAllCanvases(); document.getElementById('editArt').style.display = 'none';  document.getElementById('newArt').style.display = 'block';"><a  data-toggle="tab" href="#addArt"><img src="img/art_icon.png" style="width: 70%;"><br>Add Art</a></li> <!--Add Art <span style="visibility: hidden;">equal</span>-->
                 <li onclick="deselectAllCanvases();" style="border-bottom: 1px solid #ffffff;"><a  data-toggle="tab" href="#textSection"><img src="img/text_icon.png" style="width: 70%;"><br>Add Text</a></li> <!--Add Text <span style="visibility: hidden;">equal</span>-->                   
                 <li onclick=" isThereDesign(true);"  style="border-bottom: 1px solid #ffffff;">
@@ -461,13 +554,24 @@
             <div class="tab-content" >
 
                 <div id="productSection" class="tab-pane fade in active">
-                    <h2 style="text-align: center;">Swap Item</h2>
-                    <hr>
+                    <!--COMMENTED OUT BECAUSE KATIE ASKED FOR IT TO BE REMOVED BUT I THINK SHE WILL CHANGE HER MIND
+                    <h2 class="tab_title" >Swap Item</h2>
+                    <hr>-->
                     <!--<p>1. Switch to a different product</p>
                     <p>2. Choose a color</p>-->
                     <!--START PRODUCT DESCRIPTION-->
-                        <h3 id="description_label">Product Description</h3>
-                        <img id="description_image" src="img/shirt_white.jpg">
+                        <div class="row">
+                        	<div class="col-sm-6">
+	                        	<img id="description_image" src="img/shirt_white.jpg" style=" width: 100%; ">
+	                        </div>
+	                        <div class="col-sm-6" style="height: 170px; position: relative;">
+	                        	<h4>T Shirt by Shane</h4>
+		                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal" style="background-color: #399fd9; position: absolute; bottom: 0;">
+		                          Change Product
+		                        </button>
+	                        </div>
+                        </div>
+                        <h5 id="description_label">Product Description</h5>
                         <ul>
                             <li id="description">100% Polyester Wicking Knit</li>
                             <li id="description_size">Sizes: YS - 3XL</li>
@@ -475,15 +579,13 @@
                         </ul>
                     <!--END   PRODUCT DESCRIPTION-->
                     <!--START CHOOSE PRODUCT MODAL-->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal">
-                          Choose Product
-                        </button>
+                        
                         
                     <!--END  CHOOSE PRODUCT MODAL-->
                     <!--COLOR SELECTION FOR PRODUCTS-->
                     <hr>
-                    <div class="panel panel-default">
-                          <div class="panel-heading">Change Product Color</div>
+                    <!--COMMENTED OUT BECAUSE KATIE ASKED <div class="panel panel-default">-->
+                          <div class="panel-heading"></div>
                               <div class="panel-body">
                                   <!--COLOR SECTION-->  
                                     <style type="text/css">
@@ -496,82 +598,68 @@
                                           display: inline-block;
                                         }
                                     </style>       
-
+                                    Change Product Color
                                     <div class="row">
-                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#ffff00');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#ff2400');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#800000');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#9bddff');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#4169e1');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#000080');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#800080');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#006400');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#fffdd0');"></div>                                                   
+                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#ffff00');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#ff2400');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#800000');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#9bddff');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#4169e1');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#000080');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#800080');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#006400');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#fffdd0');"></div>                                                   
                                     </div>  
                                     <div class="row">
-                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#ffff00');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#ff2400');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#800000');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#9bddff');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#4169e1');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#000080');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#800080');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#006400');"></div>
-                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeProductColor('#fffdd0');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#ffff00');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#ff2400');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#800000');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#9bddff');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#4169e1');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#000080');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#800080');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#006400');"></div>
+                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeProductColor('#fffdd0');"></div>
                                      </div>  
-                                <!--END COLOR SECTION-->
-                            </div>                         
-                          </div> 
+                                  <!--END COLOR SECTION-->
+                              </div>                         
+                    <!--</div> -->
                 </div>
 
                 <div id="addArt" class="tab-pane fade">
                     <div id="newArt">
-                        <h3>Add Art</h3>
-                        <p>Have your own image, logo or artwork?</p>
-                        <!--START UPLOADING IMAGE SECTION-->
-                        <input id="imgUpload" type="file" name="imgUpload" data-buttonText="upload" onchange="uploadImage();">
-                        <img class="hover" id="imgPreview" style="" src="" alt="" onclick="addImg(this); imgPreviewCanvas();"> 
-                        <canvas id="previewCanvas" style="display: none;"></canvas>
-                        <script type="text/javascript">
-                            function  imgPreviewCanvas(){
-                                var c=document.getElementById("previewCanvas");
-                                
-                                var ctx=c.getContext("2d");
-                               
-                                var img=document.getElementById("imgPreview");
-                                ctx.drawImage(img,10,10,128,128); 
-                                saveUpload();
-                            };
-                        </script>
+                        <h2 class="tab_title">Add Art</h2>
+                        
                         <hr>
                         <!--START CLIP ART SECTION-->
                         <strong><p>BROWSE THE FLIP SHOP GALLERY</p></strong>
-                        <img class="hover" src="img/clip_1.png" onclick="addImg(this);" style="max-width: 64px; max-height: 64px;"> <!-- taken out idth="64" height="64" -->
+                        <!--THESE ARE ONLY USED FOR TESTING
+                        <img class="hover" src="img/clip_1.png" onclick="addImg(this);" style="max-width: 64px; max-height: 64px;"> 
                         <img class="hover" src="img/watchdogs.png" onclick="addImg(this);" style="max-width: 64px; max-height: 64px;">
                         <img class="hover" src="img/clip_4.png" onclick="addImg(this);" style="max-width: 64px; max-height: 64px;">
-                        <img class="hover" src="img/fuze.jpg"  onclick="addImg(this);" style="max-width: 64px; max-height: 64px;">
+                        <img class="hover" src="img/fuze.jpg"  onclick="addImg(this);" style="max-width: 64px; max-height: 64px;">-->
                         
                         <!--CLIP ART CATEGORIES-->
-                         <style type="text/css">
-  		                      .panel-success {
-      					              min-height: 200;
-      					              max-height: 500;
-      					              overflow-y: scroll;
-      					            }
-                    	   </style>
-	                    
+                          <style type="text/css">
+                              .panel-success {
+                                      min-height: 200;
+                                      max-height: 400;
+                                      overflow-y: scroll;
+                                    }
+                          </style>
+                        
                         <!--END CLIP ART SECTION-->
                     </div>
+
+                    
                      <!--START MODIFY ART SECTION-->
                     <div id="editArt" style="display: none;">
-                        <h2>Add Art</h2>
-                        <p> Edit Art Section</p>
                         <div class="panel-group">
                             <div class="panel panel-default">
                                   <div class="panel-heading">Size &amp; Effect</div>
                                   <div class="panel-body">
-                                     <!--resize clip art form-->
-                                         <form>                      
+                                        <!--resize clip art form-->
+                                        <form>                      
                                           <div class="input-group">
                                             <span class="input-group-addon">Width</span>
                                             <input id="widthImage" type="number" class="form-control" name="widthImage"  maxlength="5" onkeypress="return resize(event);" >
@@ -588,7 +676,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Change Color</div>
                                     <div class="panel-body">
-                                      <!--COLOR SECTION-->  
+                                        <!--COLOR SECTION-->  
                                         <style type="text/css">
                                             .row {
                                               width: 100%;
@@ -601,27 +689,27 @@
                                         </style>       
 
                                         <div class="row">
-                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ffff00');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ff2400');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800000');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#9bddff');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#4169e1');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#000080');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800080');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#006400');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#fffdd0');"></div>                                                   
+                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#ffff00');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#ff2400');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#800000');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#9bddff');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#4169e1');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#000080');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#800080');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#006400');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#fffdd0');"></div>                                                   
                                         </div>  
                                         <div class="row">
-                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ffff00');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#ff2400');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800000');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#9bddff');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#4169e1');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#000080');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#800080');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#006400');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColor('#fffdd0');"></div>
-                                         </div>  
+                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#ffff00');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#ff2400');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#800000');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#9bddff');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#4169e1');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#000080');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#800080');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#006400');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColor('#fffdd0');"></div>
+                                        </div>  
                                         <!--END COLOR SECTION-->
                                     </div>                         
                             </div>
@@ -629,178 +717,227 @@
 
                     </div>
 
-                    <div id="clipartCategory">
-                    <div id="clipArtMenu">
-                          <div id="clipArtCategories">
-                            <ol class="breadcrumb" id="breadcrumb"><li class="active" id="categories">Categories</li><li id="subcategories" style="display: none;"></li><li id="subsubcategories" style="display: none;"></li><li id="clips" style="display: none;"></li></ol>
+                    <div id="clipartCategory" >
+                    <form>
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search clipart by name" name="searchclipart" id="searchclipart">
+                            <div class="input-group-btn">
+                              <button class="btn btn-default" type="button" onclick="Scan();"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
                           </div>
-                          <div id="ClipsArtImages" class="panel panel-success">                        
-                              <style type="text/css">
-                                  #clipArtTable{
-                                      width: 100%;
+                        </form>
+                        <script type="text/javascript">
+                          function Scan() 
+                          { 
+                            var clipart = document.getElementById('searchclipart');      
+                              var xhttp = new XMLHttpRequest();
+                              xhttp.onreadystatechange = function() {
+                                  if (this.readyState == 4 && this.status == 200) 
+                                  {
+                                       document.getElementById('clipArtTable').style.display = "none";
+                                       document.getElementById('clipArtTable2').innerHTML = this.responseText;
+                                       document.getElementById('clipArtTable2').style.display = "block";
+                                       clipart.value = "";
                                   }
-                                  #clipArtTable td{
-                                      padding: 10px;
-                                  }  
-                              </style>    
-                              <table id="clipArtTable2" class="table table-fixed">
-                              </table> 
-                                 <table id="clipArtTable" class="table table-fixed" style=" border-top: none !important; height: 50px !important;">                                                
-                                  <?php                                  
-                                      $fulldirectory = dirname(__FILE__).'/img/clip_art';
-                                      $directory = 'img/clip_art';
-                                      $categories  = scandir($fulldirectory);               
-                                      print_r('<tbody style="height: 50px !important;">');
-                                      for ($i=0; $i< count($categories) ; $i++) 
-                                      { 
-                                        if ($categories[$i] != '.' && $categories[$i] != '..') 
+                              };
+                              xhttp.open("GET", "scan.php?clipart="+clipart.value, true);
+                              xhttp.send(); 
+                          }
+                        </script>
+                      <div id="clipArtMenu">
+                            <div id="clipArtCategories">
+                              <ol class="breadcrumb" id="breadcrumb"><li class="active" id="categories">Categories</li><li id="subcategories" style="display: none;"></li><li id="subsubcategories" style="display: none;"></li><li id="clips" style="display: none;"></li></ol>
+                            </div>
+                            <div id="ClipsArtImages" class="panel panel-success" style="">                        
+                                <style type="text/css">
+                                    #clipArtTable{
+                                        width: 100%;
+                                    }
+                                    #clipArtTable td{
+                                        padding: 10px;
+                                    }  
+                                </style>    
+                                <table id="clipArtTable2" class="table table-fixed">
+                                </table> 
+                                    <table id="clipArtTable" class="table table-fixed" style=" border-top: none !important; height: 50px !important;">                                                
+                                        <?php                                  
+                                            $fulldirectory = dirname(__FILE__).'/img/clip_art';
+                                            $directory = 'img/clip_art';
+                                            $categories  = scandir($fulldirectory);               
+                                            print_r('<tbody style="height: 50px !important;">');
+                                            for ($i=0; $i< count($categories) ; $i++) 
+                                            { 
+                                              if ($categories[$i] != '.' && $categories[$i] != '..') 
+                                              {
+                                                if ($i % 2 == 0)
+                                                {                                          
+                                                  print_r('    <tr>') ;                                                                                    
+                                                }                
+                                                $valuetmp =  "'".$categories[$i]."'";
+                                                print_r('    <td height="80" width="195"  align="center" style="border-left:none;border-bottom:none;border-top:none">') ; // height="80px" width="195px"
+                                                //print_r('        <img art-image="" src="'.$directory.'/'.$categories[$i].'/'.$categories[$i].'.png" width="50" height="50"><br>') ;
+                                                print_r('        <a href="javascript:void(0);" onclick="setCategory('.$valuetmp.');" style="font-size:16px;"><img art-image="" src="'.$directory.'/'.$categories[$i].'/'.$categories[$i].'.png" width="50" height="50"><br>'.$categories[$i].'</a>');
+                                                print_r('    </td>') ;   
+                                                if ($i % 2 != 0)
+                                                {
+                                                  print_r('    </tr>') ;
+                                                }
+                                              }      
+                                            }
+                                            print_r('</tbody>');
+                                        ?>
+                                        <!--menu for customers to go back if they wish-->
+                                        <!--WILL USE THIS IF BREADCRUMBS DON'T WORK<div class="row"><div class="col-sm-1"></div><div class="col-sm-1"></div><div class="col-sm-10"></div></div>--> 
+                                    </table> 
+                                                   
+                            </div>
+
+                          <script type="text/javascript">
+                            var div = document.getElementById('clipArtCategories');
+                            var category = "";
+                            var subcategory = "";
+                                
+     
+                            var categories = document.getElementById('categories');
+                            
+                            var subcategories = document.getElementById('subcategories');
+                            var clips = document.getElementById('clips');
+
+                            var subsubcategories = document.getElementById('subsubcategories');
+                            
+     
+                            subsubcategories.onclick = function(){
+                                //hiding clips
+                                clips.style.display = "none";
+                                //making subcategories "active"
+                                categories.classList.remove("active");
+                                subcategories.classList.add("active");
+                            }
+
+                            subcategories.onclick = function(){
+                                //TODO hide whatever is currently showing
+                                //showing table
+                                invisibleTables();
+                                showTable(category);
+                                //var table = document.getElementById('clipArtTable2');
+                                //table.style.display = "block";
+                                //table.setAttribute('width','100%');
+                                //getting ride of other crumbs in the breadcrumb list
+                                //subcategories.style.display = "none";
+                                subsubcategories.style.display = "none";
+                                clips.style.display = "none";
+                                //making the categories tab have the 'active' class
+                                categories.classList.remove("active");
+                                subsubcategories.classList.remove("active");
+                                subcategories.classList.add("active");
+                            }
+                            categories.onclick = function(){
+                                //TODO hide whatever is currently showing
+                                //showing table
+                                invisibleTables();
+                                var table = document.getElementById('clipArtTable');
+                                table.style.display = "block";
+                                table.setAttribute('width','100%');
+                                //getting ride of other crumbs in the breadcrumb list
+                                subcategories.style.display = "none";
+                                subsubcategories.style.display = "none";
+                                clips.style.display = "none";
+                                //making the categories tab have the 'active' class
+                                subcategories.classList.remove("active");
+                                subsubcategories.classList.remove("active");
+                                categories.classList.add("active");
+                            }
+                            function setCategory(element){
+                                //setting the category                            
+                                console.log(element);
+                                category = element;
+                                //hiding table
+                                invisibleTables();
+                                //var table = document.getElementById('clipArtTable');
+                                //table.style.display = "none";
+                                //showNewtable
+                                showTable(category,null);
+                                //making the subcategories visible and 'active'
+                                subcategories.style.display = "inline"; 
+                                                            subcategories.innerHTML = element; 
+                                clips.style.display = "none";
+                                //making the subcategories tab have the 'active' class
+                                categories.classList.remove("active");
+                                subsubcategories.classList.remove("active");
+                                subcategories.classList.add("active");                            
+                            }   
+
+                            function setSubCategory(element){
+                                //setting the category
+                                subcategory = element;
+                                //hiding table
+                                invisibleTables();
+                                //var table = document.getElementById('clipArtTable');
+                                //table.style.display = "none";
+                                //showNewtable
+                                showTable(category,subcategory);
+                                //showTable(element);
+                                //making the subcategories visible and 'active'
+                                subsubcategories.style.display = "inline"; 
+                                                            subsubcategories.innerHTML = element; 
+                                clips.style.display = "none";
+                                //making the subcategories tab have the 'active' class
+                                categories.classList.remove("active");
+                                subcategories.classList.remove("active");
+                                subsubcategories.classList.add("active");
+                                
+                            } 
+
+                            function showTable(category,subcategory){    
+                               $.ajax({
+                                        type: "POST",
+                                        url: "categories.php",
+                                        data: {
+                                                category: category,
+                                                subcategory: subcategory
+                                               },
+                                        success: function(data)
                                         {
-                                          if ($i % 2 == 0)
-                                          {                                          
-                                            print_r('    <tr>') ;                                                                                    
-                                          }                
-                                          $valuetmp =  "'".$categories[$i]."'";
-                                          print_r('    <td height="80" width="195"  align="center" style="border-left:none;border-bottom:none;border-top:none">') ; // height="80px" width="195px"
-                                          //print_r('        <img art-image="" src="'.$directory.'/'.$categories[$i].'/'.$categories[$i].'.png" width="50" height="50"><br>') ;
-                                          print_r('        <a href="javascript:void(0);" onclick="setCategory('.$valuetmp.');" style="font-size:16px;"><img art-image="" src="'.$directory.'/'.$categories[$i].'/'.$categories[$i].'.png" width="50" height="50"><br>'.$categories[$i].'</a>');
-                                          print_r('    </td>') ;   
-                                          if ($i % 2 != 0)
-                                          {
-                                            print_r('    </tr>') ;
-                                          }
-                                        }      
-                                      }
-                                      print_r('</tbody>');
-                                  ?>
-                                <!--menu for customers to go back if they wish-->
-                                <!--WILL USE THIS IF BREADCRUMBS DON'T WORK<div class="row"><div class="col-sm-1"></div><div class="col-sm-1"></div><div class="col-sm-10"></div></div>--> 
-                              </table> 
-                                                 
-                          </div>
+                                            //alert(data);
+                                            document.getElementById('clipArtTable2').innerHTML = data;
+                                            document.getElementById('clipArtTable2').style.display = "block";
+                                        }
+                                    })                         
+                                }      
+
+                             function invisibleTables(){
+                                var tables = document.getElementsByClassName('table table-fixed');
+
+                                for (var i = 0; i < tables.length; i++) {
+                                    tables[i].style.display = "none";
+                                }
+                            }             
+                            </script>
+                        
+                      </div>
                     </div>
-                      
-                      <script type="text/javascript">
-                          var div = document.getElementById('clipArtCategories');
-                          var category = "";
-                          var subcategory = "";
-                              
-   
-                          var categories = document.getElementById('categories');
-                          
-                          var subcategories = document.getElementById('subcategories');
-                          var clips = document.getElementById('clips');
-
-                          var subsubcategories = document.getElementById('subsubcategories');
-                          
-   
-                          subsubcategories.onclick = function(){
-                              //hiding clips
-                              clips.style.display = "none";
-                              //making subcategories "active"
-                              categories.classList.remove("active");
-                              subcategories.classList.add("active");
-                          }
-
-                          subcategories.onclick = function(){
-                              //TODO hide whatever is currently showing
-                              //showing table
-                              invisibleTables();
-                              showTable(category);
-                              //var table = document.getElementById('clipArtTable2');
-                              //table.style.display = "block";
-                              //table.setAttribute('width','100%');
-                              //getting ride of other crumbs in the breadcrumb list
-                              //subcategories.style.display = "none";
-                              subsubcategories.style.display = "none";
-                              clips.style.display = "none";
-                              //making the categories tab have the 'active' class
-                              categories.classList.remove("active");
-                              subsubcategories.classList.remove("active");
-                              subcategories.classList.add("active");
-                          }
-                          categories.onclick = function(){
-                              //TODO hide whatever is currently showing
-                              //showing table
-                              invisibleTables();
-                              var table = document.getElementById('clipArtTable');
-                              table.style.display = "block";
-                              table.setAttribute('width','100%');
-                              //getting ride of other crumbs in the breadcrumb list
-                              subcategories.style.display = "none";
-                              subsubcategories.style.display = "none";
-                              clips.style.display = "none";
-                              //making the categories tab have the 'active' class
-                              subcategories.classList.remove("active");
-                              subsubcategories.classList.remove("active");
-                              categories.classList.add("active");
-                          }
-                          function setCategory(element){
-                              //setting the category                            
-                              console.log(element);
-                              category = element;
-                              //hiding table
-                              invisibleTables();
-                              //var table = document.getElementById('clipArtTable');
-                              //table.style.display = "none";
-                              //showNewtable
-                              showTable(category,null);
-                              //making the subcategories visible and 'active'
-                              subcategories.style.display = "inline"; 
-                                                          subcategories.innerHTML = element; 
-                              clips.style.display = "none";
-                              //making the subcategories tab have the 'active' class
-                              categories.classList.remove("active");
-                              subsubcategories.classList.remove("active");
-                              subcategories.classList.add("active");                            
-                          }   
-
-                          function setSubCategory(element){
-                              //setting the category
-                              subcategory = element;
-                              //hiding table
-                              invisibleTables();
-                              //var table = document.getElementById('clipArtTable');
-                              //table.style.display = "none";
-                              //showNewtable
-                              showTable(category,subcategory);
-                              //showTable(element);
-                              //making the subcategories visible and 'active'
-                              subsubcategories.style.display = "inline"; 
-                                                          subsubcategories.innerHTML = element; 
-                              clips.style.display = "none";
-                              //making the subcategories tab have the 'active' class
-                              categories.classList.remove("active");
-                              subcategories.classList.remove("active");
-                              subsubcategories.classList.add("active");
-                              
-                          } 
-
-                          function showTable(category,subcategory){    
-                             $.ajax({
-                                      type: "POST",
-                                      url: "categories.php",
-                                      data: {
-                                              category: category,
-                                              subcategory: subcategory
-                                             },
-                                      success: function(data)
-                                      {
-                                          //alert(data);
-                                          document.getElementById('clipArtTable2').innerHTML = data;
-                                          document.getElementById('clipArtTable2').style.display = "block";
-                                      }
-                                  })                         
-                              }      
-
-                           function invisibleTables(){
-                              var tables = document.getElementsByClassName('table table-fixed');
-
-                              for (var i = 0; i < tables.length; i++) {
-                                  tables[i].style.display = "none";
-                              }
-                          }             
-                          </script>
-                      
+                    <!--UPLOAD SECTION-->
+                    <div class="panel-group">
+                      <div class="panel panel-default">
+                        <div class="panel-heading" > Upload </div>
+                        <div  class="panel-body"> 
+                            <!--START UPLOADING IMAGE SECTION-->
+                            <input id="imgUpload" type="file" name="imgUpload" data-buttonText="upload" onchange="uploadImage();">
+                            <img class="hover" id="imgPreview" style="display:none;" src="" alt="" onclick="addImg(this); imgPreviewCanvas();"> 
+                            <canvas id="previewCanvas" style="display: none;"></canvas>
+                            <script type="text/javascript">
+                                function  imgPreviewCanvas(){
+                                    var c=document.getElementById("previewCanvas");
+                                    
+                                    var ctx=c.getContext("2d");
+                                   
+                                    var img=document.getElementById("imgPreview");
+                                    ctx.drawImage(img,10,10,128,128); 
+                                    saveUpload();
+                                };
+                            </script>
+                        </div>
+                      </div>
                     </div>
                 </div>
                 <!--END MODIFY ART SECTION--> 
@@ -808,13 +945,42 @@
                 <!--START TEXT DESIGN SECTION-->
                 <div id="textSection" class="tab-pane fade">
 
-                     <h3>ADD TEXT</h3>                      
-                      <div class="panel-group">
+                     <h2 class="tab_title">Add Text</h2>                      
+                      <div class="panel-group" id="text_menu">
                             <div class="panel panel-default">
                               <div class="panel-heading">Text Section</div>
                               <div class="panel-body">
                                     <textarea rows="3" class="form-control" id="text" type="text" onkeypress="return addText(event);" placeholder="Enter text"></textarea><!--was taken out of onchange setText();-->
-                              		<button id="addText_btn" class="btn btn-info" onclick="return addText(event);" style="margin-top: 10px;">Add Text</button>
+                                    <button id="addText_btn" class="btn btn-info" onclick="return addText(event);" style="margin-top: 10px; background-color: #399fd9;">Add Text</button>
+                                    <!--START OF CURVEDTEXT-->
+                                        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.0.0-beta.1/fabric.js"></script>-->
+                                        <!--<script src="http://code.jquery.com/jquery-git.js"></script>-->
+                                        <script src="fabric.curvedText.js"></script>
+                                        <br><br><button id="convert" class="btn btn-info" style="background-color: #399fd9;">Arc / Text</button>
+                                        <!--<canvas id="c" width="400" height="200" style="border: 1px solid #4169e1;"></canvas><br/>-->
+                                        <!--<input type="text" id="text" value="CurvedText" /><br>-->
+                                        
+                                        <br><br><!--Reverse : <input type="checkbox" name="reverse" id="reverse" /><br>-->
+                                        Arc Text : <input type="range" min="-100" max="150" value="0" id="radius" /><br>
+                                        Spacing : <input type="range" min="5" max="40" value="20" id="spacing" />
+
+                                        <!--Color : <input type="color" value="#0000ff" id="fill" /><br>-->
+                                        <!--Effect : 
+                                        <select name="effect" id="effect" >
+                                          <option value="curved">Curved</option>
+                                          <option value="arc">Arc</option>
+                                          <option value="STRAIGHT">STRAIGHT</option>
+                                          <option value="smallToLarge">smallToLarge</option>
+                                          <option value="largeToSmallTop">largeToSmallToped</option>
+                                          <option value="largeToSmallBottom">largeToSmallBottom</option>
+                                          <option value="bulge">bulge</option>
+                                        </select>-->
+                                        
+                                        
+                                        <!--<button id="save">Save/Reload</button>-->
+                                        
+                                    <!--END OF CURVEDTEXT-->
+
                               </div>
                             </div>
                             <div class="panel panel-default">
@@ -834,30 +1000,30 @@
                                         </style>       
 
                                         <div class="row">
-                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','f');"></div>                                                   
+                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#ffff00','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#ff2400','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#800000','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#9bddff','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#4169e1','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#000080','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#800080','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#006400','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#fffdd0','f');"></div>                                                   
                                         </div>  
                                         <div class="row">
-                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','f');"></div>
-                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#ffff00','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#ff2400','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800000; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#800000','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#9bddff','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#4169e1','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #000080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#000080','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #800080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#800080','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #006400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#006400','f');"></div>
+                                          <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#fffdd0','f');"></div>
                                          </div>  
                                     <!--END COLOR SECTION-->
 
-                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Add Outline</button>
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo" style="background-color: #399fd9;">Add Outline</button>
                                         <div id="demo" class="collapse">
                                             <h5>Text Stroke Color:</h5>
                                                 <!--COLOR SECTION-->  
@@ -873,83 +1039,33 @@
                                                     </style>       
 
                                                     <div class="row">
-                                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','c');"></div>                                                   
+                                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#ffff00','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#ff2400','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#800000','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#9bddff','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#4169e1','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#000080','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#800080','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#006400','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#fffdd0','c');"></div>                                                   
                                                     </div>  
                                                     <div class="row">
-                                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ffff00','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#ff2400','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800000','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#9bddff','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#4169e1','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#000080','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#800080','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#006400','c');"></div>
-                                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 2vw; height: 2vw; border:1px solid #eeeeee;" onclick="changeColorText('#fffdd0','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #ffff00; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#ffff00','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #ff2400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#ff2400','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #800000; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#800000','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #9bddff; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#9bddff','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #4169e1; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#4169e1','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #000080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#000080','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #800080; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#800080','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #006400; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#006400','c');"></div>
+                                                      <div class="block"  style="border-radius:  50%; background-color: #fffdd0; width: 30px; height: 30px; border:1px solid #eeeeee; cursor:pointer" onclick="changeColorText('#fffdd0','c');"></div>
                                                      </div>  
                                                 <!--END COLOR SECTION-->
                                         </div>                             
                               </div>
                             </div>
-                            <!--START TEXT DESIGN SECTION-->
                             <div class="panel panel-default">
-                              <div class="panel-heading">Styles</div>
-                              <div class="panel-body">
-                                <!--START FONTS MODAL-->
-                                    <!-- Button trigger modal -->
-                                    <input type="button" value="Fonts" class="btn btn-primary textBtn" data-toggle="modal" data-target="#fontModal" disabled="true">
-                                    
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="fontModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                      <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                                <h1 class="modal-title fancy" id="label">Fonts</h1>
-                                          </div>
-                                          <div class="modal-body">
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        <a href="#"><div class="col-sm-3"><h3 id="bully" onclick="setFont(this);">Bully Style</h3></div></a>
-                                                        <a href="#"><div class="col-sm-3"><h3 id="PokemonHollow" onclick="setFont(this);">Gotta Catch</h3></div></a>
-                                                        <a href="#"><div class="col-sm-3"><h3 id="PokemonSolid" onclick="setFont(this);">Them All!</h3></div></a>
-                                                        <a href="#"><div class="col-sm-3"><h3 id="jelly" onclick="setFont(this);">Jellyfi Text</h3></div></a>
-                                                    </div>
-                                                    <div class="row">
-                                                        <a href="#"><div class="col-sm-3"><h3 id="angry" onclick="setFont(this);">Angry Birds!</h3></div></a>
-                                                        <a href="#"><div class="col-sm-3"><h3 id="tmnt" onclick="setFont(this);">Turtle Power!</h3></div></a>
-                                                        <a href="#"><div class="col-sm-3"><h3 id="db" onclick="setFont(this);">Make a Wish</h3></div></a>
-                                                        <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But be careful</h3></div></a>
-                                                    </div>
-                                                    <div class="row">
-                                                        <a href="#"><div class="col-sm-3"><h3 id="spongebob" onclick="setFont(this);">Lives Under The Sea!</h3></div></a>
-                                                        <a href="#"><div class="col-sm-3"><h3 id="tmnt" onclick="setFont(this);">Turtle Power!</h3></div></a>
-                                                        <a href="#"><div class="col-sm-3"><h3 id="db" onclick="setFont(this);">Make a Wish</h3></div></a>
-                                                        <a href="#"><div class="col-sm-3"><h3 id="dbz" onclick="setFont(this);">But be careful</h3></div></a>
-                                                    </div>
-                                                </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                <!--END FONTS MODAL-->
-                                <input class="btn btn-primary textBtn" type="button" value="Normal" onclick="straight();" disabled="true">
-                                <input class="btn btn-primary textBtn" type="button" value="Circle" onclick="circle();" disabled="true">
-                                <input class="btn btn-primary textBtn" type="button" value="Bridge" onclick="bridge();" disabled="true">
-                                <input class="btn btn-primary textBtn" type="button" value="Valley" onclick="valley();" disabled="true">
-                              </div>
-                            </div>
-                            <div class="panel panel-default">
-                              <div class="panel-heading">Size & Effect</div>
+                              <div class="panel-heading">Size &amp; Effect</div>
                               <div class="panel-body">
                                     <div class="input-group">                           
                                         <span class="input-group-addon">Font Size</span>
@@ -958,8 +1074,10 @@
                                         <input id="angleText" type="number" class="form-control" name="angleText" onkeypress="return rotate(event);" >
                                     </div>
                               </div>
-                            </div>                       
+                            </div>  
                       </div>  
+                      <!--FONT SECTION-->
+                      <?php include 'font_menu.html'; ?> 
                 </div>                   
                 <!--END TEXT DESIGN SECTION-->
 
@@ -981,14 +1099,15 @@
                                 width: 100%;
                             }
                         </style>
-                        <h3>Cart</h3><!--TODO MAKE THIS BUTTON FOR CART MODAL-->
+                        <h2 class="tab_title">Cart</h2><!--TODO MAKE THIS BUTTON FOR CART MODAL-->
+                        <hr>
                         <form id="checkout_form"  method="post" action="checkout.php"><!--taken out action="checkout.php"-->
                             <table class="table" id="cart" style="width: 100% !important;">
                                 
                             </table>
                             <?php echo('<input id="ordernumber" type="hidden" name="ordernumber" value = '.$ordernumber.'>'); ?>
                             <!-- Trigger the modal with a button -->
-                            <button id="productPickerBtn" type="button" class="btn btn-info" data-toggle="modal" data-target="#productPicker" >Add Products</button> <!-- taken out of the button onclick="setDesign();" -->
+                            <button id="productPickerBtn" type="button" class="btn btn-info" data-toggle="modal" data-target="#productPicker" style="background-color: #399fd9;">Add Products</button> <!-- taken out of the button onclick="setDesign();" -->
                             <h3 id="cartTotal"></h3>
                             <input id="total" type="hidden" name="total">
                             <?php 
@@ -1025,7 +1144,7 @@
                                     </div>
                                     <span>Order Total:<span id="finalTotal" style="display: block;"></span></span>
                                     <div class="modal-footer">
-                                    	<?php echo('<input id="ordernumber" type="hidden" name="ordernumber" value = '.$ordernumber.'>'); ?>
+                                        <?php echo('<input id="ordernumber" type="hidden" name="ordernumber" value = '.$ordernumber.'>'); ?>
                                         <button type="button" id="checkoutBtn2" class="btn btn-success" onclick="canCheckout_cart();">Check Out</button>
                                         </form> 
                                     </div>
@@ -1089,12 +1208,12 @@
                                 getCartTotal();
                             }
                             function removeFromCart(btn){
-                            	var row = btn.parentNode.parentNode;
-  								row.parentNode.removeChild(row);
-  								var num = Number(btn.id);
-  								cart.splice(num);
-  								getCartTotal();
-  								rowNum--;
+                                var row = btn.parentNode.parentNode;
+                                row.parentNode.removeChild(row);
+                                var num = Number(btn.id);
+                                cart.splice(num);
+                                getCartTotal();
+                                rowNum--;
                             }
                             function getItemPrice(){
                                 var yxs = document.getElementById('yxs').value; var ys = document.getElementById('ys').value; var ym = document.getElementById('ym').value;
@@ -1187,34 +1306,34 @@
                 </div>
 
                 <div id="saveSection" class="tab-pane fade">                   
-                   <div class="panel panel-default">
-                    <div class="panel-heading">Look at your previous designs!</div>
-                    <div class="panel-body">
-                           <select class="form-control" id="mydesings"  onChange="loadImages();">
-                          <?php                                  
-                                                  
-                              echo ('<option title="Select the design">Select the design</option>');     
-                              if (isset($_SESSION['login_user']))       
-                              {       
-                                      $folder = $_SESSION['login_user'];      
-       
-                                      $dir    =  dirname(__FILE__).'/'.$folder;       
-                                      if (is_dir($dir))       
-                                      {       
-                                          $scanned_directory = scandir($dir);         
-                                      }                                                   
-               
-                                      for ($i=2; $i<count($scanned_directory) ; $i++)         
-                                      {               
-                                       echo ('<option title="'.$scanned_directory[$i].'">'.$scanned_directory[$i].'</option>');       
-                                      }                       
-                              }                                               
-                                                      
-                          ?>
-                          </select> 
-                         <br>
-                    </div>
-                  </div>          
+                    <div class="panel panel-default">
+                      <div class="panel-heading">Look at your previous designs!</div>
+                      <div class="panel-body">
+                             <select class="form-control" id="mydesings"  onChange="loadImages();">
+                                <?php                                  
+                                                        
+                                    echo ('<option title="Select the design">Select the design</option>');     
+                                    if (isset($_SESSION['login_user']))       
+                                    {       
+                                            $folder = $_SESSION['login_user'];      
+             
+                                            $dir    =  dirname(__FILE__).'/'.$folder;       
+                                            if (is_dir($dir))       
+                                            {       
+                                                $scanned_directory = scandir($dir);         
+                                            }                                                   
+                     
+                                            for ($i=2; $i<count($scanned_directory) ; $i++)         
+                                            {               
+                                             echo ('<option title="'.$scanned_directory[$i].'">'.$scanned_directory[$i].'</option>');       
+                                            }                       
+                                    }                                               
+                                                            
+                                ?>
+                             </select> 
+                            <br>
+                      </div>
+                    </div>          
                     <!--SAVED DESIGN-->
                     <style type="text/css">
                         #savedDesigns img{
@@ -1333,72 +1452,72 @@
                     <!--SHARE SECTION-->
 
                     <div class="panel panel-default">
-                    <div class="panel-heading">Share</div>
-                    <div class="panel-body">
-                          <form class="form-horizontal" >
-                            <p>Via Facebook, Twitter, Instagram, or Email!</p>
-                            <i class="fa fa-facebook" aria-hidden="true" style="font-size: 5vh;"></i>
-                            <i class="fa fa-twitter" aria-hidden="true" style="font-size: 5vh;"></i>
-                            <i class="fa fa-instagram" aria-hidden="true" style="font-size: 5vh;"></i>
-                            <i class="fa fa-envelope-o" aria-hidden="true" style="font-size: 5vh;"></i>
-                          </form>
-                          
-                          <form class="form-horizontal" id="emailform">
+                      <div class="panel-heading">Share</div>
+                      <div class="panel-body">
+                            <form class="form-horizontal" >
+                                <p>Via Facebook, Twitter, Instagram, or Email!</p>
+                                <i class="fa fa-facebook" aria-hidden="true" style="font-size: 5vh;"></i>
+                                <i class="fa fa-twitter" aria-hidden="true" style="font-size: 5vh;"></i>
+                                <i class="fa fa-instagram" aria-hidden="true" style="font-size: 5vh;"></i>
+                                <i class="fa fa-envelope-o" aria-hidden="true" style="font-size: 5vh;"></i>
+                            </form>
+                            
+                            <form class="form-horizontal" id="emailform">
 
-                             <!--URLs for front, right, back, and left designs with products-->
-                              <input type="hidden" id="frontShirtURL" name="frontShirtURL">
-                              <input type="hidden" id="frontImageURL" name="frontImageURL">
-                              <input type="hidden" id="rightShirtURL" name="rightShirtURL">
-                              <input type="hidden" id="rightImageURL" name="rightImageURL">
-                              <input type="hidden" id="backShirtURL" name="backShirtURL">
-                              <input type="hidden" id="backImageURL" name="backImageURL">
-                              <input type="hidden" id="leftShirtURL" name="leftShirtURL">
-                              <input type="hidden" id="leftImageURL" name="leftImageURL">
-                              <input type="hidden" id="designURL" name="designURL">
+                                 <!--URLs for front, right, back, and left designs with products-->
+                                  <input type="hidden" id="frontShirtURL" name="frontShirtURL">
+                                  <input type="hidden" id="frontImageURL" name="frontImageURL">
+                                  <input type="hidden" id="rightShirtURL" name="rightShirtURL">
+                                  <input type="hidden" id="rightImageURL" name="rightImageURL">
+                                  <input type="hidden" id="backShirtURL" name="backShirtURL">
+                                  <input type="hidden" id="backImageURL" name="backImageURL">
+                                  <input type="hidden" id="leftShirtURL" name="leftShirtURL">
+                                  <input type="hidden" id="leftImageURL" name="leftImageURL">
+                                  <input type="hidden" id="designURL" name="designURL">
 
-                            <div class="input-group" >
-                              <span class="input-group-addon">From:</span>
-                              <input id="from_email" type="text" class="form-control" name="from_email" placeholder="Enter your email">
-                            </div>     
-                            <br>                      
-                            <div class="input-group" >
-                              <span class="input-group-addon">To:</span>
-                              <input id="to_email" type="text" class="form-control" name="to_email" placeholder="Enter email">
-                            </div> 
-                            <br>
-                            <div class="input-group" >
-                              <span class="input-group-addon">Message:</span>
-                              <textarea id="message" type="text" class="form-control" name="message" placeholder="Enter message"></textarea>
-                            </div>
-                            <br> 
-                             <!--SHARE DESIGN PREVIEWS-->
-		                    <div id="shareDesigns" class="row">
-		                        <div class="col-sm-3">
-		                            <div id="frontSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-		                                <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewFront" src="">
-		                            </div>
-		                        </div>
-		                        <div class="col-sm-3">
-		                            <div id="rightSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-		                                <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewRight" src="">
-		                            </div>
-		                        </div>
-		                        <div class="col-sm-3">
-		                            <div id="backSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-		                                <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewBack" src="">
-		                            </div>
-		                        </div>
-		                        <div class="col-sm-3">
-		                            <div id="leftSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
-		                                <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewLeft" src="">
-		                            </div>
-		                        </div>
-		                    </div> 
-		                    <br>
-                              <button type="button" name="submit" class="btn btn-primary fa fa-envelope-o pull-right" onclick="sendemail();"></button>
-                          </form>
-                    </div>
-                  </div>                       
+                                  <div class="input-group" >
+                                    <span class="input-group-addon">From:</span>
+                                    <input id="from_email" type="text" class="form-control" name="from_email" placeholder="Enter your email">
+                                  </div>     
+                                  <br>                      
+                                  <div class="input-group" >
+                                    <span class="input-group-addon">To:</span>
+                                    <input id="to_email" type="text" class="form-control" name="to_email" placeholder="Enter email">
+                                  </div> 
+                                  <br>
+                                  <div class="input-group" >
+                                    <span class="input-group-addon">Message:</span>
+                                    <textarea id="message" type="text" class="form-control" name="message" placeholder="Enter message"></textarea>
+                                  </div>
+                                  <br> 
+                                   <!--SHARE DESIGN PREVIEWS-->
+                                  <div id="shareDesigns" class="row">
+                                      <div class="col-sm-3">
+                                          <div id="frontSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
+                                                <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewFront" src="">
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-3">
+                                          <div id="rightSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
+                                              <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewRight" src="">
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-3">
+                                          <div id="backSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
+                                              <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewBack" src="">
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-3">
+                                          <div id="leftSharePreviewCase" style="margin: auto; width: 87px; height: 81px; background-size: cover; background-position: center center;">
+                                              <img style="display: block; margin: auto; width: 60%; height: 80%; position: relative; top: 10% " id="sharePreviewLeft" src="">
+                                          </div>
+                                      </div>
+                                  </div> 
+                                  <br>
+                                    <button type="button" name="submit" class="btn btn-primary fa fa-envelope-o pull-right" onclick="sendemail();" style="background-color: #399fd9;"></button>
+                            </form>
+                      </div>
+                    </div>                       
                       
                     <script type="text/javascript">
                       function sendemail()
@@ -1529,7 +1648,7 @@
                                 .canvasShirt{
                                     width: 100%;
                                     height: 100%;
-                                    background-image: url('img/white_shirt.png');
+                                    background-image: url('img/t-shirt-test.jpg');
                                     background-repeat: no-repeat;
                                     background-size: cover;
                                     background-position: center center;
@@ -1661,10 +1780,10 @@
             //mt: false
         } );
         fabric.Canvas.prototype.customiseControls({
-        	mt: {
-        		action: 'moveUp',
-        		cursor: 'pointer'
-        	},
+            mt: {
+                action: 'moveUp',
+                cursor: 'pointer'
+            },
             tl: {
                 action: 'remove',
                 cursor: 'pointer'
@@ -1695,9 +1814,10 @@
                 cornerShape: 'circle',
                 cornerBackgroundColor: 'rgba(100,100,100,100)', //rrgba(100,100,100,100)
                 cornerPadding: 5,
+                hasRotatingPoint: false
             },
             mt:{
-            	icon: 'img/up.png',
+                icon: 'img/up.png',
             },
             tl: {
                 icon: 'img/x.png', //icons/rotate.svg
@@ -1920,9 +2040,6 @@
             var imgSrc = element;
             //adding image to canvas
             fabric.Image.fromURL(imgSrc, function(img){
-              console.log("console working");
-              console.log('img width : ' + img.width + " img height : " + img.height);
-             // alert('img width : ' + img.width + " img height : " + img.height);
                     img.set({ 
                         id: objId,
                         left: img.width/4,
@@ -1964,6 +2081,7 @@
                         left.renderAll();
                     });
                     //DECIDING WHICH CANVAS TO ADD TOO
+                    console.log('upload should have been uploaded');
                     switch (canvasCounter){
                         case 1:
                             front.add(img).setActiveObject(img);
@@ -1986,12 +2104,13 @@
  
         //ADDING CLIP ART TO CANVAS
         function addImg(element){
+       
             //getting img src
             var imgSrc = element.src;
+      
             //adding image to canvas
             fabric.Image.fromURL(imgSrc, function(img){
- 
-                    img.set({
+                       img.set({
                         id: objId,
                         left: 200,
                         top: 200,
@@ -1999,10 +2118,12 @@
                         scaleY: 0.5,
                         originX: 'center',
                         originY: 'center',
-                        hasRotatingPoint: false,                        
+                        hasRotatingPoint: false                     
                     });
+
                     // overwrite the prototype object based
                     img.customiseCornerIcons({
+                      
                         settings: {
                             borderColor: 'rgba(100,100,100,100)', //rrgba(100,100,100,100)
                             cornerSize: 20,
@@ -2029,10 +2150,12 @@
                         back.renderAll();
                         left.renderAll();
                     });
- 
+
+      
   
                     //DECIDING WHICH CANVAS TO ADD TOO
                     switch (canvasCounter){
+                      
                         case 1:
                             front.add(img).setActiveObject(img);
                             //front.setActiveObject(img);
@@ -2049,8 +2172,10 @@
                             left.add(img).setActiveObject(img);
                             //left.setActiveObject(img);
                     }
+             
                     //this is where animation would go          
             }); 
+            
             clipArtAdded = true; //set for pricing purposes
         }
         objId++;
@@ -2271,10 +2396,9 @@
 // ens space for functions 
         function addText(e) {
           textAdded = true;
-            if (e.keyCode == 13 || e.type == "click") 
+            if (/*e.keyCode == 13 ||*/ e.type == "click") 
             {
-
-              //the following is only for styling purposes                   
+                    //the following is only for styling purposes                   
                     $(".list-group-item").removeClass("active");
                     $(this).addClass("active");
                     //setting 'object' to the active object or the object the user has selected
@@ -2352,7 +2476,7 @@
 
                     }
 
-                   document.getElementById('text').value= "";
+                   document.getElementById('text').value = "";
             } 
         }   
        
@@ -2360,7 +2484,7 @@
         function straight(){
             textAdded = true;
 
-           	text = document.getElementById('text').value;
+            text = document.getElementById('text').value;
             document.getElementById('text').value = "";
             colorText = "#000000";
             colorArt = "#000000";
@@ -2609,7 +2733,6 @@
                         top: -1*(r)*Math.sin((Math.PI/180)*rotation)   //CHANGE TAKE OUT -1
                     });
                     letter.setColor(colorText);
-
                     headingText.push(letter);
                     ltr++;
                 }
@@ -3039,8 +3162,8 @@
               img.src = front.toDataURL();
               var doc_front = new jsPDF();
               doc_front.addImage(img ,"PNG",20,40,100,100);
-              doc_front.setFontSize(22);
-              doc_front.text(20, 20, 'front');
+              doc_front.setFontSize(1);
+              doc_front.text(1, 1, '.');
               doc_front.save('front.pdf');
               //right
               img = new Image();
@@ -3210,7 +3333,7 @@
                   console.log('changeClipArtMenuSize started');
                   var clipArtMenu = document.getElementById('clipArtMenu');
                   
-                  document.getElementById('ClipsArtImages').style.height = '355px';
+                  document.getElementById('ClipsArtImages').style.height = '300px';
                   console.log('changeClipArtMenuSize finished. height : ' + document.getElementById('ClipsArtImages').style.height);
             }
              front.on('mouse:up', function(e) 
@@ -3277,15 +3400,13 @@
                      }
                 }
                 //disabling textbtns again if text is not selected
-
-                if(e.target.tpye == 'undefined' || e.target.type != 'text' && e.target.type != 'group' )
-
+                /*if(e.target.type == 'undefined' || e.target.type != 'text' && e.target.type != 'group' )
                 {
                     var textBtns = document.getElementsByClassName("textBtn");
                      for (var i = 0; i < textBtns.length; i++) {
                          textBtns[i].disabled = true;
                      }
-                }   
+                }*/   
             });
 
             right.on('mouse:up', function(e) 
@@ -3760,7 +3881,7 @@
             designPreview.src = front.toDataURL();
             var designPreviews = document.getElementsByClassName('designPreview');
             for (var i = 0; i < designPreviews.length; i++) {
-            	designPreviews[i].src = front.toDataURL();
+                designPreviews[i].src = front.toDataURL();
             }
         }
         //this changes the image of the product the customer views
@@ -3784,13 +3905,11 @@
             s += Number(sizes[i].value) + " ";
           }
           console.log('s : ' + s);
-
           //setting quantity to calc price
           setQuantity(quantity);
 
           //calculating price for acurate results
           calcPrice();
-
 
           if(quantity < 1)
           {
@@ -3819,7 +3938,6 @@
           {
             document.getElementById("itemPriceLabel").style.visibility  = "visible";
             itemTotal = (quantity) * pricePerUnit;
-
             console.log('MARKER 2 : itemTotal : ' + itemTotal);
             document.getElementById('itemPrice').innerHTML = "$" + pricePerUnit;
             document.getElementById("numOfShirtsLabel").style.visibility  = "visible";
@@ -3827,7 +3945,6 @@
             document.getElementById("itemTotal").style.visibility  = "visible";
             document.getElementById('itemTotal').innerHTML = "$" + itemTotal;
             document.getElementById("itemTotalLabel").style.visibility  = "visible";
-
           }
           //showing shipping information when
           getShippingInformation();
@@ -3855,6 +3972,8 @@
           var num = front.getObjects().length + right.getObjects().length + back.getObjects().length + left.getObjects().length;
           if(num > 0){
             if(showModal) {getPrice();}
+            //changing get price to check out
+            document.getElementById('getPriceBtn').innerHTML = "Checkout";
             return true;
           }else{
             //alert letting the user know that no design was detected goes here
@@ -3910,12 +4029,11 @@
         }
         //function to deselect all objects in all canvases. This just prevents a lot of errors in general.
         function deselectAllCanvases(){
-        	front.deactivateAll().renderAll();
-        	right.deactivateAll().renderAll();
-        	back.deactivateAll().renderAll();
-        	left.deactivateAll().renderAll();
+            front.deactivateAll().renderAll();
+            right.deactivateAll().renderAll();
+            back.deactivateAll().renderAll();
+            left.deactivateAll().renderAll();
         }
-
         //function to show and dismiss popovers in the product picker plus sizes
         var _2xl = document.getElementById('xxl');
          var _3xl = document.getElementById('xxxl');
@@ -4055,18 +4173,138 @@
           var month = ['Janurary','Feburary','March','April','May','June','July','August','September','October','November','December'];
           document.getElementById('deliveryDate').innerHTML = day[deliveryDate.getDay()] + ", " + month[deliveryDate.getMonth()] + " " + deliveryDate.getDate();
           console.log('function finished');
-          console.log('innerhtml : ' + document.getElementById('deliveryDate').innerHTML);
+          console.log('innerHTML : ' + document.getElementById('deliveryDate').innerHTML);
           
          }
+          /*
+          JAVASCRIPT FOR CURVEDTEXT
+          */        
+          
+            front.on('selection:cleared', onDeSelected);
+            front.on('object:selected', onSelected);
+            front.on('selection:created', onSelected);
+            /*COMMENTED OUT BECAUSE NOT IN USE var CurvedText = new fabric.CurvedText('Shane May',{
+                //width: 100,
+                //height: 50,
+                left: 100,
+                top: 100,
+                textAlign: 'center',
+                fill: '#0000FF',
+                radius: 150,
+                fontSize: 20,
+                spacing: 20
+                //fontFamily: 'Arial'
+            });
+            //TODO PUT SWITCH STATEMENT HERE TO DECIDE WHICH front TO ADD TOO
+            front.add(CurvedText).renderAll();
+            front.setActiveObject(front.item(front.getObjects().length-1));*/
 
- 
+            $('#text').keyup(function(){
+              console.log("4108 text keyup functin triggered");
+                var obj = front.getActiveObject();
+                if(obj){
+                    obj.setText(this.value);
+                    front.renderAll();
+                }
+            });
 
+            $('#reverse').click(function(){
+              console.log("4117 reverse click function triggered");
+                var obj = front.getActiveObject();
+                if(obj){
+                    obj.set('reverse',$(this).is(':checked')); 
+                    front.renderAll();
+                }
+            });
 
+            $('#radius, #spacing').change(function(){//, #fill was taken out
+              console.log(" that.attr(id) : " + $(this).attr('id') + " this.val() : " + $(this).val());
+                var obj = front.getActiveObject();
+                if(obj){
+                    obj.set($(this).attr('id'),$(this).val()); 
+                }
+                front.renderAll();
+            });
 
+            $('#radius, #spacing').change(function(){//, #effect was taken out
+              console.log("4135 radius spacing effect change function triggered");
+                var obj = front.getActiveObject();
+                if(obj){
+                    obj.set($(this).attr('id'),$(this).val()); 
+                }
+                front.renderAll();
+            });
 
+            /*COMMENTED OUT BECUASE NOT IN USE$('#fill').change(function(){
+                var obj = front.getActiveObject();
+                if(obj){
+                    obj.setFill($(this).val()); 
+                }
+                front.renderAll();
+            });*/
+
+            /*COMMENTEDD OUT BECAUSE NOT IN USE $('#save').click(function() {
+                var design = JSON.stringify(front.toJSON());
+                front.clear();
+                front.renderAll();
+                front.loadFromJSON(design, function() {
+                    console.log('loaded');      
+                    front.renderAll();
+                });
+            });*/
+            
+            $('#convert').click(function(){
+              console.log("4162 convert click function triggered");
+                var props = {};
+                var obj = front.getActiveObject();
+                if(obj){
+                    if(/curvedText/.test(obj.type)) {
+                        default_text = obj.getText();
+                        props = obj.toObject();
+                        delete props['type'];
+                        var textSample = new fabric.Text(default_text, props);
+                    }else if(/text/.test(obj.type)) {
+                        default_text = obj.getText();
+                        props = obj.toObject();
+                        delete props['type'];
+                        props['textAlign'] = 'center';
+                        props['radius'] = 50;
+                        props['spacing'] = 20;
+                        var textSample = new fabric.CurvedText(default_text, props);
+                    }
+                    front.remove(obj);
+                    front.add(textSample).renderAll();
+                    front.setActiveObject(front.item(front.getObjects().length-1));
+                }
+            });
+            //});
+                
+            function onSelected(){
+              console.log("4188 onSelected function triggered");
+                var obj = front.getActiveObject();
+                $('#text').val(obj.getText());
+                $('#reverse').prop('checked', obj.get('reverse'));
+                $('#radius').val(obj.get('radius'));
+                $('#spacing').val(obj.get('spacing'));
+                //$('#fill').val(obj.getFill());
+                /*if(obj.getEffect) {
+                    $('#effect').val(obj.getEffect());
+                }*/
+            }
+
+            function onDeSelected(){
+              console.log("4201 onDeSelected function triggered");
+                $('#text').val('');
+                $('#reverse').prop('checked', false);
+                $('#radius').val(50);
+                $('#spacing').val(20);
+                //$('#fill').val('#0000FF');
+                //$('#effect').val('curved');
+            }
     </script>
+
     <?php
-    //super important code goes here!
+      //super important code goes here!
     ?>
 </body>
 </html>
