@@ -1,0 +1,7 @@
+[10-Aug-2017 09:50:12 CST6CDT] PHP Warning:  include(../session.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/admin/Catalog/add_product.php on line 2
+[10-Aug-2017 09:50:12 CST6CDT] PHP Warning:  include(../session.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/admin/Catalog/add_product.php on line 2
+[10-Aug-2017 09:50:12 CST6CDT] PHP Warning:  include(): Failed opening '../session.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/vividcustoms/public_html/vivid_customs2/admin/Catalog/add_product.php on line 2
+[10-Aug-2017 09:50:12 CST6CDT] PHP Warning:  include(../config.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/admin/Catalog/add_product.php on line 3
+[10-Aug-2017 09:50:12 CST6CDT] PHP Warning:  include(../config.php): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/admin/Catalog/add_product.php on line 3
+[10-Aug-2017 09:50:12 CST6CDT] PHP Warning:  include(): Failed opening '../config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/vividcustoms/public_html/vivid_customs2/admin/Catalog/add_product.php on line 3
+[10-Aug-2017 10:37:08 CST6CDT] PHP Parse error:  syntax error, unexpected 'getcwd' (T_STRING) in /home/vividcustoms/public_html/vivid_customs2/admin/Catalog/save_product_image.php on line 14

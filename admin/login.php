@@ -1,59 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+   define('DB_SERVER', '162.144.194.87');
+   define('DB_USERNAME', 'vividcus_root');
+   define('DB_PASSWORD', 'sheldon1');
+   define('DB_DATABASE', 'vividcus_vividcustom');
+   $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
-
+   if(mysqli_connect_errno()){
+    $db = mysqli_connect("localhost","root","","vividcustoms");
+   }else{
     
-   
-    <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   }
+   session_start();
+   $error = "Your Login Name or Password is invalid";    
+   if($_SERVER["REQUEST_METHOD"] == "POST") {      
+      
+      $myusername = mysqli_real_escape_string($db,$_POST['username']);
+      $mypassword = mysqli_real_escape_string($db,$_POST['password']);    
 
-    >
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      echo $username;
 
-    
-    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+      $mypassword = md5($mypassword);
 
- 
-    <link href="css/sb-admin.css" rel="stylesheet">-->
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  
-  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  
-  
-
-</head>
-
-<body id="page-top">
-
-
-<div class="container">
-
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
-
-    </div>
-</body>
-
+      $sql = "SELECT id FROM user WHERE username = '{$myusername}' and Password = '{$mypassword}'";
+      
+      $result = mysqli_query($db,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      //$active = $row['active'];      
+      $count = mysqli_num_rows($result);         
+      if($count > 0) {
+        // session_register("myusername");
+         $_SESSION['login_user'] = $myusername;  
+         
+         header("location: main.php?page=Dashboard");
+         
+      }
+      else 
+      {         
+          header("location: main.php?c=fail");
+      }
+   }
+?>
 </html>
+
+
+
+
