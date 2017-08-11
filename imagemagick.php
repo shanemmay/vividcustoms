@@ -42,7 +42,7 @@ function readJSon($filepath, $tmpname)
 				 		}
 				 		if ($objects["type"] == 'text') 
 				 		{
-				 			exec(" convert -size  120x160 xc:lightblue  -fill blue -stroke 1 -gravity center -pointsize 40  -draw 'text 0,0 ".$objects["text"]."' floodfill ".$tmpname."_tmpText.png");	
+				 			exec(" convert -size  120x160 xc:lightblue  -fill blue -stroke 1 -gravity center -pointsize 40  -draw 'text 0,0 ".$objects["text"]."' +antialias ".$tmpname."_tmpText.png");	
 				 			echo $objects["text"];	
 				 			//good
 				 			//exec("convert -size ".$width."x".$height." xc:none ".$tmpname."_tmpText.png  -geometry ".$objects["width"]."x".$objects["height"]."+0+0 -composite  ".$tmpname."_baseImage.png -geometry ".$width."x".$height." +0+0 -composite  ".$tmpname."_baseImage.png");	
