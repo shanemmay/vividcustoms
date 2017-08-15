@@ -9,7 +9,7 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Vivid Admin</title>
+    <title>Login Admin Panel</title>
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   
@@ -29,7 +29,7 @@
         <div class="card-header">
         </div>
         <div class="card-block">
-          <h4 class="card-title">Vivid Admin</h4>
+          <h4 class="card-title">Login Admin Panel</h4>
          <form class="form-horizontal" id="Loginform" method="POST" action="login.php">
             <div class="input-group">
               <span class="input-group-addon">Username:</span>
@@ -37,8 +37,8 @@
             </div>     
             <br>                      
             <div class="input-group">
-              <span class="input-group-addon">Password:</span>
-              <input id="password" class="form-control" name="password" placeholder="Enter password" type="password">
+              <span class="input-group-addon">Passwoord:</span>
+              <input id="password" class="form-control" name="password" placeholder="Enter passwoord" type="text">
             </div> 
             <br>  
               <button class="btn btn-primary" type="submit">Login</button>

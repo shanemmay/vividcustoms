@@ -118,7 +118,7 @@
                                     <a href="main.php?folder=Sales&page=ManageTaxRules">Manage Tax Rules</a>
                                 </li>
                                 <li>
-                                    <a href="main.php?folder=Sales&page=ManageTaxZoneRates">Manage Tax Zone & Rates</a>
+                                    <a href="main.php?folder=Sales&page=ManageTaxZoneRates">Manage Tax Zone &amp; Rates</a>
                                 </li>
                                 <li>
                                     <a href="main.php?folder=Sales&page=ImportExportTaxRates">Import / Export Tax Rates</a>
@@ -211,6 +211,9 @@
                         </li>                        
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="main.php?folder=Shane&page=index"><i class="fa fa-fw fa-dashboard"></i> Shane</a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
@@ -276,7 +279,7 @@
             <!-- Breadcrumbs -->
             <ol class="breadcrumb" id="DashboardMenu">                
                  <?php 
-                    if(!empty($_GET["folder"]) && !empty($_GET["page"])) 
+                    if(!empty($_GET["page"]) && !empty($_GET["page"])) 
                     {
                         //main.php?folder=Catalog&page=GoogleSitemap
                         echo '<li class="breadcrumb-item">'.$_GET["folder"].'</li>';    
@@ -372,6 +375,7 @@
                 <div class="card-block">
        
                    <?php
+
                         if(!empty($_GET["folder"]) && !empty($_GET["page"]))
                         {
                            if (file_exists($_GET["folder"]."/".$_GET["page"].".php"))
@@ -383,6 +387,8 @@
                                echo' <div class="alert alert-danger" role="alert">
                                   <strong>Oh snap!</strong> We are sorry. The website is under construction.
                                 </div>
+
+
                                 ';
                             }                            
                         }

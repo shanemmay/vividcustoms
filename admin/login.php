@@ -10,7 +10,7 @@
    }else{
     
    }
-   session_start();
+   //session_start();
    $error = "Your Login Name or Password is invalid";    
    if($_SERVER["REQUEST_METHOD"] == "POST") {      
       
@@ -31,7 +31,7 @@
         // session_register("myusername");
          $_SESSION['login_user'] = $myusername;  
          
-         header("location: main.php?page=Dashboard");
+         header("location: main.php");
          
       }
       else 
