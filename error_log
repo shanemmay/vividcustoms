@@ -1449,3 +1449,6 @@ Stack trace:
 [09-Aug-2017 15:01:22 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 155
 [10-Aug-2017 08:55:44 CST6CDT] PHP Warning:  file_get_contents(Guest000099/Guest000099_000600/Guest000099_000600_front.json): failed to open stream: No such file or directory in /home/vividcustoms/public_html/vivid_customs2/test.php on line 50
 [10-Aug-2017 08:55:44 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/test.php on line 57
+[10-Aug-2017 16:40:48 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 127
+[10-Aug-2017 16:40:48 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 127
+[10-Aug-2017 16:40:48 CST6CDT] PHP Warning:  Invalid argument supplied for foreach() in /home/vividcustoms/public_html/vivid_customs2/save_design.php on line 127

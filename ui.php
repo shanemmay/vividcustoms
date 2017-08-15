@@ -923,19 +923,22 @@
                         <div  class="panel-body"> 
                             <!--START UPLOADING IMAGE SECTION-->
                             <input id="imgUpload" type="file" name="imgUpload" data-buttonText="upload" onchange="uploadImage();">
-                            <img class="hover" id="imgPreview" style="display:none;" src="" alt="" onclick="addImg(this); imgPreviewCanvas();"> 
-                            <canvas id="previewCanvas" style="display: none;"></canvas>
-                            <script type="text/javascript">
-                                function  imgPreviewCanvas(){
-                                    var c=document.getElementById("previewCanvas");
-                                    
-                                    var ctx=c.getContext("2d");
-                                   
-                                    var img=document.getElementById("imgPreview");
-                                    ctx.drawImage(img,10,10,128,128); 
-                                    saveUpload();
-                                };
-                            </script>
+                        <img class="hover" id="imgPreview" style="" src="" alt="" onclick="addImg(this); imgPreviewCanvas();"> 
+                        <canvas id="previewCanvas" style="display: none;"></canvas>
+                        <script type="text/javascript">
+                            function  imgPreviewCanvas(){
+                                var c=document.getElementById("previewCanvas");
+                                
+                                var ctx=c.getContext("2d");
+                               
+                                var img=document.getElementById("imgPreview");
+                                ctx.drawImage(img,10,10,110,110);                                  
+
+                                saveUpload(); 
+                                
+                            };
+                        </script>
+                        <hr>
                         </div>
                       </div>
                     </div>
@@ -961,7 +964,7 @@
                                         <!--<input type="text" id="text" value="CurvedText" /><br>-->
                                         
                                         <br><br><!--Reverse : <input type="checkbox" name="reverse" id="reverse" /><br>-->
-                                        Arc Text : <input type="range" min="-100" max="150" value="0" id="radius" /><br>
+                                        Arc Text : <input type="range" min="-150" max="150" value="0" id="radius" /><br>
                                         Spacing : <input type="range" min="5" max="40" value="20" id="spacing" />
 
                                         <!--Color : <input type="color" value="#0000ff" id="fill" /><br>-->
@@ -1655,13 +1658,16 @@
                                 }
                                 #canvas-wrapper{
                                     border: 1px solid #eeeeee;
-                                    width: 50%;
+                                    width: 62%;
                                     height: 75%;
                                     position: relative;
                                     margin: auto;
                                     top: 10%;
                                 }                                
- 
+                                canvas{
+                                  width: 3600px;
+                                  height: 4800px;
+                                }
                             </style>
                             <div class="canvasShirt" id="frontCanvasShirt">
                                 <div id="canvas-wrapper"><canvas id="frontCanvas"></canvas></div>
@@ -2017,13 +2023,15 @@
             var file = document.getElementById('imgUpload').files[0]; 
             var reader = new FileReader();
             reader.onload = function (){
-                preview.src = reader.result;
-                 ShowAddImg(reader.result);
+                preview.src = reader.result;                
+                ShowAddImg(reader.result);     
+                preview.style.display= 'none';   
+                document.getElementById("imgUpload").value = "";       
             }
  
             //SIZING THE IMG PREVIEW BEING UPLOADED
-            preview.style.width = "10vw";
-            preview.style.height = "10vw";
+            //preview.style.width = "110";
+            //preview.style.height = "110";            
  
             if(file){
                 preview.src = reader.readAsDataURL(file);
@@ -3081,22 +3089,22 @@
                     //progress(10);
                     //this is to reset the variables that record changes 
                     textAdded = clipArtAdded = imageUploaded = colorChanged = false;
-                    var data = [];
+                    //var data = [];
                     var frontdatalist = "";                         
                     frontdatalist += front.toDataURL('image/png');            
-                    data.push(front);
+                    //data.push(front);
                    // progress(20);
                     var rightdatalist = "";             
                     rightdatalist += right.toDataURL('image/png');
-                    data.push(right);
+                    //data.push(right);
                    // progress(30);
                     var backdatalist = "";            
                     backdatalist += back.toDataURL('image/png');
-                    data.push(back);
+                    //data.push(back);
                     //progress(40);
                     var leftdatalist = "";            
                     leftdatalist += left.toDataURL('image/png');  
-                    data.push(left);
+                    //data.push(left);
                    // progress(50);
                     var $general = frontdatalist;
                         $general += "*" + rightdatalist;
@@ -3107,9 +3115,12 @@
                             $general += additionalpictures;
                          }
                         
-                   var jsonData = JSON.stringify(data); 
+                    $general += "*"+ JSON.stringify(front);
+                    $general += "*"+ JSON.stringify(right);
+                    $general += "*"+ JSON.stringify(back);
+                    $general += "*"+ JSON.stringify(left); 
                    //progress(60);                        
-                    $general += "*"+ jsonData;  
+                    //$general += "*"+ jsonData;  
                 
                     var xhr = new XMLHttpRequest();
                     xhr.open("POST", "save_design.php", true);

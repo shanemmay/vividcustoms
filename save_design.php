@@ -149,11 +149,11 @@
 				 			$pos = strpos($objects["src"],'img');				 		
 				 			$OrigenIMG = substr($objects['src'], $pos, strlen($objects['src'])); 						 		
 				 			//put later -scale 3600x4800
-				 			//exec("convert ".$OrigenIMG." -fuzz 100%  -fill '".$color."' -opaque black -rotate ".$objects["angle"]."  -scale ".$objects["width"]."x".$objects["height"]." ".$tmpname."_tmpImage.png");				 			
+				 			exec("convert ".$OrigenIMG." -fuzz 100%  -fill '".$color."' -opaque black -rotate ".$objects["angle"]."  -scale ".$objects["width"]."x".$objects["height"]." +antialias ".$tmpname."_tmpImage.png");				 			
 				 			//good
-				 			//exec("convert -size ".$width."x".$height." xc:none ".$tmpname."_tmpImage.png  -geometry ".$objects["width"]."x".$objects["height"]."+".$objects["top"]."+".$objects["left"]." -composite  ".$tmpname."_baseImage.png -geometry ".$width."x".$height." +0+0 -composite  ".$tmpname."_baseImage.png");
+				 			exec("convert -size ".$width."x".$height." xc:none ".$tmpname."_tmpImage.png  -geometry ".$objects["width"]."x".$objects["height"]."+".$objects["top"]."+".$objects["left"]." -composite  ".$tmpname."_baseImage.png -geometry ".$width."x".$height." +0+0 -composite  ".$tmpname."_baseImage.png");
 
-				 			exec("convert -size ".$width."x".$height." xc:none ".$OrigenIMG." -rotate ".$objects["angle"]." -virtual-pixel tile -geometry ".$objects["width"]."x".$objects["height"]."+0+0 -composite  ".$tmpname."_baseImage.png -geometry ".$width."x".$height." +0+0 -composite  ".$tmpname."_baseImage.png");
+				 			//exec("convert -size ".$width."x".$height." xc:none ".$OrigenIMG." -rotate ".$objects["angle"]." -fill '".$color."' -virtual-pixel tile -geometry ".$objects["width"]."x".$objects["height"]."+0+0 -composite  ".$tmpname."_baseImage.png -geometry ".$width."x".$height." +0+0 -composite  ".$tmpname."_baseImage.png");
 
 				 			//unlink($route.'/'.$filename."_tmpImage.png");
 				 		}
@@ -162,7 +162,7 @@
 
 				 			//exec("convert -size ".$objects["width"]."x".$objects["height"]." xc:none -font 'css/".$objects["fontFamily"].".ttf"."' -density 100 -fill '".$objects["fill"]."' -stroke '".$objects["stroke"]."'  -pointsize '".$objects["fontSize"]."'  -annotate +25+25 '".$objects["text"]."' ".$tmpname."_tmpText2.png");
 
-				 			exec(" convert -size  ".$objects["width"]."x".$objects["height"]." xc:none  -fill '".$objects["fill"]."' -density 100 -stroke '".$objects["stroke"]."' -font Candice -gravity center -pointsize '".$objects["fontSize"]."'  -draw 'text 0,0 ".$objects["text"]."' ".$tmpname."_tmpText.png");		
+				 			exec(" convert -size  ".$objects["width"]."x".$objects["height"]." xc:none  -fill '".$objects["fill"]."' -stroke '".$objects["stroke"]."' -font 'css/".$objects["fontFamily"].".ttf' -gravity center -pointsize '".$objects["fontSize"]."'  -draw 'text 0,0 ".$objects["text"]."' floodfill ".$tmpname."_tmpText.png");		
 				 			//good
 				 			exec("convert -size ".$width."x".$height." xc:none ".$tmpname."_tmpText.png  -geometry ".$objects["width"]."x".$objects["height"]."+0+0 -composite  ".$tmpname."_baseImage.png -geometry ".$width."x".$height." +0+0 -composite  ".$tmpname."_baseImage.png");	
 
@@ -181,8 +181,8 @@
 		}
 
 		//finaly convertion
-		//exec("convert ".$tmpname."_baseImage.png -density 300 -units PixelsPerInch ".$tmpname."_Final.png");
-		//exec("convert  ".$tmpname."_Final.png -scale 3600x4800 ".$tmpname."_Final.png");
+		exec("convert ".$tmpname."_baseImage.png -density 300 -units PixelsPerInch ".$tmpname."_Final.png");
+		exec("convert  ".$tmpname."_Final.png -scale 3600x4800 ".$tmpname."_Final.png");
 		
 	}
 

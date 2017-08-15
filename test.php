@@ -14,8 +14,12 @@ savePDF("img500.png");
 //setImageResolution("Aligator.png");
 //exec("convert -font Ravie -pointsize 48 -background black -fill white label:'IM' -bordercolor black -border 5 BearsText.gif");
 //readJSon("Guest000100/Guest000100_000616/Guest000100_000616_front.json");
+exec("convert Crowns.png -unsharp 3600x4800+1+0 CrownsUnSharp.png");
+exec(" convert fill blue -font Candice -size 3600x4800 -pointsize 100 -gravity center -units PixelsPerInch image -density 300 +antialias label:Text  Atile_fill_1.png");
+//exec("convert Guest000103_000690_front.png -size 3600x4800 xc:none +antialias   Guest000103_000690_front2.png");
+//exec("convert -size 10x6 xc:grey20 +antialias -draw 'fill white line 4,0 5,5' -filter Box -resize 100x   Aexample.png");
 
-exec("convert anchor1.png  -resize 3600x4800  -filter Lanczos2  anchor1Resize.png");
+//exec("convert anchor1.png  -resize 3600x4800  -filter Lanczos2  anchor1Resize.png");
 //exec("convert -liquid-rescale 3600x4800 -filter Sinc anchor1.png -virtual-pixel tile anchor1Rescale.png");
 //exec("convert anchor1.png -liquid-rescale 1200x1000%\! anchor1Final.png");
 
