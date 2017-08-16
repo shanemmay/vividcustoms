@@ -71,22 +71,18 @@ while ($counter < count($arr)) {
 		}else{
 			$color = '';
 		}
-		$resize =  ($obj->width*$obj->scaleX) . "x" . ($obj->height*$obj->scaleX);
+		$width = ($obj->width / 462) * 3600 * $obj->scaleX;
+		$height = ($obj->height / 608)* 4800 * $obj->scaleX;
+		$resize =  ($width) . "x" . ($height);//$resize =  ($obj->width*$obj->scaleX) . "x" . ($obj->height*$obj->scaleX);
 		array_push($resizes, $resize);
-		$location = "+".($obj->left)."+".($obj->top);//$location = "+".($obj->left)."+".($obj->top);//$location = "+".($obj->left*7.79/$obj->scaleX)."+".($obj->top*7.89/$obj->scaleX);
+		$x = ($obj->left / 462) * 3600 / $obj->scaleX;
+		$y = ($obj->top / 608) * 4800 / $obj->scaleX;
+		$location = "+".$x."+".$y;//$location = "+".($obj->left)."+".($obj->top);//$location = "+".($obj->left*7.79/$obj->scaleX)."+".($obj->top*7.89/$obj->scaleX);
 		array_push($locations, $location);
 		$img_name = $obj->type . "_" . $counter . ".png";
 		array_push($img_names, $img_name);
 		exec('convert -background none '.$src.' '.$color.' ' . $angle  . ' -units PixelsPerInch image -density 300  '. $img_name);
 		echo "<hr>";
-		$img_w = getimagesize($img_name)[0];
-		$img_h = getimagesize($img_name)[1];
-		$goal_w = 3600;
-		$goal_h = 4800;
-		$delta_w = $goal_w / $img_w;
-		$delta_h = $goal_h / $img_h;
-		$final_w = $
-		print_r();
 		echo "<hr>";
 	}else if($obj->type == "text"){
 		
@@ -99,9 +95,15 @@ while ($counter < count($arr)) {
 		//creating text file and using it since imagemagick cannot handles spaces
 		//$fileName = createTXT($counter,$obj->text);
 		$text = "label:\"".$obj->text.'"';//read text file here
-		$resize =  ($obj->width*$obj->scaleX*7.79*4.17) . "x" . ($obj->height*$obj->scaleX*7.89*4.17);
+		$width = ($obj->width / 462) * 3600 * $obj->scaleX;
+		$height = ($obj->height / 608)* 4800 * $obj->scaleX;
+		$resize =  ($width) . "x" . ($height);//$resize =  ($obj->width*$obj->scaleX) . "x" . ($obj->height*$obj->scaleX);
 		array_push($resizes, $resize);
-		$location = "+".($obj->left*7.79)."+".($obj->top*7.89);
+		$x = ($obj->left / 462) * 3600 ;
+		$y = ($obj->top / 608) * 4800 ;
+		echo "top/608 : " . ($obj->top/608*4800) . " left/462 : " . ($obj->left/462*3600) . " <br>";
+		echo "x: " . $x . " y: " . $y . " <br>";
+		$location = "+".$x."+".$y;//$location = "+".($obj->left)."+".($obj->top);//$location = "+".($obj->left*7.79/$obj->scaleX)."+".($obj->top*7.89/$obj->scaleX);
 		array_push($locations, $location);
 		$img_name = $obj->type . "_" . $counter . ".png";
 		array_push($img_names, $img_name);
@@ -156,9 +158,14 @@ while ($counter < count($arr)) {
 		$image->setImageUnits(Imagick::RESOLUTION_PIXELSPERINCH);
 		$image->setImageResolution(300,300);
 
-		$resize =  ($obj->width*$obj->scaleX*7.79) . "x" . ($obj->height*$obj->scaleX*7.89);
+		$width = ($obj->width / 462) * 3600 * $obj->scaleX;
+		$height = ($obj->height / 608)* 4800 * $obj->scaleX;
+		$resize =  ($width) . "x" . ($height);//$resize =  ($obj->width*$obj->scaleX) . "x" . ($obj->height*$obj->scaleX);
 		array_push($resizes, $resize);
-		$location = "+".($obj->left*7.79/$obj->scaleX)."+".($obj->top*7.89/$obj->scaleX);
+		$x = ($obj->left / 462) * 3600 ;
+		$y = ($obj->top / 608) * 4800 ;
+		
+		$location = "+".$x."+". $y;//$location = "+".($obj->left)."+".($obj->top);//$location = "+".($obj->left*7.79/$obj->scaleX)."+".($obj->top*7.89/$obj->scaleX);
 		array_push($locations, $location);
 		$img_name = $obj->type . "_" . $counter . ".png";
 		array_push($img_names, $img_name);
