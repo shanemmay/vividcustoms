@@ -2,7 +2,7 @@
 date_default_timezone_set("UTC"); 
 echo "UTC:".time(); 
 echo "<br>"; 
-echo "<a href='imagemagick.php'>Link to imagemagick</a><br>";
+echo "<a href='imagemagick_curved_text.php'>Link to imagemagick</a><br>";
 //fill = text color || size = size of image || pointsize = fontsize || label: = text || 
 /*
 TEXT:
@@ -30,7 +30,7 @@ IMAGE:
 //exec("convert img_text.png  -density 300 -unit PixelsPerInch img_text_300dpi.png");
 //readJSon("Guest000103_000690_front.json","Guest000103_000690_front");
 //reading  json file
-$json_file_name = "shane_000708_front.json";
+$json_file_name = "shane_000702_front.json";
 $json_file = fopen($json_file_name, "r");
 $json_contents = fread($json_file, filesize($json_file_name));
 fclose($json_file);
@@ -48,8 +48,10 @@ while ( $counter < count($json->objects)){
 <?php
 //arrays to hold information
 $resizes = array();
-$locations = array();
+$locationstop = array();
+$locationsleft = array();
 $img_names = array();
+$angles = array();
 //loop through objects in json file
 $counter = 0;
 $arr = $json->objects;
@@ -59,7 +61,8 @@ while ($counter < count($arr)) {
 	//determining the type of object
 	if ($obj->type == "image"){
 		$src = $obj->src;
-		$angle = "-rotate " . $obj->angle;
+		//$angle = "-virtual-pixel background +distort ScaleRotateTranslate " . $obj->angle;
+		array_push($angles, $obj->angle);
 		if(isset($obj->filters[ count($obj->filters) - 1]->color)){
 			$color = '-fuzz 90% -fill "'.$obj->filters[ count($obj->filters) - 1]->color.'" -opaque white';
 		}else{
@@ -71,14 +74,15 @@ while ($counter < count($arr)) {
 		array_push($resizes, $resize);
 		$x = (($obj->left-($obj->width*$obj->scaleX/2)) / 462) * 3696 ;
 		$y = (($obj->top-($obj->height*$obj->scaleX/2)) / 608) * 4864 ;
-		$location = "+".($x)."+".($y);//$location = "+".($obj->left)."+".($obj->top);//$location = "+".($obj->left*7.79/$obj->scaleX)."+".($obj->top*7.89/$obj->scaleX);
-		array_push($locations, $location);
+		//$location = ($x).",".($y);//$location = "+".($obj->left)."+".($obj->top);//$location = "+".($obj->left*7.79/$obj->scaleX)."+".($obj->top*7.89/$obj->scaleX);
+		array_push($locationsleft, $x);
+		array_push($locationstop, $y);
 		$img_name = $obj->type . "_" . $counter . ".png";
 		array_push($img_names, $img_name);
-		exec('convert -background none '.$src.' '.$color.' ' . $angle  . ' -units PixelsPerInch image -density 300  '. $img_name);
-		echo "<hr>";
-		echo $src. " x = " . $x . "<br> y = " . $y;
-		echo "<hr>";
+		exec('convert -background none '.$src.' '.$color.' -size '. $resize.' -units PixelsPerInch image -density 300  '. $img_name);
+		//echo "<hr>";
+		//echo $src. " x = " . $x . "<br> y = " . $y;
+		//echo "<hr>";
 	}else if($obj->type == "text"){
 		
 		$color  = "-fill " . $obj->fill;
@@ -86,25 +90,31 @@ while ($counter < count($arr)) {
 		$strokeWidth = "-strokewidth " . ($obj->strokeWidth);
 		$font = "-font fonts/".$obj->fontFamily.".ttf";//$font = "-font fonts/".$obj->fontFamily.".ttf"; //after -size 3696x4864
 		$fontSize = "-pointsize " . ($obj->fontSize);//after -gravity center -units PixelsPerInch image -density 300 +antialias
-		$angle = "-rotate " . $obj->angle;
+		//$angle = "-rotate " . $obj->angle;
+		array_push($angles, $obj->angle);
 		$text = "label:\"".$obj->text.'"';
 		$width = ($obj->width / 462) * 3696 * $obj->scaleX;
 		$height = ($obj->height / 608)* 4864 * $obj->scaleX;
 		$resize =  ($width) . "x" . ($height);//$resize =  ($obj->width*$obj->scaleX) . "x" . ($obj->height*$obj->scaleX);
-		array_push($resizes, $resize);
+		array_push($resizes, $resize);		
 		$x = ($obj->left / 462) * 3696 ;
-		$y = ($obj->top / 608) * 4864 ;
-		echo "top/608 : " . ($obj->top/608*4864) . " left/462 : " . ($obj->left/462*3696) . " <br>";
-		echo "x: " . $x . " y: " . $y . " <br>";
-		$location = "+".($x)."+".($y);//$location = "+".($obj->left)."+".($obj->top);//$location = "+".($obj->left*7.79/$obj->scaleX)."+".($obj->top*7.89/$obj->scaleX);
-		array_push($locations, $location);
+		$y = ($obj->top / 608) * 4864 ;		
+		//$location = ($x).",".($y);//$location = "+".($obj->left)."+".($obj->top);//$location = "+".($obj->left*7.79/$obj->scaleX)."+".($obj->top*7.89/$obj->scaleX);
+		//array_push($locations, $location);
+		array_push($locationsleft, $x);
+		array_push($locationstop, $y);
 		$img_name = $obj->type . "_" . $counter . ".png";
 		array_push($img_names, $img_name);
-		exec("convert -background none ". $color . " ". $strokeColor . " " . $strokeWidth . " " . $font . " " . $angle . " " . $fontSize . " -gravity center  -units PixelsPerInch image -density 300 +antialias " . $text . "  " . $img_name);
+		//exec("convert -background none ". $color . " ". $strokeColor . " " . $strokeWidth . " " . $font . " " . $angle . " " . $fontSize . " -gravity center  -units PixelsPerInch image -density 300 +antialias " . $text . "  " . $img_name);	
+		exec("convert -background none ". $color . " ". $strokeColor . " " . $strokeWidth . " " . $font . " -gravity center -size ". $resize."  -units PixelsPerInch image -density 300 +antialias " . $text . "  " . $img_name);		
+		
+		//$angle = "-virtual-pixel background -background none -distort SRT 47 +repage";
+		//$angle = " -background none -rotate 47";
+		//exec("convert " . $img_name . " ". $angle . "  " . $img_name);
 		//echo("convert -background none ". $color . " ". $strokeColor . " " . $strokeWidth . " " . $font . " " . $angle . " " . $fontSize . " -gravity center  -units PixelsPerInch image -density 300 +antialias " . $text . " " . $img_name);
-		echo "<hr>";
-		print_r(getimagesize($img_name));
-		echo "<hr>";
+		//echo "<hr>";
+		//print_r(getimagesize($img_name));
+		//echo "<hr>";
 	}else{
 		// Text to write 
 		$text = $obj->text;
@@ -141,56 +151,74 @@ while ($counter < count($arr)) {
 		if($obj->radius < 0){			
 			$distort = array( (((strlen($obj->text) )*360)/ ($obj->radius)*2*pi()) *-1, 180  );// , 180 to reverse curve			
 			$image->rotateImage('transparent', 180);
-			echo "<br>Valley<h1>radius = " . $obj->radius. "</h1>";
-			echo "<br><h1>angle = " . (((strlen($obj->text) )*360)/ ($obj->radius)*2*pi()) *-1  . "</h1>";
+			//echo "<br>Valley<h1>radius = " . $obj->radius. "</h1>";
+			//echo "<br><h1>angle = " . (((strlen($obj->text) )*360)/ ($obj->radius)*2*pi()) *-1  . "</h1>";
 		}else{
 
 			$distort = array( (((strlen($obj->text) )*360)/ ($obj->radius)*2*pi()));// , 180 to reverse curve			
-			echo "<br>Bridge<h1>radius = " .  $obj->radius. "</h1>";
-			echo "<br><h1>angle = " .(((strlen($obj->text) )*360)/ ($obj->radius)*2*pi())  . "</h1>";
+			//echo "<br>Bridge<h1>radius = " .  $obj->radius. "</h1>";
+			//echo "<br><h1>angle = " .(((strlen($obj->text) )*360)/ ($obj->radius)*2*pi())  . "</h1>";
 		}
 		$image->distortImage(Imagick::DISTORTION_ARC, $distort, TRUE );
-		$image->rotateImage('transparent',  $obj->angle);
+		//$image->rotateImage('transparent',  $obj->angle);
+		array_push($angles, $obj->angle);
 		$image->setImageUnits(Imagick::RESOLUTION_PIXELSPERINCH);
 		$image->setImageResolution(300,300);
 		$width = ($obj->width / 462) * 3696 * $obj->scaleX;
 		$height = ($obj->height / 608)* 4864 * $obj->scaleX;
 		$resize =  ($width) . "x" . ($height);//$resize =  ($obj->width*$obj->scaleX) . "x" . ($obj->height*$obj->scaleX);
+		//$image->setSize($width,$height);
 		array_push($resizes, $resize);
 		$x = ($obj->left / 462) * 3696 ;
 		$y = ($obj->top / 608) * 4864 ;
-		
-		$location = "+".($x)."+". ($y);//$location = "+".($obj->left)."+".($obj->top);//$location = "+".($obj->left*7.79/$obj->scaleX)."+".($obj->top*7.89/$obj->scaleX);
-		array_push($locations, $location);
+		array_push($locationsleft, $x);
+		array_push($locationstop, $y);
+		//$location =($x).",". ($y);//$location = "+".($obj->left)."+".($obj->top);//$location = "+".($obj->left*7.79/$obj->scaleX)."+".($obj->top*7.89/$obj->scaleX);
+		//array_push($locations, $location);
 		$img_name = $obj->type . "_" . $counter . ".png";
 		array_push($img_names, $img_name);
 		file_put_contents($obj->type . "_" . $counter . ".png", $image);
-		echo "<hr>";
-		print_r(getimagesize($img_name));
-		echo "<hr>";
+		//echo "<hr>";
+		//print_r(getimagesize($img_name));
+		//echo "<hr>";
 	}
 	$counter++;
 }
 //composite (combining all) images
 //exec("convert text_300dpi.png clip.png composite.png shane.pdf");
 //exec("convert -size 3696x4864 xc:none clip.png -geometry 1600x2400+1800+2400 -composite text_300dpi.png -geometry 720x960+1800+2400 -composite   composite.png ");
-$str_cmd = "convert -size 3696x4864 xc:none";
+exec('convert -size 3696x4864 xc:none  -units PixelsPerInch image -density 300 design.png');
+
+$str_cmd = "convert -size 3600x4800 xc:none ";
+$str_cmd2 = "convert -background none design.png ";
 $i = 0;
-print_r(array_values($resizes));
-print_r(array_values($locations));
-print_r(array_values($img_names));
-while ( $i < count($img_names)){
-	$str_cmd .= " " . $img_names[$i] . " -geometry " . $resizes[$i] . $locations[$i] . /*. $resizes[$i].$locations[$i].*/ " -composite";
+//print_r(array_values($resizes));
+//print_r(array_values($locations));
+//print_r(array_values($img_names));
+//print_r(array_values($angles));
+while ( $i < count($img_names))
+{
+	//$str_cmd .= " " . $img_names[$i] . " -geometry " . $resizes[$i] . $locations[$i] . /*. $resizes[$i].$locations[$i].*/ " -composite";
+	if ($angles[$i] % 90 != 0)
+	{
+		$str_cmd2 .= '  ( '. $img_names[$i] .' -virtual-pixel None +distort SRT "0,0 1,'.$angles[$i] .' '.$locationsleft[$i].','.$locationstop[$i] . '" )  '; 
+	}
+	else
+	{
+		$str_cmd .= " " . $img_names[$i] . " -geometry " . $resizes[$i] ."+". $locationsleft[$i]."+" .$locationstop[$i]. /*. $resizes[$i].$locations[$i].*/ " -composite";
+	}
 	//echo($str_cmd .= " " . $img_names[$i] . " -geometry " . $resizes[$i] . $locations[$i] . /*. $resizes[$i].$locations[$i].*/ " -composite design.png");
-	echo "<hr>";
+	//echo "<hr>";
 	$i++;
 }
-$str_cmd .= " -units PixelsPerInch image -density 300 design.png";
-echo "<hr>";
-echo("final command line: ".$str_cmd);
-echo "<hr>";
+$str_cmd .= "  -units PixelsPerInch image -density 300 design.png";
+$str_cmd2 .= "  -layers merge +repage design.png";
+//echo "<hr>";
+//echo("final command line: ".$str_cmd);
+//echo "<hr>";
 exec($str_cmd);
-exec("convert design.png design.png DESIGN.pdf");
+exec($str_cmd2);
+//exec("convert design.png design.png DESIGN.pdf");
 function printObjectDetails($obj){
 	echo "<h2>Start of Object Details</h2>";
 	if ($obj->type == "image"){
