@@ -1,0 +1,68 @@
+*{margin:0; padding:0}
+@font-face {
+    font-family: 'Alex Brush_R';
+    src: url('fonts/Alex Brush_R.eot'), url('fonts/Alex Brush_R.ttf') format('truetype'), url('fonts/Alex Brush_R.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Bellota_B';
+    src: url('fonts/Bellota_B.eot'), url('fonts/Bellota_B.ttf') format('truetype'), url('fonts/Bellota_B.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Bellota_BI';
+    src: url('fonts/Bellota_BI.eot'), url('fonts/Bellota_BI.ttf') format('truetype'), url('fonts/Bellota_BI.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Bellota_I';
+    src: url('fonts/Bellota_I.eot'), url('fonts/Bellota_I.ttf') format('truetype'), url('fonts/Bellota_I.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Bellota_R';
+    src: url('fonts/Bellota_R.eot'), url('fonts/Bellota_R.ttf') format('truetype'), url('fonts/Bellota_R.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GhostKid AOE_R';
+    src: url('fonts/GhostKid AOE_R.eot'), url('fonts/GhostKid AOE_R.ttf') format('truetype'), url('fonts/GhostKid AOE_R.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Calligraffiti_R';
+    src: url('fonts/Calligraffiti_R.eot'), url('fonts/Calligraffiti_R.ttf') format('truetype'), url('fonts/Calligraffiti_R.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Hammersmith One_R';
+    src: url('fonts/Hammersmith One_R.eot'), url('fonts/Hammersmith One_R.ttf') format('truetype'), url('fonts/Hammersmith One_R.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Impact_R';
+    src: url('fonts/Impact_R.eot'), url('fonts/Impact_R.ttf') format('truetype'), url('fonts/Impact_R.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Kaushan Script_R';
+    src: url('fonts/Kaushan Script_R.eot'), url('fonts/Kaushan Script_R.ttf') format('truetype'), url('fonts/Kaushan Script_R.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.wrapper{font-family: Calibri;}
+.left-col {float:left;}
+.right-col{float:left; border:solid 1px #ccc;}
+.right-col {width:300px; height:700px; }
+.right-col .block { border-bottom: solid 1px #ccc; padding:2px;}
+.f-right { float: right;}
+#circleTextProperties, #pathTextProperties, #propertiesPanel {display: none;}

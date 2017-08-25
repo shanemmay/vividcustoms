@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Fabric Functionality Test</title>
+<link  rel="stylesheet" href="styles.css"  />
+<script type="application/javascript" src="jquery.js" ></script>
+<!-- Merged Changes with new fabric -->
+<script type="application/javascript" src="fabric.js" ></script>
+<script type="application/javascript" src="fabricExtension.js" ></script>
+<script type="application/javascript" src="fabricCustomPathExt.js" ></script>
+<script type="application/javascript" src="fabricPathTextExt.js" ></script>
+<script type="application/javascript" src="CircleTextExt.js" ></script>
+<script type="application/javascript" src="AudioExt.js" ></script>
+<script type="application/javascript" src="Object.js" ></script>
+</head>
+
+<body>
+<!--<h1>Path Text Testing</h1>-->
+<div class="wrapper"><!---->
+      <div class="left-col">
+        <canvas id="testCan" width="700" height="700"> </canvas>
+      </div>
+    <div class="right-col">
+                <div class="block">
+                    <button id="addCircleText" class="">Add Circle Text</button>
+                    <button id="addPathText" class="">Add Path Text</button>
+					<button id="addAudio" class="">Add Audio</button>
+                    <button id="addImage" class="">Add Image</button>
+                </div>
+          <div id="propertiesPanel">
+                <div class="block">
+                    <label for="changeText">Text : </label>
+                    <input type="text" class="" name="changeText" id="changeText" value="0123456789"  />
+                </div>
+                <div id="pathTextProperties" class="block">
+                    <label for="shapeType">Shape Type : </label>
+                    <select id="shapeType" class="">
+                        <option value="Circle">Circle</option>
+                        <!--<option value="CustomCircle" selected="selected">Custom Circle</option>-->
+                        <option value="Hen">Hen</option>
+                        <option value="Curve1">Curve 1</option>
+                        <option value="Curve2">Curve 2</option>
+                        <option value="Curve3">Curve 3</option>
+                        <option value="Line1">Line 1</option>
+                        <option value="Line2">Line 2</option>
+                        <option value="box">Box</option>
+                        <option value="arc">Arc</option>
+                         <option value="arc1">Arc 1</option>
+                    </select>
+                </div>
+                <div id="circleTextProperties">
+                    <div class="block">
+                        <label for="changeRadius">Radius : </label>
+                        <input type="text" name="changeRadius" id="changeRadius" value="150">
+                    </div>
+                    <div class="block">
+                        <label for="startAngle">Start Angle (Range -359 to 359): </label>
+                        <input type="text" name="startAngle" id="startAngle" value="0">
+                    </div>
+                    <div class="block">
+                        <label for="endAngle">End Angle (Range -359 to 359) : </label>
+                        <input type="text" name="endAngle" id="endAngle" value="180">
+                    </div>
+                    <div class="block">
+                        <label for="Direction">Direction : </label>
+                        <select id="Direction" class="">
+                            <option value="ClockWise">ClockWise</option>
+                             <option value="AntiClockWise">Anti-ClockWise</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="block">
+                    <label for="fontFamily">Font Family : </label>
+                    <select id="fontFamily" class="">
+                        <option value="Consolas">System-Consolas</option>
+                        <option value="Courier">System-Courier</option>
+                        <option value="Courier New">System-Courier New</option>
+                        <option value="Lucida Console">System-Lucida Console</option>
+                        <option value="Cambria Math">System-Cambria Math</option>
+                        <option value="Marlett">System-Marlett</option>
+                        <option value="Arial">System-Arial</option>
+                        <option value="Alex Brush_R">Custom-Alex Brush Regular</option>
+                        <option value="Bellota_B">Custom-Bellota_B</option>
+                        <option value="Bellota_BI">Custom-Bellota_BI</option>
+                        <option value="Bellota_I">Custom-Bellota_I</option>
+                        <option value="Bellota_R">Custom-Bellota_R</option>
+                        <option value="GhostKid AOE_R">GhostKid AOE_R</option>
+                        <option value="Calligraffiti_R">Custom-Calligraffiti_R</option>
+                        <option value="Hammersmith One_R">Custom-Hammersmith One_R</option>
+                        <option value="Impact_R">Custom-Impact_R</option>
+                        <option value="Kaushan Script_R">Custom-Kaushan Script_R</option>
+                    </select>
+                </div>
+				<div class="block">
+                    <label for="textAlign">Alignment : </label>
+                    <select id="textAlign" class="">
+                        <option value="left">Left</option>
+                        <option value="center">Center</option>
+                        <option value="right">Right</option>
+                        <option value="justify">Justify</option>
+                       
+                    </select>
+                </div>
+                <div class="block">
+                    <label for="fontSize">Font Size : </label>
+                    <select id="fontSize" class="">
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="30" selected="selected">30</option>
+                    <option value="35">35</option>
+                    <option value="40">40</option>
+                    <option value="45">45</option>
+                    <option value="50">50</option>
+                    <option value="55">55</option>
+                    </select>
+                </div>
+                <div class="block">
+                    <label for="changeFontColor">Font Color : </label>
+                    <input type="color" name="changeFontColor" id="changeFontColor" class="" value=""  />
+                </div>
+                <div class="block">
+                    <label for="removeChar">Remove Extra Character : </label>
+                    <select id="removeChar" class="">
+                        <option value="removeExtraChar">Angle Detection</option>
+                        <option value="wantTextPathWithLessOverlap">Edge Detection</option>
+                    </select>
+                </div>
+                <div class="block">
+                    <label for="exportSVG">Export SVG : </label>
+                    <button id="exportSVG" class="" onClick="exportCanvasToSVG()">SVG</button>
+                </div>
+                <div class="block">
+                    <label for="exportJSON">Export JSON : </label>
+                    <button id="exportJSON" class="" onClick="exportCanvasToJSON()">JSON</button>
+                </div>
+
+                arc<input type="range" min="-360" max="360" id="arc_slider" step="15"><br>
+                spacing<input type="range" min="0" max="10" id="spacing_slider" value="0">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
