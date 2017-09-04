@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>September Curve Test</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.17/fabric.min.js"></script>
+</head>
+<body>
+Text&nbsp;<input type="text" name="input_text" id="input_text"><br>
+Angle&nbsp;<input type="range" id="input_number" min="116" max="216" onchange="add_text();"><!---<input type="number" name="input_number" id="input_number">--><br>
+<button id="btn" onclick="add_text();">Add</button>
+<canvas id="c" width="800" height="800"></canvas>
+<script type="text/javascript">
+var input_text = document.getElementById('input_text');
+var input_number = document.getElementById('input_number');
+var btn = document.getElementById('btn');
+var canvas = new fabric.Canvas('c');	
+
+function add_text(){
+	//clearing canvas
+	canvas.clear();
+	//setting variables
+	var str = input_text.value;
+	var input_angle = Number(input_number.value);
+	console.log('input_angle ' + input_angle);
+	var length = str.length;
+	var x = 0; 
+	var y = 0; 
+	var fontSize = 40;
+	var previous_angle = 0;
+	var num_sides = length * 2;
+	var in_angles = (num_sides - 2) * 180;
+	var shift = input_angle - (in_angles / num_sides);
+	var letters = str.split("");
+
+
+	//array to hold letters
+	var fabric_letters = [];
+
+	var i = 0;
+	while ( i < letters.length) {
+		//setting angle and location of letter
+		var new_angle = shift * i;
+		var h = fontSize * 2 + (216 - input_angle);
+		//TESTING SPACING VERSION 3 this does nothing
+		var margin = 0;
+		if(input_angle < 180){
+			margin = 10000;
+		}
+		//hyp * sin(angle) + some distance from the edge
+		x = h * Math.sin(degrees_to_radians(new_angle))  + 200 + (216 - input_angle) + margin;
+		y = h * Math.cos(degrees_to_radians(new_angle))  + 200;
+		//creating text elements and adding them to the fabric_letters which will alter be added to 
+		var letter = new fabric.Text( letters[i] , {
+			fontSize: 40,
+			left: x,
+			top: y,
+			angle: 0//new_angle
+		});
+
+		fabric_letters.push(letter);
+		//TESTING SPACING VERSION 2
+		/*if(input_angle < 180){
+			var temp_x =  h * Math.sin(degrees_to_radians(new_angle + shift));
+			var temp_y = h * Math.cos(degrees_to_radians(new_angle + shift))
+			var space = new fabric.Text( " " , {
+				fontSize: 40,
+				left: temp_x,
+				top: temp_y
+			});
+			fabric_letters.push(space);
+		}*/
+
+		//printing each letter and it's stats
+		//console.log('letter ' + letters[i]);
+		//console.log('x ' + x);
+		//console.log('y ' + y);
+		//console.log('new_angle ' + new_angle);
+		i++;
+	}
+	//creating the group that will hold the letters
+	var group = new fabric.Group(fabric_letters,{left:200,top:200});
+	//adding group to canvas
+	canvas.add(group);
+}
+
+function degrees_to_radians(degrees){
+	return degrees * Math.PI / 180;
+}
+/*testing to make sure everything works and text can be added
+canvas.add(new fabric.Text('testing text being added', { 
+  fontFamily: 'Ariel', 
+  angle: 45,
+  fontSize: 40,
+  left: 100, 
+  top: 100 
+}));
+*/
+</script>
+</body>
+</html>
