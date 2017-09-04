@@ -31,7 +31,7 @@ IMAGE:
 //exec("convert img_text.png  -density 300 -unit PixelsPerInch img_text_300dpi.png");
 //readJSon("Guest000103_000690_front.json","Guest000103_000690_front");
 //reading  json file
-$json_file_name = "Guest000121_000721_front.json";
+$json_file_name = "Guest000125_000726_right.json";
 $json_file = fopen($json_file_name, "r");
 $json_contents = fread($json_file, filesize($json_file_name));
 fclose($json_file);
@@ -66,7 +66,7 @@ while ($counter < count($arr)) {
 		$angle = " -background none -rotate " . $obj->angle;
 		array_push($angles, $obj->angle);
 		if(isset($obj->filters[ count($obj->filters) - 1]->color)){
-			$color = '-fuzz 99% -fill "'.$obj->filters[ count($obj->filters) - 1]->color.'" -opaque white';
+			$color = ' -fuzz 70% -fill "'.$obj->filters[ count($obj->filters) - 1]->color.'" -opaque black';
 		}else{
 			$color = '';
 		}		
@@ -74,7 +74,8 @@ while ($counter < count($arr)) {
 		array_push($img_names, $img_name);
 		array_push($types, $obj->type);
 		$gravity = "-gravity center ";
-		//echo('convert -background none '.$src.' '.$color.' -size '. $resize.' -units PixelsPerInch image -density 300  '. $img_name);
+		echo('convert -background none '.$src.' '.$color.' '. $angle .' '. $gravity .'  -units PixelsPerInch image -density 300  '. $img_name);
+		echo "<br>";
 		exec('convert -background none '.$src.' '.$color.' '. $angle .' '. $gravity .'  -units PixelsPerInch image -density 300  '. $img_name);
 		if ($obj->angle == 0 ||  $obj->angle == 180 ||  $obj->angle == 360 ) 
 		{
@@ -143,10 +144,11 @@ while ($counter < count($arr)) {
 			$gravity = " ";
 
 			
-			$width = ($obj->width / 462) * 3696 * $obj->scaleX;
-			$height = ($obj->height / 608)* 4864 * $obj->scaleX;
+			
 			$hi = sqrt(pow($obj->width,2)+pow($obj->height,2));
-			if ($width> $height) {
+			$width = ($hi / 462) * 3696 * $obj->scaleX;
+			$height = ($hi / 608)* 4864 * $obj->scaleX;
+			/*if ($width> $height) {
 				$height = $width;
 			}
 			else if ($height> $width) {
@@ -155,12 +157,16 @@ while ($counter < count($arr)) {
 			else
 			{				
 				continue;
-			}
+			}*/
 			
-			if (round($obj->angle) == 0 ||  round($obj->angle) == 45 ||  round($obj->angle) == 360 ) {
+			if (round($obj->angle) == 0 ||  round($obj->angle) == 360 ) {
 
 				$x = ($obj->left / 462) * 3696 ;
 				$y = ($obj->top / 608) * 4864 ;				
+			}
+			else if (round($obj->angle) == 45 ) {
+				$x = (($obj->left - $hi) / 462) * 3696 ;
+				$y = (($obj->top) / 608) * 4864 ;								
 			}
 			else if (round($obj->angle) == 90 ) {
 				$x = (($obj->left - $obj->height) / 462) * 3696 ;
@@ -189,7 +195,7 @@ while ($counter < count($arr)) {
 			else if (round($obj->angle) == 315) {
 
 				$x = (($obj->left) / 462) * 3696 ;
-				$y = (($obj->top - $obj->height) / 608) * 4864 ;										
+				$y = (($obj->top - ($hi)) / 608) * 4864 ;										
 			}			
 			else
 			{
@@ -200,7 +206,14 @@ while ($counter < count($arr)) {
 			$resize =  ($width) . "x" . ($height);//$resize =  ($obj->width*$obj->scaleX) . "x" . ($obj->height*$obj->scaleX);
 			array_push($resizes, $resize);		
 			
-			$distort = " -virtual-pixel background -distort Arc ". $obj->radius;
+			if ($obj->radius < 0)
+			{
+				$distort = ' -virtual-pixel background -rotate 180 -distort Arc "'. (((strlen($obj->text) )*360)/ ($obj->radius)*2*pi()) *-1 . ' 180"' ;
+			}
+			else
+			{
+				$distort = " -virtual-pixel background -distort Arc ". (((strlen($obj->text) )*360)/ ($obj->radius)*2*pi());	
+			}
 
 			$kerning = " -kerning ".$obj->spacing;
 			 
