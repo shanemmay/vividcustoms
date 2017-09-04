@@ -31,7 +31,7 @@ IMAGE:
 //exec("convert img_text.png  -density 300 -unit PixelsPerInch img_text_300dpi.png");
 //readJSon("Guest000103_000690_front.json","Guest000103_000690_front");
 //reading  json file
-$json_file_name = "Guest000117_000717_front.json";
+$json_file_name = "Guest000121_000721_front.json";
 $json_file = fopen($json_file_name, "r");
 $json_contents = fread($json_file, filesize($json_file_name));
 fclose($json_file);
@@ -76,13 +76,12 @@ while ($counter < count($arr)) {
 		$gravity = "-gravity center ";
 		//echo('convert -background none '.$src.' '.$color.' -size '. $resize.' -units PixelsPerInch image -density 300  '. $img_name);
 		exec('convert -background none '.$src.' '.$color.' '. $angle .' '. $gravity .'  -units PixelsPerInch image -density 300  '. $img_name);
-		if ($obj->angle == 0 ||  $obj->angle == 180 ||  $obj->angle == 180 ) 
+		if ($obj->angle == 0 ||  $obj->angle == 180 ||  $obj->angle == 360 ) 
 		{
 			$width = ($obj->width / 462) * 3696 * $obj->scaleX;
 			$height = ($obj->height / 608)* 4864 * $obj->scaleX;
 			$x = (($obj->left-($obj->width*$obj->scaleX/2)) / 462) * 3696 ;
-			$y = (($obj->top-($obj->height*$obj->scaleX/2)) / 608) * 4864 ;
-			
+			$y = (($obj->top-($obj->height*$obj->scaleX/2)) / 608) * 4864 ;			
 		}		
 		else
 		{
@@ -91,8 +90,7 @@ while ($counter < count($arr)) {
 			$height = ($hi  / 608)* 4864 * $obj->scaleX;
 
 			$x = (($obj->left-($hi*$obj->scaleX/2)) / 462) * 3696 ;
-			$y = (($obj->top-($hi*$obj->scaleX/2)) / 608) * 4864 ;
-			
+			$y = (($obj->top-($hi*$obj->scaleX/2)) / 608) * 4864 ;			
 		}		
 		$resize =  ($width) . "x" . ($height);//$resize =  ($obj->width*$obj->scaleX) . "x" . ($obj->height*$obj->scaleX);
 		array_push($resizes, $resize);
@@ -101,8 +99,7 @@ while ($counter < count($arr)) {
 		//echo "<hr>";
 		//echo $src. " x = " . $x . "<br> y = " . $y;
 		//echo "<hr>";
-	}else if($obj->type == "text"){
-		
+	}else if($obj->type == "text"){		
 		$color  = "-fill " . $obj->fill;
 		$strokeColor = "-stroke " . $obj->stroke;
 		$strokeWidth = "-strokewidth " . ($obj->strokeWidth);
@@ -110,7 +107,7 @@ while ($counter < count($arr)) {
 		$fontSize = " ";//"-pointsize " . ($obj->fontSize);//after -gravity center -units PixelsPerInch image -density 300 +antialias
 		//$angle = "-rotate " . $obj->angle;
 		array_push($angles, $obj->angle);
-		$text = "label:\"".$obj->text.'"';
+		$text = "caption:\"".$obj->text.'"';
 		$width = ($obj->width / 462) * 3696 * $obj->scaleX;
 		$height = ($obj->height / 608)* 4864 * $obj->scaleX;
 		$resize =  ($width) . "x" . ($height);//$resize =  ($obj->width*$obj->scaleX) . "x" . ($obj->height*$obj->scaleX);
@@ -140,27 +137,66 @@ while ($counter < count($arr)) {
 			$strokeWidth = " -strokewidth " . ($obj->strokeWidth);
 			$font = " -font fonts/".$obj->fontFamily.".ttf";//$font = "-font fonts/".$obj->fontFamily.".ttf"; //after -size 3696x4864
 			$fontSize = " ";//" -pointsize " . ($obj->fontSize);//after -gravity center -units PixelsPerInch image -density 300 +antialias
-			$angle = " ";// " -virtual-pixel background +distort ScaleRotateTranslate " . $obj->angle;
+			$angle = " -rotate " . $obj->angle;// " -virtual-pixel background +distort ScaleRotateTranslate " . $obj->angle;
 			array_push($angles, $obj->angle);
-			$text = "label:\"".$obj->text.'"';
+			$text = "caption:\"".$obj->text.'"';
+			$gravity = " ";
 
+			
 			$width = ($obj->width / 462) * 3696 * $obj->scaleX;
 			$height = ($obj->height / 608)* 4864 * $obj->scaleX;
-
-			$gravity = " ";
-			//if ($obj->angle == 0 ||  $obj->angle == 180) {
+			$hi = sqrt(pow($obj->width,2)+pow($obj->height,2));
+			if ($width> $height) {
+				$height = $width;
+			}
+			else if ($height> $width) {
+				$width= $height;
+			}
+			else
+			{				
+				continue;
+			}
+			
+			if (round($obj->angle) == 0 ||  round($obj->angle) == 45 ||  round($obj->angle) == 360 ) {
 
 				$x = ($obj->left / 462) * 3696 ;
-				$y = ($obj->top / 608) * 4864 ;
-			/*}
+				$y = ($obj->top / 608) * 4864 ;				
+			}
+			else if (round($obj->angle) == 90 ) {
+				$x = (($obj->left - $obj->height) / 462) * 3696 ;
+				$y = (($obj->top) / 608) * 4864 ;								
+			}
+			else if (round($obj->angle) == 135 ) {
+
+				$x = (($obj->left- $obj->width) / 462) * 3696 ;
+				$y = (($obj->top -$obj->height/2) / 608) * 4864 ;				
+			}
+			else if (round($obj->angle) == 180) {
+
+				$x = (($obj->left- $obj->width) / 462) * 3696 ;
+				$y = (($obj->top -$obj->height) / 608) * 4864 ;				
+			}			
+			else if (round($obj->angle) == 225 ) {
+
+				$x = (($obj->left- $obj->height) / 462) * 3696 ;
+				$y = (($obj->top -$obj->width) / 608) * 4864 ;			
+			}			
+			else if ( round($obj->angle) == 270 ) {
+
+				$x = (($obj->left) / 462) * 3696 ;
+				$y = (($obj->top - $obj->width) / 608) * 4864 ;										
+			}
+			else if (round($obj->angle) == 315) {
+
+				$x = (($obj->left) / 462) * 3696 ;
+				$y = (($obj->top - $obj->height) / 608) * 4864 ;										
+			}			
 			else
 			{
-				$hi = sqrt(pow($obj->width,2)+pow($obj->height,2));			
-				$x = (($obj->left-($hi*$obj->scaleX)) / 462) * 3696 ;
-				$y = (($obj->top-($hi*$obj->scaleX)) / 608) * 4864 ;				
-			}*/
-				
-
+				$x = (($obj->left - ($obj->width/2)) / 462) * 3696 ;
+				$y = (($obj->top - ($obj->height/2)) / 608) * 4864 ;		
+			}
+			
 			$resize =  ($width) . "x" . ($height);//$resize =  ($obj->width*$obj->scaleX) . "x" . ($obj->height*$obj->scaleX);
 			array_push($resizes, $resize);		
 			
@@ -177,8 +213,7 @@ while ($counter < count($arr)) {
 			$img_name = $obj->type . "_" . $counter . ".png";
 			array_push($img_names, $img_name);
 			array_push($types, $obj->type);
-			//exec("convert -background none ". $color . " ". $strokeColor . " " . $strokeWidth . " " . $font . " " . $angle . " " . $fontSize . " -gravity center  -units PixelsPerInch image -density 300 +antialias " . $text . "  " . $img_name);	
-			exec("convert -background none " . $color . " ". $strokeColor . " " . $strokeWidth . " " . $font . " " . $fontSize .  " " . $distort . " " . $kerning . " " . $angle ." -gravity center -size " . $resize . " " . $text . " -units PixelsPerInch image -density 300 +antialias " . $img_name);	
+			exec("convert -background none " . $color . " ". $strokeColor . " " . $strokeWidth . " " . $font . " " . $fontSize .  " " . $distort . " " . $kerning . " " . $angle ." -gravity center -size " . $resize . " " . $text . " +antialias -units PixelsPerInch image -density 300 " . $img_name);	
 			
 
 
@@ -269,7 +304,7 @@ while ($counter < count($arr)) {
 //exec("convert -size 3696x4864 xc:none clip.png -geometry 1600x2400+1800+2400 -composite text_300dpi.png -geometry 720x960+1800+2400 -composite   composite.png ");
 exec('convert -size 3696x4864 xc:none  -units PixelsPerInch image -density 300 design.png');
 $str_cmd = "convert -size 3600x4800 xc:none ";
-$str_cmd2 = "convert -background white design.png ";
+$str_cmd2 = "convert -background none design.png ";
 $i = 0;
 //print_r(array_values($resizes));
 //print_r(array_values($locations));
